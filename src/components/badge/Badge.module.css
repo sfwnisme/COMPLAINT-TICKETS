@@ -1,0 +1,78 @@
+.badge {
+  display: flex;
+  outline: 1px solid var(--primary-color-400);
+  width: fit-content;
+  padding: 1px 2px 1px ;
+  background-color: var(--primary-color-50);
+  font-size: 11px;
+  font-weight: 500;
+  position: relative;
+  /* box-shadow: var(--primary-shadow); */
+  /* z-index: 1; */
+
+  /* &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 7px;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary-color-700);
+  } */
+}
+
+.primary {
+  outline-color: var(--primary-color-200);
+  background-color: var(--primary-color-50);
+  color: var(--primary-color-600);
+  /* box-shadow: var(--primary-shadow); */
+
+  &::after {
+    background-color: var(--primary-color-700);
+  }
+}
+
+.info {
+  outline-color: var(--info-color-200);
+  background-color: var(--info-color-50);
+  color: var(--info-color-600);
+  /* box-shadow: var(--info-shadow); */
+
+  &::after {
+    background-color: var(--info-color-500);
+  }
+}
+
+.success {
+  outline-color: var(--success-color-200);
+  background-color: var(--success-color-50);
+  color: var(--success-color-600);
+  /* box-shadow: var(--success-shadow); */
+
+  &::after {
+    background-color: var(--success-color-500);
+  }
+}
+
+.warning {
+  outline-color: var(--warning-color-200);
+  background-color: var(--warning-color-50);
+  color: var(--warning-color-600);
+  /* box-shadow: var(--warning-shadow); */
+
+  &::after {
+    background-color: var(--warning-color-500);
+  }
+}
+
+.danger {
+  outline-color: var(--danger-color-200);
+  background-color: var(--danger-color-50);
+  color: var(--danger-color-600);
+  /* box-shadow: var(--danger-shadow); */
+
+  &::after {
+    background-color: var(--danger-color-500);
+  }
+}

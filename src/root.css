@@ -1,0 +1,100 @@
+:root {
+  --primary-color-50: #f8fafc;
+  --primary-color-100: #f3f4f6;
+  --primary-color-200: #e5e7eb;
+  --primary-color-300: #d1d5db;
+  --primary-color-400: #9ca3af;
+  --primary-color-500: #6b7280;
+  --primary-color-600: #4b5563;
+  --primary-color-700: #374151;
+  --primary-color-800: #1e293b;
+  --primary-color-900: #0f172a;
+  --primary-color-950: #020617;
+  /* danger */
+  --danger-color-50: #fef2f2;
+  --danger-color-100: #fee2e2;
+  --danger-color-200: #fecaca;
+  --danger-color-300: #fca5a5;
+  --danger-color-400: #f87171;
+  --danger-color-500: #ef4444;
+  --danger-color-600: #dc2626;
+  --danger-color-700: #b91c1c;
+  --danger-color-800: #991b1b;
+  --danger-color-900: #7f1d1d;
+  --danger-color-950: #450a0a;
+  /* warning */
+  --warning-color-50: #fefce8;
+  --warning-color-100: #fef9c3;
+  --warning-color-200: #fef08a;
+  --warning-color-300: #fde047;
+  --warning-color-400: #facc15;
+  --warning-color-500: #eab308;
+  --warning-color-600: #ca8a04;
+  --warning-color-700: #a16207;
+  --warning-color-800: #854d0e;
+  --warning-color-900: #713f12;
+  --warning-color-950: #422006;
+  /* success */
+  --success-color-50: #f0fdf4;
+  --success-color-100: #dcfce7;
+  --success-color-200: #bbf7d0;
+  --success-color-300: #86efac;
+  --success-color-400: #4ade80;
+  --success-color-500: #22c55e;
+  --success-color-600: #16a34a;
+  --success-color-700: #15803d;
+  --success-color-800: #166534;
+  --success-color-900: #14532d;
+  --success-color-950: #052e16;
+  /* info */
+  --info-color-50: #eff6ff;
+  --info-color-100: #dbeafe;
+  --info-color-200: #bfdbfe;
+  --info-color-300: #93c5fd;
+  --info-color-400: #60a5fa;
+  --info-color-500: #3b82f6;
+  --info-color-600: #2563eb;
+  --info-color-700: #1d4ed8;
+  --info-color-800: #1e40af;
+  --info-color-900: #1e3a8a;
+  --info-color-950: #172554;
+  /* text and backgrounds */
+  /* Text Color Variants */
+  --text-primary: var(--primary-color-900);
+  /* For main, high-contrast text */
+  --text-secondary: var(--primary-color-700);
+  /* For supporting or secondary text */
+  --text-tertiary: var(--primary-color-500);
+  /* For muted or less prominent text */
+  --text-quaternary: var(--primary-color-400);
+  /* For hints, disabled text, or placeholder text */
+  --text-inverse: var(--primary-color-50);
+
+  /* Border Color Variants */
+  --border-primary: var(--primary-color-600);
+  /* For main, high-contrast border */
+  --border-secondary: var(--primary-color-400);
+  /* For supporting or secondary border */
+  --border-tertiary: var(--primary-color-300);
+  /* For muted or less prominent border */
+  --border-quaternary: var(--primary-color-200);
+  /* For hints, disabled border, or placeholder border */
+  --border-inverse: var(--primary-color-100);
+
+
+  /* box-shadow */
+  --primary-shadow: 2px 2px 2px color-mix(in lab, var(--primary-color-900) 10%, transparent);
+  --primary-shadow-box: 0 10px 15px -3px color-mix(in lab, var(--primary-color-900)5%, transparent), 0 4px 6px -4px color-mix(in lab, var(--primary-color-900)5%, transparent);
+  --info-shadow: 2px 2px 2px color-mix(in lab, var(--info-color-900) 10%, transparent);
+  --success-shadow: 2px 2px 2px color-mix(in lab, var(--success-color-900) 10%, transparent);
+  --warning-shadow: 2px 2px 2px color-mix(in lab, var(--warning-color-900) 10%, transparent);
+  --danger-shadow: 2px 2px 2px color-mix(in lab, var(--danger-color-900) 10%, transparent);
+
+  /* transition*/
+  --transition-50: 50ms;
+  --transition-100: 100ms;
+  --transition-150: 150ms;
+  --transition-200: 200ms;
+  --transition-250: 250ms;
+  --transition-300: 300ms;
+}

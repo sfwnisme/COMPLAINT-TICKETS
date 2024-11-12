@@ -1,0 +1,233 @@
+/* ==================== layout */
+.layout {
+  display: grid;
+  grid-template-areas:
+    "sidebar navbar"
+    "sidebar outlet";
+  grid-template-columns: 280px calc(100% - 280px);
+  grid-template-rows: auto 1fr;
+  transition: var(--transition-150);
+  position: relative;
+  min-height: 100dvh;
+}
+
+.layout_collapse {
+  grid-template-columns: 0 100%;
+  transition: var(--transition-150);
+}
+
+/* ==================== END layout */
+
+/* ==================== sidebar */
+.aside {
+  grid-area: sidebar;
+  background-color: var(--primary-color-950);
+  max-height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  z-index: 10;
+  opacity: 1;
+  transition: var(--transition-150);
+}
+
+.layout_collapse .aside {
+  /* opacity: 0; */
+  z-index: 10;
+  transition: var(--transition-150);
+}
+
+.aside__icon {
+  width: 24px;
+  height: 24px;
+  white-space: nowrap;
+}
+
+
+.aside__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  position: sticky;
+  top: 0;
+  background-color: var(--primary-color-900);
+}
+
+.aside__logo {
+  width: 40px;
+  height: 40px;
+}
+
+.aside__collapse-btn {
+  display: none !important;
+}
+
+.aside__content {
+  padding: 8px 16px;
+}
+
+.aside__list {}
+
+.aside__item {
+  color: var(--primary-color-400);
+  transition: var(--transition-100) background;
+
+  &:hover {
+    background-color: var(--primary-color-800);
+    transition: var(--transition-100) background;
+  }
+}
+
+
+.aside__link {
+  color: var(--primary-color-400);
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: capitalize;
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+  gap: 16px;
+  padding: 8px;
+  /* prevent text wrapping transition on open the sidebar */
+  white-space: nowrap;
+  /* get the engire width*/
+  width: 100%;
+}
+
+.aside__item:hover .aside__icon,
+.aside__item:hover .aside__link {
+  color: var(--primary-color-100);
+}
+
+@media (max-width: 650px) {
+  .aside__link {
+    margin-top: 0px;
+  }
+}
+
+.aside__others {
+  /* height: 100%; */
+  margin-top: auto;
+}
+
+.aside__others__title {
+  color: var(--primary-color-400);
+  padding: 8px;
+  margin: 0;
+}
+
+/* ==================== Nav */
+.navbar {
+  grid-area: navbar;
+  background-color: white;
+  color: #fff;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--primary-color-150);
+  box-shadow: var(--primary-shadow-box);
+  z-index: 9;
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+.navbar__divider {
+  display: block;
+  height: 90%;
+  width: 2px;
+  background-color: var(--primary-color-150);
+
+  @media (min-width: 651px) {
+    display: none;
+  }
+}
+
+.navbar__search-box {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  max-width: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  input {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.navbar__search-icon {
+  color: var(--primary-color-400);
+}
+
+/* ==================== END Nav */
+
+/* ==================== outlet */
+.outlet {
+  grid-area: outlet;
+  background-color: white;
+  padding: 16px;
+  position: relative;
+}
+
+/* ==================== END outlet */
+
+
+
+@media (max-width: 650px) {
+
+  /* ==================== layout */
+  .layout {
+    grid-template-areas:
+      "navbar"
+      "outlet";
+    grid-template-columns: 100%;
+    transition: var(--transition-150);
+  }
+
+  .layout_collapse {
+    grid-template-areas:
+      "navbar"
+      "outlet";
+    grid-template-columns: 100%;
+    transition: var(--transition-150);
+  }
+
+  /* ==================== END layout */
+
+  /* ==================== sidebar */
+  .aside {
+    width: 100%;
+    max-width: 80vw;
+    position: fixed;
+    min-height: 100vh;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    transition: var(--transition-150) ease-in-out;
+  }
+
+  .layout_collapse .aside {
+    max-width: 50vw;
+    left: -100%;
+    opacity: 0.5;
+  }
+
+  .aside__collapse-btn {
+    display: grid !important;
+  }
+
+  /* ==================== END sidebar */
+
+}

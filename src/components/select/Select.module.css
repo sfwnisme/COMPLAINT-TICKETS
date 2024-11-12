@@ -1,0 +1,10 @@
+.select {
+  padding: 3px 10px;
+  border-radius: 0;
+  cursor: pointer;
+
+  &option {
+    border-radius: 0;
+    cursor: pointer;
+  }
+}

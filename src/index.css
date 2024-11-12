@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* initial settings */
+*,
+html,
+body,
+button {
+  font-family: "Inter", "Inter Tight", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html,
+* {
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+}
+
+/* --------------------------------- */
+
+label {
+  cursor: pointer;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  /* min-height: 100vh; */
+  /* overflow-y: hidden; */
+}

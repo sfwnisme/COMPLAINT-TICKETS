@@ -1,0 +1,242 @@
+.btn {
+  background-color: var(--primary-color-600);
+  color: var(--text-inverse);
+  width: fit-content;
+  padding-inline: 24px;
+  padding-block: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 0px solid transparent;
+  outline: 0px solid transparent;
+  display: grid;
+  transition: var(--transition-50);
+
+  * {
+    font-weight: 600;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    user-select: none;
+  }
+
+  &:hover {
+    transition: var(--transition-50);
+  }
+}
+
+.btn--primary {
+  background-color: var(--primary-color-800);
+
+  &:hover {
+    background-color: var(--primary-color-900);
+  }
+
+  &:active {
+    background-color: var(--primary-color-950);
+  }
+
+  &:disabled {
+    background-color: var(--primary-color-200);
+  }
+
+  &.btn--outline {
+    outline-color: var(--primary-color-500);
+    color: var(--primary-color-500);
+
+    &:hover {
+      background-color: var(--primary-color-50)
+    }
+
+    &:active {
+      background-color: var(--primary-color-100)
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: var(--primary-color-300);
+      outline-color: var(--primary-color-300);
+      outline-style: dotted;
+    }
+  }
+}
+
+.btn--info {
+  background-color: var(--info-color-500);
+
+  &:hover {
+    background-color: var(--info-color-600);
+  }
+
+  &:active {
+    background-color: var(--info-color-700);
+  }
+
+  &:disabled {
+    background-color: var(--info-color-200);
+  }
+
+  &.btn--outline {
+    outline-color: var(--info-color-400);
+    color: var(--info-color-500);
+
+    &:hover {
+      background-color: var(--info-color-50)
+    }
+
+    &:active {
+      background-color: var(--info-color-300)
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: var(--info-color-200);
+      outline-color: var(--info-color-200);
+    }
+  }
+}
+
+.btn--success {
+  background-color: var(--success-color-500);
+
+  &:hover {
+    background-color: var(--success-color-600);
+  }
+
+  &:active {
+    background-color: var(--success-color-700);
+  }
+
+  &:disabled {
+    background-color: var(--success-color-200);
+  }
+
+  &.btn--outline {
+    outline-color: var(--success-color-400);
+    color: var(--success-color-500);
+
+    &:hover {
+      background-color: var(--success-color-50)
+    }
+
+    &:active {
+      background-color: var(--success-color-300)
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: var(--success-color-200);
+      outline-color: var(--success-color-200);
+    }
+  }
+}
+
+.btn--warning {
+  background-color: var(--warning-color-500);
+
+  &:hover {
+    background-color: var(--warning-color-600);
+  }
+
+  &:active {
+    background-color: var(--warning-color-700);
+  }
+
+  &:disabled {
+    background-color: var(--warning-color-200);
+  }
+
+  &.btn--outline {
+    outline-color: var(--warning-color-400);
+    color: var(--warning-color-500);
+
+    &:hover {
+      background-color: var(--warning-color-50)
+    }
+
+    &:active {
+      background-color: var(--warning-color-300)
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: var(--warning-color-200);
+      outline-color: var(--warning-color-200);
+    }
+  }
+
+}
+
+.btn--danger {
+  background-color: var(--danger-color-500);
+
+  &:hover {
+    background-color: var(--danger-color-600);
+  }
+
+  &:active {
+    background-color: var(--danger-color-700);
+  }
+
+  &:disabled {
+    background-color: var(--danger-color-200);
+  }
+
+  &.btn--outline {
+    outline-color: var(--danger-color-400);
+    color: var(--danger-color-500);
+
+    &:hover {
+      background-color: var(--danger-color-50)
+    }
+
+    &:active {
+      background-color: var(--danger-color-300)
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: var(--danger-color-200);
+      outline-color: var(--danger-color-200);
+    }
+  }
+}
+
+.btn--outline {
+  /* border: 1px solid; */
+  outline: 1px solid;
+  color: var(--primary-color-800);
+  background-color: white;
+  box-shadow: 1px 1px 4px color-mix(in lab, var(--primary-color-300) 30%, transparent);
+}
+
+.btn--xs {
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+.btn--sm {
+  font-size: 14px;
+  padding: 4px 8px;
+}
+
+.btn--md {
+  font-size: 14px;
+  padding: 6px 10px;
+}
+
+.btn--lg {
+  font-size: 14px;
+  padding: 8px 12px;
+}
+
+.btn--xl {
+  font-size: 14px;
+  padding: 10px 14px;
+}
+
+.btn--square {
+  font-size: 14px;
+  padding: 4px;
+}
