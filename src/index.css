@@ -15,8 +15,25 @@ html,
 * {
   box-sizing: border-box;
 }
+
 body {
   overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  background: var(--primary-color-200);
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color-400);
+}
+/* ::-webkit-scrollbar-button {
+  background: blue;
+} */
+::-webkit-scrollbar-track {
+  background: var(--primary-color-200);
+  /* background: yellow; */
 }
 
 /* --------------------------------- */
@@ -60,4 +77,9 @@ p {
 .container {
   /* min-height: 100vh; */
   /* overflow-y: hidden; */
+}
+
+ul,
+li {
+  margin: 0;
 }

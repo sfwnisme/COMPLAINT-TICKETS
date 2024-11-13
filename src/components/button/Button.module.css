@@ -26,6 +26,10 @@
   }
 }
 
+.btn--width--fill {
+  width: 100%;
+}
+
 .btn--primary {
   background-color: var(--primary-color-800);
 

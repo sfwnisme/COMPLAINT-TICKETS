@@ -1,71 +1,17 @@
-.ticket-page {
-  display: grid;
-  grid-template-areas:
-    "header sidebar"
-    "body sidebar"
-  ;
-  grid-template-columns: 1fr 340px;
-  grid-template-rows: auto 1fr;
-  /* grid-template-rows: auto calc(100dvh - 64px - 139px); */
-  gap: 1rem;
-  transition: var(--transition-150);
-}
+.ticket-page {}
 
-.ticket-page--collapsed {
-  grid-template-columns: auto 0px;
-  column-gap: 0;
-  transition: var(--transition-150);
-
-}
-
-@media (max-width: 768px) {
-  .ticket-page {
-    grid-template-areas:
-      "header"
-      "body"
-    ;
-    grid-template-columns: 1fr;
-    /* grid-template-rows: auto calc(100dvh - 64px - 108px); */
-    /* grid-template-rows: auto 1fr; */
-  }
+.ticket-page__header {
+  margin-bottom: 1rem;
+  position: sticky;
+  top: 64px;
+  z-index: 1;
 }
 
 .ticket-page__header,
-.ticket-page__body,
-.ticket-page__sidebar {
+.ticket-page__body {
   background-color: white;
   border: 1px solid var(--border-quaternary);
   padding: 16px 18px;
-}
-
-@media (max-width: 768px) {
-  .ticket-page__collapse-btn--fixed {
-    position: fixed;
-    right: 72vw;
-    top: calc(64px + 20px);
-  }
-}
-
-
-
-/* =================[ header ] ================= */
-.ticket-page__header {
-  position: sticky;
-  top: calc(64px + 16px);
-  z-index: 1;
-  grid-area: header;
-}
-
-.ticket-page__header::before {
-  content: '';
-  position: absolute;
-  bottom: calc(100% + 1px);
-  left: -1px;
-  width: calc(100% + 2px);
-  height: 1rem;
-  /* background: blue; */
-  background: var(--primary-color-50);
-  z-index: 1;
 }
 
 .ticket-page__title {
@@ -74,33 +20,17 @@
   margin-bottom: 1rem;
 }
 
-.ticket-page__header {
-  display: flex;
-  align-items: start;
-}
-
-.ticket-page__title {
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-.ticket-page__info {
-  flex: 1;
-}
-
 .ticket-page__details {
   display: flex;
   align-items: center;
   justify-content: start;
   gap: 1rem;
-  flex-wrap: wrap;
 }
 
 .ticket-page__detail {
   display: flex;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.5rem;
 
   font-size: 12px;
   font-weight: 500;
@@ -113,17 +43,9 @@
   }
 }
 
-/* =================[ body ] ================= */
-
 .ticket-page__body {
   display: block;
-  /* min-height: 50vh; */
-  grid-area: body;
-
-
-  overflow-y: auto;
-  /* height: 100vh; */
-  /* max-height: 70dvh; */
+  min-height: 50vh;
 }
 
 .ticket-page__tabs {
@@ -157,11 +79,15 @@
 }
 
 
+/* ticket replay */
 .ticket-page__reply-input {
   display: flex;
   align-items: center;
   justify-content: start;
   gap: 1rem;
+  height: 100%;
+  width: 100%;
+  /* max-width: 500px; */
 }
 
 .ticket-page__reply-input input {
@@ -201,7 +127,6 @@
 .ticket-page__replyer__relpy {
   flex: 1;
 }
-
 .ticket-page__reply__avatar {
   /* display: ; */
   /* z-index: 2; */
@@ -212,14 +137,12 @@
   font-weight: 600;
   margin-bottom: 4px;
 }
-
 @media (max-width: 650px) {
   .ticket-page__replyer__name {
     font-size: 14px;
     margin-bottom: 3px;
   }
 }
-
 .ticket-page__replyer__date {
   color: var(--primary-color-500);
   font-size: 13px;
@@ -247,62 +170,4 @@
   .ticket-page__replyer__message {
     font-size: 13px;
   }
-}
-
-/* =================[ sidebar ] ================= */
-
-.ticket-page__sidebar {
-  grid-area: sidebar;
-  position: sticky;
-  top: calc(64px + 16px);
-  height: 100%;
-  max-height: 70dvh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  transition: var(--transition-150);
-  box-shadow: var(--primary-shadow-box);
-}
-
-@media (min-width: 769px) {
-
-  .ticket-page--collapsed .ticket-page__sidebar {
-    border-width: 0px;
-    transition: var(--transition-150);
-    position: relative;
-    left: 20px;
-  }
-
-}
-
-@media (max-width: 768px) {
-  .ticket-page__sidebar {
-    padding-block: 2rem;
-    position: fixed;
-    top: calc(64px + 16px);
-    right: 0;
-    z-index: 1;
-    width: 70vw;
-    max-height: calc(100dvh - 64px - 16px);
-  }
-
-  .ticket-page--collapsed .ticket-page__sidebar {
-    right: -100%;
-  }
-}
-
-.ticket-page__sidebar__collapse-btn {
-  position: fixed;
-  top: calc(64px + 16px + 3px);
-  left: 20vw;
-  z-index: 10;
-}
-
-@media (min-width: 769px) {
-  .ticket-page__sidebar__collapse-btn {
-    display: none;
-  }
-}
-
-.ticket-page--collapsed .ticket-page__sidebar__collapse-btn {
-  display: none;
 }

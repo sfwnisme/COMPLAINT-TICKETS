@@ -1,0 +1,23 @@
+.avatar-dropdown {
+  position: relative !important;
+  display: block;
+  width: fit-content;
+}
+
+.avatar-dropdown__list .list {
+  height: 1px;
+  width: 1px;
+  transition: var(--transition-200) opacity;
+  opacity: 1;
+  position: absolute;
+  right: 0;
+  bottom: -0.5rem;
+}
+
+/* .avatar-dropdown__list--left {
+  left: 0;
+}
+
+.avatar-dropdown__list--right {
+  right: 0;
+} */

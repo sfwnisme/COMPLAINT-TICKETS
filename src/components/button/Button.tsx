@@ -6,12 +6,13 @@ type Props = {
   variant?: 'primary' | 'info' | 'success' | 'warning' | 'danger';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'square';
   outline?: boolean;
+  width?: 'fill' | 'fit',
 }
 type ButtonType = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 type finalType = Props & ButtonType
 
 const Button = React.forwardRef<HTMLButtonElement, finalType>((
-  { children = "button", size = 'md', variant = 'primary', outline = false, ...rest }
+  { children = "button", size = 'md', variant = 'primary', outline = false, width = 'fit', ...rest }
   , ref) => {
   const sizes = {
     xs: S['btn--xs'],
@@ -29,7 +30,7 @@ const Button = React.forwardRef<HTMLButtonElement, finalType>((
     danger: S['btn--danger'],
   }
 
-  const settings = `${S.btn} ${sizes[size]} ${variants[variant]} ${outline && S['btn--outline']}`
+  const settings = `${S.btn} ${sizes[size]} ${variants[variant]} ${outline && S['btn--outline']} ${width === 'fill' && S['btn--width--fill']}`
   return (
     <button {...rest} className={settings + " " + rest.className} ref={ref}>{children}</button>
   )

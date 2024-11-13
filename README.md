@@ -1,16 +1,19 @@
 # UI Components
 
-- [ ] link
 - [ ] file input
 - [ ] select
 - [ ] multi select
-- [ ] table
+- [ ] textarea input
+- [ ] ck editor
+- [ ] dropdown solution
 
 ## Daily Notes
 
-### Week 01
+## Search
 
-#### 10 Nov
+- [ ] why reactjs returns undefined for the boolean props on render time then when the page displayed it return the actiual value false or true.
+
+### Week 01
 
 - [x] created shadow variable
 - [x] create `Badge.tsx`
@@ -24,4 +27,5 @@
 - [x] title component
 - [x] table component
 - [x] link component
-- [ ] create dropdown list and divide the list items to make it more usable for any type of data
+- [x] create dropdown list and divide the list items to make it more usable for any type of data
+- [ ] make the tabs bar of the ticket layout sticky to be easy to navigate between the tabs.

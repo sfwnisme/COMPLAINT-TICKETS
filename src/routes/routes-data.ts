@@ -21,10 +21,14 @@ export const routes = {
     base: '/users',
     create: '/users/create',
     update: (id: number) => `/users/update/${id}`,
-    id: (id: number) => `/users/${id}`
+    id: (id: number) => `/users/${id}`,
+    current: (id: number) => `/users/${id}`
   },
   settings: {
     base: '/settings',
+  },
+  metrics: {
+    base: '/metrics',
   }
 
 }

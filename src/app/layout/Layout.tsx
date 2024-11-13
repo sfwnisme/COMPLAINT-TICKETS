@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import S from './Layout.module.css'
 import Button from '../../components/button/Button'
-import { Menu, Search, X } from 'lucide-react'
+import { LogOut, Menu, Search, X } from 'lucide-react'
 import { sidebarLinks, sidebarLinksSettings } from '../../libs/data-center'
 import Input from '../../components/input/Input'
 import DropdownAvatar from '../../components/dropdown/DropdownAvatar'
+import AvatarDropdown from '../../components/avatar-dropdown/AvatarDropdown'
+import List from '../../components/list/List'
+import ListItem from '../../components/list/ListItem'
 
 // type Props = {}
 
@@ -19,8 +22,15 @@ function Nav({ collapseASide }) {
         <Search size={30} strokeWidth='1.5' className={S["navbar__search-icon"]} />
         <Input type='search' placeholder='Search...' />
       </label>
-      {/* <Avatar size='md' /> */}
-      <DropdownAvatar />
+      <AvatarDropdown>
+        <List position={'absolute'} rightOrLeft={'right'}>
+          <ListItem>About</ListItem>
+          <ListItem>Dashboard</ListItem>
+          <ListItem>Profile</ListItem>
+          <ListItem>Settings</ListItem>
+          <Button size='xs' variant='danger' width='fill'><LogOut size={18} style={{ marginInline: 'auto' }} /></Button>
+        </List>
+      </AvatarDropdown>
     </nav>
   )
 }

@@ -179,6 +179,11 @@
   padding: 16px;
   position: relative;
 }
+@media (max-width: 768px) {
+  .outlet {
+    padding: 0;
+  }
+}
 
 /* ==================== END outlet */
 
