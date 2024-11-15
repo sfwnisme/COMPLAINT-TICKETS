@@ -1,0 +1,9 @@
+.help-text {
+    font-size: 12px;
+    color: var(--primary-color-400);
+    font-weight: 400;
+    vertical-align: center;
+    display: inline-flex;
+    align-items: center;
+    column-gap: 5px;
+}

@@ -4,6 +4,7 @@ import ListItem from '../../../components/list/ListItem'
 import Button from '../../../components/button/Button'
 import AvatarDropdown from '../../../components/avatar-dropdown/AvatarDropdown'
 import Avatar from '../../../components/avatar/Avatar'
+import HelpText from "../../../components/help-text/HelpText.tsx";
 
 type Props = {}
 
@@ -11,7 +12,7 @@ export default function Tickets({ }: Props) {
   return (
     <div>
       Tickets Page
-
+<HelpText></HelpText>
       <AvatarDropdown>
         <List position='absolute' rightOrLeft='left'>
           <ListItem>home</ListItem>
