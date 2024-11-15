@@ -1,0 +1,17 @@
+.position {
+  background-color: red;
+  height: 100px;
+  width: 100px;
+  border: 2px solid green;
+  position: absolute;
+  top: 0;
+  z-index: 2134;
+}
+
+.positionLeft {
+  left: 0;
+}
+
+.positionRight {
+  right: 0;
+}

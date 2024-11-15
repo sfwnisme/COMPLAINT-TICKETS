@@ -17,7 +17,7 @@
     left: 0;
     width: 0%;
     height: 1px;
-    background-color: var(--info-color-600);
+    background-color: var(--info-color-100);
     transition: var(--transition-100);
   }
 

@@ -32,3 +32,6 @@
 - [ ] create a hook for media query
 - [ ] change the shape of the department representitive on the mobile
 - [ ] helper text
+- [ ] error and success message component
+- [ ] textarea component
+- [ ] new tickets list layout

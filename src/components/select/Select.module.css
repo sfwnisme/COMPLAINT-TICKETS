@@ -1,54 +1,54 @@
 .select-container {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .select {
-    font-size: 14px;
-    padding: 6px 40px 6px 12px;
-    border-radius: 0;
-    cursor: pointer;
-    outline: none;
-    border: 1px solid var(--primary-color-400);
-    background-color: white;
-    appearance: none;
-    color: var(--primary-color-600);
-    transition: border-color var(--transition-100);
+  font-size: 14px;
+  padding: 6px 40px 6px 12px;
+  border-radius: 0;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid var(--primary-color-400);
+  background-color: white;
+  appearance: none;
+  color: var(--primary-color-600);
+  transition: border-color var(--transition-100);
+  position: relative;
+}
+
+.select::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: green;
+  width: 180px;
+  height: 180px;
+  z-index: 10000;
 }
 
 .select:hover {
-    border-color: var(--primary-color-500);
-    transition: border-color var(--transition-100);
+  border-color: var(--primary-color-500);
+  transition: border-color var(--transition-100);
 }
 
 .select:focus {
-    outline: none
+  outline: none
 }
+
+.select-sm {
+  padding: 4px 25px 4px 8px;
+  font-size: 12px;
+}
+
 
 .select__icon {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    color: var(--primary-color-400);
-    height: 18px;
-}
-
-option {
-    border-radius: 0 !important;
-    position: relative;
-}
-option::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: green;
-    width: 18px;
-    height: 18px;
-    z-index: 10000;
-}
-
-option:hover {
-    background-color: var(--primary-color-50);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  color: var(--primary-color-400);
+  height: 14px;
+  user-select: contain;
 }

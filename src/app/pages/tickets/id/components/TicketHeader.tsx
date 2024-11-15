@@ -1,4 +1,3 @@
-import React from 'react'
 import S from '../Ticket.module.css'
 import Badge from '../../../../../components/badge/Badge'
 import {Timer, User} from 'lucide-react'
@@ -10,6 +9,7 @@ type Props = {
 }
 
 export default function TicketHeader(props: Props) {
+ 
   return (
     <header className={S['ticket-page__header']}>
       <div className={S['ticket-page__info']}>

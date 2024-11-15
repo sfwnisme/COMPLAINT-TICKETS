@@ -6,7 +6,7 @@ import {useState} from 'react'
 import Select from "../../../../components/select/Select.tsx";
 
 export default function Ticket() {
-    const [toggle, setToggle] = useState(true)
+    const [toggle, setToggle] = useState(false)
     return (
         <div className={`${S['ticket-page']} ${toggle && S['ticket-page--collapsed']}`}>
             <TicketHeader toggle={toggle} setToggle={setToggle}/>
