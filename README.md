@@ -1,11 +1,5 @@
 # UI Components
 
-- [ ] file input
-- [ ] select
-- [ ] multi select
-- [ ] textarea input
-- [ ] ck editor
-- [ ] dropdown solution
 
 ## Daily Notes
 
@@ -35,3 +29,8 @@
 - [ ] error and success message component
 - [ ] textarea component
 - [ ] new tickets list layout
+- [ ] file input component
+- [ ] multi select component
+- [ ] ck editor component
+- [ ] notification component
+- [ ] skeleton component
