@@ -4,7 +4,7 @@ import { ChevronsUpDown } from "lucide-react";
 
 type Props = {
   children: React.ReactNode;
-  sze: 'sm' | 'md',
+  sze?: 'sm' | 'md',
 } & React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
 
 const data = [
