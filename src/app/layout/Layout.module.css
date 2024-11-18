@@ -2,8 +2,8 @@
 .layout {
     display: grid;
     grid-template-areas:
-    "sidebar navbar"
-    "sidebar outlet";
+        "sidebar navbar"
+        "sidebar outlet";
     grid-template-columns: 280px calc(100% - 280px);
     grid-template-rows: auto 1fr;
     transition: var(--transition-150);
@@ -69,8 +69,7 @@
     padding: 8px 16px;
 }
 
-.aside__list {
-}
+.aside__list {}
 
 .aside__item {
     color: var(--primary-color-400);
@@ -177,13 +176,13 @@
 .outlet {
     grid-area: outlet;
     background-color: var(--primary-color-50);
-    padding: 16px;
+    padding-inline: 16px;
     position: relative;
 }
 
 @media (max-width: 768px) {
     .outlet {
-        padding: 0;
+        padding-inline: 8px;
     }
 }
 
@@ -195,16 +194,16 @@
     /* ==================== layout */
     .layout {
         grid-template-areas:
-      "navbar"
-      "outlet";
+            "navbar"
+            "outlet";
         grid-template-columns: 100%;
         transition: var(--transition-150);
     }
 
     .layout_collapse {
         grid-template-areas:
-      "navbar"
-      "outlet";
+            "navbar"
+            "outlet";
         grid-template-columns: 100%;
         transition: var(--transition-150);
     }
