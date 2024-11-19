@@ -5,9 +5,9 @@ import AvatarDropdown from '../../../../../components/avatar-dropdown/AvatarDrop
 import List from '../../../../../components/list/List'
 import ListItem from '../../../../../components/list/ListItem'
 
-type Props = {}
+// type Props = {}
 
-export default function TicketBody({ }: Props) {
+export default function TicketBody() {
   return (
     <article className={S['ticket-page__body']}>
       <div className={S['ticket-page__tabs']}>
