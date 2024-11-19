@@ -2,16 +2,22 @@ import S from './Ticket.module.css'
 import TicketHeader from './components/TicketHeader'
 import TicketBody from './components/TicketBody'
 import TicketSidebar from './components/TicketSidebar'
-import {useState} from 'react'
-import Select from "../../../../components/select/Select.tsx";
+import { useState } from 'react'
+import useMedia from '../../../../hooks/use-media'
 
 export default function Ticket() {
-    const [toggle, setToggle] = useState(false)
+    const media = useMedia()
+    const [isSidebarOpen, setIsSidebarOpen] = useState(media > 768 ? true : false)
+
+    // if (media > 768) {
+    //     setIsSidebarOpen(false)
+    // }
+
     return (
-        <div className={`${S['ticket-page']} ${toggle && S['ticket-page--collapsed']}`}>
-            <TicketHeader toggle={toggle} setToggle={setToggle}/>
-            <TicketBody/>
-            <TicketSidebar toggle={toggle} setToggle={setToggle}/>
+        <div className={`${S['ticket-page']} ${!isSidebarOpen && S['ticket-page--collapsed']}`}>
+            <TicketHeader isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+            <TicketBody />
+            <TicketSidebar />
         </div>
     )
 }
