@@ -17,31 +17,55 @@
   position: relative;
 }
 
-.select::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: green;
-  width: 180px;
-  height: 180px;
-  z-index: 10000;
-}
-
 .select:hover {
   border-color: var(--primary-color-500);
   transition: border-color var(--transition-100);
 }
 
-.select:focus {
-  outline: none
+.select--info {
+  color: var(--info-color-600);
+  border-color: var(--info-color-400);
+  background-color: var(--info-color-50);
+}
+
+.select--info:hover {
+  border-color: var(--info-color-500);
+}
+
+.select--success {
+  color: var(--success-color-600);
+  border-color: var(--success-color-400);
+  background-color: var(--success-color-50);
+}
+
+.select--success:hover {
+  border-color: var(--success-color-500);
+}
+
+.select--warning {
+  color: var(--warning-color-600);
+  border-color: var(--warning-color-400);
+  background-color: var(--warning-color-50);
+}
+
+.select--warning:hover {
+  border-color: var(--warning-color-500);
+}
+
+.select--danger {
+  color: var(--danger-color-600);
+  border-color: var(--danger-color-400);
+  background-color: var(--danger-color-50);
+}
+
+.select--danger:hover {
+  border-color: var(--danger-color-500);
 }
 
 .select-sm {
   padding: 4px 25px 4px 8px;
   font-size: 12px;
 }
-
 
 .select__icon {
   position: absolute;
