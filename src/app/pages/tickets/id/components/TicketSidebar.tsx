@@ -1,16 +1,11 @@
 import S from '../Ticket.module.css'
 import Avatar from '../../../../../components/avatar/Avatar'
 import Link from '../../../../../components/Link/Link'
-import { Clock, Mail, Timer, TimerReset, Users } from 'lucide-react'
+import { Clock, Mail, Users } from 'lucide-react'
 import Select from '../../../../../components/select/Select'
 import HelpText from '../../../../../components/help-text/HelpText'
 
-type Props = {
-  toggle: boolean;
-  setToggle: { (value: boolean | ((prev: boolean) => boolean)): void }
-}
-
-export default function TicketSidebar(props: Props) {
+export default function TicketSidebar() {
 
   return (
     <aside className={S['ticket-page__sidebar']}>
