@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import Avatar from '../avatar/Avatar'
-import List from '../list/List'
 import S from './AvatartDropdown.module.css'
 
 type Props = {
   children: React.ReactNode;
   // position: 'right' | 'left'
-}
+} & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
 export default function AvatarDropdown({ children }: Props) {
 
