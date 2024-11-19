@@ -10,6 +10,7 @@ import ListItem from '../../../../../components/list/ListItem'
 export default function TicketBody() {
   return (
     <article className={S['ticket-page__body']}>
+      <div className={S["ticket-page__overlay"]}></div>
       <div className={S['ticket-page__tabs']}>
         <span className={`${S['ticket-page__tab']}`}>The topic</span>
         <span className={`${S['ticket-page__tab']} ${S['ticket-page__tab--active']}`}>conversation</span>

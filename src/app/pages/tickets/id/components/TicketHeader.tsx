@@ -25,7 +25,7 @@ export default function TicketHeader(props: Props) {
         </div>
       </div>
       <Button
-        variant={props.isSidebarOpen ? 'info' : 'danger'}
+        variant={props.isSidebarOpen ? 'danger' : 'info'}
         // outline
         size='square'
         width='fit'
@@ -34,8 +34,8 @@ export default function TicketHeader(props: Props) {
       >
         {
           props.isSidebarOpen
-            ? 'more'
-            : 'close'
+            ? 'close'
+            : 'more'
         }
         {/* more */}
       </Button>
