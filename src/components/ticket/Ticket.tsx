@@ -4,6 +4,7 @@ import Select from '../select/Select'
 import Badge from '../badge/Badge'
 import Input from '../input/Input'
 import Button from '../button/Button'
+import { Link, NavLink } from 'react-router-dom'
 
 type Props = {
   type?: 'suggestion' | 'complaint' | 'inquiry'
@@ -26,7 +27,7 @@ export default function Ticket({ type = 'complaint' }: Props) {
             <Input type='checkbox' />
           </div>
         </div>
-        <h3 className={S['ticket__title']}>Client can't pay!</h3> <Button size='xs' outline>open</Button>
+        <h3 className={S['ticket__title']}>Client can't pay!</h3> <NavLink to={'/tickets/2'}><Button size='xs' outline>open</Button></NavLink>
         <div className={S["ticket__header__footer"]}>
           <p className={S["ticket__number"]}>#9458932349</p>
           <div className={S["ticket__assignee"]}><User size={14} strokeWidth={1.6} /> sfwn</div>
