@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import S from './Layout.module.css'
 import Button from '../../components/button/Button'
-import { LogOut, Menu, Search, X } from 'lucide-react'
+import { Bell, LogOut, Menu, Pill, Search, X } from 'lucide-react'
 import { sidebarLinks, sidebarLinksSettings } from '../../libs/data-center'
 import Input from '../../components/input/Input'
-import DropdownAvatar from '../../components/dropdown/DropdownAvatar'
 import AvatarDropdown from '../../components/avatar-dropdown/AvatarDropdown'
 import List from '../../components/list/List'
 import ListItem from '../../components/list/ListItem'
+import useMedia from '../../hooks/use-media'
 
 // type Props = {}
 
@@ -22,6 +22,10 @@ function Nav({ collapseASide }) {
         <Search size={30} strokeWidth='1.5' className={S["navbar__search-icon"]} />
         <Input type='search' placeholder='Search...' />
       </label>
+
+      <div className={S["navbar__notification"]}>
+        <Bell size={18} className={S['navbar__notification-icon']} />
+      </div>
       <AvatarDropdown>
         <List position={'absolute'} rightOrLeft={'right'}>
           <ListItem>About</ListItem>
@@ -88,7 +92,8 @@ function ASide({ collapseASide }) {
 
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const [collapse, setCollapse] = useState(true)
+  const media = useMedia()
+  const [collapse, setCollapse] = useState(media > 768 ? false : true)
   const collapseASide = () => {
     setCollapse((prev) => !prev)
     console.log(collapse)
