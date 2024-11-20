@@ -1,6 +1,6 @@
 .ticket {
   border: 1px solid var(--border-tertiary);
-  box-shadow: var(--primary-shadow-box);
+  /* box-shadow: var(--primary-shadow-box); */
   background-color: white;
   position: relative;
   /* border-left: 2px solid var(--primary-color-500); */
@@ -8,13 +8,13 @@
 }
 
 .ticket::before {
-  content: '';
+  /* content: ''; */
   position: absolute;
-  top: 0px;
+  bottom: 0px;
   left: 0px;
   background-image: linear-gradient(30deg, var(--info-color-400), var(--info-color-200));
-  width: 3px;
-  height: 100%;
+  width: 100%;
+  height: 1px;
 }
 
 .ticket--complaint::before {

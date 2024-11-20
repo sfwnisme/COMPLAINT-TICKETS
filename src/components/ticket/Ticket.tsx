@@ -4,7 +4,7 @@ import Select from '../select/Select'
 import Badge from '../badge/Badge'
 import Input from '../input/Input'
 import Button from '../button/Button'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 type Props = {
   type?: 'suggestion' | 'complaint' | 'inquiry'
@@ -32,6 +32,7 @@ export default function Ticket({ type = 'complaint' }: Props) {
           <p className={S["ticket__number"]}>#9458932349</p>
           <div className={S["ticket__assignee"]}><User size={14} strokeWidth={1.6} /> sfwn</div>
           <div className={S["ticket__created-at"]} > <Clock size={14} strokeWidth={1.6} /> Created 2 days ago</div>
+          <Badge text={type} variant={type === 'complaint' ? 'danger' : type === 'inquiry' ? 'info' : 'warning'} />
         </div >
       </div >
       <div className={S["ticket__footer"]}>
@@ -59,9 +60,9 @@ export default function Ticket({ type = 'complaint' }: Props) {
           </Select>
         </div>
         <div className={S["ticket__tags"]}>
-          <Badge text='payment' variant='info' />
-          <Badge text='visa' variant='info' />
-          <Badge text='coupon' variant='info' />
+          <Badge text='payment' variant='primary' />
+          <Badge text='visa' variant='primary' />
+          <Badge text='coupon' variant='primary' />
         </div>
       </div>
     </div >
