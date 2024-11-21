@@ -23,7 +23,7 @@ function Nav({ collapseASide }) {
         <Input type='search' placeholder='Search...' />
       </label>
 
-      <div className={S["navbar__notification"]}>
+      <div className={`${S["navbar__notification"]} ${S['navbar__notification--active']}`}>
         <Bell size={18} className={S['navbar__notification-icon']} />
       </div>
       <AvatarDropdown>

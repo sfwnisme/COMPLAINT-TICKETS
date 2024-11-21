@@ -178,7 +178,7 @@ input {
   cursor: pointer;
 }
 
-.navbar__notification::before {
+.navbar__notification--active::before {
   content: '';
   position: absolute;
   top: 1px;
@@ -187,6 +187,7 @@ input {
   height: 8px;
   width: 8px;
   z-index: 1;
+  border-radius: 10px;
 }
 
 .navbar__notification-icon {
