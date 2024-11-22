@@ -217,11 +217,21 @@
 
 .ticket-page__reply {
   margin-bottom: 3rem;
-  display: flex;
-  align-items: start;
-  gap: 1rem;
+  /* display: flex; */
+  /* align-items: start; */
+  /* gap: 1rem; */
   position: relative;
 }
+
+.ticket-page__reply-marked-as-a-solution {
+  border: 1px solid var(--success-color-500);
+  background: var(--success-color-50);
+  padding: 0.5rem;
+}
+.ticket-page__reply-marked-as-a-solution .ticket-page__replyer__message  {
+margin-bottom: 1rem;
+}
+
 
 /* --start time line style */
 .ticket-page__reply::before {
@@ -235,11 +245,13 @@
   border: 1px solid var(--primary-color-500);
 }
 
-.ticket-page__reply:last-of-type::before {
-  background-color: var(--primary-color-700);
+.ticket-page__reply-marked-as-a-solution::before {
+  background-color: var(--success-color-200);
+  border-color: var(--success-color-500);
+  left: -15.8px;
 }
 
-.ticket-page__reply:last-of-type::after {
+/* .ticket-page__reply:last-of-type::after {
   content: '';
   position: absolute;
   background-color: white;
@@ -247,7 +259,9 @@
   width: 5px;
   left: -14px;
   top: 8.6px;
-}
+} */
+
+
 
 /* --end time line style */
 
@@ -266,9 +280,10 @@
   margin-bottom: 1.2rem;
 }
 
+/* 
 .ticket-page__replyer__relpy {
   flex: 1;
-}
+} */
 
 .ticket-page__replyer__name {
   color: var(--text-secondary);
