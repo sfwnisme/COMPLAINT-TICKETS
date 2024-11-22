@@ -74,7 +74,7 @@
 
 .ticket__header__footer {
   display: flex;
-  align-items: start;
+  align-items: end;
   gap: 1rem;
   flex-wrap: wrap;
   flex-basis: 100%;
