@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import S from './Layout.module.css'
 import Button from '../../components/button/Button'
-import { Bell, LogOut, Menu, Pill, Search, X } from 'lucide-react'
+import { Bell, LogOut, Menu, Search, X } from 'lucide-react'
 import { sidebarLinks, sidebarLinksSettings } from '../../libs/data-center'
 import Input from '../../components/input/Input'
 import AvatarDropdown from '../../components/avatar-dropdown/AvatarDropdown'
