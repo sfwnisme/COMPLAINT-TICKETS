@@ -1,9 +1,25 @@
 .help-text {
     font-size: 12px;
-    color: var(--primary-color-400);
+    color: var(--primary-color-500);
     font-weight: 300;
-    vertical-align: center;
+    white-space: nowrap;
     display: flex;
     align-items: center;
     column-gap: 2px;
+}
+
+.help-text--info {
+    color: var(--info-color-500);
+}
+
+.help-text--success {
+    color: var(--success-color-500);
+}
+
+.help-text--warning {
+    color: var(--warning-color-500);
+}
+
+.help-text--danger {
+    color: var(--danger-color-500);
 }
