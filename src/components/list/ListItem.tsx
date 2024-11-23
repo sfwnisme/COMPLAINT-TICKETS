@@ -9,7 +9,7 @@ type Props = {
 } & React.DetailedHTMLProps<React.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>
 
 export default function ListItem({ children, noStyle = false, ...rest }: Props) {
-  // noStle: disables the list item styles in case you used buttons as a child
+  // noStyle: disables the list item styles in case you used buttons as a child
   // href: creates a link and switches the className from the <li> and the <NaveLink> to align the styles
   const isStyledListItemOrNot =
     !rest?.href
