@@ -28,6 +28,10 @@
   background-color: var(--info-color-50);
 }
 
+.select-container:has(.select--info) .select__icon {
+  color: var(--info-color-600);
+}
+
 .select--info:hover {
   border-color: var(--info-color-500);
 }
@@ -42,6 +46,10 @@
   border-color: var(--success-color-500);
 }
 
+.select-container:has(.select--success) .select__icon {
+  color: var(--success-color-600);
+}
+
 .select--warning {
   color: var(--warning-color-600);
   border-color: var(--warning-color-400);
@@ -52,6 +60,10 @@
   border-color: var(--warning-color-500);
 }
 
+.select-container:has(.select--warning) .select__icon {
+  color: var(--warning-color-600);
+}
+
 .select--danger {
   color: var(--danger-color-600);
   border-color: var(--danger-color-400);
@@ -60,6 +72,10 @@
 
 .select--danger:hover {
   border-color: var(--danger-color-500);
+}
+
+.select-container:has(.select--danger) .select__icon {
+  color: var(--danger-color-600);
 }
 
 .select-sm {
