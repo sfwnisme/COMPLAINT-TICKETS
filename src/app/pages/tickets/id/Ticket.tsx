@@ -9,10 +9,6 @@ export default function Ticket() {
     const media = useMedia()
     const [isSidebarOpen, setIsSidebarOpen] = useState(media > 768 ? true : false)
 
-    // if (media > 768) {
-    //     setIsSidebarOpen(false)
-    // }
-
     return (
         <div className={`${S['ticket-page']} ${!isSidebarOpen && S['ticket-page--collapsed']}`}>
             <TicketHeader isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />

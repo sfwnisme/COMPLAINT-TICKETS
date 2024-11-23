@@ -284,7 +284,9 @@ margin-bottom: 1rem;
 .ticket-page__replyer__relpy {
   flex: 1;
 } */
-
+.ticket-page__replyer-info {
+  flex: 1;
+}
 .ticket-page__replyer__name {
   color: var(--text-secondary);
   font-size: 15px;
