@@ -4,10 +4,11 @@ import S from './AvatartDropdown.module.css'
 
 type Props = {
   children: React.ReactNode;
+  name: string,
   // position: 'right' | 'left'
 } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
-export default function AvatarDropdown({ children }: Props) {
+export default function AvatarDropdown({ children, name }: Props) {
 
   const [toggle, setToggle] = useState(false)
   const handleListToggle = () => {
@@ -15,7 +16,7 @@ export default function AvatarDropdown({ children }: Props) {
   }
   return (
     <div className={S['avatar-dropdown']}>
-      <Avatar onClick={handleListToggle} />
+      <Avatar name={name} onClick={handleListToggle} />
       {toggle && children}
     </div>
   )
