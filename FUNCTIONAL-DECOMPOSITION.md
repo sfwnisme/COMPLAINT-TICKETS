@@ -1,82 +1,136 @@
-### Functional Decomposition for the Ticketing System  
+# Internal Ticketing System (ITS) - Functional Decomposition
 
-**1. Ticket Management**  
+## 1. Authentication & User Management
 
-- 1.1. Ticket Creation  
-  - 1.1.1. Capture complaint/inquiry details
-  - 1.1.2. Allow file attachments (e.g., images, documents)  
-  - 1.1.3. Assign ticket priority (Low, Medium, High)  
-- 1.2. Ticket Modification  
-  - 1.2.1. Update ticket status (Open, In Progress, Resolved, Closed)  
-  - 1.2.2. Edit ticket details  
-  - 1.2.3. Reassign ticket to another department or user  
-- 1.3. Ticket Deletion  
-- 1.3.1. Allow admin to delete invalid tickets  
-  - 1.3.2. Maintain logs of deleted tickets  
+### 1.1 User Authentication
 
-**2. Categorization & Prioritization**  
+- 1.1.1 Login functionality
+- 1.1.2 Password management
+- 1.1.3 Session handling
+- 1.1.4 Security protocols implementation
 
-- 2.1. Define Ticket Categories  
-  - 2.1.1. Complaint  
-  - 2.1.2. Inquiry  
-  - 2.1.3. Suggestion  
-- 2.2. Assign Priority Levels  
-  - 2.2.1. Enable user to set priority  
-  - 2.2.2. Auto-assign priority based on predefined rules  
+### 1.2 User Administration (Super Admin)
 
-**3. User Roles & Permissions**  
-   - 3.1. Admin Role  
-      - 3.1.1. Manage users and roles  
-      - 3.1.2. Configure system settings  
-      - 3.1.3. View all tickets  
-   - 3.2. Customer Service Role  
-      - 3.2.1. Create and manage tickets  
-      - 3.2.2. Assign tickets to departments  
-   - 3.3. Department Representative Role  
-      - 3.3.1. View tickets assigned to their department  
-      - 3.3.2. Resolve and close tickets  
+- 1.2.1 User profile creation
+- 1.2.2 Role assignment
+- 1.2.3 Department assignment
+- 1.2.4 User account management
+- 1.2.5 Access control management
 
-**4. Notifications & Alerts**  
-   - 4.1. Email Notifications  
-      - 4.1.1. Notify users of ticket updates  
-      - 4.1.2. Send reminders for overdue tickets  
-   - 4.2. In-App Alerts  
-      - 4.2.1. Display real-time notifications for new tickets  
-      - 4.2.2. Highlight high-priority tickets  
+## 2. Ticket Management System
 
-**5. Reporting & Analytics**  
-   - 5.1. Generate Reports  
-      - 5.1.1. Tickets by category  
-      - 5.1.2. Average resolution time  
-      - 5.1.3. Department performance metrics  
-   - 5.2. Dashboard View  
-      - 5.2.1. Key performance indicators (KPIs)  
-      - 5.2.2. Real-time ticket statistics  
+### 2.1 Ticket Creation
 
-**6. Search & Filter**  
-   - 6.1. Search Tickets  
-      - 6.1.1. By ID  
-      - 6.1.2. By keywords in ticket description  
-   - 6.2. Filter Tickets  
-      - 6.2.1. By category  
-      - 6.2.2. By status  
-      - 6.2.3. By assigned department  
+- 2.1.1 Ticket form interface
+- 2.1.2 File attachment handling [*attachment_id sparated endpoint*]
+- 2.1.3 Ticket ID generation
+- 2.1.4 Initial status assignment [*issued*]
+- 2.1.5 Timestamp recording [*current timestamp from the backend*]
 
-**7. Security & Access Control**  
-   - 7.1. Role-Based Access Control (RBAC)  
-      - 7.1.1. Grant specific permissions based on roles  
-      - 7.1.2. Restrict unauthorized access to sensitive data  
-   - 7.2. Authentication  
-      - 7.2.1. Implement secure login (e.g., OAuth, 2FA)  
-   - 7.3. Data Encryption  
-      - 7.3.1. Encrypt sensitive ticket data  
+### 2.2 Ticket Processing
 
-**8. System Administration**  
-   - 8.1. User Management  
-      - 8.1.1. Add, edit, and remove users  
-      - 8.1.2. Reset user passwords  
-   - 8.2. System Configuration  
-      - 8.2.1. Configure notification settings  
-      - 8.2.2. Customize ticket categories and priorities  
+- 2.2.1 Status update mechanism
+- 2.2.1.1 Status update to in progress automatically by the first intractive(comment or message).
+- 2.2.1.2 Status can not be updated to the prev status.
+- 2.2.1.3 Status can be update to (blocked) status if there it depends on the client response.
+- 2.2.1.4 Status can be update to (in progress) status after the (block) status.
+- 2.2.2 Priority assignment
+- 2.2.3 Department routing [*future version*]
+- 2.2.4 Assignment handling [*department assignment*]
+<!-- - 2.2.5 Response tracking [*response history*] -->
+- 2.2.6 Ticket history [*changes history and intractive history*]
 
-This decomposition organizes the functionality into hierarchical modules, ensuring clarity and ease of development. Let me know if you want to dive deeper into any specific module!
+### 2.3 Ticket Categorization
+
+- 2.3.1 Main category assignment (Complaint, Inquiry, Suggestion) [*non-editiable*]
+- 2.3.2 Tags management [*use tages instead of custom categories*]
+- 2.3.3 Tag hierarchy handling [*nested tags*]
+- 2.3.4 Tag-based routing rules
+
+## 3. Notification System
+
+### 3.1 In-App Notifications
+
+Receive notification: Admin, CSR, and The Related Department.
+
+- 3.1.1 Status change alerts.
+- 3.1.2 Assignment notifications
+- 3.1.3 Due date reminders [*future version*]
+- 3.1.4 Priority update alerts
+
+### 3.2 Alert Management
+
+- 3.2.1 Overdue ticket detection [*select standard days by the Super Adming from the application settings*]
+- 3.2.2 SLA violation alerts [SAL](./SAL-Example.md)
+- 3.2.3 Notification preferences [*user settings*]
+- 3.2.4 Alert history tracking [*future version*]
+- 3.2.4.1 Super Admin can see the alerts history for the entire users
+- 3.2.4.2 The department Representative can check his alert history
+
+## 4. Search and Filter System
+
+### 4.1 Search Functionality
+
+- 4.1.1 Ticket ID search
+- 4.1.2 Keyword search
+- 4.1.3 Full-text search
+- 4.1.4 Title search
+- 4.1.5 Search history [*future version*]
+
+### 4.2 Filter System
+
+- 4.2.1 Status filters
+- 4.2.2 Priority filters
+- 4.2.3 Date range filters
+- 4.2.4 Department filters
+- 4.2.5 Category filters
+- 4.2.6 Tag filters
+
+## 5. Reporting and Analytics
+
+### 5.1 Dashboard
+
+- 5.1.1 Real-time metrics display
+- 5.1.2 Performance indicators
+- 5.1.3 Ticket status overview
+- 5.1.4 Department workload visualization
+
+### 5.2 Report Generation
+
+- 5.2.1 Ticket volume reports
+- 5.2.2 Response time analysis
+- 5.2.3 Resolution rate tracking
+- 5.2.4 Custom report builder [*future version*]
+- 5.2.5 Export functionality [*future version*]
+
+## 6. System Administration
+
+### 6.1 System Configuration
+
+- 6.1.1 General settings management [*standards + custom*]
+- 6.1.2 Department configuration [*future version*]
+- 6.1.3 Category management [*future version*]
+- 6.1.4 SLA configuration
+
+### 6.2 System Monitoring [*future version*]
+
+- 6.2.1 Performance monitoring
+- 6.2.2 Error logging
+- 6.2.3 User activity tracking
+- 6.2.4 System health checks
+
+## 7. Data Management [*backend explains*]
+
+### 7.1 Data Storage
+
+- 7.1.1 Ticket data persistence
+- 7.1.2 File storage management
+- 7.1.3 User data management
+- 7.1.4 System logs storage
+
+### 7.2 Data Security
+
+- 7.2.1 Data encryption
+- 7.2.2 Access control implementation
+- 7.2.3 Audit trail maintenance
+- 7.2.4 Backup management
