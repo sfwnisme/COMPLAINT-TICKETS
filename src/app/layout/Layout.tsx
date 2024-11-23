@@ -8,6 +8,7 @@ import AvatarDropdown from '../../components/avatar-dropdown/AvatarDropdown'
 import List from '../../components/list/List'
 import ListItem from '../../components/list/ListItem'
 import useMedia from '../../hooks/use-media'
+import Logo from '../../assets/logo.png'
 
 // type Props = {}
 
@@ -70,7 +71,7 @@ function ASide({ collapseASide }) {
   return (
     <aside className={S.aside}>
       <div className={S["aside__header"]}>
-        <img className={S['aside__logo']} src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500" alt="" />
+        <img className={S['aside__logo']} src={Logo} alt="" />
         <Button size='square' variant='primary' className={S['aside__collapse-btn']} onClick={collapseASide} >
           <X size={24} />
         </Button>

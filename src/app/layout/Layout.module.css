@@ -53,12 +53,12 @@
   padding: 16px;
   position: sticky;
   top: 0;
-  background-color: var(--primary-color-900);
+  background-color: var(--primary-color-950);
 }
 
 .aside__logo {
-  width: 40px;
-  height: 40px;
+  width: auto;
+  height: 30px;
 }
 
 .aside__collapse-btn {
