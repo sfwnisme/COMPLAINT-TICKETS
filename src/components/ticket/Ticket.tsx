@@ -98,7 +98,6 @@ export default function Ticket(
   }: Props
 ) {
 
-  const settings = ''
 
   //-- find creator by id
   const creator = demoUsersList.find((user) => user.id === creatorId)?.name
@@ -119,7 +118,7 @@ export default function Ticket(
   const renderPrioritiesOptions = demoPrioritiesList.map((perio) => <option value={perio.id} key={perio.id} id={String(perio.id)}>{perio.name}</option>)
 
   return (
-    <div className={`${S.ticket} ${settings}`}>
+    <div className={`${S.ticket}`}>
       <div className={S['ticket__header']}>
         <div className={S['ticket__settings']}>
           <div className={S['ticket__check']}>
