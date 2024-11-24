@@ -26,9 +26,10 @@ export default function ListItem({ children, noStyle = false, ...rest }: Props) 
       {...rest}
     >
       {
-        rest?.href ? <NavLink to={rest?.href} className={`${S['list__item--has--style']} ${S['list__item']}`} >
-          {children}
-        </NavLink>
+        rest?.href
+          ? <NavLink to={rest?.href} className={`${S['list__item--has--style']} ${S['list__item']}`} >
+            {children}
+          </NavLink>
           : children
       }
     </li>
