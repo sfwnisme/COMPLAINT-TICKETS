@@ -23,6 +23,7 @@ body {
 ::-webkit-scrollbar {
   background: var(--primary-color-200);
   width: 8px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
