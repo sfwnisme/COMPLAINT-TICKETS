@@ -13,8 +13,6 @@ export default function Avatar({
   const isImageAvailable = Boolean(image)
   const nameFirstTwoLetters = name?.slice(0, 2).toUpperCase()
 
-  console.log(isImageAvailable)
-
   const sizes = {
     xs: S['avatar--xs'],
     sm: S['avatar--sm'],
