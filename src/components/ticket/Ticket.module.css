@@ -1,9 +1,7 @@
 .ticket {
   border: 1px solid var(--border-tertiary);
-  /* box-shadow: var(--primary-shadow-box); */
   background-color: white;
   position: relative;
-  /* border-left: 2px solid var(--primary-color-500); */
   overflow: hidden;
   transition: var(--transition-150);
 }
@@ -14,35 +12,10 @@
   transition: var(--transition-150);
 }
 
-.ticket::before {
-  /* content: ''; */
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  background-image: linear-gradient(30deg, var(--info-color-400), var(--info-color-200));
-  width: 100%;
-  height: 1px;
-}
-
-.ticket--complaint::before {
-  background-image: linear-gradient(30deg, var(--danger-color-500), var(--danger-color-200));
-}
-
-
-.ticket--inquiry::before {
-  background-image: linear-gradient(30deg, var(--info-color-500), var(--info-color-200));
-}
-
-.ticket--suggestion::before {
-  background-image: linear-gradient(30deg, var(--success-color-500), var(--success-color-200));
-}
-
 .ticket__header {
   padding: 1rem;
   display: flex;
-
   flex-wrap: wrap;
-  /* flex-flow: column; */
   align-items: start;
   justify-content: start;
   gap: 1rem;
@@ -59,7 +32,6 @@
   background-color: var(--warning-color-500);
   padding: 3px;
   color: white;
-  /* aspect-ratio: 1/1; */
   position: absolute;
   right: 0;
   top: 0;
@@ -74,8 +46,6 @@
   color: var(--text-secondary);
   font-weight: 500;
   font-size: 1.1rem;
-  /* text-transform: capitalize; */
-  /* padding-bottom: 1rem; */
   flex: 1;
 }
 
@@ -99,18 +69,11 @@
 }
 
 .ticket__footer {
-  /* background-color: var(--primary-color-50); */
   padding: 0.5rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
-}
-
-.ticket__status,
-.ticket__periority,
-.ticket__tags {
-  /* width: 100%; */
 }
 
 @media (max-width: 768px) {
