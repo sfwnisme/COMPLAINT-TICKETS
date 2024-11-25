@@ -6,8 +6,9 @@ import List from '../../../../../components/list/List'
 import ListItem from '../../../../../components/list/ListItem'
 import HelpText from '../../../../../components/help-text/HelpText'
 import Dropdown from '../../../../../components/dropdown/Dropdown'
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import Button from '../../../../../components/button/Button'
+import { CircleX, Pencil, Trash, UserPen } from 'lucide-react'
 
 interface IComment {
   id: number,
@@ -17,6 +18,8 @@ interface IComment {
   isSolution: boolean,
   handleMarkTicket: (commentId: number) => void,
 }
+
+type TabsType = 'the_topic' | 'conversation' | 'attachments' | 'history'
 
 let id = 0
 const commentsData = [
@@ -88,11 +91,12 @@ function ConversationTab() {
   ))
 
   return (
-    <div className={S['ticket-page__conversation-tap']}>
-      <div className={`${S['ticket-page__add-comment']}`}>
+    <div className={S['ticket-page__conversation-tab']}>
+      <form className={`${S['ticket-page__add-comment']}`}>
         <Avatar />
         <Input type='text' placeholder='Comment...' />
-      </div>
+        <Button variant='info' size='md'>Comment</Button>
+      </form>
       <div className={`${S["ticket-page__comments"]}`}>
         {renderCommentsList}
       </div>
@@ -182,41 +186,78 @@ function TheTopicTab() {
 
 function AttachmentsTab() {
   return (
-    <div className={S['ticket-page__attachments-tap']}>
+    <div className={S['ticket-page__attachments-tab']}>
       sdf
     </div>
   )
 }
 
 function HistoryTab() {
-  return (
-    <div className={S['ticket-page__history-tap']}>
+  const id = useId()
+  console.log('history id', id)
+  const hisotries = [
+    { id: id, title: 'Safwan Mohamed', description: 'changed the ticket name', type: 'made changes', action: 'edit', createdAt: '20/Apr/22', time: '04:47 PM' },
+    { id: id, title: 'Safwan Mohamed', description: 'changed the ticket name', type: 'made changes', action: 'edit', createdAt: '20/Apr/22', time: '04:47 PM' },
+    { id: id, title: 'Safwan Mohamed', description: 'changed the ticket name', type: 'assigned', action: 'assign', createdAt: '20/Apr/22', time: '04:47 PM' },
+    { id: id, title: 'Safwan Mohamed', description: 'deleted comment', type: 'made changes', action: 'delete', createdAt: '20/Apr/22', time: '04:47 PM' },
+    { id: id, title: 'Safwan Mohamed', description: 'changed the ticket name', type: 'closed ticket', action: 'close', createdAt: '20/Apr/22', time: '04:47 PM' },
+    { id: id, title: 'Safwan Mohamed', description: 'changed the ticket name', type: 'made changes', action: 'edit', createdAt: '20/Apr/22', time: '04:47 PM' },
+  ]
 
+  const renderHistories = hisotries?.map((history) => (
+    <div className={S['ticket-page__history-item']} key={history.id}>
+      <div className={S['ticket-page__history__date']}>
+        <div className={S["ticket-page__history__day"]}>{history.createdAt}</div>
+        <div className={S["ticket-page__history__time"]}>{history.time}</div>
+      </div>
+      <div className={S['ticket-page__history__icon']}>
+        {history.action === 'edit' && <Pencil size={30} strokeWidth={1.1} />}
+        {history.action === 'delete' && <Trash size={30} strokeWidth={1.1} />}
+        {history.action === 'assign' && <UserPen size={30} strokeWidth={1.1} />}
+        {history.action === 'close' && <CircleX size={30} strokeWidth={1.1} />}
+      </div>
+      <div className={S['ticket-page__history__info']}>
+        <h4 className={S['ticket-page__history__title']}>{history.title} <HelpText icon='invisible'>{history.type}</HelpText></h4>
+        <p className={S['ticket-page__history__description']}>{history.description}</p>
+      </div>
+    </div>
+  ))
+
+  return (
+    <div className={S['ticket-page__history-tab']}>
+      <div className={S['ticket-page__history-list']}>
+        {renderHistories}
+      </div>
     </div>
   )
 }
 
 export default function TicketBody() {
-  const [tab, setTab] = useState<'the_topic' | 'conversation' | 'attachments' | 'history'>('the_topic')
-  const handleTabsChanging = (event) => {
-    const { id } = event.target
-    console.log('the tab id ', id)
-    setTab(id)
+  const [tab, setTab] = useState<TabsType>('the_topic')
+
+  const handleTabsChanging = (tabName: TabsType) => {
+    setTab(tabName)
   }
 
-  let openedTab = <TheTopicTab />
+  const tabsNames: TabsType[] = ['the_topic', 'conversation', 'attachments', 'history']
+  const renderTabs = tabsNames?.map((tabName) => (
+    <span
+      className={`${S['ticket-page__tab']} ${tab === tabName && S['ticket-page__tab--active']}`}
+      id="the_topic"
+      onClick={() => handleTabsChanging(tabName)} key={tabName}>
+      {tabName.replace('_', ' ')}
+    </span>
+  ))
 
-  if (tab === 'the_topic') {
-    openedTab = <TheTopicTab />
-  }
-  if (tab === 'conversation') {
-    openedTab = <ConversationTab />
-  }
-  if (tab === 'attachments') {
-    openedTab = <AttachmentsTab />
-  }
-  if (tab === 'history') {
-    openedTab = <HistoryTab />
+
+  const renderTab = () => {
+    const tabs = {
+      ['the_topic']: <TheTopicTab />,
+      conversation: <ConversationTab />,
+      attachments: <AttachmentsTab />,
+      history: <HistoryTab />
+    }
+    return tabs[tab]
   }
 
   return (
@@ -224,13 +265,12 @@ export default function TicketBody() {
       <div className={S["ticket-page__overlay"]}></div>
       <div className={S['ticket-page__tabs__wrapper']}>
         <div className={S['ticket-page__tabs']}>
-          <span className={`${S['ticket-page__tab']} ${tab === 'the_topic' && S['ticket-page__tab--active']}`} id="the_topic" onClick={handleTabsChanging}>The topic</span>
-          <span className={`${S['ticket-page__tab']} ${tab === 'conversation' && S['ticket-page__tab--active']}`} id="conversation" onClick={handleTabsChanging}>conversation</span>
-          <span className={`${S['ticket-page__tab']} ${tab === 'attachments' && S['ticket-page__tab--active']}`} id="attachments" onClick={handleTabsChanging}>attachments</span>
-          <span className={`${S['ticket-page__tab']} ${tab === 'history' && S['ticket-page__tab--active']}`} id="history" onClick={handleTabsChanging}>history</span>
+          {renderTabs}
         </div>
       </div>
-      {openedTab}
+      <div className={S['ticket-page__tab-container']}>
+        {renderTab()}
+      </div>
     </article >
   )
 }
