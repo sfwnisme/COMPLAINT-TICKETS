@@ -15,6 +15,7 @@
   color: var(--primary-color-600);
   transition: border-color var(--transition-100);
   position: relative;
+  border-radius: 5px;
 }
 
 .select:hover {

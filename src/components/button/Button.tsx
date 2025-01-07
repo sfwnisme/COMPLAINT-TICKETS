@@ -12,7 +12,7 @@ type ButtonType = React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonE
 type finalType = Props & ButtonType
 
 const Button = React.forwardRef<HTMLButtonElement, finalType>((
-  { children = "button", size = 'md', variant = 'primary', outline = false, width = 'fit', ...rest }
+  { children = "button", size = 'lg', variant = 'primary', outline = false, width = 'fit', ...rest }
   , ref) => {
   const sizes = {
     xs: S['btn--xs'],

@@ -7,6 +7,7 @@
   font-size: 12px;
   font-weight: 500;
   position: relative;
+  border-radius: 5px;
 }
 
 .primary {

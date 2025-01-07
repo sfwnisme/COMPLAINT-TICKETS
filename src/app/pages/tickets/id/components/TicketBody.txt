@@ -9,7 +9,6 @@ import Dropdown from '../../../../../components/dropdown/Dropdown'
 import { useId, useState } from 'react'
 import Button from '../../../../../components/button/Button'
 import { CircleX, Pencil, Trash, UserPen } from 'lucide-react'
-import { Case, Shift } from '@sfwnisme/visi'
 
 interface IComment {
   id: number,
@@ -70,7 +69,6 @@ function Comment({ id, name = 'Ali Khaled', date = "Mar 26, 2024 03:34 PM (3 wee
 function ConversationTab() {
   // const [markTicketAsASolution, setMarkTicketAsASolution] = useState(false)
   const [comments, setComments] = useState(commentsData)
-  console.log('rendered ||||| conversation tab')
 
   const handleMarkTicket = (commentId: number) => {
     setComments((prev) => prev.map((p) =>
@@ -97,7 +95,7 @@ function ConversationTab() {
       <form className={`${S['ticket-page__add-comment']}`}>
         <Avatar />
         <Input type='text' placeholder='Comment...' />
-        <Button variant='info' size='lg'>Answer</Button>
+        <Button variant='info' size='md'>Comment</Button>
       </form>
       <div className={`${S["ticket-page__comments"]}`}>
         {renderCommentsList}
@@ -107,11 +105,10 @@ function ConversationTab() {
 }
 
 function TheTopicTab() {
-  console.log('rendered ||||| topic tab')
   return (
-    <div className={S['ticket-page__the-topic-tab']}>
+    <>
       {/* Main Container */}
-      <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '800px', padding: '20px', border: '1px solid #ddd', borderRadius: '5px' }}>
+      <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: '20px', padding: '20px', border: '1px solid #ddd', borderRadius: '5px' }}>
 
         {/* Header Section */}
         <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px', marginBottom: '20px' }}>
@@ -183,16 +180,14 @@ function TheTopicTab() {
           </p>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
 function AttachmentsTab() {
   return (
     <div className={S['ticket-page__attachments-tab']}>
-      <img src="https://www.officewarehouse.com.ph/__resources/_web_data_/products/products/images/4640.jpg" alt="" />
-      <img src="https://s7d9.scene7.com/is/image/OCProduction/ta50ac_g?$large$" alt="" />
-      <img src="https://cdn.images.fecom-media.com/FE00008922/images/HE1501861_1501861-P.jpg?width=578&height=578&scale=UpscaleCanvas&anchor=MiddleCenter" alt="" />
+      sdf
     </div>
   )
 }
@@ -249,11 +244,21 @@ export default function TicketBody() {
     <span
       className={`${S['ticket-page__tab']} ${tab === tabName && S['ticket-page__tab--active']}`}
       id="the_topic"
-      onClick={() => handleTabsChanging(tabName)} key={tabName} onKeyDown={() => handleTabsChanging(tabName)}>
+      onClick={() => handleTabsChanging(tabName)} key={tabName}>
       {tabName.replace('_', ' ')}
     </span>
   ))
 
+
+  const renderTab = () => {
+    const tabs = {
+      ['the_topic']: <TheTopicTab />,
+      conversation: <ConversationTab />,
+      attachments: <AttachmentsTab />,
+      history: <HistoryTab />
+    }
+    return tabs[tab]
+  }
 
   return (
     <article className={S['ticket-page__body']}>
@@ -264,20 +269,7 @@ export default function TicketBody() {
         </div>
       </div>
       <div className={S['ticket-page__tab-container']}>
-        <Shift fallback={<TheTopicTab />}>
-          <Case when={tab === 'the_topic'}>
-            <TheTopicTab />
-          </Case>
-          <Case when={tab === 'conversation'}>
-            <ConversationTab />
-          </Case>
-          <Case when={tab === 'attachments'}>
-            <AttachmentsTab />
-          </Case>
-          <Case when={tab === 'history'}>
-            <HistoryTab />
-          </Case>
-        </Shift>
+        {renderTab()}
       </div>
     </article >
   )

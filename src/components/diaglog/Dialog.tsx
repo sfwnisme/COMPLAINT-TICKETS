@@ -14,7 +14,6 @@ export default function Dialog({ title = "Dialog Title", description = "dialog d
   return (
     <div className={S.dialog}>
       <div className={S.dialog_content}>
-        {/* <X className={S.close_icon} /> */}
         <Button variant='primary' size='square' outline className={S.close_icon}><X size={18} /></Button>
         <div className={S.body}>
           <h4>{title}</h4>

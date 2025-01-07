@@ -22,3 +22,8 @@ export default function Dropdown({ children }: Props) {
     </div>
   )
 }
+
+/**NOTE
+ * this dropdown component works as a wrapper for the dropdown content
+ * you can not use it as a dropdown menu itself
+ */

@@ -50,7 +50,7 @@ export default function TicketSidebar() {
           <p className={S['ticket-page__sidebar__ticket__select__title']}>periority</p>
           <div>
             <Select sze='sm'>
-              <option value="" selected>select periority</option>
+              <option value="">select periority</option>
               <option>urgent</option>
               <option>medium</option>
               <option>normal</option>

@@ -10,6 +10,7 @@
   width: 32px;
   height: 32px;
   user-select: none;
+  border-radius: 5px;
 }
 
 .avatar__image {

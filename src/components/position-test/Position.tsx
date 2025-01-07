@@ -1,4 +1,3 @@
-import React from 'react'
 import S from './Position.module.css'
 import useScreenWidth from '../../hooks/use-screen-width'
 

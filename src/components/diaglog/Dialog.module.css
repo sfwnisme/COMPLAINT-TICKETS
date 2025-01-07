@@ -7,22 +7,21 @@
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  z-index: 1;
-  background-color: color-mix(in lab, var(--primary-color-900) 10%, transparent);
+  background-color: color-mix(in lab, var(--primary-color-900) 50%, transparent);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+  z-index: 4;
 }
 
-/* background: color-mix(in srgb, var(--color) 70%, transparent); */
 
 .dialog_content {
   background-color: white;
-  box-shadow: 0px 0px 5px color-mix(in lab, var(--primary-color-900) 20%, transparent);
   width: 100%;
   max-width: 500px;
   position: relative;
-  border: 1px solid var(--primary-color-200);
   margin-inline: 16px;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .body {
@@ -31,13 +30,14 @@
 
 .body h4 {
   font-weight: 600;
-  margin: 0px;
+  margin: 0px 0px 0.5rem 0px;
 }
 
 .body p {
   font-weight: 300;
   font-size: 15px;
   line-height: 1.4;
+  color: var(--text-tertiary);
 }
 
 .close_icon {

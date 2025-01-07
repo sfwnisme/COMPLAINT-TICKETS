@@ -2,27 +2,27 @@ export const routes = {
   tickets: {
     base: '/tickets',
     create: '/tickets/create',
-    update: (id: number) => `/tickets/update/${id}`,
+    update: (id: string) => `/tickets/update/${id}`,
     id: (id: string) => `/tickets/${id}`
   },
   departments: {
     base: '/departments',
     create: '/departments/create',
-    update: (id: number) => `/departments/update/${id}`,
-    id: (id: number) => `/departments/${id}`
+    update: (id: string) => `/departments/update/${id}`,
+    id: (id: string) => `/departments/${id}`
   },
   categories: {
     base: '/categories',
     create: '/categories/create',
-    update: (id: number) => `/categories/update/${id}`,
-    id: (id: number) => `/categories/${id}`
+    update: (id: string) => `/categories/update/${id}`,
+    id: (id: string) => `/categories/${id}`
   },
   users: {
     base: '/users',
     create: '/users/create',
-    update: (id: number) => `/users/update/${id}`,
-    id: (id: number) => `/users/${id}`,
-    current: (id: number) => `/users/${id}`
+    update: (id: string) => `/users/update/${id}`,
+    id: (id: string) => `/users/${id}`,
+    current: (id: string) => `/users/${id}`
   },
   settings: {
     base: '/settings',

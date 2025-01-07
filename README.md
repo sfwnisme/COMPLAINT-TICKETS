@@ -31,22 +31,38 @@
 - [ ] ck editor component
 - [ ] notification component
 - [ ] skeleton component
+- [ ] create index files for the imports
 
 ### ticket component
 
-- [ ] select effect => dashed 2px info-400 border + background-color info-50
-- [ ] add the important props
+- [x] select effect => dashed 2px info-400 border + background-color info-50
+- [x] add the important props
 
 ### Ticket page
 
 - [x] Conversation tab
-- [ ] change the mechanism of the tabs switching.
-- [ ] The topic tab
-- [ ] Attachments tab
-- [ ] History tab
+- [x] change the mechanism of the tabs switching.
+- [x] The topic tab
+- [x] Attachments tab
+- [x] History tab
 - [ ] Ticket Title data -> adding the category
 
 ### Ticket creation
 
-- [ ] Create the component
+- [ ] Create ticket component
 - [ ] Create CK Editor previwer
+- [ ] notification
+
+
+### typegraphy
+
+- [ ] text component for all type of texts
+  - [ ] type (h1,h2,h3,h4,h5,h6,p,small, 12px, 11px)
+  - [ ] variants (primary, info, danger, success, warning)
+  - [ ] variants type (200, 400, 500, 600, 700, 800, 900)
+  - [ ] size (chose standard sizes for the application)
+  - [ ] padding and margin props, avoiding the css modules nested issue
+
+# New Notes
+
+- [ ] notification list

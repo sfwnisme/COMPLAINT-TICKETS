@@ -4,11 +4,13 @@
   position: relative;
   overflow: hidden;
   transition: var(--transition-150);
+  border-radius: 5px;
+  /* box-shadow: var(--primary-shadow); */
 }
 
 .ticket:has(input:checked) {
-  border: 1px solid var(--info-color-400);
-  background-color: color-mix(in lab, var(--info-color-50) 20%, transparent);
+  border: 1px solid var(--info-color-500);
+  background-color: var(--info-color-50);
   transition: var(--transition-150);
 }
 

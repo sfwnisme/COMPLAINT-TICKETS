@@ -205,7 +205,7 @@ input {
 /* ==================== outlet */
 .outlet {
   grid-area: outlet;
-  background-color: var(--primary-color-50);
+  background-color: white;
   padding-inline: 16px;
   padding-block: 16px;
   position: relative;

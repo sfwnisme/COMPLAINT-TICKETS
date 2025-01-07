@@ -84,3 +84,7 @@ ul,
 li {
   margin: 0;
 }
+
+@view-transition {
+  navigation: auto;
+}

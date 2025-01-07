@@ -7,8 +7,15 @@
       "default",
       {
         "ignore": [
-          "user-select"
+          "user-select",
+          "backdrop-filter"
         ]
+      }
+    ],
+    "axe/forms": [
+      "default",
+      {
+        "select-name": "off"
       }
     ]
   }

@@ -38,7 +38,7 @@ const tickets: {
   ]
 
 export default function Tickets() {
-
+//consoe.log9(;lkajdsf)
   const ticketsContent = tickets.map((ticket) => (
     <Ticket title={ticket.title} ticketType={ticket.ticketType} creatorId={ticket.creatorId} departmentId={ticket.departmentId} statusId={ticket.statusId} priorityId={ticket.priorityId} tagsIds={ticket.tagsIds} createdAt={ticket.createdAt} ticketId={ticket.ticketId} key={ticket.ticketId} />
   ))

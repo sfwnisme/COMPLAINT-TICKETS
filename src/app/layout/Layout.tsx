@@ -2,17 +2,16 @@ import { useState } from 'react'
 import S from './Layout.module.css'
 import Button from '../../components/button/Button'
 import { Bell, LogOut, Menu, Search, X } from 'lucide-react'
-import { sidebarLinks, sidebarLinksSettings } from '../../libs/data-center'
+import { sidebarLinks, sidebarSettingsLinks } from '../../libs/data-center'
 import Input from '../../components/input/Input'
 import AvatarDropdown from '../../components/avatar-dropdown/AvatarDropdown'
 import List from '../../components/list/List'
 import ListItem from '../../components/list/ListItem'
 import useMedia from '../../hooks/use-media'
 import Logo from '../../assets/logo.png'
+import { NavLink } from 'react-router-dom'
 
-// type Props = {}
-
-function Nav({ collapseASide }) {
+function Nav({ collapseASide }: { readonly collapseASide: () => void }) {
   return (
     <nav className={S.navbar}>
       <Button onClick={collapseASide} size='square' outline>
@@ -27,7 +26,7 @@ function Nav({ collapseASide }) {
       <div className={`${S["navbar__notification"]} ${S['navbar__notification--active']}`}>
         <Bell size={18} className={S['navbar__notification-icon']} />
       </div>
-      <AvatarDropdown>
+      <AvatarDropdown name='Sfwn'>
         <List position={'absolute'} rightOrLeft={'right'}>
           <ListItem>About</ListItem>
           <ListItem>Dashboard</ListItem>
@@ -39,26 +38,24 @@ function Nav({ collapseASide }) {
     </nav>
   )
 }
-function ASide({ collapseASide }) {
+function ASide({ collapseASide }: { readonly collapseASide: () => void }) {
   const sidbarLinksContent = sidebarLinks?.map((link) => (
     <li key={link?.id} className={S['aside__item']}>
-      <a
-        href={link?.path}
-        about={link.title}
+      <NavLink
+        to={link?.path}
         title={link?.title}
         className={S.aside__link}
       >
         <link.icon size={24} className={S['aside__icon']} />
         {link?.title}
-      </a>
+      </NavLink>
     </li>
   ))
 
-  const sidbarLinksContentSettings = sidebarLinksSettings?.map((link) => (
-    <li key={link?.id} className={S['aside__item']}>
+  const renderSidebarSettingsLinks = sidebarSettingsLinks?.map((link) => (
+    <li key={link.id} className={S['aside__item']}>
       <a
-        href={link?.path}
-        about={link.title}
+        href={String(link.path)}
         title={link?.title}
         className={S.aside__link}
       >
@@ -84,7 +81,7 @@ function ASide({ collapseASide }) {
       <div className={`${S['aside__others']} ${S['aside__content']}`}>
         <h4 className={S['aside__others__title']}>others:</h4>
         <ul className={S['aside__list']}>
-          {sidbarLinksContentSettings}
+          {renderSidebarSettingsLinks}
         </ul>
       </div>
     </aside>
@@ -92,9 +89,9 @@ function ASide({ collapseASide }) {
 }
 
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { readonly children: React.ReactNode }) {
   const media = useMedia()
-  const [collapse, setCollapse] = useState(media > 768 ? false : true)
+  const [collapse, setCollapse] = useState(Boolean(media < 768))
   const collapseASide = () => {
     setCollapse((prev) => !prev)
     console.log(collapse)

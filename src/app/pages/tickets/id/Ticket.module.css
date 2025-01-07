@@ -4,7 +4,7 @@
     "header sidebar"
     "body sidebar"
   ;
-  grid-template-columns: calc(100% - 340px) 340px;
+  grid-template-columns: calc(100% - 300px) auto;
   grid-template-rows: auto 1fr;
   gap: 1rem;
   transition: var(--transition-150);
@@ -69,7 +69,7 @@
   width: calc(100% + 2px);
   height: 1rem;
   background-color: transparent;
-  background: var(--primary-color-50);
+  background: white;
 }
 
 .ticket-page__title {
@@ -198,7 +198,12 @@
 }
 
 /*-- End tabs */
-
+.ticket-page__the-topic-tab,
+.ticket-page__history-tab,
+.ticket-page__attachments-tab {
+  /* display: none !important; */
+  padding: 1rem;
+}
 
 /*==============[conversation tab]==============*/
 .ticket-page__add-comment {
@@ -235,6 +240,7 @@
   margin-bottom: 3rem;
   position: relative;
   transition: var(--transition-300) background;
+  border-radius: 5px;
 }
 
 .ticket-page__comment-marked-as-a-solution {
@@ -326,7 +332,22 @@
 }
 
 /*============================*/
+
 /*==============[attachments tab]==============*/
+.ticket-page__attachments-tab {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ticket-page__attachments-tab img {
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  width: min(100%, 300px);
+  height: auto;
+  border: 1px solid var(--border-quaternary)
+}
+
 /*============================*/
 /*==============[history tab]==============*/
 .ticket-page__history-tab {

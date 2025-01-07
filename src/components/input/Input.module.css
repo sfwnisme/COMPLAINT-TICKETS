@@ -5,6 +5,7 @@
   font-size: 14px;
   outline: 0px solid transparent;
   border: 1px solid var(--primary-color-400);
+  border-radius: 5px;
 
   &:disabled {
     cursor: not-allowed;

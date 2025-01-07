@@ -1,4 +1,4 @@
-import { Blocks, ChartPie, FolderDot, Home, List, RectangleEllipsis, Settings, Ticket, TicketCheck, TicketPlus, Tickets, TicketSlash, Ungroup, User } from "lucide-react"
+import { Blocks, ChartPie, Home, Settings, Ticket, TicketPlus, Tickets, Ungroup, User } from "lucide-react"
 import { routes } from "../routes/routes-data"
 
 let id = 0
@@ -12,7 +12,7 @@ export const sidebarLinks = [
   { id: id++, icon: ChartPie, title: 'metrics', path: routes.metrics.base },
 ]
 
-export const sidebarLinksSettings = [
+export const sidebarSettingsLinks = [
   { id: id++, icon: User, title: 'profile', path: routes.users.current },
   { id: id++, icon: Settings, title: 'settings', path: routes.settings.base },
 ]
