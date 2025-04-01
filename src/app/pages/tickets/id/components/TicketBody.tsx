@@ -111,7 +111,7 @@ function TheTopicTab() {
   return (
     <div className={S['ticket-page__the-topic-tab']}>
       {/* Main Container */}
-      <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '800px', padding: '20px', border: '1px solid #ddd', borderRadius: '5px' }}>
+      <div style={{ fontFamily: 'Arial, sans-serif' }}>
 
         {/* Header Section */}
         <div style={{ backgroundColor: '#f5f5f5', padding: '15px', borderRadius: '4px', marginBottom: '20px' }}>

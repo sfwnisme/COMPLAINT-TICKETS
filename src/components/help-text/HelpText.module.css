@@ -3,7 +3,8 @@
     color: var(--primary-color-500);
     font-weight: 300;
     white-space: nowrap;
-    display: flex;
+    display: inline-flex;
+    /* width: 10%; */
     align-items: center;
     column-gap: 2px;
 }

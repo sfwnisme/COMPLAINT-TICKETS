@@ -59,6 +59,7 @@
   top: calc(64px + 16px);
   z-index: 4;
   grid-area: header;
+  border-radius: 10px;
 }
 
 .ticket-page__header::before {
@@ -123,6 +124,8 @@
   display: block;
   grid-area: body;
   position: relative;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -166,7 +169,7 @@
   color: var(--primary-color-600);
   width: 100%;
   overflow-x: auto;
-  padding-block: 10px;
+  padding-block: 10px 0px;
   padding-inline: 10px;
 }
 
@@ -206,6 +209,10 @@
 }
 
 /*==============[conversation tab]==============*/
+.ticket-page__conversation-tab {
+  width: 100%;
+  max-width: 992px;
+}
 .ticket-page__add-comment {
   display: flex;
   align-items: center;
@@ -395,6 +402,7 @@
   display: flex;
   position: relative;
   background-color: white;
+  border-radius: 10px;
 }
 
 @media (max-width:768px) {
@@ -475,6 +483,7 @@
   overflow-x: hidden;
   transition: var(--transition-150);
   box-shadow: var(--primary-shadow-box);
+  border-radius: 10px;
 }
 
 @media (min-width: 769px) {

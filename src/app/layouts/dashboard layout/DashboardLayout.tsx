@@ -1,14 +1,14 @@
 import { useState } from 'react'
-import S from './Layout.module.css'
-import Button from '../../components/button/Button'
+import S from './DashboardLayout.module.css'
+import Button from '../../../components/button/Button'
 import { Bell, LogOut, Menu, Search, X } from 'lucide-react'
-import { sidebarLinks, sidebarSettingsLinks } from '../../libs/data-center'
-import Input from '../../components/input/Input'
-import AvatarDropdown from '../../components/avatar-dropdown/AvatarDropdown'
-import List from '../../components/list/List'
-import ListItem from '../../components/list/ListItem'
-import useMedia from '../../hooks/use-media'
-import Logo from '../../assets/logo.png'
+import { sidebarLinks, sidebarSettingsLinks } from '../../../libs/data-center'
+import Input from '../../../components/input/Input'
+import AvatarDropdown from '../../../components/avatar-dropdown/AvatarDropdown'
+import List from '../../../components/list/List'
+import ListItem from '../../../components/list/ListItem'
+import useMedia from '../../../hooks/use-media'
+import Logo from '../../../assets/logo.png'
 import { NavLink } from 'react-router-dom'
 
 function Nav({ collapseASide }: { readonly collapseASide: () => void }) {
@@ -89,7 +89,7 @@ function ASide({ collapseASide }: { readonly collapseASide: () => void }) {
 }
 
 
-export default function Layout({ children }: { readonly children: React.ReactNode }) {
+export default function DashboardLayout({ children }: { readonly children: React.ReactNode }) {
   const media = useMedia()
   const [collapse, setCollapse] = useState(Boolean(media < 768))
   const collapseASide = () => {

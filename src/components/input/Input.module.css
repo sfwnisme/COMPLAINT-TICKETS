@@ -1,3 +1,12 @@
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: auto;
+  width: 100%;
+  max-width: fit-content;
+}
+
 .input {
   background-color: transparent;
   color: var(--primary-color-500);
@@ -6,6 +15,9 @@
   outline: 0px solid transparent;
   border: 1px solid var(--primary-color-400);
   border-radius: 5px;
+  cursor: text;
+  width: 100%;
+  display: inline-flex;
 
   &:disabled {
     cursor: not-allowed;
@@ -189,4 +201,13 @@
 .xl {
   font-size: 20px;
   padding: 16px 32px;
+}
+
+
+/* label */
+.label {
+  font-size: 15px;
+  color: var(--primary-color-900);
+  font-weight: 500;
+  text-transform: capitalize;
 }

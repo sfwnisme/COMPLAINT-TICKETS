@@ -3,7 +3,7 @@
   border: 1px solid var(--primary-color-200);
   box-shadow: var(--primary-shadow-box);
   padding: 4px;
-  display: table;
+  display: inline-block;
   min-width: 150px;
   border-radius: 5px;
 }

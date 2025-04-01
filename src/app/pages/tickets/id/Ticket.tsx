@@ -7,7 +7,7 @@ import useMedia from '../../../../hooks/use-media'
 
 export default function Ticket() {
     const media = useMedia()
-    const [isSidebarOpen, setIsSidebarOpen] = useState(media > 768 ? true : false)
+    const [isSidebarOpen, setIsSidebarOpen] = useState(Boolean(media > 768))
 
     return (
         <div className={`${S['ticket-page']} ${!isSidebarOpen && S['ticket-page--collapsed']}`}>

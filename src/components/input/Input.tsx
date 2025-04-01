@@ -1,28 +1,39 @@
 import React from 'react'
-import styles from './Input.module.css'
+import S from './Input.module.css'
+import HelpText from '../help-text/HelpText';
+import { TVariants } from '../defintions.components';
 
 type Props = {
   variant?: 'primary' | 'info' | 'success' | 'warning' | 'danger';
+  title?: string,
+  message?: string,
   // size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 type InputType = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 type finalType = Props & InputType
 
-const Input = React.forwardRef<HTMLInputElement, finalType>(({ variant = 'primary', ...rest }, ref) => {
+const Input = React.forwardRef<HTMLInputElement, finalType>(({ variant = 'primary', title = "", message = "", ...rest }, ref) => {
   const variants = {
-    primary: styles.primary,
-    info: styles.info,
-    success: styles.success,
-    warning: styles.warning,
-    danger: styles.danger,
+    primary: S.primary,
+    info: S.info,
+    success: S.success,
+    warning: S.warning,
+    danger: S.danger,
   }
 
-  const settings = `${styles.input} ${variants[variant]}`
-  return (
-    <input className={settings} placeholder="fill the input" ref={ref} {...rest} />
+  const settings = `${S.input} ${variants[variant]}`
+  return (<div className={S['input-wrapper']}>
+    {title && <label htmlFor={rest.name} className={S.label}>
+      {title || 'Input ttitle'}
+    </label>}
+    <input className={settings} id={rest.name} placeholder="fill the input" ref={ref} {...rest} />
+    {message && <HelpText icon='invisible' variant={variant}>{message}</HelpText>}
+  </div>
   )
 })
 
 export default Input
+
+
 
 

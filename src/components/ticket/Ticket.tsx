@@ -125,7 +125,7 @@ export default function Ticket(
             <Input type='checkbox' />
           </div>
         </div>
-        <h3 className={S['ticket__title']}>{title}</h3> <NavLink to={'/tickets/2'}><Button size='xs' outline>open</Button></NavLink>
+        <h3 className={S['ticket__title']}>{title}</h3> <NavLink to={'tickets/2'}><Button size='xs' outline>open</Button></NavLink>
         <div className={S["ticket__header__footer"]}>
           <Badge text={ticketType} variant={ticketTicketTypeColor[ticketType]} />
           <p className={S["ticket__number"]}>#{ticketId}</p>
