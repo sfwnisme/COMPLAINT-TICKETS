@@ -1,0 +1,16 @@
+/* ==================== Nav */
+.navbar {
+  grid-area: navbar;
+  background-color: white;
+  color: #fff;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 20px;
+  z-index: 9;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid var(--border-quaternary);
+}

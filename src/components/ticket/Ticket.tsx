@@ -2,7 +2,6 @@ import { Clock, User } from 'lucide-react'
 import S from './Ticket.module.css'
 import Select from '../select/Select'
 import Badge from '../badge/Badge'
-import Input from '../input/Input'
 import Button from '../button/Button'
 import { NavLink } from 'react-router-dom'
 import HelpText from '../help-text/HelpText'
@@ -122,7 +121,7 @@ export default function Ticket(
       <div className={S['ticket__header']}>
         <div className={S['ticket__settings']}>
           <div className={S['ticket__check']}>
-            <Input type='checkbox' />
+            <input type='checkbox' title={ticketId.toString()} />
           </div>
         </div>
         <h3 className={S['ticket__title']}>{title}</h3> <NavLink to={'tickets/2'}><Button size='xs' outline>open</Button></NavLink>

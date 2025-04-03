@@ -1,15 +1,13 @@
 import { useState } from 'react'
 import S from './DashboardLayout.module.css'
 import Button from '../../../components/button/Button'
-import { Bell, LogOut, Menu, Search, X } from 'lucide-react'
+import { Bell, Menu, Search, X } from 'lucide-react'
 import { sidebarLinks, sidebarSettingsLinks } from '../../../libs/data-center'
 import Input from '../../../components/input/Input'
-import AvatarDropdown from '../../../components/avatar-dropdown/AvatarDropdown'
-import List from '../../../components/list/List'
-import ListItem from '../../../components/list/ListItem'
 import useMedia from '../../../hooks/use-media'
 import Logo from '../../../assets/logo.png'
 import { NavLink } from 'react-router-dom'
+import NavDropdown from '../../../components/nav-dropdown/NavDropdown'
 
 function Nav({ collapseASide }: { readonly collapseASide: () => void }) {
   return (
@@ -26,15 +24,7 @@ function Nav({ collapseASide }: { readonly collapseASide: () => void }) {
       <div className={`${S["navbar__notification"]} ${S['navbar__notification--active']}`}>
         <Bell size={18} className={S['navbar__notification-icon']} />
       </div>
-      <AvatarDropdown name='Sfwn'>
-        <List position={'absolute'} rightOrLeft={'right'}>
-          <ListItem>About</ListItem>
-          <ListItem>Dashboard</ListItem>
-          <ListItem>Profile</ListItem>
-          <ListItem>Settings</ListItem>
-          <Button size='xs' variant='danger' width='fill'><LogOut size={18} style={{ marginInline: 'auto' }} /></Button>
-        </List>
-      </AvatarDropdown>
+      <NavDropdown />
     </nav>
   )
 }

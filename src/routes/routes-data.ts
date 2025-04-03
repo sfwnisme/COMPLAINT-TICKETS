@@ -2,7 +2,7 @@ export const routesData = {
   auth: {
     login: 'auth/login',
     register: 'auth/register',
-    // update: (id: string) => `auth/update/${id}`,
+    update: (id: string) => `auth/update/${id}`,
     // id: (id: string) => `auth/${id}`
   },
   tickets: {

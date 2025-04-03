@@ -12,88 +12,63 @@ import Login from "../app/auth/login/Login";
 import Dashboard from "../app/dashboard/Dashboard";
 import Home from "../app/home/Home";
 import HomeLayout from "../app/layouts/home layout/HomeLayout";
+import PrivateRoute from "../app/auth/auth-wrapper/PrivateRoute";
+import PublicRoute from "../app/auth/auth-wrapper/PublicRoute";
+import UpdateUser from "../app/pages/users/update/UpdateUser";
 
 export const routes = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    // loader: <mark>'loading'</mark>,
     children: [
       {
         element: <HomeLayout />,
         children: [
           { index: true, element: <Home /> },
           {
-            path: 'login',
-            element: <Login />,
+            element: <PublicRoute />,
+            children: [{
+              path: 'login',
+              element:
+                <Login />
+            }]
           }
         ]
       },
       {
-        path: 'dashboard',
-        element: <Dashboard />,
+        element: <PrivateRoute />,
         children: [
-          // tickets
-          { index: true, element: <Tickets /> },
-          { path: routesData.tickets.base, element: <Tickets /> },
-          { path: routesData.tickets.create, element: <CreateTicket /> },
-          { path: routesData.tickets.id(':ticketId'), element: <Ticket /> },
-          //departments
-          { path: routesData.departments.base, element: <Departments /> },
-          // categories
-          { path: routesData.categories.base, element: <Categories /> },
-          // users
-          { path: routesData.users.base, element: <Users /> },
-          // settings
-          { path: routesData.settings.base, element: <Settings /> },
+          {
+            path: 'dashboard',
+            element: <Dashboard />,
+            children: [
+              // tickets
+              { index: true, element: <Tickets /> },
+              { path: routesData.tickets.base, element: <Tickets /> },
+              { path: routesData.tickets.create, element: <CreateTicket /> },
+              { path: routesData.tickets.id(':ticketId'), element: <Ticket /> },
+              // departments
+              { path: routesData.departments.base, element: <Departments /> },
+              // categories
+              { path: routesData.categories.base, element: <Categories /> },
+              // users
+              {
+                path: routesData.users.base,
+                children: [
+                  {
+                    index: true,
+                    element: <Users />,
+                  },
+                  { path: 'update/:userId', element: <UpdateUser /> },
+                ]
+              },
+              // settings
+              { path: routesData.settings.base, element: <Settings /> },
+            ]
+          }
         ]
       }
     ]
   },
 ])
-
-// export const routes = createBrowserRouter([
-//   {
-//     path: '/',
-//     element: <App />,
-//   },
-//   {
-//     path: 'dashboard',
-//     element: <Dashboard />,
-//     children: [
-//       // tickets
-//       { index: true, element: <Tickets /> },
-//       { path: routesData.tickets.base, element: <Tickets /> },
-//       { path: routesData.tickets.create, element: <CreateTicket /> },
-//       { path: routesData.tickets.id(':ticketId'), element: <Ticket /> },
-//       //departments
-//       { path: routesData.departments.base, element: <Departments /> },
-//       // categories
-//       { path: routesData.categories.base, element: <Categories /> },
-//       // users
-//       { path: routesData.users.base, element: <Users /> },
-//       // settings
-//       { path: routesData.settings.base, element: <Settings /> },
-//     ]
-//   },
-//   {
-//     path: 'login',
-//     element: <Login />,
-//   }
-// ])
-// export const router = createBrowserRouter([
-//   {
-//     path: '/',
-//     element: <App />,
-//     children: [
-//       { index: true, element: <Tickets /> },
-//       { path: routesData.auth.login, element: <Login /> },
-//       { path: routesData.tickets.base, element: <Tickets /> },
-//       { path: routesData.tickets.create, element: <CreateTicket /> },
-//       { path: routesData.tickets.id(':ticketId'), element: <Ticket /> },
-//       { path: routesData.departments.base, element: <Departments /> },
-//       { path: routesData.categories.base, element: <Categories /> },
-//       { path: routesData.users.base, element: <Users /> },
-//       { path: routesData.settings.base, element: <Settings /> },
-//     ]
-//   }
-// ])

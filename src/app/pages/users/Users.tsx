@@ -1,5 +1,4 @@
-import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
+import { AxiosError } from "axios"
 import Title from "../../../components/title/Title"
 import S from './Users.module.css'
 import Table from "../../../components/table/Table"
@@ -9,38 +8,19 @@ import TD from "../../../components/table/TD"
 import TBody from "../../../components/table/TBody"
 import Badge from "../../../components/badge/Badge"
 import TH from "../../../components/table/TH"
-import Link from "../../../components/Link/Link"
 import { IUser } from '../../../../types'
 import { TVariants } from "../../../components/defintions.components"
 import Dropdown from "../../../components/dropdown/Dropdown"
 import List from "../../../components/list/List"
 import ListItem from "../../../components/list/ListItem"
+import useGetCurrentUser from "../../../hooks/useGetCurrentUser"
+import { USER_ROLES, USER_ROLES_COLORS } from "../../../constrains/constrains"
+import { Visible } from "@sfwnisme/visi"
+import useGetAllData from "../../../hooks/useGetAllData"
 
 export default function Users() {
-
-  const query = useQuery({
-    queryKey: ['users'],
-    queryFn: async () => {
-      const users = await axios.get('http://localhost:5000/api/users')
-      console.log(users)
-      return users
-    }
-  })
-  const users = query.data?.data
-  const { isLoading, isSuccess, isError, isPending, error, status } = query
-  console.log(status)
-
-  // const roles = ['admin', 'manager', 'csr', 'view_only']
-  const roles = {
-    admin: 'success',
-    manager: 'warngin',
-    csr: 'info',
-    'view_only': 'primary'
-  }
-
-  // const roleColor = roles.map((role) => (
-
-  // ))
+  const getAllData = useGetAllData('/users')
+  const currentUser = useGetCurrentUser()
 
   const renderLoading = (
     <TR>
@@ -61,56 +41,48 @@ export default function Users() {
     <TR>
       <TD colSpan={12} align="center" >
         Ops..., there is an error:
-        {JSON.stringify(error)}
+        {(getAllData.error as AxiosError<{ msg?: string }>)?.response?.data.msg}
       </TD>
     </TR>
   )
 
-  const renderData = users?.data.map((user: IUser) => (
+  const renderData = getAllData?.data?.map((user: IUser, idx: number) => (
     <TR key={user._id}>
-      <TD>{user._id}</TD>
+      <TD>{idx + 1}</TD>
       <TD>
         {user.name}
       </TD>
       <TD>{user.email}</TD>
-      <TD><Badge variant={roles[user?.role] as TVariants} title={user.role} text={user.role} /></TD>
+      <TD><Badge variant={USER_ROLES_COLORS[user?.role] as TVariants} title={user.role} text={user.role} /></TD>
       <TD>
-        <Dropdown>
-          <List position="absolute" rightOrLeft="right">
-            <ListItem href={`/users/${user._id}`}>
-              {/* <Link href={`/users/${user._id}`} icon="none"> */}
-              View
-              {/* </Link> */}
-            </ListItem>
-            <ListItem>Edit</ListItem>
-            <ListItem>Delete</ListItem>
-          </List>
-        </Dropdown>
-        {/* <div style={{ display: 'flex', gap: '5px' }}>
-          <Button type="submit" variant="danger" size="xs" outline>
-            <Trash size={18} />
-          </Button>
-          <Button type="submit" variant="info" size="xs" outline>
-            <Link href={`/users/${user._id}`} icon="none">
-              <UserRoundCog size={18} />
-            </Link>
-          </Button>
-        </div> */}
+        <Visible when={currentUser.data?._id !== user?._id}>
+          <Dropdown>
+            <List position="absolute" rightOrLeft="right">
+              <ListItem href={`${user._id}`}>
+                View
+              </ListItem>
+              <Visible when={currentUser.data.role === USER_ROLES.ADMIN}>
+                <ListItem href={`update/${user._id}`}>Edit</ListItem>
+                <ListItem>Delete</ListItem>
+              </Visible>
+            </List>
+          </Dropdown>
+        </Visible>
       </TD>
     </TR >
   ))
 
   let renderUsers;
-  if (users?.length === 0) {
+  if (getAllData?.data?.length === 0) {
     renderUsers = renderEmpty
   }
-  if (isLoading) {
+  if (getAllData.isLoading) {
     renderUsers = renderLoading
   }
-  if (isError) {
+  if (getAllData.isError) {
     renderUsers = renderError
   }
-  if (isSuccess) {
+  if (getAllData.isSuccess) {
     renderUsers = renderData
   }
 
@@ -123,7 +95,7 @@ export default function Users() {
         <Table>
           <THead>
             <TR>
-              <TH>ID</TH>
+              <TH>No</TH>
               <TH>Name</TH>
               <TH>Email</TH>
               <TH>Role</TH>

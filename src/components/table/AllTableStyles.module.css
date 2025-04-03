@@ -49,8 +49,6 @@
 
 .tbody .tr:hover {
   background-color: var(--primary-color-50);
-  border-bottom-color: var(--border-quaternary);
-  /* border-bottom-style: dashed; */
   transition: var(--transition-50) background border;
 }
 

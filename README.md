@@ -23,7 +23,7 @@
 - [x] create a hook for media query
 - [x] change the shape of the department representitive on the mobile
 - [x] helper text component
-- [ ] error and success message component
+- [x] error and success message component with inputs
 - [ ] textarea component
 - [x] new tickets list layout
 - [ ] file input component
@@ -32,6 +32,7 @@
 - [ ] notification component
 - [ ] skeleton component
 - [ ] create index files for the imports
+- [ ] alert components
 
 ### ticket component
 

@@ -8,14 +8,17 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import { useState } from 'react'
+import { Eye, EyeClosed } from 'lucide-react'
+import Loader from '../../loaders/loader/Loader'
 
-type Props = {}
 type Inputs = {
   email: string,
   password: string
 }
 
-export default function LoginForm({ }: Props) {
+export default function LoginForm() {
+  const [showPassword, setShowPassword] = useState(false)
 
   const {
     register,
@@ -25,7 +28,7 @@ export default function LoginForm({ }: Props) {
   } = useForm<Inputs>()
 
 
-  const { mutateAsync, data, isPending, isError, error } = useMutation({
+  const { mutateAsync, data, isPending, isError, error, isSuccess } = useMutation({
     mutationKey: ['login', watch('email')],
     mutationFn: async (data: Inputs) => {
       const res = await axios.post(import.meta.env.VITE_BASE_URL + '/users/login', data)
@@ -41,14 +44,15 @@ export default function LoginForm({ }: Props) {
     try {
       const logedIn = await mutateAsync(data)
       console.log('loged in successfully', logedIn)
-
+      window.location.pathname = '/dashboard'
       return logedIn
     } catch (error) {
       console.log('login error', error)
     }
   }
-  console.log('hhhhhhhhhh', data)
-  console.log('hhhhhhhhhh', Cookies.get('TOKEN'))
+
+  console.log(Cookies.get('TOKEN'))
+
   return (
     <div className={S['form-wrapper']}>
       <Title text='login form' />
@@ -57,15 +61,27 @@ export default function LoginForm({ }: Props) {
           {...register('email')}
         />
         <Spacer size='xs' />
-        <Input type='password' placeholder='type your password' title='password'
+        <Input type={showPassword ? 'text' : 'password'} placeholder='type your password' title='password'
           {...register('password')}
         />
-        <Spacer size='md' />
-        <Button size='xl' type='submit' width='fill'>
-          {!isPending ? 'Login' : 'Login...'}
+        <Spacer size='xs' />
+        <div style={{ display: 'flex', gap: '5px' }}>
+          <Button size='square' type='button' outline
+            onClick={() => setShowPassword((prev) => !prev)}
+          >
+            {showPassword ? <Eye size={11} /> : <EyeClosed size={11} />}
+          </Button>
+          <HelpText icon='invisible'>
+            {showPassword ? 'hide password' : 'show password'}
+          </HelpText>
+        </div>
+        <Spacer size='xs' />
+        <Button size='xl' type='submit' width='fill' disabled={isPending}>
+          {!isPending ? 'Login' : <Loader />}
         </Button>
         <Spacer size='xs' />
-        {isError && <HelpText variant='danger'>{error?.response.data.msg}</HelpText>}
+        {isError && <HelpText variant='danger' icon='invisible'>{error?.response.data.msg}</HelpText>}
+        {isSuccess && <HelpText variant='success' icon='invisible'>{'successfully logged in'}</HelpText>}
       </form>
     </div>
   )
