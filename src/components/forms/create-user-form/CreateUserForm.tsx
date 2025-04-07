@@ -7,6 +7,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "../../button/Button.tsx";
 import Loader from "../../loaders/loader/Loader.tsx";
 import useCreateApiData from "../../../hooks/use-create-api-data.tsx";
+import useApiMessage from "../../../hooks/use-api-message.tsx";
+import { AxiosError } from "axios";
+import { TAxiosError } from "../../../types/types.ts";
 
 type Inputs = {
   name: string;
@@ -22,22 +25,22 @@ export default function CreateUserForm() {
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-
-  const { mutateAsync: createUser, isPending } = useCreateApiData<Inputs>('/users/register', 'post')
+  const { mutateAsync: createUser, isPending, error } = useCreateApiData<Inputs>('/users/register', 'post')
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
-      console.log("new user data", data);
+      // console.log("new user data", data);
       const res = await createUser(data);
       return res;
     } catch (error) {
       console.error("create user error", error);
     }
   };
+  const errorMessage = useApiMessage((error as TAxiosError)?.response?.data?.msg, "danger")
+  console.log(errors)
 
-  console.log("watching", watch());
-  console.log("roles", Object.values(USER_ROLES));
   return (
     <div className={S.create_user_form__container}>
+      {errorMessage}
       <Title text="Create User" />
       <form className={S.create_user_form} onSubmit={handleSubmit(onSubmit)}>
         <Input

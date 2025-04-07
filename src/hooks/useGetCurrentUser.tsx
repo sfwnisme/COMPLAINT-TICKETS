@@ -14,6 +14,5 @@ export default function useGetCurrentUser() {
     retry: false,
     
   })
-  console.log(currentUser)
   return currentUser
 }

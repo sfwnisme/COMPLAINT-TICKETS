@@ -24,7 +24,6 @@ export default function NavDropdown({ }: Props) {
     Cookies.remove('TOKEN')
     window.location.pathname = '/login'
   }
-  console.log(currentUserQuery.data)
   return (
     <AvatarDropdown name={currentUserQuery?.data?.name}>
       <List position={'absolute'} rightOrLeft={'right'}>

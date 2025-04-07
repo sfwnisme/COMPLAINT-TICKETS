@@ -1,3 +1,5 @@
+import { AxiosError } from "axios"
+
 export interface IUser {
   _id: string,
   name: string,
@@ -6,5 +8,6 @@ export interface IUser {
   createdAt?: Date,
   updatedAt?: Date,
 }
+export type TAxiosError = AxiosError<{ msg: string | { [key: string]: string }[] }>
 
 export type Role = 'admin' | 'manager' | 'csr' | 'view_only'

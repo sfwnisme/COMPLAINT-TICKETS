@@ -8,7 +8,7 @@ import TD from "../../../components/table/TD"
 import TBody from "../../../components/table/TBody"
 import Badge from "../../../components/badge/Badge"
 import TH from "../../../components/table/TH"
-import { IUser } from '../../../../types'
+import { IUser } from '../../../types/types'
 import { TVariants } from "../../../components/defintions.components"
 import Dropdown from "../../../components/dropdown/Dropdown"
 import List from "../../../components/list/List"

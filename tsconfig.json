@@ -8,4 +8,8 @@
       "path": "./tsconfig.node.json"
     }
   ],
+  // for zod package
+  "compilerOptions": {
+    "strict": true
+  }
 }
