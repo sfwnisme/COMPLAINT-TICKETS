@@ -40,6 +40,7 @@ export default function LoginForm() {
       console.log('success', data)
     }
   })
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
       const logedIn = await mutateAsync(data)

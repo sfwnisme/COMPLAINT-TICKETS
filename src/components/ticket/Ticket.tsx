@@ -134,18 +134,18 @@ export default function Ticket(
       </div >
       <div className={S["ticket__footer"]}>
         <div className={S["ticket__department"]}>
-          <Select sze='sm' defaultValue={departmentId} title='select department'>
+          <Select sze='sm' defaultValue={departmentId}>
             {renderDepartmentsOptions}
           </Select>
         </div>
 
         <div className={S["ticket__priority"]}>
-          <Select sze='sm' defaultValue={priorityId} variant={priorityColor[priorityId]} title='select priority'>
+          <Select sze='sm' defaultValue={priorityId} variant={priorityColor[priorityId]}>
             {renderPrioritiesOptions}
           </Select>
         </div>
         <div className={S["ticket__status"]}>
-          <Select sze='sm' defaultValue={statusId} variant={statusesColors[statusId]} title='select status'>
+          <Select sze='sm' defaultValue={statusId} variant={statusesColors[statusId]}>
             {renderStatusOptions}
           </Select>
         </div>

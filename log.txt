@@ -1,0 +1,384 @@
+commit 59819b81f50e6977ed83c17ff14d2dbb9751ccdd
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Thu Apr 3 06:04:10 2025 +0300
+
+    refactor: routes, create data custom hooks for cleaner code, and remove unused files | feat: protected route
+
+commit 1c5737b43c6aa7e354f10a92238cb11ec356605e
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Apr 1 09:06:08 2025 +0300
+
+    refactor: updated the routes file and the layout of home and dashboard, and create login form with the API integration and Cookies
+
+commit 3792740e4e5d0f38dade99145c91b85a7877b2b8
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Jan 7 03:31:14 2025 +0300
+
+    docs: general cleanup and update for the application
+
+commit c61a868cac789264aa2192a3ac11419d4d5d0acc
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 26 00:58:01 2024 +0300
+
+    refactor(TicketBody.tsx): created history tab, and refactored the tabs data display
+
+commit f71b516e811f4d303448dd140976d5cc3b0b38a6
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Mon Nov 25 02:42:38 2024 +0300
+
+    fix(index.css): change the scrollbar height
+
+commit 07cb339b65b9a155ae37d2e2398e06c89b311722
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Mon Nov 25 02:41:54 2024 +0300
+
+    README
+
+commit 169fe4cc29b1913b26c5ab57f77ca0add70ef9a0
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Mon Nov 25 02:41:16 2024 +0300
+
+    refactor(Avatar.tsx): removed the log
+
+commit 5ddf18523390bfab3225d6ccd019b14299aaf804
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Mon Nov 25 02:40:07 2024 +0300
+
+    refactor(TicketBody.tsx): created history, conversation, attatchment, and the topic tabs
+
+commit 89454092ad79bc4f21d2d6e97f9baa30c911307d
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Mon Nov 25 01:01:21 2024 +0300
+
+    refactor(Ticket.tsx): removed unused classess
+
+commit ed4f06827ce99fbb532d968492cb5422b256b1cf
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Mon Nov 25 00:58:16 2024 +0300
+
+    refactor(Ticket.tsx): removed the settings variable
+
+commit 6d9b5a108f3af82370956eedf57140207b7825e2
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Mon Nov 25 00:56:05 2024 +0300
+
+    refactor(ListItem.tsx): make padding for the noStyled list item
+
+commit 2c5a5cf349b13d1c1d8ac55ac48fe5aff2fe747e
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Sun Nov 24 02:16:42 2024 +0300
+
+    refactor(functional-decompositoin): changed the file name and delete the old one
+
+commit d19d1e276f8044cbc96f99c012fde12ca4596c2a
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Sun Nov 24 02:14:17 2024 +0300
+
+    feat(Ticket.module.css): checked ticket UI
+
+commit f936180bfd7b95adf8cb99d242a456295b8252e0
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Sun Nov 24 01:44:38 2024 +0300
+
+    fix(Select.module.css): use :has pseudo-class to change the arrows colors
+
+commit 5a2ad43789d790b783230452a69dd190ca1b0a8a
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Sat Nov 23 04:28:37 2024 +0300
+
+    chore: fix grammar mistake
+
+commit 5c705d8fb6e21ee2453bd5e9c15a991af133580e
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Sat Nov 23 04:27:32 2024 +0300
+
+    feat(Dropdown.tsx)+delete: created a new dropdown component + deleted the previous one
+
+commit 7acefce94a0ce48dd216938af8fdb35d187486c7
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Sat Nov 23 04:25:20 2024 +0300
+
+    chore(AvatarDropdown.tsx): adding missing prop 'name' whit its type
+
+commit 9cd5a32eecf749ef52f5727afa1ec634eab42688
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Sat Nov 23 04:22:00 2024 +0300
+
+    css: prevent the text selection on the avatar component
+
+commit 81ed86eb8c640449acf35574fece6beb7f816300
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Sat Nov 23 04:17:28 2024 +0300
+
+    refactor: created a Comment component to organize | added options dropdown
+
+commit bb3e5731c7ae6748e82016fc2a7a90365801452c
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Sat Nov 23 04:15:04 2024 +0300
+
+    refactor: added new logo
+
+commit 4196cd01cb0b34aa21d23eb42c66e081551600ef
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Sat Nov 23 03:39:08 2024 +0300
+
+    asset: added logo
+
+commit 87700500ce6efddce233c2e6c197f4ffa5fdb957
+Merge: b1d6a63 e5325a1
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Fri Nov 22 05:40:21 2024 +0300
+
+    Merge branch 'main' of https://github.com/sfwnisme/ticketing-issue
+
+commit b1d6a63753bd68c63c9d542a9938d56e03068393
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Fri Nov 22 05:39:12 2024 +0300
+
+    refactor: satup the entire required props with demo data
+
+commit 137b8a558ccf0e59ef9efe65ab3557e058d56187
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Fri Nov 22 05:36:54 2024 +0300
+
+    refactor: added variants
+
+commit c7d5325df454259a811f95563ed6a4ed66c443b5
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Fri Nov 22 05:35:01 2024 +0300
+
+    refactor: removed unused code
+
+commit 21533b63fcec190d6180113c6b6ba0633d3686fc
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Fri Nov 22 05:34:09 2024 +0300
+
+    refactor: new types
+
+commit 52c427e7d6c1454c1bafc23eac65ec599d9ede30
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Fri Nov 22 05:33:32 2024 +0300
+
+    refactor: added the marked as a solution ui for the comments
+
+commit f166f8442e2db788b9278515d181169094be40c5
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Fri Nov 22 05:31:33 2024 +0300
+
+    refactor: changed the string object values to number return ids
+
+commit 12118bb27c84f2f9bcb020ebedf052411e59f55f
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Fri Nov 22 05:30:41 2024 +0300
+
+    delete: deleted outlet-layout component
+
+commit 71a35a91badc38516dff3eb1d2e7188011503c0b
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Fri Nov 22 01:44:35 2024 +0300
+
+    refactor: created notification icon
+
+commit 1c01944910844627344df3e143190d812ed721b1
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Fri Nov 22 01:43:21 2024 +0300
+
+    refactor: created tickets array
+
+commit 1905b603507891f29cc58761ac013e32e08ae165
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Fri Nov 22 01:42:07 2024 +0300
+
+    feat: tooltip component
+
+commit 91276f473372b9ac2edffc4ffa42ce8ba5093ae7
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Fri Nov 22 01:41:19 2024 +0300
+
+    refactor: add title prop for the badge
+
+commit e5325a1e812633b42ac5186f7b052397b1710f2d
+Author: Safwan <92028514+sfwnisme@users.noreply.github.com>
+Date:   Thu Nov 21 03:43:18 2024 +0300
+
+    Create LICENSE
+
+commit 91e3a0c818cee0d13718179f6b13cd25071d1a13
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Wed Nov 20 23:38:44 2024 +0300
+
+    docs: functional decomposition and the SAL
+
+commit ec5a7703c4019986a1e81737a4a06e1fed6a2fd3
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Wed Nov 20 04:55:44 2024 +0300
+
+    refactor: added title prop
+
+commit b6947367a6a49cf72761441c0cd9859559655bc0
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Wed Nov 20 04:29:29 2024 +0300
+
+    refactor: replaced the left ticket type line with badge
+
+commit 3415b833cc1c44474300e77fc90fad0ffa30c0a6
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Wed Nov 20 04:27:21 2024 +0300
+
+    refactor: added notificatoin icon and fix the navbar flex issue
+
+commit 746db04c046c39d0c2dd69d695b850b99e2762fe
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Wed Nov 20 01:21:02 2024 +0300
+
+    style: removed unused code
+
+commit f0d87d76596e85e51c2b8c0406c1432dfbb3d594
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Wed Nov 20 01:19:26 2024 +0300
+
+    refactor: changed the style for the sidebar instead of coming from the right it now comes from the bottom with a backdropd blur
+
+commit 8114f38acb2130a7d660599b617fd514a32a2322
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 05:55:51 2024 +0300
+
+    imported the div's attributes types
+
+commit 12d223d104d6cf9e2019a72d5df1c2ca5307e259
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 05:54:44 2024 +0300
+
+    removed unused props
+
+commit 5adcd7de9d70c92f6dfda4b46ce6e1e3795097ea
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 05:53:16 2024 +0300
+
+    refactor: remove unused snippets and linse, and changed the props names
+
+commit f3aca8590e4051faa2e42ebed1bf35beaaf656a4
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 05:50:30 2024 +0300
+
+    style: changed the 'top:171px' to 'top:170px'
+
+commit c11694a77a81decf1f34c148ee066bed5094efe8
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 05:47:59 2024 +0300
+
+    style: removed unused props and its types
+
+commit 01922ec5661a1261065715ce0ab587bac4abae12
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 05:46:26 2024 +0300
+
+    refactor: added variants type for button and other components
+
+commit 6fd13f8e9e7e68540bfedd9414de92163a89e63b
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 05:43:33 2024 +0300
+
+    refactor: remove the props from the ticket sidebar, change the useState name, and added the useMedia to trigger the page width
+
+commit e929a40cb4b0fd1f1a569b69ca92243afa8e307b
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 05:41:34 2024 +0300
+
+    feat: create use media hook to tigger the page width size
+
+commit 943f4c7f0482bdb49ef3a86723bbb490b1246ff5
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 04:53:38 2024 +0300
+
+    refactor: create grid for the tickets page
+
+commit 48ec712c9982f47138c4bdfeb6644acd14ca0a08
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 04:46:19 2024 +0300
+
+    refactor: add open ticket button
+
+commit 639a5891cd3dabcee3d2ff55a6faf6d7ef199bf1
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 04:44:48 2024 +0300
+
+    refactor: add variants to select component
+
+commit 0aebdf9c1aa22edc7820b79e5ac38f86350e397a
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 04:43:10 2024 +0300
+
+    style: add padding-block to '.outlet' class
+
+commit 17289543d58903744d00ef358b098146921699f4
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 04:16:46 2024 +0300
+
+    feat: ticket card
+
+commit 11c34f77f7cc8668913d84ed7bad0433a4a7653c
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 02:15:54 2024 +0300
+
+    style: add padding-inline to '.outlet' for mobile size
+
+commit 0ffba9f68aed9aa2f4888ae33833f7ae9df7f86b
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 01:35:59 2024 +0300
+
+    fix: change 'sze:' type to optional 'sze?:
+
+commit 597bd337874c106108fa38a04fb2b055cd0bd230
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 19 01:27:03 2024 +0300
+
+    style: removed comments and changed font size from 13px to 12px
+
+commit 8e75f4a364b241a8b1cb8e38cdaf4ed9f60204bd
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Mon Nov 18 02:04:45 2024 +0300
+
+    docs: BRD modification
+
+commit 403e96922fe47d87d884f9e5073c79fabc650583
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Sun Nov 17 04:49:30 2024 +0300
+
+    chore: BRD.md, FUNCTIONAL-DECOMPOSITION.md, and README.md updates
+
+commit 00f2f25e87d4b9fb1d8c0d22d94524b33ead84b7
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Sat Nov 16 04:02:37 2024 +0300
+
+    refactor: ticket page body -> sticky tabs, timeline UI, and changed the reply layout
+
+commit 5f5e263d03bb86f942620947b1d62cf2c81235f5
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Sat Nov 16 02:21:51 2024 +0300
+
+    feat: ticket page sidebar | refactore: select and help text components
+
+commit 68c24ec3bc349a13a664f60c37eb62ad76b3db85
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Fri Nov 15 05:12:49 2024 +0300
+
+    feat: HelpText.tsx component
+
+commit 44f835d3678b960fb0341718b6ffb91b200e3334
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Fri Nov 15 04:43:09 2024 +0300
+
+    feat:select comonent and clean up some components
+
+commit c6a1867d87eb4c38cdf5e2c4e689b8e0ea66c4c8
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Wed Nov 13 06:14:58 2024 +0300
+
+    update the ticket grid layout and the dropdownlist especially with the avatar
+
+commit 1ce7caf3c51c1223a392b93eeec14a8786998146
+Author: sfwnisme <safymo424@gmail.com>
+Date:   Tue Nov 12 05:30:30 2024 +0300
+
+    first commit

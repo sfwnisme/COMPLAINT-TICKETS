@@ -1,7 +1,6 @@
 import React from 'react'
 import S from './Input.module.css'
 import HelpText from '../help-text/HelpText';
-import { TVariants } from '../defintions.components';
 
 type Props = {
   variant?: 'primary' | 'info' | 'success' | 'warning' | 'danger';

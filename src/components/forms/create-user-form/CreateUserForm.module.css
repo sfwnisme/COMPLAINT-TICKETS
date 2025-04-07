@@ -1,0 +1,12 @@
+.create_user_form__container {
+  max-width: 500px;
+  border: 1px solid var(--border-secondary);
+  border-radius: 5px;
+  padding: 16px;
+}
+
+.create_user_form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}

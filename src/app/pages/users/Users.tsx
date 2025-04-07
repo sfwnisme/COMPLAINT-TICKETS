@@ -17,10 +17,17 @@ import useGetCurrentUser from "../../../hooks/useGetCurrentUser"
 import { USER_ROLES, USER_ROLES_COLORS } from "../../../constrains/constrains"
 import { Visible } from "@sfwnisme/visi"
 import useGetAllData from "../../../hooks/useGetAllData"
+import useDeleteApiData from "../../../hooks/use-delete-api-data"
 
 export default function Users() {
   const getAllData = useGetAllData('/users')
   const currentUser = useGetCurrentUser()
+  const { mutate, isPending: isDeleting } = useDeleteApiData('/users')
+
+  const onDeleteUser = (id: string) => {
+    mutate(id)
+    // getAllData.refetch()
+  }
 
   const renderLoading = (
     <TR>
@@ -63,7 +70,14 @@ export default function Users() {
               </ListItem>
               <Visible when={currentUser.data.role === USER_ROLES.ADMIN}>
                 <ListItem href={`update/${user._id}`}>Edit</ListItem>
-                <ListItem>Delete</ListItem>
+                <ListItem onClick={() => onDeleteUser(user._id)}>
+                  {
+                    isDeleting ?
+                      'Deleting...'
+                      : 'Delete'
+                  }
+
+                </ListItem>
               </Visible>
             </List>
           </Dropdown>
