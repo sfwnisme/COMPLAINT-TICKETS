@@ -11,9 +11,20 @@
 .list--absolute {
   position: absolute;
   top: 100%;
+  bottom: auto;
   z-index: 1;
   margin-top: 0.5rem;
   right: 0;
+}
+
+.list--absolute--bottom {
+  top: auto;
+  bottom: 100%;
+}
+
+.list--absolute--top {
+  top: 100%;
+  bottom: auto;
 }
 
 .list--rigth {
