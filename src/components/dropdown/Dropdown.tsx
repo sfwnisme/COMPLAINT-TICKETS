@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { EventHandler, useEffect, useRef, useState } from 'react'
 import S from './Dropdown.module.css'
 import { EllipsisVertical } from 'lucide-react';
 import Button from '../button/Button';
