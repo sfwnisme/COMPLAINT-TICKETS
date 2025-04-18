@@ -18,8 +18,13 @@ import { USER_ROLES, USER_ROLES_COLORS } from "../../../constrains/constrains"
 import { Visible } from "@sfwnisme/visi"
 import useGetAllData from "../../../hooks/useGetAllData"
 import useDeleteApiData from "../../../hooks/use-delete-api-data"
+import { useQueryClient } from "@tanstack/react-query"
 
 export default function Users() {
+
+  const queryClient = useQueryClient()
+  queryClient.invalidateQueries({ queryKey: ['/users'] })
+
   const getAllData = useGetAllData('/users')
   const currentUser = useGetCurrentUser()
   const { mutate, isPending: isDeleting } = useDeleteApiData('/users')
