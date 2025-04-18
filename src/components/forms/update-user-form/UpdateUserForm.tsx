@@ -39,6 +39,7 @@ export default function UpdateUserForm() {
     }
   });
   const { mutateAsync: createUser, isPending, isSuccess, error } = useUpdateApiData<Inputs>(`/users/${userId}`, 'post')
+  console.log('//////////////////',error)
 
   let typedError
   if (axios.isAxiosError(error)) {
