@@ -18,20 +18,17 @@ import { USER_ROLES, USER_ROLES_COLORS } from "../../../constrains/constrains"
 import { Visible } from "@sfwnisme/visi"
 import useGetAllData from "../../../hooks/useGetAllData"
 import useDeleteApiData from "../../../hooks/use-delete-api-data"
-import { useQueryClient } from "@tanstack/react-query"
 
-export default function Users() {
-
-  const queryClient = useQueryClient()
-  queryClient.invalidateQueries({ queryKey: ['/users'] })
-
+const UsersData = () => {
   const getAllData = useGetAllData('/users')
   const currentUser = useGetCurrentUser()
-  const { mutate, isPending: isDeleting } = useDeleteApiData('/users')
+  const { mutate, isPending: isDeleting } = useDeleteApiData({
+    endpoint: '/users',
+    revalidateKey: '/users'
+  })
 
   const onDeleteUser = (id: string) => {
     mutate(id)
-    // getAllData.refetch()
   }
 
   const renderLoading = (
@@ -81,7 +78,6 @@ export default function Users() {
                       'Deleting...'
                       : 'Delete'
                   }
-
                 </ListItem>
               </Visible>
             </List>
@@ -91,26 +87,18 @@ export default function Users() {
     </TR >
   ))
 
-  let renderUsers;
-  if (getAllData?.data?.length === 0) {
-    renderUsers = renderEmpty
-  }
-  if (getAllData.isLoading) {
-    renderUsers = renderLoading
-  }
-  if (getAllData.isError) {
-    renderUsers = renderError
-  }
-  if (getAllData.isSuccess) {
-    renderUsers = renderData
-  }
+  if (getAllData.isLoading) return renderLoading
+  if (getAllData.isError) return renderError
+  if (getAllData.isSuccess) return renderData
 
+  return renderEmpty
+}
 
+export default function Users() {
   return (
     <div>
       <Title text='Users' />
       <div className={S.users}>
-
         <Table>
           <THead>
             <TR>
@@ -122,8 +110,7 @@ export default function Users() {
             </TR>
           </THead>
           <TBody>
-
-            {renderUsers}
+            <UsersData />
           </TBody>
         </Table>
       </div>
