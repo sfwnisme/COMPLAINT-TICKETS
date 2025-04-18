@@ -1,8 +1,12 @@
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-export default function useDeleteApiData(endpoint: string) {
+type useDeleteApiDataParams = { endpoint: string, revalidateKey?: string }
+
+export default function useDeleteApiData({ endpoint = "", revalidateKey = "" }: useDeleteApiDataParams) {
+  const queryClient = useQueryClient()
+
   const mutation = useMutation({
     mutationKey: ['delete-api-data', endpoint],
     mutationFn: async (id: string) => {
@@ -12,6 +16,7 @@ export default function useDeleteApiData(endpoint: string) {
       return res
     },
     onSuccess: (res) => {
+      queryClient.invalidateQueries({ queryKey: [revalidateKey] })
       console.log('onSuccess delete api data', res)
       return res
     },
