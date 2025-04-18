@@ -8,9 +8,8 @@ import Button from '../button/Button'
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 
-type Props = {}
 
-export default function NavDropdown({ }: Props) {
+export default function NavDropdown() {
   const navigate = useNavigate()
   const currentUserQuery = useQuery({
     queryKey: ['currentUser'],
@@ -26,7 +25,7 @@ export default function NavDropdown({ }: Props) {
   }
   return (
     <AvatarDropdown name={currentUserQuery?.data?.name}>
-      <List position={'absolute'} rightOrLeft={'right'}>
+      <List position={'absolute'} rightOrLeft={'right'} yaxis='top'>
         {
           currentUserQuery?.data?.name ?
             <>
