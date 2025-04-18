@@ -1,4 +1,4 @@
-import React, { EventHandler, useEffect, useRef, useState } from 'react'
+import React, {  useEffect, useRef, useState } from 'react'
 import S from './Dropdown.module.css'
 import { EllipsisVertical } from 'lucide-react';
 import Button from '../button/Button';
@@ -14,7 +14,6 @@ export default function Dropdown({ children }: Props) {
   const handleListToggle = () => {
     setToggle((prev) => !prev)
   }
-  console.log('global', toggle)
 
   useEffect(() => {
     console.log('effect', toggle)
