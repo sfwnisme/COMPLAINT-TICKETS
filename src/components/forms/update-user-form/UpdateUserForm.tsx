@@ -21,7 +21,6 @@ type Inputs = {
 };
 
 export default function UpdateUserForm() {
-
   const { userId } = useParams()
   console.log(userId)
   const { data } = useGetSingleApiData('/users/' + userId)
@@ -38,7 +37,7 @@ export default function UpdateUserForm() {
       role: data?.role
     }
   });
-  const { mutateAsync: createUser, isPending, isSuccess, error } = useUpdateApiData<Inputs>(`/users/${userId}`, 'post')
+  const { mutateAsync: updateUser, isPending, isSuccess, error } = useUpdateApiData<Inputs>(`/users/${userId}`, 'post')
   console.log('//////////////////',error)
 
   let typedError
@@ -50,7 +49,7 @@ export default function UpdateUserForm() {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
-      const res = await createUser(data);
+      const res = await updateUser(data);
       return res;
     } catch (error) {
       console.error("create user error", error);
