@@ -40,3 +40,6 @@
   /* grid-template-columns: 1fr 1fr; */
   gap: 15px;
 }
+form input {
+  display: none;
+}
