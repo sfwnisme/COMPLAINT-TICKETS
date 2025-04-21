@@ -23,7 +23,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 // };
 
 const userSchema = z.object({
-  name: z.string().min(8, { message: 'name must be at least 8 characters' }),
+  name: z.string().min(3, { message: 'name must be at least 3 characters' }),
   email: z.string().email(),
   password: z.string().optional(),
   role: z.enum(USER_ROLES_VALUES)
@@ -70,9 +70,9 @@ export default function UpdateUserForm() {
   };
 
   return (
-    <div className={S.create_user_form__container}>
+    <div className={S.update_user_form__container}>
       <div className={S['form-header']}>
-        <h2 className={S['form-header-title']}>Create New User</h2>
+        <h2 className={S['form-header-title']}>Update User</h2>
         <p className={S['form-header-subtitle']}>please enter your details to sign in</p>
       </div>
       <Spacer size='lg' />

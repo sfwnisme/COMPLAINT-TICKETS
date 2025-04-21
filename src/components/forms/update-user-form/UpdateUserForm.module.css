@@ -27,10 +27,9 @@
   font-weight: 300;
 }
 
-.create_user_form__container {
+.update_user_form__container {
   max-width: 800px;
   width: 100%;
-  /* border: 1px solid var(--border-secondary); */
   border-radius: 5px;
   padding: 16px;
 }
