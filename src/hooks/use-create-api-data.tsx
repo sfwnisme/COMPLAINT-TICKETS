@@ -8,7 +8,7 @@ export default function useCreateApiData<T /** the data types */>(endpoint: stri
     mutationFn: async (data: T) => {
       axios.defaults.headers.common['Authorization'] = `Bearer ${Cookies.get('TOKEN')}`
       const BASE_URL = import.meta.env.VITE_BASE_URL + endpoint
-      const res = await axios.patch(BASE_URL, data)
+      const res = await axios.post(BASE_URL, data)
       return res
     },
   })
