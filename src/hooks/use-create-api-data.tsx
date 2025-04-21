@@ -1,14 +1,11 @@
 import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
-import Cookies from 'js-cookie'
+import { axiosInstance } from '../libs/axios-instance'
 
-export default function useCreateApiData<T /** the data types */>(endpoint: string) {
+export default function useCreateApiData<T>(endpoint: string) {
   const mutation = useMutation({
-    mutationKey: ['create-api-data', endpoint],
+    mutationKey: ['create-', endpoint],
     mutationFn: async (data: T) => {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${Cookies.get('TOKEN')}`
-      const BASE_URL = import.meta.env.VITE_BASE_URL + endpoint
-      const res = await axios.post(BASE_URL, data)
+      const res = await axiosInstance.post(endpoint, data)
       return res
     },
   })

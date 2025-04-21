@@ -1,19 +1,16 @@
 import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
-import Cookies from 'js-cookie'
+import { axiosInstance } from '../libs/axios-instance'
 
 export default function useUpdateApiData<T /** the data types */>(endpoint: string, method: 'put' | 'patch' = 'patch') {
   const mutation = useMutation({
     mutationKey: ['update-api-data', endpoint],
     mutationFn: async (data: T) => {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${Cookies.get('TOKEN')}`
-      const BASE_URL = import.meta.env.VITE_BASE_URL + endpoint
       if (method === 'patch') {
-        const res = await axios.patch(BASE_URL, data)
+        const res = await axiosInstance.patch(endpoint, data)
         return res
       }
       if (method === 'put') {
-        const res = await axios.put(BASE_URL, data)
+        const res = await axiosInstance.put(endpoint, data)
         return res
       }
     },

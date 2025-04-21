@@ -1,14 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
-import Cookies from 'js-cookie'
+import { axiosInstance } from '../libs/axios-instance'
 
-export default function useGetSingleApiData(endpoint: string) {
+type Params = {
+  endpoint: string, id: string | undefined
+}
+
+export default function useGetSingleApiData({ endpoint = '', id = '' }: Params) {
   const query = useQuery({
-    queryKey: ['single-api-data', endpoint],
+    queryKey: ['single-', endpoint],
     queryFn: async () => {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${Cookies.get('TOKEN')}`
-      const BASE_URL = import.meta.env.VITE_BASE_URL + endpoint
-      const res = await axios.get(BASE_URL)
+      const res = await axiosInstance.get(endpoint + '/' + id)
       return res
     },
     select: (res) => {
