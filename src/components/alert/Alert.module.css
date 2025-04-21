@@ -1,0 +1,77 @@
+.alert {
+  border: 1px solid var(--border-tertiary);
+  background-color: var(--primary-color-50);
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: inline-flex;
+  gap: 5px;
+  align-items: start;
+  justify-content: start;
+  width: 100%;
+}
+
+.alert svg {
+  color: var(--primary-color-600);
+  stroke-width: 1;
+}
+
+.alert p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.3;
+  color: var(--primary-color-50);
+}
+
+
+.alert--info {
+  border-color: var(--info-color-200);
+  background-color: var(--info-color-50);
+}
+
+.alert--info svg {
+  color: var(--info-color-600);
+}
+
+.alert--info p {
+  color: var(--info-color-600);
+}
+
+.alert--success {
+  border-color: var(--success-color-200);
+  background-color: var(--success-color-50);
+}
+
+.alert--success svg {
+  color: var(--success-color-600);
+}
+
+.alert--success p {
+  color: var(--success-color-600);
+}
+
+.alert--warning {
+  border-color: var(--warning-color-200);
+  background-color: var(--warning-color-50);
+}
+
+.alert--warning svg {
+  color: var(--warning-color-600);
+}
+
+.alert--warning p {
+  color: var(--warning-color-600);
+}
+
+.alert--danger {
+  border-color: var(--danger-color-200);
+  background-color: var(--danger-color-50);
+}
+
+.alert--danger svg {
+  color: var(--danger-color-600);
+}
+
+.alert--danger p {
+  color: var(--danger-color-600);
+}
