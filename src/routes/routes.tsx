@@ -9,7 +9,7 @@ import Users from "../app/pages/users/Users";
 import Ticket from "../app/pages/tickets/id/Ticket";
 import Login from "../app/auth/login/Login";
 import Home from "../app/home/Home";
-import HomeLayout from "../app/layouts/home layout/HomeLayout";
+import HomeLayout from "../app/layouts/home-layout/HomeLayout.tsx";
 import PrivateRoute from "../app/auth/auth-wrapper/PrivateRoute";
 import PublicRoute from "../app/auth/auth-wrapper/PublicRoute";
 import UpdateUser from "../app/pages/users/update/UpdateUser";
