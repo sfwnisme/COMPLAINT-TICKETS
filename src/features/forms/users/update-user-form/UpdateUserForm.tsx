@@ -1,27 +1,27 @@
 import S from "./UpdateUserForm.module.css";
-import Input from "../../input/Input.tsx";
-import Select from "../../select/Select.tsx";
-import { USER_ROLES } from "../../../constrains/constrains.tsx";
+import Input from "../../../../components/input/Input.tsx";
+import Select from "../../../../components/select/Select.tsx";
+import { USER_ROLES } from "../../../../constrains/constrains.tsx";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Button from "../../button/Button.tsx";
-import Loader from "../../loaders/loader/Loader.tsx";
-import useApiMessage from "../../../hooks/use-api-message.tsx";
-import Spacer from "../../spacer/Spacer.tsx";
-import PasswordInput from "../../input/PasswordInput.tsx";
-import useUpdateApiData from "../../../hooks/use-update-api-data.tsx";
+import Button from "../../../../components/button/Button.tsx";
+import Loader from "../../../../components/loaders/loader/Loader.tsx";
+import useApiMessage from "../../../../hooks/use-api-message.tsx";
+import Spacer from "../../../../components/spacer/Spacer.tsx";
+import PasswordInput from "../../../../components/input/PasswordInput.tsx";
+import useUpdateApiData from "../../../../hooks/use-update-api-data.tsx";
 import { useParams } from "react-router-dom";
-import useGetSingleApiData from "../../../hooks/use-get-single-api-data.tsx";
+import useGetSingleApiData from "../../../../hooks/use-get-single-api-data.tsx";
 import axios from "axios";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { updateUserSchema } from "../../../validation/user.validation.tsx";
+import { updateUserSchema } from "../../../../validation/user.validation.tsx";
 
 type Inputs = z.infer<typeof updateUserSchema>
 
 export default function UpdateUserForm() {
   const { userId } = useParams()
   console.log(userId)
-  const { data } = useGetSingleApiData('/users/' + userId)
+  const { data } = useGetSingleApiData({ endpoint: '/users', id: userId })
   console.log('new data ', data)
   const {
     register,
@@ -30,7 +30,6 @@ export default function UpdateUserForm() {
   } = useForm<Inputs>({
     resolver: zodResolver(updateUserSchema),
     mode: 'all',
-    // reValidateMode: 'onChange',
     values: {
       name: data?.name,
       email: data?.email,
@@ -38,14 +37,13 @@ export default function UpdateUserForm() {
     }
   });
   const { mutateAsync: updateUser, isPending, isSuccess, error } = useUpdateApiData<Inputs>(`/users/${userId}`, 'patch')
-  console.log('//////////////////', error)
 
   let typedError
   if (axios.isAxiosError(error)) {
     typedError = error
   }
   const successMessage = useApiMessage('user created successfully', 201)
-  const errorMessge = useApiMessage(typedError?.response?.data?.msg, typedError?.status || 400)
+  const errorMessge = useApiMessage(typedError?.response?.data?.msg, typedError?.status ?? 400)
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {

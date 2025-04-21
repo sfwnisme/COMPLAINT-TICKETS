@@ -1,18 +1,18 @@
 import S from "./CreateUserForm.module.css";
-import Input from "../../input/Input.tsx";
-import Select from "../../select/Select.tsx";
-import { USER_ROLES } from "../../../constrains/constrains.tsx";
+import Input from "../../../../components/input/Input.tsx";
+import Select from "../../../../components/select/Select.tsx";
+import { USER_ROLES } from "../../../../constrains/constrains.tsx";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Button from "../../button/Button.tsx";
-import Loader from "../../loaders/loader/Loader.tsx";
-import useCreateApiData from "../../../hooks/use-create-api-data.tsx";
-import useApiMessage from "../../../hooks/use-api-message.tsx";
-import Spacer from "../../spacer/Spacer.tsx";
-import PasswordInput from "../../input/PasswordInput.tsx";
+import Button from "../../../../components/button/Button.tsx";
+import Loader from "../../../../components/loaders/loader/Loader.tsx";
+import useCreateApiData from "../../../../hooks/use-create-api-data.tsx";
+import useApiMessage from "../../../../hooks/use-api-message.tsx";
+import Spacer from "../../../../components/spacer/Spacer.tsx";
+import PasswordInput from "../../../../components/input/PasswordInput.tsx";
 import axios from "axios";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createUserSchema } from "../../../validation/user.validation.tsx";
+import { createUserSchema } from "../../../../validation/user.validation.tsx";
 
 type Inputs = z.infer<typeof createUserSchema>;
 export default function CreateUserForm() {
