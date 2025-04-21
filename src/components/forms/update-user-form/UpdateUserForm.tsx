@@ -1,7 +1,7 @@
 import S from "./UpdateUserForm.module.css";
 import Input from "../../input/Input.tsx";
 import Select from "../../select/Select.tsx";
-import { USER_ROLES, USER_ROLES_VALUES } from "../../../constrains/constrains.tsx";
+import { USER_ROLES } from "../../../constrains/constrains.tsx";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "../../button/Button.tsx";
 import Loader from "../../loaders/loader/Loader.tsx";
@@ -14,22 +14,9 @@ import useGetSingleApiData from "../../../hooks/use-get-single-api-data.tsx";
 import axios from "axios";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { updateUserSchema } from "../../../validation/user.validation.tsx";
 
-// type Inputs = {
-//   name: string;
-//   email: string;
-//   password?: string;
-//   role: string;
-// };
-
-const userSchema = z.object({
-  name: z.string().min(3, { message: 'name must be at least 3 characters' }),
-  email: z.string().email(),
-  password: z.string().optional(),
-  role: z.enum(USER_ROLES_VALUES)
-})
-
-type Inputs = z.infer<typeof userSchema>
+type Inputs = z.infer<typeof updateUserSchema>
 
 export default function UpdateUserForm() {
   const { userId } = useParams()
@@ -41,7 +28,7 @@ export default function UpdateUserForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>({
-    resolver: zodResolver(userSchema),
+    resolver: zodResolver(updateUserSchema),
     mode: 'all',
     // reValidateMode: 'onChange',
     values: {
