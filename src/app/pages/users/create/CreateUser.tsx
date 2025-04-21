@@ -1,5 +1,5 @@
 // import S from './CreateUser.module.css'
-import CreateUserForm from "../../../../components/forms/create-user-form/CreateUserForm.tsx";
+import CreateUserForm from "../../../../features/forms/users/create-user-form/CreateUserForm.tsx";
 export default function CreateUser() {
   return (
     <div>
