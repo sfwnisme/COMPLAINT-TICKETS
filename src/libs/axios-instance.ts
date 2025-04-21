@@ -1,8 +1,20 @@
 import axios from "axios";
+import Cookies from 'js-cookie'
 
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
-  validateStatus: (status) => status >= 200 && status < 300,
 })
+console.log(Cookies.attributes)
 
-export default axiosInstance
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const TOKEN = Cookies.get('TOKEN')
+    if (TOKEN) {
+      config.headers.Authorization = `Bearer ${TOKEN}`;
+    };
+    return config
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
