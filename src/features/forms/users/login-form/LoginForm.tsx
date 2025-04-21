@@ -1,5 +1,4 @@
 import Input from '../../../../components/input/Input'
-import HelpText from '../../../../components/help-text/HelpText'
 import Spacer from '../../../../components/spacer/Spacer'
 import Button from '../../../../components/button/Button'
 import S from './LoginForm.module.css'
@@ -13,6 +12,7 @@ import Logo from '../../../../assets/logo.png'
 import { z } from 'zod'
 import { loginSchema } from '../../../../validation/user.validation'
 import { zodResolver } from '@hookform/resolvers/zod'
+import Alert from '../../../../components/alert/Alert'
 
 type Inputs = z.infer<typeof loginSchema>
 
@@ -49,6 +49,9 @@ export default function LoginForm() {
   if (axios.isAxiosError(error)) {
     typedError = error
   }
+  const showAlert = isSuccess || isError
+  const errorMessage = typedError?.response?.data?.msg
+  const successMessage = 'you logged in successfully'
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
@@ -96,12 +99,13 @@ export default function LoginForm() {
           }
         />
         <Spacer size='sm' />
+        <Alert visible={!showAlert} variant={isSuccess ? 'success' : 'danger'} hasIcon>
+          {errorMessage ?? successMessage}
+        </Alert>
+        <Spacer size='xs' />
         <Button size='xl' type='submit' width='fill' disabled={isPending || isSubmitDisabled}>
           {!isPending ? 'Login' : <Loader />}
         </Button>
-        <Spacer size='xs' />
-        {isError && <HelpText variant='danger' icon='invisible'>{typedError?.response?.data?.msg}</HelpText>}
-        {isSuccess && <HelpText variant='success' icon='invisible'>{'successfully logged in'}</HelpText>}
       </form>
     </div>
   )

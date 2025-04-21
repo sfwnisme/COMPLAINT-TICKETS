@@ -5,7 +5,6 @@ import { USER_ROLES } from "../../../../constrains/constrains.tsx";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "../../../../components/button/Button.tsx";
 import Loader from "../../../../components/loaders/loader/Loader.tsx";
-import useApiMessage from "../../../../hooks/use-api-message.tsx";
 import Spacer from "../../../../components/spacer/Spacer.tsx";
 import PasswordInput from "../../../../components/input/PasswordInput.tsx";
 import useUpdateApiData from "../../../../hooks/use-update-api-data.tsx";
@@ -15,6 +14,7 @@ import axios from "axios";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { updateUserSchema } from "../../../../validation/user.validation.tsx";
+import Alert from "../../../../components/alert/Alert.tsx";
 
 type Inputs = z.infer<typeof updateUserSchema>
 
@@ -36,14 +36,14 @@ export default function UpdateUserForm() {
       role: data?.role
     }
   });
-  const { mutateAsync: updateUser, isPending, isSuccess, error } = useUpdateApiData<Inputs>(`/users/${userId}`, 'patch')
-
+  const { mutateAsync: updateUser, isPending, isSuccess, isError, error } = useUpdateApiData<Inputs>(`/users/${userId}`, 'patch')
+  const showAlert = isSuccess || isError
   let typedError
   if (axios.isAxiosError(error)) {
     typedError = error
   }
-  const successMessage = useApiMessage('user created successfully', 201)
-  const errorMessge = useApiMessage(typedError?.response?.data?.msg, typedError?.status ?? 400)
+  const successMessage = 'user updated successfully'
+  const errorMessage = typedError?.response?.data?.msg
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
@@ -96,9 +96,10 @@ export default function UpdateUserForm() {
             </option>
           ))}
         </Select>
+        <Alert visible={showAlert} variant={isSuccess ? 'success' : 'danger'} hasIcon>
+          {errorMessage ?? successMessage}
+        </Alert>
         <Button width="fill">{isPending ? <Loader /> : "Create"}</Button>
-        <Spacer />
-        {isSuccess ? successMessage : errorMessge}
       </form>
     </div>
   );

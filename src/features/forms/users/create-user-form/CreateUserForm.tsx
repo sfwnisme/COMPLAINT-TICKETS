@@ -6,13 +6,13 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "../../../../components/button/Button.tsx";
 import Loader from "../../../../components/loaders/loader/Loader.tsx";
 import useCreateApiData from "../../../../hooks/use-create-api-data.tsx";
-import useApiMessage from "../../../../hooks/use-api-message.tsx";
 import Spacer from "../../../../components/spacer/Spacer.tsx";
 import PasswordInput from "../../../../components/input/PasswordInput.tsx";
 import axios from "axios";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createUserSchema } from "../../../../validation/user.validation.tsx";
+import Alert from "../../../../components/alert/Alert.tsx";
 
 type Inputs = z.infer<typeof createUserSchema>;
 export default function CreateUserForm() {
@@ -24,7 +24,7 @@ export default function CreateUserForm() {
     resolver: zodResolver(createUserSchema),
     mode: "all",
   });
-  const { mutateAsync, isPending, isSuccess, error } =
+  const { mutateAsync, isPending, isSuccess, isError, error } =
     useCreateApiData<Inputs>("/users/register");
   console.log("error for create user", error);
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -35,17 +35,15 @@ export default function CreateUserForm() {
       console.error("create user error", error);
     }
   };
+  const showAlert = isSuccess || isError
 
   let typedError;
   if (axios.isAxiosError(error)) {
     typedError = error;
   }
 
-  const errorMessage = useApiMessage(
-    typedError?.response?.data?.msg,
-    typedError?.status ?? 400,
-  );
-  const successMessage = useApiMessage("user created successfully", 201);
+  const errorMessage = typedError?.response?.data?.msg
+  const successMessage = 'The user created successfull, you can now log in to activeate the account';
 
   return (
     <div className={S.create_user_form__container}>
@@ -91,10 +89,11 @@ export default function CreateUserForm() {
             </option>
           ))}
         </Select>
+        <Alert visible={showAlert} variant={isSuccess ? 'success' : 'danger'} hasIcon>
+          {errorMessage ?? successMessage}
+        </Alert>
         <Button width="fill">{isPending ? <Loader /> : "Create"}</Button>
         <Spacer />
-        {isSuccess ? successMessage : errorMessage}
-        {errorMessage}
       </form>
     </div>
   );
