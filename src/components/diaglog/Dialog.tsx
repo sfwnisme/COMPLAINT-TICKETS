@@ -4,47 +4,47 @@ import { X } from 'lucide-react'
 import Loader from '../loaders/loader/Loader';
 
 type Props = {
-  title: string,
+  header: string,
   description: string,
   CTA_L: string,
   CTA_R: string,
-  isActive: boolean,
-  setIsActive: (prev: boolean) => void,
+  isVisible: boolean,
+  setIsVisible: (prev: boolean) => void,
   action: () => void,
   isLoading: boolean
 }
 
 export default function Dialog({
-  title = "Dialog Title",
+  header = "Dialog Header",
   description = "dialog description: you can display the description for the dialog here",
   CTA_L = "Cancel",
   CTA_R = 'Delete',
-  isActive = false,
-  setIsActive,
+  isVisible = false,
+  setIsVisible,
   action,
   isLoading
 }: Readonly<Props>) {
 
   const actionFunc = async () => {
     await action()
-    setIsActive(false)
+    setIsVisible(false)
   }
 
   return (
     <>
-      {isActive && <div className={S.dialog}>
+      {isVisible && <div className={S.dialog}>
         <div className={S.dialog_content}>
           <Button
             variant='primary'
             size='square'
             outline
             className={S.close_icon}
-            onClick={() => setIsActive(false)}
+            onClick={() => setIsVisible(false)}
           >
             <X size={18} />
           </Button>
           <div className={S.body}>
-            <h4>{title}</h4>
+            <h4>{header}</h4>
             <p>
               {description}
             </p>
@@ -59,7 +59,7 @@ export default function Dialog({
               variant='primary'
               size='lg'
               outline
-              onClick={() => setIsActive(false)}
+              onClick={() => setIsVisible(false)}
             >{CTA_L}</Button>
           </div>
         </div>

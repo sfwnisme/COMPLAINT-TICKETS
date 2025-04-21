@@ -21,7 +21,7 @@ import useDeleteApiData from "../../../hooks/use-delete-api-data"
 import Dialog from "../../../components/diaglog/Dialog"
 import { useState } from "react"
 
-const UsersData = ({ setDeleteDialogIsActive, setGetUserId }) => {
+const UsersData = ({ setDeleteDialogIsVisible, setGetUserId }) => {
   const getAllData = useGetAllData('/users')
   const currentUser = useGetCurrentUser()
   const { mutate, isPending: isDeleting } = useDeleteApiData({
@@ -75,7 +75,7 @@ const UsersData = ({ setDeleteDialogIsActive, setGetUserId }) => {
               <Visible when={currentUser.data.role === USER_ROLES.ADMIN}>
                 <ListItem href={`update/${user._id}`}>Edit</ListItem>
                 <ListItem onClick={() => {
-                  setDeleteDialogIsActive(true)
+                  setDeleteDialogIsVisible(true)
                   setGetUserId(user._id)
                 }}>Delete</ListItem>
                 {/* <ListItem onClick={() => onDeleteUser(user._id)}>
@@ -101,7 +101,7 @@ const UsersData = ({ setDeleteDialogIsActive, setGetUserId }) => {
 }
 
 export default function Users() {
-  const [deleteDialogIsActive, setDeleteDialogIsActive] = useState<boolean>(false)
+  const [deleteDialogIsVisible, setDeleteDialogIsVisible] = useState<boolean>(false)
   const [getUserId, setGetUserId] = useState<string>("")
 
   const { mutate, mutateAsync, isPending: isDeleting } = useDeleteApiData({
@@ -118,19 +118,16 @@ export default function Users() {
   return (
     <div>
       <Title text='Users' />
-      {/* {
-        deleteDialogIsActive && */}
-        <Dialog
-          title={'Delete user'}
-          description={'Are you sure, you wanna delete user'}
-          CTA_L="Cancel"
-          CTA_R="Delete"
-          isActive={deleteDialogIsActive}
-          setIsActive={setDeleteDialogIsActive}
-          action={onDeleteUser}
-          isLoading={isDeleting}
-        />
-      {/* } */}
+      <Dialog
+        header={'Delete user'}
+        description={'Are you sure, you wanna delete user'}
+        CTA_L="Cancel"
+        CTA_R="Delete"
+        isVisible={deleteDialogIsVisible}
+        setIsVisible={setDeleteDialogIsVisible}
+        action={onDeleteUser}
+        isLoading={isDeleting}
+      />
       <div className={S.users}>
         <Table>
           <THead>
@@ -144,7 +141,7 @@ export default function Users() {
           </THead>
           <TBody>
             <UsersData
-              setDeleteDialogIsActive={setDeleteDialogIsActive}
+              setDeleteDialogIsVisible={setDeleteDialogIsVisible}
               setGetUserId={setGetUserId}
             />
           </TBody>
