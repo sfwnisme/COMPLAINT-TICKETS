@@ -1,18 +1,24 @@
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
-import { getCurrentUser } from '../store/users'
+import Cookies from 'js-cookie'
+import axios from 'axios'
 
-type Props = {}
+const token = `Bearer ${Cookies.get('TOKEN')}`
+const BASE_URL = import.meta.env.VITE_BASE_URL
+axios.defaults.baseURL = BASE_URL
 
 export default function useGetCurrentUser() {
   const currentUser = useQuery({
     queryKey: ['currentUser'],
-    queryFn: getCurrentUser,
+    queryFn: async () => {
+      axios.defaults.headers.common['Authorization'] = token
+      const res = await axios.get('/users/me')
+      return res
+    },
     select: (response) => {
       return response.data.data
     },
     retry: false,
-    
+
   })
   return currentUser
 }
