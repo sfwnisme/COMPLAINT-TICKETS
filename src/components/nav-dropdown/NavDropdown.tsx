@@ -1,23 +1,13 @@
-import React from 'react'
 import AvatarDropdown from '../avatar-dropdown/AvatarDropdown'
 import List from '../list/List'
-import { getCurrentUser } from '../../store/users'
-import { useQuery } from '@tanstack/react-query'
 import ListItem from '../list/ListItem'
 import Button from '../button/Button'
 import Cookies from 'js-cookie'
-import { useNavigate } from 'react-router-dom'
+import useGetCurrentUser from '../../hooks/useGetCurrentUser'
 
 
 export default function NavDropdown() {
-  const navigate = useNavigate()
-  const currentUserQuery = useQuery({
-    queryKey: ['currentUser'],
-    queryFn: getCurrentUser,
-    select: (res) => {
-      return res.data.data
-    }
-  })
+  const currentUserQuery = useGetCurrentUser()
 
   const onLogout = () => {
     Cookies.remove('TOKEN')
