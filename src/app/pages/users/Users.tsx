@@ -18,8 +18,10 @@ import { USER_ROLES, USER_ROLES_COLORS } from "../../../constrains/constrains"
 import { Visible } from "@sfwnisme/visi"
 import useGetAllData from "../../../hooks/useGetAllData"
 import useDeleteApiData from "../../../hooks/use-delete-api-data"
+import Dialog from "../../../components/diaglog/Dialog"
+import { useState } from "react"
 
-const UsersData = () => {
+const UsersData = ({ setDeleteDialogIsActive, setGetUserId }) => {
   const getAllData = useGetAllData('/users')
   const currentUser = useGetCurrentUser()
   const { mutate, isPending: isDeleting } = useDeleteApiData({
@@ -72,13 +74,17 @@ const UsersData = () => {
               </ListItem>
               <Visible when={currentUser.data.role === USER_ROLES.ADMIN}>
                 <ListItem href={`update/${user._id}`}>Edit</ListItem>
-                <ListItem onClick={() => onDeleteUser(user._id)}>
+                <ListItem onClick={() => {
+                  setDeleteDialogIsActive(true)
+                  setGetUserId(user._id)
+                }}>Delete</ListItem>
+                {/* <ListItem onClick={() => onDeleteUser(user._id)}>
                   {
                     isDeleting ?
                       'Deleting...'
                       : 'Delete'
                   }
-                </ListItem>
+                </ListItem> */}
               </Visible>
             </List>
           </Dropdown>
@@ -95,9 +101,36 @@ const UsersData = () => {
 }
 
 export default function Users() {
+  const [deleteDialogIsActive, setDeleteDialogIsActive] = useState<boolean>(false)
+  const [getUserId, setGetUserId] = useState<string>("")
+
+  const { mutate, mutateAsync, isPending: isDeleting } = useDeleteApiData({
+    endpoint: '/users',
+    revalidateKey: '/users'
+  })
+  console.log(getUserId)
+
+  const onDeleteUser = async () => {
+    await mutateAsync(getUserId)
+    setGetUserId("")
+  }
+
   return (
     <div>
       <Title text='Users' />
+      {/* {
+        deleteDialogIsActive && */}
+        <Dialog
+          title={'Delete user'}
+          description={'Are you sure, you wanna delete user'}
+          CTA_L="Cancel"
+          CTA_R="Delete"
+          isActive={deleteDialogIsActive}
+          setIsActive={setDeleteDialogIsActive}
+          action={onDeleteUser}
+          isLoading={isDeleting}
+        />
+      {/* } */}
       <div className={S.users}>
         <Table>
           <THead>
@@ -110,7 +143,10 @@ export default function Users() {
             </TR>
           </THead>
           <TBody>
-            <UsersData />
+            <UsersData
+              setDeleteDialogIsActive={setDeleteDialogIsActive}
+              setGetUserId={setGetUserId}
+            />
           </TBody>
         </Table>
       </div>
