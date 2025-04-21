@@ -3,20 +3,18 @@ import HelpText from '../../help-text/HelpText'
 import Spacer from '../../spacer/Spacer'
 import Button from '../../button/Button'
 import S from './LoginForm.module.css'
-import Title from '../../title/Title'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import { useState } from 'react'
 import Loader from '../../loaders/loader/Loader'
 import PasswordInput from '../../input/PasswordInput'
 import Logo from '../../../assets/logo.png'
+import { z } from 'zod'
+import { loginSchema } from '../../../validation/user.validation'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-type Inputs = {
-  email: string,
-  password: string
-}
+type Inputs = z.infer<typeof loginSchema>
 
 export default function LoginForm() {
 
@@ -24,9 +22,15 @@ export default function LoginForm() {
     register,
     handleSubmit,
     watch,
-    formState: { errors }
-  } = useForm<Inputs>()
+    formState: { errors, isValid, isDirty, disabled }
+  } = useForm<Inputs>({
+    resolver: zodResolver(loginSchema),
+    mode: 'all'
+  })
 
+  const isSubmitDisabled = !isValid || !isDirty
+
+  console.log(`isDirty:${isDirty}`, `isValid:${isValid}`, `disabled:${disabled}`, `both: ${isSubmitDisabled}`)
 
   const { mutateAsync, data, isPending, isError, error, isSuccess } = useMutation({
     mutationKey: ['login', watch('email')],
@@ -40,6 +44,11 @@ export default function LoginForm() {
       console.log('success', data)
     }
   })
+
+  let typedError;
+  if (axios.isAxiosError(error)) {
+    typedError = error
+  }
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
@@ -65,18 +74,33 @@ export default function LoginForm() {
       </div>
       <Spacer size='lg' />
       <form className={S.form} onSubmit={handleSubmit(onSubmit)}>
-        <Input type='email' placeholder='type your email' title='email' message={error?.name}
+        <Input
+          type='email'
+          placeholder='type your email'
+          title='email'
           {...register('email')}
+          message={errors.email?.message}
+          variant={
+            errors.email &&
+            'danger'
+          }
         />
         <Spacer size='sm' />
-        <PasswordInput title='password'
-          {...register('password')} />
+        <PasswordInput
+          title='password'
+          {...register('password')}
+          message={errors.password?.message}
+          variant={
+            errors.password &&
+            'danger'
+          }
+        />
         <Spacer size='sm' />
-        <Button size='xl' type='submit' width='fill' disabled={isPending}>
+        <Button size='xl' type='submit' width='fill' disabled={isPending || isSubmitDisabled}>
           {!isPending ? 'Login' : <Loader />}
         </Button>
         <Spacer size='xs' />
-        {isError && <HelpText variant='danger' icon='invisible'>{error?.response.data.msg}</HelpText>}
+        {isError && <HelpText variant='danger' icon='invisible'>{typedError?.response?.data?.msg}</HelpText>}
         {isSuccess && <HelpText variant='success' icon='invisible'>{'successfully logged in'}</HelpText>}
       </form>
     </div>
