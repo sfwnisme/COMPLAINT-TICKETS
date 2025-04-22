@@ -99,7 +99,7 @@ export default function UpdateUserForm() {
         <Alert visible={showAlert} variant={isSuccess ? 'success' : 'danger'} hasIcon>
           {errorMessage ?? successMessage}
         </Alert>
-        <Button width="fill">{isPending ? <Loader /> : "Create"}</Button>
+        <Button width="fill">{isPending ? <Loader /> : "Update"}</Button>
       </form>
     </div>
   );
