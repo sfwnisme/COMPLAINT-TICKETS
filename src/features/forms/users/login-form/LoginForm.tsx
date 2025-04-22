@@ -99,7 +99,7 @@ export default function LoginForm() {
           }
         />
         <Spacer size='sm' />
-        <Alert visible={!showAlert} variant={isSuccess ? 'success' : 'danger'} hasIcon>
+        <Alert visible={showAlert} variant={isSuccess ? 'success' : 'danger'} hasIcon>
           {errorMessage ?? successMessage}
         </Alert>
         <Spacer size='xs' />
