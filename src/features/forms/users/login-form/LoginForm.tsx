@@ -49,8 +49,9 @@ export default function LoginForm() {
   if (axios.isAxiosError(error)) {
     typedError = error
   }
+  console.log(error)
   const showAlert = isSuccess || isError
-  const errorMessage = typedError?.response?.data?.msg
+  const errorMessage = typedError?.response?.data?.msg ?? typedError?.message
   const successMessage = 'you logged in successfully'
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -100,7 +101,7 @@ export default function LoginForm() {
         />
         <Spacer size='sm' />
         <Alert visible={showAlert} variant={isSuccess ? 'success' : 'danger'} hasIcon>
-          {errorMessage ?? successMessage}
+          {isSuccess ? successMessage : errorMessage}
         </Alert>
         <Spacer size='xs' />
         <Button size='xl' type='submit' width='fill' disabled={isPending || isSubmitDisabled}>
