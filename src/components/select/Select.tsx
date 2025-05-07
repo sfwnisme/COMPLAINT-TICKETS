@@ -34,9 +34,9 @@ const Select = React.forwardRef<HTMLSelectElement, Props>(
 
     return (
       <div className={S["select-wrapper"]}>
-        <label className={S["select-label"]} htmlFor={rest.name}>
+        {title && <label className={S["select-label"]} htmlFor={rest.name}>
           {title}
-        </label>
+        </label>}
         <div className={S["select-container"]}>
           <select
             ref={ref}
