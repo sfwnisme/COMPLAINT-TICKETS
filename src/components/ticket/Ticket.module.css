@@ -6,6 +6,8 @@
   transition: var(--transition-150);
   border-radius: 5px;
   /* box-shadow: var(--primary-shadow); */
+  display: flex;
+  flex-direction: column;
 }
 
 .ticket:has(input:checked) {
@@ -22,6 +24,7 @@
   justify-content: start;
   gap: 1rem;
   border-bottom: 1px solid var(--border-quaternary);
+  flex: 1;
 }
 
 .ticket__settings {
@@ -71,17 +74,31 @@
 }
 
 .ticket__footer {
-  padding: 0.5rem;
+  padding: 5px;
+  /* padding-left: 11px; */
   display: flex;
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
+  /* background-color: var(--primary-color-50); */
 }
 
 @media (max-width: 768px) {
   .ticket__footer {
     gap: 10px;
   }
+}
+
+.ticket__footer--left-side {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  /* margin-left: 10px; */
+  padding: 5px;
+  border: 1px solid var(--border-quaternary);
+  background-color: var(--primary-color-50);
+  border-radius: 5px;
 }
 
 .ticket__tags {
@@ -91,4 +108,9 @@
   justify-content: start;
   gap: 5px;
   flex-wrap: nowrap;
+  position: relative;
+  padding: 5px;
+  border: 1px solid var(--border-quaternary);
+  background-color: var(--primary-color-50);
+  border-radius: 5px;
 }
