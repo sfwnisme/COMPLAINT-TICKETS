@@ -1,7 +1,6 @@
 import Button from '../button/Button'
 import S from './Dialog.module.css'
 import { X } from 'lucide-react'
-import Loader from '../loaders/loader/Loader';
 
 type Props = {
   header: string,
