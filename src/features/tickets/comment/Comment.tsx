@@ -1,4 +1,4 @@
-import { BookmarkCheck, BookmarkX, Trash, Trash2 } from "lucide-react";
+import { BookmarkCheck, BookmarkX, Trash } from "lucide-react";
 import { Avatar } from "../../../components";
 import Button from "../../../components/button/Button";
 import Dropdown from "../../../components/dropdown/Dropdown";
@@ -10,9 +10,15 @@ import { IComment } from "../../../types/ticket.types";
 import Style from './Comment.module.css'
 import useUpdateApiData from "../../../hooks/use-update-api-data";
 import Loader from "../../../components/loaders/loader/Loader";
-import { Case, Shift, Visible } from "@sfwnisme/visi";
+import { Case, Shift } from "@sfwnisme/visi";
 
-export default function Comment({ _id = '', author = { _id: "", name: "" }, createdAt = "", content = "", isSolution = false }: Omit<IComment, 'ticket' | 'updatedAt'>) {
+export default function Comment({
+  _id = '',
+  author = { _id: "", name: "" },
+  createdAt = "",
+  content = "",
+  isSolution = false
+}: Readonly<Omit<IComment, 'ticket' | 'updatedAt'>>) {
   const { mutateAsync: deleteComment, isPending: isPendingDelete } = useDeleteApiData({ endpoint: `/comments`, revalidateKey: '/comments' })
   const { mutateAsync: updateComment, isPending: isPendingMark } = useUpdateApiData({ endpoint: '/comments', revalidateKey: '/comments', id: _id, method: 'patch' })
   const handleDeleteComment = async () => {
