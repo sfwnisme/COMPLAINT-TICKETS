@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { USER_ROLES_VALUES } from "../constrains/constrains";
+import { USER_ROLES_VALUES } from "../constraints/constraints";
 
 const userSchema = {
   name: z.string().min(3, 'name should be at least 3 characters').max(20, 'name should be maximum 20 characters '),
