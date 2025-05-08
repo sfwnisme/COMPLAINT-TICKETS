@@ -1,7 +1,7 @@
 import S from "./CreateUserForm.module.css";
 import Input from "../../../../components/input/Input.tsx";
 import Select from "../../../../components/select/Select.tsx";
-import { USER_ROLES } from "../../../../constrains/constrains.tsx";
+import { USER_ROLES } from "../../../../constraints/constraints.tsx";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "../../../../components/button/Button.tsx";
 import Loader from "../../../../components/loaders/loader/Loader.tsx";
@@ -25,7 +25,7 @@ export default function CreateUserForm() {
     mode: "all",
   });
   const { mutateAsync, isPending, isSuccess, isError, error } =
-    useCreateApiData<Inputs>("/users/register");
+    useCreateApiData<Inputs>({ endpoint: "/users/register", revalidateKey: '/users' });
   console.log("error for create user", error);
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
