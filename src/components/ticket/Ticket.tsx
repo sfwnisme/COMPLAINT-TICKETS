@@ -1,14 +1,12 @@
 import { Clock, User } from 'lucide-react'
 import S from './Ticket.module.css'
-import Select from '../select/Select'
 import Badge from '../badge/Badge'
 import Button from '../button/Button'
-import { NavLink } from 'react-router-dom'
 import HelpText from '../help-text/HelpText'
 import { TVariants } from '../defintions.components'
-import { TICKET_PRIORITY, TICKET_PRIORITY_COLORS, TICKET_STATUS, TICKET_STATUS_COLORS } from '../../constrains/constrains'
-import { IDepartment, ITicket } from '../../types/ticket.types'
-import useGetAllData from '../../hooks/useGetAllData'
+import { TICKET_PRIORITY_COLORS, TICKET_STATUS_COLORS } from '../../constraints/constraints'
+import { ITicket } from '../../types/ticket.types'
+import { useFloatTicket } from '../../store/store.zustand'
 
 export default function Ticket(
   {
@@ -20,13 +18,30 @@ export default function Ticket(
     priority = "low",
     tags = [],
     createdAt = 'Created 2 days ago',
-  }: Readonly<ITicket>
+    isLoading = false
+  }: Readonly<ITicket & { isLoading: boolean }>
 ) {
   console.log(tags)
+  const toggleFloatTicket = useFloatTicket((state) => state.toggleFloatTicket)
+  const setTicketId = useFloatTicket((state) => state.setTicketId)
+  const handleToggleFloatTicket = (id: string) => {
+    toggleFloatTicket()
+    setTicketId(id)
+  }
+
   const renderTags = tags.map((tag) => (
     <Badge text={tag?.name} title={tag?._id} variant='primary' key={tag._id} customColor={tag?.color} />
   ))
-
+  const isoDate = new Date(createdAt)
+  const formatedDate = isoDate.toLocaleString("en-US", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric'
+  })
   return (
     <div className={`${S.ticket}`}>
       <div className={S['ticket__header']}>
@@ -35,11 +50,12 @@ export default function Ticket(
             <input type='checkbox' title={_id.toString()} />
           </div>
         </div>
-        <h3 className={S['ticket__title']}>{title}</h3> <NavLink to={'tickets/2'}><Button size='xs' outline>open</Button></NavLink>
+        <h3 className={S['ticket__title']}>{title}</h3>
+        <Button onClick={() => handleToggleFloatTicket(_id)} size='xs' outline>{!isLoading ? 'open' : 'loading...'}</Button>
         <div className={S["ticket__header__footer"]}>
           <p className={S["ticket__number"]}>#{_id}</p>
           <div className={S["ticket__assignee"]} id={createdBy?._id}><User size={14} strokeWidth={1.6} id={createdBy?._id} />{createdBy?.name}</div>
-          <div className={S["ticket__created-at"]} ><Clock size={14} strokeWidth={1.6} /> {createdAt}</div>
+          <div className={S["ticket__created-at"]} ><Clock size={14} strokeWidth={1.6} /> {formatedDate}</div>
         </div >
       </div >
       <div className={S["ticket__footer"]}>
