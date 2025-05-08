@@ -10,7 +10,7 @@
   border: 0px solid transparent;
   outline: 0px solid transparent;
   display: grid;
-  /* align-content: center; */
+  align-content: center;
   justify-content: center;
   transition: var(--transition-50);
   border-radius: 5px;
