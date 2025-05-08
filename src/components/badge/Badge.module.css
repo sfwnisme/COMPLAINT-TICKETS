@@ -1,5 +1,5 @@
 .badge {
-  display: flex;
+  display: block;
   outline: 1px solid var(--primary-color-400);
   width: fit-content;
   padding: 2px 2px 2px;
