@@ -36,7 +36,7 @@ export default function UpdateUserForm() {
       role: data?.role
     }
   });
-  const { mutateAsync: updateUser, isPending, isSuccess, isError, error } = useUpdateApiData<Inputs>(`/users/${userId}`, 'patch')
+  const { mutateAsync: updateUser, isPending, isSuccess, isError, error } = useUpdateApiData<Inputs>({ endpoint: '/users', revalidateKey: '/users', id: String(userId), method: 'patch' })
   const showAlert = isSuccess || isError
   let typedError
   if (axios.isAxiosError(error)) {
