@@ -75,6 +75,7 @@
   color: var(--text-tertiary);
   line-height: 1.4;
   width: 100%;
+  word-break: break-all;
 }
 
 @media (max-width: 650px) {
