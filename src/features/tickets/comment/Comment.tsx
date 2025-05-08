@@ -57,18 +57,11 @@ export default function Comment({
           <Case when={!isPendingMark || !isPendingDelete}>
             <Dropdown>
               <List position='absolute' rightOrLeft='right'>
-                <ListItem noStyle>
-                  <div style={{ display: 'flex', gap: '2px' }}>
-                    <Button width="fill" size="xs" variant="danger" onClick={handleDeleteComment}><Trash size={23} strokeWidth={2.2} /></Button>
-                    <Button
-                      width='fill'
-                      size='xs'
-                      outline
-                      variant={isSolution ? 'danger' : 'success'}
-                      title={isSolution ? "Unmark as a solution" : "Mark as a solution"}
-                      onClick={markCommentSolution}>{isSolution ? <BookmarkX size={25}
-                      /> : <BookmarkCheck size={25} />}</Button>
-                  </div>
+                <ListItem onClick={markCommentSolution}>
+                  {!isSolution ? 'Mark solution' : 'Unmark solution'}
+                </ListItem>
+                <ListItem onClick={handleDeleteComment}>
+                  Remove
                 </ListItem>
               </List>
             </Dropdown>
