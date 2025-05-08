@@ -1,21 +1,16 @@
-import { useState } from 'react';
-import { TTicketTypes } from '../../../components/defintions.components.ts';
 import Ticket from '../../../components/ticket/Ticket.tsx'
 import Title from '../../../components/title/Title.tsx'
-import FloatTicket from '../../../features/tickets/FloatTicket.tsx';
+import FloatTicket from '../../../features/tickets/float-ticket/FloatTicket.tsx';
 import useGetAllData from '../../../hooks/useGetAllData.tsx';
 import { ITicket } from '../../../types/ticket.types.ts';
 import S from './Tickets.module.css'
-import useBearsStore from '../../../store/store.zustand.ts';
+import { useFloatTicket } from '../../../store/store.zustand.ts';
 
 
 
 export default function Tickets() {
-  const [isVisible, setIsVisible] = useState(false)
-  const zustandIncrement = useBearsStore()
-  console.log('zustandIncrement', zustandIncrement)
+  const isFloatTicketVisible = useFloatTicket((state) => state.isFloatTicketVisible)
   const { data, isLoading, isSuccess, isError, error } = useGetAllData('/tickets')
-  console.log('==========================', data)
   const ticketsContent = data?.map((ticket: ITicket) => (
     <Ticket
       key={ticket._id}
@@ -27,15 +22,13 @@ export default function Tickets() {
       tags={ticket.tags}
       createdAt={ticket.createdAt}
       _id={ticket._id}
+      isLoading={isLoading}
     />
   ))
 
   return (
     <div>
-      <FloatTicket
-        isVisible={isVisible}
-        setIsVisible={setIsVisible}
-      />
+      {isFloatTicketVisible && isSuccess ? <FloatTicket /> : null}
       <Title text='Tickets' />
       <div className={S.tickets}>
         {ticketsContent}
