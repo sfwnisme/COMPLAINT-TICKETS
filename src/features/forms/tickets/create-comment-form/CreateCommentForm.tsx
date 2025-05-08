@@ -3,10 +3,11 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import useCreateApiData from "../../../../hooks/use-create-api-data"
 import Input from "../../../../components/input/Input"
 import Button from "../../../../components/button/Button"
+import { zodResolver } from '@hookform/resolvers/zod'
+import { createCommentSchema } from '../../../../validation/ticket.validation'
+import { z } from 'zod'
 
-type Inputs = {
-  content: string,
-}
+type Inputs = z.infer<typeof createCommentSchema>
 
 export default function CreateCommentForm({ ticketId }: { ticketId: string }) {
   const {
@@ -16,6 +17,7 @@ export default function CreateCommentForm({ ticketId }: { ticketId: string }) {
     getValues,
     formState: { errors, isValid, isDirty, disabled },
   } = useForm<Inputs>({
+    resolver: zodResolver(createCommentSchema),
     mode: 'all'
   })
   const { mutateAsync, isPending } = useCreateApiData<Inputs>({ endpoint: '/comments/create', revalidateKey: '/comments' })
@@ -42,6 +44,7 @@ export default function CreateCommentForm({ ticketId }: { ticketId: string }) {
     <form className={`${Style['ticket-page__add-comment']}`} onSubmit={handleSubmit(onSubmit)}>
       <Input type='text' placeholder='Comment...'
         {...register('content')}
+        message={errors.content?.message}
       />
       <Button variant='info' size='lg' disabled={disableButton}>{isPending ? 'Sending...' : 'Send'}</Button>
     </form>

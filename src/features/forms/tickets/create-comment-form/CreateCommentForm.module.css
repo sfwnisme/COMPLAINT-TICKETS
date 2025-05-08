@@ -1,6 +1,6 @@
 .ticket-page__add-comment {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: start;
   gap: 0.5rem;
   padding: 20px;
