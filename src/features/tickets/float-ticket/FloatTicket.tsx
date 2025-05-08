@@ -2,7 +2,6 @@ import Style from './FloatTicet.module.css'
 import { X } from 'lucide-react'
 import Button from '../../../components/button/Button'
 import { useEffect } from 'react'
-import Input from '../../../components/input/Input'
 import { useFloatTicket } from '../../../store/store.zustand'
 import { IComment, ITag } from '../../../types/ticket.types'
 import Badge from '../../../components/badge/Badge'
@@ -11,8 +10,7 @@ import { TICKET_PRIORITY_COLORS, TICKET_STATUS_COLORS } from '../../../constrain
 import useGetArrayByIdApiData from '../../../hooks/use-get-array-by-id-api-data'
 import Alert from '../../../components/alert/Alert'
 import Comment from '../comment/Comment'
-import useCreateApiData from '../../../hooks/use-create-api-data'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import CreateCommentForm from '../../forms/tickets/create-comment-form/CreateCommentForm'
 
 
 function ConversationTab({ comments, description }: { comments: Omit<IComment[], 'ticket' | 'updatedAt'>, description: string }) {
@@ -43,50 +41,50 @@ function ConversationTab({ comments, description }: { comments: Omit<IComment[],
 }
 
 
-type Inputs = {
-  content: string,
-  ticket: string,
-  isSolution: boolean,
-}
+// type Inputs = {
+//   content: string,
+//   ticket: string,
+//   isSolution: boolean,
+// }
 
-function CreateCommentForm({ ticketId }: { ticketId: string }) {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors, isValid, isDirty, disabled },
-  } = useForm<Inputs>({
-    mode: 'all'
-  })
-  const { mutateAsync, isPending } = useCreateApiData<Inputs>({ endpoint: '/comments/create', revalidateKey: '/comments' })
+// function CreateCommentForm({ ticketId }: { ticketId: string }) {
+//   const {
+//     register,
+//     handleSubmit,
+//     watch,
+//     formState: { errors, isValid, isDirty, disabled },
+//   } = useForm<Inputs>({
+//     mode: 'all'
+//   })
+//   const { mutateAsync, isPending } = useCreateApiData<Inputs>({ endpoint: '/comments/create', revalidateKey: '/comments' })
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    try {
-      const newComment = await mutateAsync(data)
-      console.log('success comment')
-      return newComment
-    } catch (error) {
-      console.log('new comment error', error)
-    }
-  }
-  console.log(watch())
+//   const onSubmit: SubmitHandler<Inputs> = async (data) => {
+//     try {
+//       const newComment = await mutateAsync(data)
+//       console.log('success comment')
+//       return newComment
+//     } catch (error) {
+//       console.log('new comment error', error)
+//     }
+//   }
+//   console.log(watch())
 
-  return (
-    <form className={`${Style['ticket-page__add-comment']}`} onSubmit={handleSubmit(onSubmit)}>
-      {/* <Avatar /> */}
-      <Input type='text' placeholder='Comment...'
-        {...register('content')}
-      />
-      <input type='hidden' value={ticketId}
-        {...register('ticket')}
-      />
-      <input type='hidden' value="false"
-        {...register('isSolution')}
-      />
-      <Button variant='info' size='lg' disabled={Boolean(watch()?.content?.length < 5) || isPending}>{isPending ? 'Sending...' : 'Send'}</Button>
-    </form>
-  )
-}
+//   return (
+//     <form className={`${Style['ticket-page__add-comment']}`} onSubmit={handleSubmit(onSubmit)}>
+//       {/* <Avatar /> */}
+//       <Input type='text' placeholder='Comment...'
+//         {...register('content')}
+//       />
+//       <input type='hidden' value={ticketId}
+//         {...register('ticket')}
+//       />
+//       <input type='hidden' value="false"
+//         {...register('isSolution')}
+//       />
+//       <Button variant='info' size='lg' disabled={Boolean(watch()?.content?.length < 5) || isPending}>{isPending ? 'Sending...' : 'Send'}</Button>
+//     </form>
+//   )
+// }
 
 export default function FloatTicket() {
 
