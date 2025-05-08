@@ -20,7 +20,11 @@ You can check the backend project [here](https://github.com/sfwnisme/backend-tic
 
 ### Completed Features
 
-- Alert message system for success and error states
+- [x] Alert message system for success and error states
+- [x] comment component
+- [x] create comment => implement the validation with zod
+- [ ] skeleton loading
+- [ ] create array for inputs data with typescript interface to sure the exact required data to loop instead of adding inputs manually
 
 ### In Progress
 
