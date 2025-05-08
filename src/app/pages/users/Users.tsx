@@ -14,24 +14,16 @@ import Dropdown from "../../../components/dropdown/Dropdown"
 import List from "../../../components/list/List"
 import ListItem from "../../../components/list/ListItem"
 import useGetCurrentUser from "../../../hooks/useGetCurrentUser"
-import { USER_ROLES, USER_ROLES_COLORS } from "../../../constrains/constrains"
+import { USER_ROLES, USER_ROLES_COLORS } from "../../../constraints/constraints"
 import { Visible } from "@sfwnisme/visi"
 import useGetAllData from "../../../hooks/useGetAllData"
 import useDeleteApiData from "../../../hooks/use-delete-api-data"
 import Dialog from "../../../components/diaglog/Dialog"
 import { useState } from "react"
 
-const UsersData = ({ setDeleteDialogIsVisible, setGetUserId }) => {
+const UsersData = ({ setDeleteDialogIsVisible, setGetUserId }: { setDeleteDialogIsVisible: (prev: boolean) => void, setGetUserId: (prev: string) => void }) => {
   const getAllData = useGetAllData('/users')
   const currentUser = useGetCurrentUser()
-  const { mutate, isPending: isDeleting } = useDeleteApiData({
-    endpoint: '/users',
-    revalidateKey: '/users'
-  })
-
-  const onDeleteUser = (id: string) => {
-    mutate(id)
-  }
 
   const renderLoading = (
     <TR>
@@ -78,13 +70,6 @@ const UsersData = ({ setDeleteDialogIsVisible, setGetUserId }) => {
                   setDeleteDialogIsVisible(true)
                   setGetUserId(user._id)
                 }}>Delete</ListItem>
-                {/* <ListItem onClick={() => onDeleteUser(user._id)}>
-                  {
-                    isDeleting ?
-                      'Deleting...'
-                      : 'Delete'
-                  }
-                </ListItem> */}
               </Visible>
             </List>
           </Dropdown>
@@ -104,7 +89,7 @@ export default function Users() {
   const [deleteDialogIsVisible, setDeleteDialogIsVisible] = useState<boolean>(false)
   const [getUserId, setGetUserId] = useState<string>("")
 
-  const { mutate, mutateAsync, isPending: isDeleting } = useDeleteApiData({
+  const { mutateAsync, isPending: isDeleting } = useDeleteApiData({
     endpoint: '/users',
     revalidateKey: '/users'
   })
