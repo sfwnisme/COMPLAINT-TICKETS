@@ -1,15 +1,15 @@
 import { create } from 'zustand'
 
 type State = {
-  bears: number
+  isFloatTicketVisible: boolean;
+  toggleFloatTicket: () => void;
+  ticketId: string,
+  setTicketId: (id: string) => void
 }
 
-const useStore = create((set) => ({
-  bears: 0,
-  incrementPopulation: () => set((state: State) => ({ bears: state.bears + 1 })),
-  removeAllBears: () => set({ bears: 0 }),
-  updateBears: (newBears: number) => set({ bears: newBears })
+export const useFloatTicket = create<State>((set) => ({
+  isFloatTicketVisible: false,
+  toggleFloatTicket: () => set((state) => ({ isFloatTicketVisible: !state.isFloatTicketVisible })),
+  ticketId: "",
+  setTicketId: (id) => set(({ ticketId: id }))
 }))
-
-const useBearsStore = create(useStore)
-export default useBearsStore
