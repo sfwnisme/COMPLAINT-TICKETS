@@ -23,3 +23,13 @@ export interface ITicket {
   createdAt?: string,
   updatedAt?: string
 }
+
+export interface IComment {
+  _id: string,
+  content: string,
+  author: { _id: string, name: string },
+  ticket: { _id: string, title: string },
+  isSolution: boolean,
+  createdAt: string,
+  updatedAt: string,
+}
