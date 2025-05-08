@@ -1,7 +1,7 @@
 import S from "./UpdateUserForm.module.css";
 import Input from "../../../../components/input/Input.tsx";
 import Select from "../../../../components/select/Select.tsx";
-import { USER_ROLES } from "../../../../constrains/constrains.tsx";
+import { USER_ROLES } from "../../../../constraints/constraints.tsx";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "../../../../components/button/Button.tsx";
 import Loader from "../../../../components/loaders/loader/Loader.tsx";
