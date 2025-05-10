@@ -1,6 +1,4 @@
-import { BookmarkCheck, BookmarkX, Trash } from "lucide-react";
 import { Avatar } from "../../../components";
-import Button from "../../../components/button/Button";
 import Dropdown from "../../../components/dropdown/Dropdown";
 import HelpText from "../../../components/help-text/HelpText";
 import List from "../../../components/list/List";
@@ -40,7 +38,6 @@ export default function Comment({
     second: 'numeric'
   })
 
-  console.log('marking ================', isPendingMark || isPendingDelete)
 
   return (
     <div className={`${Style["ticket-page__comment"]} ${isSolution && Style['ticket-page__comment-marked-as-a-solution']}`} id={_id}>
