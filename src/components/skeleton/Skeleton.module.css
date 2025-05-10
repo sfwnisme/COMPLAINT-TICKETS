@@ -1,0 +1,86 @@
+.skeleton {
+  background-color: var(--primary-color-100);
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+
+}
+
+.skeleton--primary {
+  background-color: var(--primary-color-100);
+}
+
+.skeleton--info {
+  background-color: var(--info-color-100);
+}
+
+.skeleton--success {
+  background-color: var(--success-color-100);
+}
+
+.skeleton--warning {
+  background-color: var(--warning-color-100);
+}
+
+.skeleton--danger {
+  background-color: var(--danger-color-100);
+}
+
+
+.skeleton::before {
+  content: "";
+  position: absolute;
+  left: -20%;
+  height: 100%;
+  width: 20%;
+  background-color: var(--primary-color-200);
+  opacity: 0;
+  animation: skeleton 1.2s linear infinite;
+  /* box-shadow: 0px 0px 10px var(--primary-shadow); */
+  border-radius: 5px;
+}
+
+.skeleton--primary::before {
+  background-color: var(--primary-color-200);
+}
+
+.skeleton--info::before {
+  background-color: var(--info-color-200);
+}
+
+.skeleton--success::before {
+  background-color: var(--success-color-200);
+}
+
+.skeleton--warning::before {
+  background-color: var(--warning-color-200);
+}
+
+.skeleton--danger::before {
+  background-color: var(--danger-color-200);
+}
+
+@keyframes skeleton {
+  0% {
+    left: -20%;
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0.3;
+    width: 30%;
+  }
+
+  50% {
+    left: 100%;
+    /* background: var(--primary-color-200); */
+    opacity: 0;
+    width: 20%;
+  }
+
+  100% {
+    left: 0%;
+    opacity: 0;
+  }
+}
