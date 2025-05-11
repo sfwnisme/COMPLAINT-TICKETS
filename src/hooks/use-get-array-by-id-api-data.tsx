@@ -7,7 +7,7 @@ type Params = {
   fieldId: string | undefined
 }
 
-export default function useGetArrayByIdApiData({ endpoint = '', relatedField = '', fieldId = '' }: Params) {
+export default function useGetArrayByIdApiData<T>({ endpoint = '', relatedField = '', fieldId = '' }: Params) {
   const query = useQuery({
     queryKey: [endpoint],
     queryFn: async () => {
@@ -17,7 +17,7 @@ export default function useGetArrayByIdApiData({ endpoint = '', relatedField = '
     },
     select: (res) => {
       console.log('onSuccess single api data', res)
-      return res.data.data
+      return res.data.data as T
     }
   })
 
