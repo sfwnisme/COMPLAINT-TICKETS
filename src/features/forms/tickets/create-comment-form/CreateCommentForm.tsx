@@ -15,7 +15,7 @@ export default function CreateCommentForm({ ticketId }: { ticketId: string }) {
     handleSubmit,
     watch,
     getValues,
-    formState: { errors, isValid, isDirty, disabled },
+    formState: { errors, isValid },
   } = useForm<Inputs>({
     resolver: zodResolver(createCommentSchema),
     mode: 'all'
