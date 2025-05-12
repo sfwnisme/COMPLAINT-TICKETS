@@ -1,19 +1,17 @@
-import React from 'react'
-import { Outlet, useNavigate } from 'react-router-dom';
-import useGetCurrentUser from '../../../hooks/useGetCurrentUser';
-import PageLoader from '../../../components/loaders/page-loader/PageLoader';
-
+import { Outlet, useNavigate } from "react-router-dom";
+import PageLoader from "../../../components/loaders/page-loader/PageLoader";
+import useGetCurrentUser from "../../../hooks/useGetCurrentUser";
 
 export default function PrivateRoute() {
-  const navigate = useNavigate()
-  const currentUser = useGetCurrentUser()
+  const navigate = useNavigate();
+  const currentUser = useGetCurrentUser();
 
   if (currentUser.isLoading) {
-    return <PageLoader />
+    return <PageLoader />;
   }
 
   if (!currentUser.data && currentUser.isError) {
-    navigate('/login')
+    navigate("/login");
   }
-  return <Outlet />
+  return <Outlet />;
 }

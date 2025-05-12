@@ -23,7 +23,7 @@
   max-width: 700px;
   width: 100%;
   border-radius: 20px;
-  height: calc(100vh - 32px);
+  height: calc(100dvh - 32px);
   border: 1px solid var(--border-quaternary);
   overflow-y: hidden;
 
@@ -122,12 +122,18 @@
   }
 }
 
+.float-ticket__chat-container {
+  overflow: hidden;
+  border-radius: 20px;
+  height: 60%;
+  margin-inline: 20px;
+}
+
 .float-ticket__chat {
   overflow-y: auto;
-  height: 65%;
-  border-radius: 20px;
+  border-radius: inherit;
+  height: 100%;
   border: 1px solid var(--border-quaternary);
-  margin-inline: 20px;
 
   @media (max-width: 767px) {
     height: 55%;
