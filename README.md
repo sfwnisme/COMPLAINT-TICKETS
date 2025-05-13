@@ -1,6 +1,11 @@
 # Ticket Issue System
 
-This project was created to scale my frontend skills by building every component from scratch.
+> [!IMPORTANT]
+> This project was created to scale my frontend skills by building every component from scratch.
+  
+## ⚠️ALERT
+
+currently the project expands, so I decided to restructure the folders and files, with new adoption. You can follow up the updates on `REFACTOR_FOLDER_STRUCTURE` branch
 
 ## Technologies Used
 
@@ -26,6 +31,37 @@ You can check the backend project [here](https://github.com/sfwnisme/backend-tic
 - [x] comments that created by the frontend with true as a solution not marked
 - [ ] skeleton loading
 - [ ] create array for inputs data with typescript interface to sure the exact required data to loop instead of adding inputs manually
+- [ ] error handling
+
+#### ticket
+  
+- [ ] create ticket
+- [ ] update ticket
+- [ ] delete single ticket
+- [ ] delete many tickets
+- [ ] loading skeleton for all the requests
+- [ ] search for tickets
+
+#### departments
+
+- [ ] get department data
+- [ ] create department
+- [ ] update department
+- [ ] delete department
+
+#### tags
+
+- [ ] get tags data
+- [ ] create tag
+- [ ] update tag
+- [ ] delete tag
+
+#### metrics
+
+- [ ] tickets number
+- [ ] time tickets resolved
+- [ ] date range for metrics
+- [ ] most commont words used
 
 ### In Progress
 
