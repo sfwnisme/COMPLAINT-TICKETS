@@ -9,6 +9,7 @@ import Style from './Comment.module.css'
 import useUpdateApiData from "../../../hooks/use-update-api-data";
 import Loader from "../../../components/loaders/loader/Loader";
 import { Case, Shift } from "@sfwnisme/visi";
+import { formatedDate } from "../../../libs/formated-date";
 
 export default function Comment({
   _id = '',
@@ -27,25 +28,13 @@ export default function Comment({
     await updateComment({ isSolution: !isSolution })
   }
 
-  const isoDate = new Date(createdAt)
-  const formatedDate = isoDate.toLocaleString("en-US", {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric'
-  })
-
-
   return (
     <div className={`${Style["ticket-page__comment"]} ${isSolution && Style['ticket-page__comment-marked-as-a-solution']}`} id={_id}>
       <div className={`${Style['ticket-page__commenter']}`}>
-        <Avatar name={author.name} key={author._id} />
+        <Avatar name={author.name} key={author._id} size="sm" />
         <div className={Style['ticket-page__commenter-info']} id={author._id}>
           <p className={`${Style['ticket-page__commenter__name']}`}>{author.name}</p>
-          <p className={`${Style['ticket-page__commenter__date']}`}>{formatedDate}</p>
+          <p className={`${Style['ticket-page__commenter__date']}`}>{formatedDate(createdAt)}</p>
         </div>
         <Shift >
           <Case when={isPendingMark || isPendingDelete}>

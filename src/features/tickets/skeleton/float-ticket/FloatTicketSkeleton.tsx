@@ -1,11 +1,12 @@
 import Skeleton from '../../../../components/skeleton/Skeleton'
+import Spacer from '../../../../components/spacer/Spacer'
 import CommentSkeleton from '../comment/CommentSkeleton'
 import CreateCommentFormSkeleton from '../create-comment-form-skeleton/CreateCommentFormSkeleton'
 import Style from './FloatTicketSkeleton.module.css'
 
 const array: number[] = [1, 3, 4]
 
-function ConversationTab() {
+function Conversation() {
 
   const renderCommentsList = array?.map((_) => {
     return (
@@ -14,10 +15,12 @@ function ConversationTab() {
   })
 
   return (
-    <div className={Style['ticket-page__conversation-tab']}>
-      <div className={`${Style["ticket-page__comments"]}`}>
-        <div className={Style['ticket-page__description']}>
-          <Skeleton />
+    <div className={Style['float-ticket__conversation-tab']}>
+      <div className={`${Style["float-ticket__comments"]}`}>
+        <div className={Style['float-ticket__description']}>
+          <Skeleton height='14px' width='90%' />
+          <Spacer />
+          <Skeleton height='14px' width='45%' />
         </div>
         {renderCommentsList}
       </div>
@@ -33,6 +36,14 @@ export default function FloatTicketSkeleton() {
         <div className={Style["float-ticket__header"]}>
           <Skeleton width='30%' />
           <Skeleton width='30px' height='30px' />
+        </div>
+        <div className={Style['float-ticket__createdby']}>
+          <Skeleton width='40px' height='40px' />
+          <div className={Style['float-ticket__createdby-info']}>
+            <Skeleton height='15px' width='20%' />
+            <Spacer />
+            <Skeleton height='12px' width='30%' />
+          </div>
         </div>
         <div className={Style["float-ticket__body"]}>
           <div className={Style['float-ticket__settings']}>
@@ -59,10 +70,10 @@ export default function FloatTicketSkeleton() {
           </div>
         </div>
         <div className={Style['float-ticket__chat']}>
-          <div className={`${Style["ticket-page__comments"]}`}>
+          <div className={`${Style["float-ticket__conversation"]}`}>
             {/* <Skeleton /> */}
-            {/* <ConversationTab comments={comments} description={getSingleTicket?.data?.description} /> */}
-            <ConversationTab />
+            {/* <Conversation comments={comments} description={getSingleTicket?.data?.description} /> */}
+            <Conversation />
             {/* <CommentSkeleton /> */}
           </div>
         </div>
