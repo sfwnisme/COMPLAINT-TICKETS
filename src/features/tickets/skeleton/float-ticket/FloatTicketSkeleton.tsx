@@ -18,7 +18,9 @@ function Conversation() {
     <div className={Style['float-ticket__conversation-tab']}>
       <div className={`${Style["float-ticket__comments"]}`}>
         <div className={Style['float-ticket__description']}>
-          <Skeleton />
+          <Skeleton height='14px' width='90%' />
+          <Spacer />
+          <Skeleton height='14px' width='45%' />
         </div>
         {renderCommentsList}
       </div>
@@ -35,15 +37,12 @@ export default function FloatTicketSkeleton() {
           <Skeleton width='30%' />
           <Skeleton width='30px' height='30px' />
         </div>
-         <div className={Style['float-ticket__createdby']}>
+        <div className={Style['float-ticket__createdby']}>
           <Skeleton width='40px' height='40px' />
-          {/* <Avatar size='md' name={getSingleTicket?.data?.createdBy?.name} /> */}
           <div className={Style['float-ticket__createdby-info']}>
-            <Skeleton height='15px' width='20%'/>
+            <Skeleton height='15px' width='20%' />
             <Spacer />
-            <Skeleton height='12px' width='30%'/>
-            {/* <p className={`${Style['float-ticket__createdby__name']}`}>{getSingleTicket?.data?.createdBy?.name}</p> */}
-            {/* <p className={`${Style['float-ticket__createdby__date']}`}>{formatedDate(getSingleTicket?.data?.createdAt)}</p> */}
+            <Skeleton height='12px' width='30%' />
           </div>
         </div>
         <div className={Style["float-ticket__body"]}>

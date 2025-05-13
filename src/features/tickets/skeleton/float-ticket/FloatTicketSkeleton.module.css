@@ -173,7 +173,10 @@
     margin-inline: 8px;
   }
 }
-
+.float-ticket__conversation {
+  margin-block: 2rem;
+  padding-inline: 10px;
+}
 /*==============[conversation tab]==============*/
 .float-ticket__description {
   font-size: 14px;
@@ -192,7 +195,7 @@
   display: block;
   margin-block: 2rem;
   position: relative;
-  padding: 20px 10px 0;
+  padding: 0 10px 0;
 }
 
 
