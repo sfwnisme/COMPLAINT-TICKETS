@@ -17,7 +17,7 @@ import Spacer from '../../../components/spacer/Spacer'
 import { formatedDate } from '../../../libs/formated-date'
 
 
-function Conversation({ comments, description }: Readonly<{ comments: Omit<IComment[], 'ticket' | 'updatedAt'>, description: string }>) {
+function Conversation({ comments = [], description = "" }: { comments: IComment[], description: string }) {
 
   const renderCommentsList = comments?.map((comment: IComment) => {
     return (
@@ -49,7 +49,7 @@ export default function FloatTicket() {
   const isFloatTicketVisible = useFloatTicket((state) => state.isFloatTicketVisible)
   const toggleFloatTicket = useFloatTicket((state) => state.toggleFloatTicket)
   const ticketId = useFloatTicket((state) => state.ticketId)
-  const getSingleTicket = useGetSingleApiData({ endpoint: '/tickets', id: ticketId })
+  const getSingleTicket = useGetSingleApiData<ITicket>({ endpoint: '/tickets', id: ticketId })
   const { data: comments, isLoading } = useGetArrayByIdApiData<IComment[]>({ endpoint: '/comments', relatedField: 'ticketId', fieldId: ticketId })
   const renderTags = getSingleTicket?.data?.tags.map((tag: ITag) => (
     <Badge text={tag?.name} title={tag?._id} variant='primary' key={tag._id} customColor={tag?.color} />
@@ -62,10 +62,10 @@ export default function FloatTicket() {
     }
   }, [isFloatTicketVisible])
 
-  if (!isLoading) {
+  if (isLoading) {
     return <FloatTicketSkeleton />
   }
-  // console.log(getSingleTicket?.data)
+  console.log(getSingleTicket?.data)
   return (
     <div className={Style["float-ticket__overlay"]}>
       <div className={Style['float-ticket']}>
@@ -95,15 +95,15 @@ export default function FloatTicket() {
             </span>}
             <span className={Style['float-ticket__status']}>
               <p>Status</p>
-              <Badge text={getSingleTicket?.data?.status} title={getSingleTicket?.data?.status} variant={TICKET_STATUS_COLORS[getSingleTicket?.data?.status]} key={getSingleTicket?.data?.status} />
+              <Badge text={getSingleTicket?.data?.status} title={getSingleTicket?.data?.status} variant={TICKET_STATUS_COLORS[getSingleTicket?.data?.status ?? 'open']} key={getSingleTicket?.data?.status} />
             </span>
-            {getSingleTicket?.data?.tags?.length > 0 && <span className={Style['float-ticket__tags']}>
+            {getSingleTicket?.data?.tags && getSingleTicket?.data?.tags?.length > 0 && <span className={Style['float-ticket__tags']}>
               <p>Tags</p>
               <strong>{renderTags}</strong>
             </span>}
             <span className={Style['float-ticket__priority']}>
               <p>Priority</p>
-              <Badge text={getSingleTicket?.data?.priority} title={getSingleTicket?.data?.priority} variant={TICKET_PRIORITY_COLORS[getSingleTicket?.data?.priority]} key={getSingleTicket?.data?.priority} />
+              <Badge text={getSingleTicket?.data?.priority} title={getSingleTicket?.data?.priority} variant={TICKET_PRIORITY_COLORS[getSingleTicket?.data?.priority ?? 'low']} key={getSingleTicket?.data?.priority} />
             </span>
           </div>
         </div>
