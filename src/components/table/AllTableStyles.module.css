@@ -42,9 +42,14 @@
 
 .tr {
   outline: none;
-  /* border-bottom: 1px solid var(--border-quaternary); */
   transition: var(--transition-50) background;
   border-bottom: 1px solid transparent;
+}
+
+@media (max-width: 650px) {
+  .tr {
+    border-bottom: 1px solid var(--border-inverse);
+  }
 }
 
 .tbody .tr:hover {
@@ -79,9 +84,9 @@
 }
 
 @media (max-width: 650px) {
-  .table {
+  /* .table {
     border: 1px solid var(--border-quaternary);
-  }
+  } */
 
   .thead {
     display: none;
@@ -113,7 +118,6 @@
 
 .table-grid .tbody {
   display: grid;
-  /* grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); */
   grid-template-columns: repeat(5, auto);
 }
 
