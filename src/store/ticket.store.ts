@@ -11,5 +11,5 @@ export const useFloatTicket = create<State>((set) => ({
   isFloatTicketVisible: false,
   toggleFloatTicket: () => set((state) => ({ isFloatTicketVisible: !state.isFloatTicketVisible })),
   ticketId: "",
-  setTicketId: (id) => set(({ ticketId: id }))
+  setTicketId: (id) => set(({ ticketId: id })),
 }))
