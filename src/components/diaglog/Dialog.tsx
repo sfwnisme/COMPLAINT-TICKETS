@@ -8,7 +8,7 @@ type Props = {
   CTA_L: string,
   CTA_R: string,
   isVisible: boolean,
-  setIsVisible: (prev: boolean) => void,
+  setIsVisible: () => void,
   action: () => void,
   isLoading: boolean
 }
@@ -26,7 +26,7 @@ export default function Dialog({
 
   const actionFunc = async () => {
     await action()
-    setIsVisible(false)
+    setIsVisible()
   }
 
   return (
@@ -38,7 +38,7 @@ export default function Dialog({
             size='square'
             outline
             className={S.close_icon}
-            onClick={() => setIsVisible(false)}
+            onClick={() => setIsVisible()}
           >
             <X size={18} />
           </Button>
@@ -58,7 +58,7 @@ export default function Dialog({
               variant='primary'
               size='lg'
               outline
-              onClick={() => setIsVisible(false)}
+              onClick={() => setIsVisible()}
             >{CTA_L}</Button>
           </div>
         </div>
