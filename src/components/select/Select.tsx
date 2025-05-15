@@ -41,7 +41,7 @@ const Select = React.forwardRef<HTMLSelectElement, Props>(
           <select
             ref={ref}
             title={rest.name}
-            id={rest.name}
+            // id={rest.name}
             className={`${S.select} ${settings}`}
             defaultChecked={true}
             {...rest}

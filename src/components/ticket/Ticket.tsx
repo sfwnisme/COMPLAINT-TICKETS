@@ -6,7 +6,7 @@ import HelpText from '../help-text/HelpText'
 import { TVariants } from '../defintions.components'
 import { TICKET_PRIORITY_COLORS, TICKET_STATUS_COLORS } from '../../constraints/constraints'
 import { ITicket } from '../../types/ticket.types'
-import { useFloatTicket } from '../../store/store.zustand'
+import { useFloatTicket } from '../../store/ticket.store'
 
 export default function Ticket(
   {
