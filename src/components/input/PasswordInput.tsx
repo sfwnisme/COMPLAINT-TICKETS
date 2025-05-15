@@ -20,7 +20,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, finalType>(({ ...rest }
     <div className={S['password-input-wrapper']}>
       <Input {...rest} ref={ref} type={!showPassword ? 'password' : 'text'} />
       <div className={S['password-input__eye-wrapper']}>
-        <Button size='sm' type='button' outline title={!showPassword ? 'show password' : 'hide password'}
+        <Button size='sm' type='button' shape='soft' title={!showPassword ? 'show password' : 'hide password'}
           onClick={() => setShowPassword((prev) => !prev)}
         >
           {showPassword ? <Eye size={11} /> : <EyeClosed size={11} />}

@@ -51,7 +51,7 @@ export default function Ticket(
           </div>
         </div>
         <h3 className={S['ticket__title']}>{title}</h3>
-        <Button onClick={() => handleToggleFloatTicket(_id)} size='xs' outline>{!isLoading ? 'open' : 'loading...'}</Button>
+        <Button onClick={() => handleToggleFloatTicket(_id)} size='xs' shape='soft'>{!isLoading ? 'open' : 'loading...'}</Button>
         <div className={S["ticket__header__footer"]}>
           <p className={S["ticket__number"]}>#{_id}</p>
           <div className={S["ticket__assignee"]} id={createdBy?._id}><User size={14} strokeWidth={1.6} id={createdBy?._id} />{createdBy?.name}</div>

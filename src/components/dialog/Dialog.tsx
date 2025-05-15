@@ -36,7 +36,7 @@ export default function Dialog({
           <Button
             variant='primary'
             size='square'
-            outline
+            shape='soft'
             className={S.close_icon}
             onClick={() => setIsVisible()}
           >
@@ -51,13 +51,14 @@ export default function Dialog({
           <div className={S.footer}>
             <Button
               variant='danger'
+              shape='soft'
               size='lg'
               onClick={() => actionFunc()}
             >{!isLoading ? CTA_R : 'Loading...'}</Button>
             <Button
               variant='primary'
               size='lg'
-              outline
+              shape='soft'
               onClick={() => setIsVisible()}
             >{CTA_L}</Button>
           </div>
