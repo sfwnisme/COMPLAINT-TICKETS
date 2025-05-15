@@ -17,7 +17,7 @@
 
 .thead {
   border-bottom: 1px solid var(--border-primary);
-  background-color: var(--primary-color-50);
+  /* background-color: var(--primary-color-50); */
   position: sticky;
   top: 0;
   z-index: 1;
@@ -44,6 +44,8 @@
   outline: none;
   transition: var(--transition-50) background;
   border-bottom: 1px solid transparent;
+    border-bottom: 1px solid var(--border-inverse);
+
 }
 
 @media (max-width: 650px) {
@@ -61,14 +63,20 @@
   background-color: var(--primary-color-50);
 }
 
+.td {
+  color: var(--typography-heading);
+}
+
+.th {
+  /* color: var(--typography-heading); */
+  color: var(--typography-sub-heading);
+}
+
 .td,
 .th {
   padding: 16px 12px;
-  color: var(--primary-color-500);
-  font-weight: 400;
-  font-size: 0.89rem;
-
-  /* border: 1px solid var(--primary-color-300); */
+  font-weight: var(--font-weight-medium);
+  font-size: var(--text-sm);
   white-space: nowrap;
 }
 
@@ -105,7 +113,9 @@
 
   .tbody .td::before {
     content: attr(data-cell) ": ";
-    font-weight: 600;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--text-sm);
+    color: var(--typography-sub-heading);
     text-transform: capitalize;
   }
 
