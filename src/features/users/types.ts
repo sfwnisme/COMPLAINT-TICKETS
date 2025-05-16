@@ -1,4 +1,4 @@
-import { Role } from "../../types/types";
+export type Role = 'admin' | 'manager' | 'csr' | 'view_only'
 
 export interface IUser {
   _id: string,
