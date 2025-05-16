@@ -19,11 +19,11 @@ export default function Alert({ children, variant = 'primary', hasIcon, visible 
     danger: S['alert--danger'],
   }
   const icons = {
-    primary: <CircleHelp />,
-    info: <Info />,
-    success: <CircleCheck />,
-    warning: <TriangleAlert />,
-    danger: <CircleAlert />,
+    primary: <CircleHelp size='70' />,
+    info: <Info size='70' />,
+    success: <CircleCheck size='70' />,
+    warning: <TriangleAlert size='70' />,
+    danger: <CircleAlert size='70' />,
   }
   return (
     <>
