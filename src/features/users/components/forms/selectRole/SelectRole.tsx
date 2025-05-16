@@ -24,18 +24,3 @@ const SelectRole = React.forwardRef<HTMLSelectElement, Props>(
   }
 )
 export default SelectRole
-// export default function SelectRole({ title = 'Role', id = 'roles', register }: Props) {
-// // export default function SelectRole({ title = 'Role', id = 'roles', register }: Props) {
-//   return (
-//     <Select {...register} title={title} id={id}>
-//       <option disabled value="">
-//         Select Role
-//       </option>
-//       {Object.values(USER_ROLES).map((role) => (
-//         <option key={role} value={role} id={role}>
-//           {role}
-//         </option>
-//       ))}
-//     </Select>
-//   )
-// }
