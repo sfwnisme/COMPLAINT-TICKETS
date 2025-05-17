@@ -15,6 +15,17 @@ export default function Users() {
   const users = useGetUsers()
   const { onDeleteUser, isPending: isDeleting } = useDeleteUser()
 
+  const dialogProps = {
+    header: 'Delete user',
+    description: 'Are you sure, you wanna delete user',
+    CTA_L: "Cancel",
+    CTA_R: "Delete",
+    isVisible: isDialogVisible,
+    setIsVisible: toggleDialog,
+    action: onDeleteUser,
+    isLoading: isDeleting
+  }
+
   const content = useMemo(() => {
     if (users.isLoading) return <LoadingUsersTable />
     if (users.isError) return <ErrorUsersTable error={users.error} />
@@ -27,14 +38,7 @@ export default function Users() {
       <UsersTable>
         {content}
         <Dialog
-          header='Delete user'
-          description='Are you sure, you wanna delete user'
-          CTA_L="Cancel"
-          CTA_R="Delete"
-          isVisible={isDialogVisible}
-          setIsVisible={toggleDialog}
-          action={onDeleteUser}
-          isLoading={isDeleting}
+          {...dialogProps}
         />
       </UsersTable>
     </div>
