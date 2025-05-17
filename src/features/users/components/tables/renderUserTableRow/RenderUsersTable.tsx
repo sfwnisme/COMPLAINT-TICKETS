@@ -14,7 +14,7 @@ type Props = {
   currentUser?: Omit<IUser, 'createdAt'>,
 }
 
-const RenderUsersTable = ({ user, currentUser }: Props) => {
+const RenderUserTableRow = ({ user, currentUser }: Props) => {
   const setUserId = useUsersStore((state) => state.setUserId)
   const toggleDialog = useUsersStore((state) => state.toggleDialog)
   return (
@@ -46,4 +46,4 @@ const RenderUsersTable = ({ user, currentUser }: Props) => {
   )
 }
 
-export default memo(RenderUsersTable)
+export default memo(RenderUserTableRow)
