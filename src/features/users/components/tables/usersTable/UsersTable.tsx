@@ -1,4 +1,3 @@
-import Style from './UsersTable.module.css'
 import TR from "../../../../../components/table/TR"
 import Table from "../../../../../components/table/Table"
 import THead from "../../../../../components/table/THead"
@@ -9,7 +8,7 @@ import React from 'react'
 export default function UsersTable({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <div>
-      <div className={Style.users}>
+      <div>
         <Table>
           <THead>
             <TR>
