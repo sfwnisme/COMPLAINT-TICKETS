@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Tickets from "../app/pages/tickets/Tickets";
+import Tickets from "../app/dashboard/tickets/Tickets";
 import CreateTicket from "../app/pages/tickets/create/CreateTicket";
 import Departments from "../app/pages/departments/Departments";
 import Categories from "../app/pages/categories/Categories";
