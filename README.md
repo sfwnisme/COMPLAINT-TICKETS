@@ -3,7 +3,6 @@
 > [!IMPORTANT]
 > This project was created to scale my frontend skills by building every component from scratch.
 
-  
 ## ⚠️ALERT
 
 currently the project expands, so I decided to restructure the folders and files, with new adoption. You can follow up the updates on `REFACTOR_FOLDER_STRUCTURE` branch
@@ -11,11 +10,15 @@ currently the project expands, so I decided to restructure the folders and files
 ### Refactor Tasks
 
 - [x] users scoop
-- [ ] tickets scoop
+- [x] tickets scoop
+  - [x] render tickets
+  - [x] loading tickets
+  - [x] not tickets
+  - [x] error ticket
+  - [x] ticket card
 - [ ] home scoop
 - [ ] dashboard layout
 - [ ] utils and formatters
-- [ ] 
 
 ## Technologies Used
 
