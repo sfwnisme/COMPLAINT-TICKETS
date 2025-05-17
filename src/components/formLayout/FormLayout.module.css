@@ -40,7 +40,7 @@
 
 .form__element {
   display: grid;
-  gap: 25px;
+  gap: 32px;
   flex: 1;
 }
 
