@@ -1,4 +1,5 @@
-import Dialog from "../../../components/diaglog/Dialog"
+import { useMemo } from "react"
+import Dialog from "../../../components/dialog/Dialog"
 import PageHeader from "../../../components/pageHeader/PageHeader"
 import ErrorUsersTable from "../../../features/users/components/tables/errorUsersTable/ErrorUsersTable"
 import LoadingUsersTable from "../../../features/users/components/tables/loadingUsersTable/LoadingUsersTable"
@@ -10,33 +11,27 @@ import useGetCurrentUser from "../../../hooks/useGetCurrentUser"
 import { useUsersStore } from "../../../store/users.store"
 
 export default function Users() {
-  const userId = useUsersStore((state) => state.userId)
-  const setUserId = useUsersStore((state) => state.setUserId)
   const isDialogVisible = useUsersStore((state) => state.isDialogVisible)
   const toggleDialog = useUsersStore((state) => state.toggleDialog)
 
   const users = useGetUsers()
   const currentUser = useGetCurrentUser()
 
-  const { mutateAsync, isPending: isDeleting } = useDeleteUser()
-  const onDeleteUser = async () => {
-    await mutateAsync(userId)
-    setUserId('')
-  }
+  const { onDeleteUser, isPending: isDeleting } = useDeleteUser()
 
-  // DOM
-  let content
-  if (users.isLoading) content = <LoadingUsersTable />
-  if (users.isError) content = <ErrorUsersTable error={users.error} />
-  if (users.isSuccess) {
-    content = users.data.map((user) => (
-      <RenderUsersTable
-        key={user?._id}
-        user={user}
-        currentUser={currentUser?.data}
-      />
-    ))
-  }
+  const content = useMemo(() => {
+    if (users.isLoading) return <LoadingUsersTable />
+    if (users.isError) return <ErrorUsersTable error={users.error} />
+    if (users.isSuccess) {
+      return users.data.map((user) => (
+        <RenderUsersTable
+          key={user?._id}
+          user={user}
+          currentUser={currentUser?.data}
+        />
+      ))
+    }
+  }, [users, currentUser?.data])
 
   return (
     <div>
