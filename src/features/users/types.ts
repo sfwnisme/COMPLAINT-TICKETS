@@ -5,6 +5,6 @@ export interface IUser {
   name: string,
   email: string,
   role: Role,
-  createdAt?: Date,
-  updatedAt?: Date,
+  createdAt?: string,
+  updatedAt?: string,
 }
