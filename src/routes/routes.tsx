@@ -5,16 +5,16 @@ import CreateTicket from "../app/pages/tickets/create/CreateTicket";
 import Departments from "../app/pages/departments/Departments";
 import Categories from "../app/pages/categories/Categories";
 import Settings from "../app/pages/settings/Settings";
-import Users from "../app/pages/users/Users";
+import Users from "../app/dashboard/users/Users";
 import Ticket from "../app/pages/tickets/id/Ticket";
 import Login from "../app/auth/login/Login";
 import Home from "../app/home/Home";
-import HomeLayout from "../app/layouts/home-layout/HomeLayout.tsx";
+import HomeLayout from "../app/layouts/home-layout/HomeLayout";
 import PrivateRoute from "../app/auth/auth-wrapper/PrivateRoute";
 import PublicRoute from "../app/auth/auth-wrapper/PublicRoute";
-import UpdateUser from "../app/pages/users/update/UpdateUser";
+import UpdateUser from "../app/dashboard/users/update/UpdateUser";
+import CreateUser from "../app/dashboard/users/create/CreateUser";
 import DashboardLayout from "../app/layouts/dashboard-layout/DashboardLayout.tsx";
-import CreateUser from "../app/pages/users/create/CreateUser.tsx";
 
 export const routes = createBrowserRouter([
   {
