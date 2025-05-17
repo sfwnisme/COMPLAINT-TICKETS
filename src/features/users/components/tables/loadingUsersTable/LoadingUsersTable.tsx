@@ -1,7 +1,8 @@
+import { memo } from 'react'
 import TD from '../../../../../components/table/TD'
 import TR from '../../../../../components/table/TR'
 
-export default function LoadingUsersTable() {
+const LoadingUsersTable = () => {
   return (
     <TR>
       <TD colSpan={12} align="center" >
@@ -10,3 +11,4 @@ export default function LoadingUsersTable() {
     </TR>
   )
 }
+export default memo(LoadingUsersTable)

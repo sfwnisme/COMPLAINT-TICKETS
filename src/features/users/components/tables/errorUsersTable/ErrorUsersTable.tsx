@@ -1,8 +1,9 @@
+import { memo } from 'react'
 import TD from '../../../../../components/table/TD'
 import TR from '../../../../../components/table/TR'
 import { AxiosError } from 'axios'
 
-export default function ErrorUsersTable({ error }: { error: AxiosError<{ msg?: string }> }) {
+const ErrorUsersTable = ({ error }: { error: AxiosError<{ msg?: string }> }) => {
   return (
     <TR>
       <TD colSpan={12} align="center" dataCell='Error'>
@@ -12,3 +13,5 @@ export default function ErrorUsersTable({ error }: { error: AxiosError<{ msg?: s
     </TR>
   )
 }
+
+export default memo(ErrorUsersTable)

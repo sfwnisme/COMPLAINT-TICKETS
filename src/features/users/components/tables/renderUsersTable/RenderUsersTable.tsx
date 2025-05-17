@@ -8,12 +8,13 @@ import List from "../../../../../components/list/List"
 import ListItem from "../../../../../components/list/ListItem"
 import { IUser } from "../../../types"
 import { useUsersStore } from "../../../../../store/users.store"
+import { memo } from "react"
 type Props = {
   user: IUser,
   currentUser?: Omit<IUser, 'createdAt'>,
 }
 
-export default function RenderUsersTable({ user, currentUser }: Props) {
+const RenderUsersTable = ({ user, currentUser }: Props) => {
   const setUserId = useUsersStore((state) => state.setUserId)
   const toggleDialog = useUsersStore((state) => state.toggleDialog)
   return (
@@ -41,6 +42,8 @@ export default function RenderUsersTable({ user, currentUser }: Props) {
           </Dropdown>
         </TD>
       </Visible>
-    </TR >
+    </TR>
   )
 }
+
+export default memo(RenderUsersTable)
