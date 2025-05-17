@@ -2,9 +2,9 @@ import Ticket from '../../../components/ticket/Ticket.tsx'
 import Title from '../../../components/title/Title.tsx'
 import FloatTicket from '../../../features/tickets/float-ticket/FloatTicket.tsx';
 import useGetAllData from '../../../hooks/useGetAllData.tsx';
+import { useFloatTicket } from '../../../store/ticket.store.ts';
 import { ITicket } from '../../../types/ticket.types.ts';
 import S from './Tickets.module.css'
-import { useFloatTicket } from '../../../store/store.zustand.ts';
 
 
 
