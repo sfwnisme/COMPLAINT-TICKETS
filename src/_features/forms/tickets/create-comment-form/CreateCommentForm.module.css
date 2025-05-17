@@ -1,0 +1,12 @@
+.ticket-page__add-comment {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  gap: 0.5rem;
+  padding: 0px 20px 20px 20px;
+}
+
+.ticket-page__add-comment input {
+  width: 100%;
+  height: 100%;
+}
