@@ -3,7 +3,7 @@ import Dialog from "../../../components/dialog/Dialog"
 import PageHeader from "../../../components/pageHeader/PageHeader"
 import ErrorUsersTable from "../../../features/users/components/tables/errorUsersTable/ErrorUsersTable"
 import LoadingUsersTable from "../../../features/users/components/tables/loadingUsersTable/LoadingUsersTable"
-import RenderUsersTable from "../../../features/users/components/tables/renderUsersTable/RenderUsersTable"
+import RenderUserTableRow from "../../../features/users/components/tables/renderUserTableRow/RenderUserTableRow"
 import UsersTable from "../../../features/users/components/tables/usersTable/UsersTable"
 import useDeleteUser from "../../../features/users/hooks/use-delete-user"
 import useGetUsers from "../../../features/users/hooks/use-get-users"
@@ -24,7 +24,7 @@ export default function Users() {
     if (users.isError) return <ErrorUsersTable error={users.error} />
     if (users.isSuccess) {
       return users.data.map((user) => (
-        <RenderUsersTable
+        <RenderUserTableRow
           key={user?._id}
           user={user}
           currentUser={currentUser?.data}
