@@ -2,7 +2,7 @@ import Style from './FloatTicet.module.css'
 import { X } from 'lucide-react'
 import Button from '../../../components/button/Button'
 import { useEffect } from 'react'
-import { useFloatTicket } from '../../../store/store.zustand'
+// import { useFloatTicket } from '../../../store/store.zustand'
 import { IComment, ITag, ITicket } from '../../../types/ticket.types'
 import Badge from '../../../components/badge/Badge'
 import useGetSingleApiData from '../../../hooks/use-get-single-api-data'
@@ -10,11 +10,12 @@ import { TICKET_PRIORITY_COLORS, TICKET_STATUS_COLORS } from '../../../constrain
 import useGetArrayByIdApiData from '../../../hooks/use-get-array-by-id-api-data'
 import Alert from '../../../components/alert/Alert'
 import Comment from '../comment/Comment'
-import CreateCommentForm from '../../forms/tickets/create-comment-form/CreateCommentForm'
+import CreateCommentForm from '../forms/create-comment-form/CreateCommentForm'
 import FloatTicketSkeleton from '../skeleton/float-ticket/FloatTicketSkeleton'
 import { Avatar } from '../../../components'
 import Spacer from '../../../components/spacer/Spacer'
 import { formatedDate } from '../../../libs/formated-date'
+import { useFloatTicket } from '../../../store/ticket.store'
 
 
 function Conversation({ comments = [], description = "" }: { comments: IComment[], description: string }) {
