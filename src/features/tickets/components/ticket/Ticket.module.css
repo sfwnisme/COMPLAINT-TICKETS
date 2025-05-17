@@ -1,0 +1,116 @@
+.ticket {
+  border: 1px solid var(--border-tertiary);
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-150);
+  border-radius: 5px;
+  /* box-shadow: var(--primary-shadow); */
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket:has(input:checked) {
+  border: 1px solid var(--info-color-500);
+  background-color: var(--info-color-50);
+  transition: var(--transition-150);
+}
+
+.ticket__header {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: start;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-quaternary);
+  flex: 1;
+}
+
+.ticket__settings {
+  display: flex;
+  gap: 1rem;
+}
+
+.ticket__category-icon {
+  display: flex;
+  background-color: var(--warning-color-500);
+  padding: 3px;
+  color: white;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+}
+
+.ticket__details {
+  flex: 1;
+}
+
+.ticket__title {
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 16px;
+  flex: 1;
+}
+
+.ticket__header__footer {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+}
+
+.ticket__number,
+.ticket__assignee,
+.ticket__created-at {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  display: flex;
+  align-items: end;
+  justify-content: start;
+  column-gap: 2px;
+}
+
+.ticket__footer {
+  padding: 5px;
+  /* padding-left: 11px; */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  /* background-color: var(--primary-color-50); */
+}
+
+@media (max-width: 768px) {
+  .ticket__footer {
+    gap: 10px;
+  }
+}
+
+.ticket__footer--left-side {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  /* margin-left: 10px; */
+  padding: 5px;
+  border: 1px solid var(--border-quaternary);
+  background-color: var(--primary-color-50);
+  border-radius: 5px;
+}
+
+.ticket__tags {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 5px;
+  flex-wrap: nowrap;
+  position: relative;
+  padding: 5px;
+  border: 1px solid var(--border-quaternary);
+  background-color: var(--primary-color-50);
+  border-radius: 5px;
+}
