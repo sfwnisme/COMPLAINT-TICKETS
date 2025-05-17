@@ -3,35 +3,23 @@ import Dialog from "../../../components/dialog/Dialog"
 import PageHeader from "../../../components/pageHeader/PageHeader"
 import ErrorUsersTable from "../../../features/users/components/tables/errorUsersTable/ErrorUsersTable"
 import LoadingUsersTable from "../../../features/users/components/tables/loadingUsersTable/LoadingUsersTable"
-import RenderUserTableRow from "../../../features/users/components/tables/renderUserTableRow/RenderUserTableRow"
 import UsersTable from "../../../features/users/components/tables/usersTable/UsersTable"
 import useDeleteUser from "../../../features/users/hooks/use-delete-user"
 import useGetUsers from "../../../features/users/hooks/use-get-users"
-import useGetCurrentUser from "../../../hooks/useGetCurrentUser"
 import { useUsersStore } from "../../../store/users.store"
+import RenderUsersTableRows from "../../../features/users/components/tables/renderUsersTableRows/RenderUsersTableRows"
 
 export default function Users() {
   const isDialogVisible = useUsersStore((state) => state.isDialogVisible)
   const toggleDialog = useUsersStore((state) => state.toggleDialog)
-
   const users = useGetUsers()
-  const currentUser = useGetCurrentUser()
-
   const { onDeleteUser, isPending: isDeleting } = useDeleteUser()
 
   const content = useMemo(() => {
     if (users.isLoading) return <LoadingUsersTable />
     if (users.isError) return <ErrorUsersTable error={users.error} />
-    if (users.isSuccess) {
-      return users.data.map((user) => (
-        <RenderUserTableRow
-          key={user?._id}
-          user={user}
-          currentUser={currentUser?.data}
-        />
-      ))
-    }
-  }, [users, currentUser?.data])
+    if (users.isSuccess) return <RenderUsersTableRows users={users?.data} />
+  }, [users?.data, users.isLoading, users.isSuccess, users.isError, users?.error])
 
   return (
     <div>
