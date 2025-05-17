@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { axiosInstance } from '../libs/axios-instance'
-import { IUser } from '../types/types'
 import { USER_ROLES } from '../constraints/constraints'
+import { IUser } from '../features/users/types'
 
 export default function useGetCurrentUser() {
   const currentUser = useQuery<Omit<IUser, 'createdAt'>, Error>({
