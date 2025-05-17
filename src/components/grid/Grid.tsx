@@ -3,7 +3,7 @@ import Style from './Grid.module.css'
 
 type Props = {
   children: React.ReactNode,
-  maxWidth: string,
+  maxWidth?: string,
   gap?: string,
 }
 
