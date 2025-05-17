@@ -94,7 +94,9 @@ export default function DashboardLayout() {
       <Nav collapseASide={collapseASide} />
       <main className={S.outlet}>
         {/*{children}*/}
-        <Outlet />
+        <div className={S["outlet-content"]}>
+          <Outlet />
+        </div>
       </main>
     </div>
   )

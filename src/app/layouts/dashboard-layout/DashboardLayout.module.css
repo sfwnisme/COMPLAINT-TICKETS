@@ -216,6 +216,20 @@
   }
 }
 
+.outlet-content {
+  max-width: 1400px;
+  width: 100%;
+  margin-inline: auto;
+
+  @media (max-width: 1400px) {
+    max-width: 1200px;
+  }
+
+  @media (max-width: 1200px) {
+    max-width: 100%;
+  }
+}
+
 /* ==================== END outlet */
 
 @media (max-width: 650px) {
