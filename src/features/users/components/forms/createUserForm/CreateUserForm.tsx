@@ -1,7 +1,4 @@
-import { FieldValues, Path, SubmitHandler, useForm } from "react-hook-form";
-import axios from "axios";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { createUserSchema } from "../../../schemas/user.schema.ts";
 import Spacer from "../../../../../components/spacer/Spacer.tsx";
 import SelectRole from "../selectRole/SelectRole.tsx";

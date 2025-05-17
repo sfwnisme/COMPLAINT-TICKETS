@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import S from './DashboardLayout.module.css'
 import Button from '../../../components/button/Button'
 import { Bell, Menu, Search, X } from 'lucide-react'
@@ -79,7 +79,6 @@ function ASide({ collapseASide }: { readonly collapseASide: () => void }) {
   )
 }
 
-type Props = React.ReactNode
 
 export default function DashboardLayout() {
   const media = useMedia()
@@ -93,7 +92,6 @@ export default function DashboardLayout() {
       <ASide collapseASide={collapseASide} />
       <Nav collapseASide={collapseASide} />
       <main className={S.outlet}>
-        {/*{children}*/}
         <div className={S["outlet-content"]}>
           <Outlet />
         </div>
