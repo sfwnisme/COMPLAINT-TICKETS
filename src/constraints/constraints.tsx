@@ -9,7 +9,7 @@ export const USER_ROLES: { [key: string]: Role } = {
   VIEW_ONLY: 'view_only',
 }
 export const USER_ROLES_VALUES = ['admin', 'manager', 'csr', 'view_only'] as const
-export const USER_ROLES_COLORS = {
+export const USER_ROLES_COLORS: Record<string, TVariants> = {
   admin: 'success',
   manager: 'warning',
   csr: 'info',
