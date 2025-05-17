@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import Button from '../button/Button'
 import S from './Dialog.module.css'
 import { X } from 'lucide-react'
@@ -13,7 +14,7 @@ type Props = {
   isLoading: boolean
 }
 
-export default function Dialog({
+const Dialog = ({
   header = "Dialog Header",
   description = "dialog description: you can display the description for the dialog here",
   CTA_L = "Cancel",
@@ -22,7 +23,7 @@ export default function Dialog({
   setIsVisible,
   action,
   isLoading
-}: Readonly<Props>) {
+}: Readonly<Props>) => {
 
   const actionFunc = async () => {
     await action()
@@ -67,3 +68,5 @@ export default function Dialog({
     </>
   )
 }
+
+export default memo(Dialog)
