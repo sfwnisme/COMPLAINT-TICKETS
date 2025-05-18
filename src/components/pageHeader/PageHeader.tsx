@@ -8,7 +8,7 @@ type Props = {
   href?: string,
 }
 
-export default function PageHeader({ title = 'page title', button = "Create User", href = "/" }: Readonly<Props>) {
+export default function PageHeader({ title = 'Page title', button = "Button", href = "/" }: Readonly<Props>) {
   return (
     <div className={Style['page-header']}>
       <h2 className={Style['page-header__title']}>{title}</h2>
