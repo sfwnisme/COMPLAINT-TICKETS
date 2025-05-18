@@ -5,8 +5,8 @@ export interface IUser {
   name: string,
   email: string,
   role: Role,
-  createdAt?: Date,
-  updatedAt?: Date,
+  createdAt?: string,
+  updatedAt?: string,
 }
 export type TAxiosError = AxiosError<{ msg: string | { [key: string]: string }[] }>
 
