@@ -7,15 +7,12 @@ type Params = {
 }
 
 export default function useGetApiDataByQuery<T>({ endpoint = '', query = '' }: Params) {
-  const queryRequest = useQuery({
+  const queryRequest = useQuery<T, Error>({
     queryKey: [endpoint, query],
     queryFn: async () => {
       const res = await axiosInstance.get(endpoint + query)
       return res.data.data
     },
   })
-
-  console.log(queryRequest)
-
   return queryRequest
 }
