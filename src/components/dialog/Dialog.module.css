@@ -22,34 +22,38 @@
   margin-inline: 16px;
   border-radius: 5px;
   overflow: hidden;
+  padding: 16px;
 }
-
-.body {
-  padding: 48px 16px 16px;
+.dialog__header {
+  display: flex;
+  align-items: end;
+  justify-content: end;
 }
+/* .dialog__body {
+  padding: 16px;
+} */
 
-.body h4 {
+.dialog__body h4 {
   font-weight: 600;
   margin: 0px 0px 0.5rem 0px;
 }
 
-.body p {
+.dialog__body p {
   font-weight: 300;
   font-size: 15px;
   line-height: 1.4;
   color: var(--text-tertiary);
 }
-
+/* 
 .close_icon {
   position: absolute;
   top: 16px;
   right: 16px;
+} */
 
-}
-
-.footer {
+.dialog__footer {
   /* background-color: var(--primary-color-50); */
-  padding: 12px;
+  padding-top: 12px;
   display: flex;
   gap: 5px;
   justify-content: end;
@@ -57,7 +61,7 @@
 
 
 @media (max-width: 768px) {
-  .footer {
+  .dialog__footer {
     flex-direction: column;
 
     button {
