@@ -8,15 +8,11 @@ type Params = {
 
 export default function useGetApiDataByQuery<T>({ endpoint = '', query = '' }: Params) {
   const queryRequest = useQuery({
-    queryKey: [endpoint],
+    queryKey: [endpoint, query],
     queryFn: async () => {
       const res = await axiosInstance.get(endpoint + query)
-      return res
+      return res.data.data
     },
-    select: (res) => {
-      console.log('onSuccess single api data', res)
-      return res.data.data as T
-    }
   })
 
   console.log(queryRequest)
