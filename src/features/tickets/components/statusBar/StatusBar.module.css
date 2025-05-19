@@ -2,11 +2,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 4px;
-  margin-inline: 20px;
+  /* margin-inline: 20px; */
   border-radius: var(--radius-md);
-  @media (max-width: 767px) {
-    margin-inline: 10px;
-  }
 
   span {
     background-color: var(--primary-color-100);
