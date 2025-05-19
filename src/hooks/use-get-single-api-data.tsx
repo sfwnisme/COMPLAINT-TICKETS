@@ -1,30 +1,21 @@
 import { useQuery } from '@tanstack/react-query'
 import { axiosInstance } from '../libs/axios-instance'
-import { AxiosResponse } from 'axios'
+// import { AxiosResponse } from 'axios'
 
-type Params = {
+type Params<T> = {
   endpoint: string, id: string | undefined
+  , initialData?: T
 }
-// declare function 
-// useQuery
-// <TQueryFnData = unknown,
-//  TError = DefaultError,
-//  TData = TQueryFnData,
-//  TQueryKey extends QueryKey = QueryKey>
-// (options: UndefinedInitialDataOptions<TQueryFnData, TError, TData, TQueryKey>, queryClient?: QueryClient): UseQueryResult<TData, TError>;
 
-export default function useGetSingleApiData<T>({ endpoint = '', id = '' }: Params) {
+export default function useGetSingleApiData<T>({ endpoint = '', id = '', initialData }: Params<T>) {
   const query = useQuery<T, Error>({
     queryKey: ['single-', endpoint, id],
-    queryFn: async (): Promise<T> => {
-      const res: AxiosResponse<{ data: T }> = await axiosInstance.get(endpoint + '/' + id)
+    queryFn: async () => {
+      const res = await axiosInstance.get(endpoint + '/' + id)
       return res.data.data
     },
     enabled: !!id,
-    // select: (res) => {
-    //   console.log('onSuccess single api data', res)
-    //   return res.data.data
-    // }
+    initialData: initialData,
   })
 
   console.log('single query', query)
