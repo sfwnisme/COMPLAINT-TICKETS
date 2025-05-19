@@ -1,4 +1,4 @@
-export type TStatus = "open" | "in-progress" | "resolved" | "closed"
+export type Status = "open" | "in-progress" | "resolved" | "closed"
 export type TPriority = "low" | "medium" | "high" | "critical"
 export interface ITag {
   _id: string,
@@ -15,7 +15,7 @@ export interface ITicket {
   _id: string,
   title: string,
   description?: string,
-  status: TStatus,
+  status: Status,
   priority: TPriority,
   createdBy: { _id: string, name: string },
   tags: ITag[],
@@ -33,3 +33,5 @@ export interface IComment {
   createdAt: string,
   updatedAt: string,
 }
+
+export type Priority = 'low' | 'medium' | 'high' | 'critical'
