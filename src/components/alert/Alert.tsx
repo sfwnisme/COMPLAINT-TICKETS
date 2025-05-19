@@ -1,11 +1,11 @@
 import S from './Alert.module.css'
 import React from 'react'
-import { TVariants } from '../defintions.components'
+import { Variants } from '../defintions.components'
 import { CircleAlert, CircleCheck, CircleHelp, Info, TriangleAlert } from 'lucide-react'
 
 type Props = {
   children: React.ReactNode,
-  variant?: TVariants,
+  variant?: Variants,
   hasIcon?: boolean,
   visible: boolean
 }

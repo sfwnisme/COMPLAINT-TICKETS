@@ -1,6 +1,6 @@
 // import React, { useState } from 'react'
 import React from "react";
-import { TVariants } from "../defintions.components";
+import { Variants } from "../defintions.components";
 import S from "./Select.module.css";
 import { ChevronsUpDown } from "lucide-react";
 
@@ -8,7 +8,7 @@ type Props = {
   children: React.ReactNode;
   title?: string;
   sze?: "sm" | "md";
-  variant?: TVariants;
+  variant?: Variants;
 } & React.DetailedHTMLProps<
   React.SelectHTMLAttributes<HTMLSelectElement>,
   HTMLSelectElement

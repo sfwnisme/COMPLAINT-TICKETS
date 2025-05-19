@@ -5,7 +5,7 @@ import Badge from '../../../../components/badge/Badge'
 import { ITicket } from '../../../../types/ticket.types'
 import { useFloatTicket } from '../../../../store/ticket.store'
 import { TICKET_PRIORITY_COLORS, TICKET_STATUS_COLORS } from '../../../../constraints/constraints'
-import { TVariants } from '../../../../components/defintions.components'
+import { Variants } from '../../../../components/defintions.components'
 import { formatedDate } from '../../../../libs/formated-date'
 import HelpText from '../../../../components/help-text/HelpText'
 
@@ -51,10 +51,10 @@ export default function Ticket(
           </div>
 
           <div className={S["ticket__priority"]}>
-            <Badge text={priority} key={priority} variant={TICKET_PRIORITY_COLORS[priority as TVariants]} />
+            <Badge text={priority} key={priority} variant={TICKET_PRIORITY_COLORS[priority as Variants]} />
           </div>
           <div className={S["ticket__status"]}>
-            <Badge text={status} key={status} variant={TICKET_STATUS_COLORS[status as TVariants]} />
+            <Badge text={status} key={status} variant={TICKET_STATUS_COLORS[status as Variants]} />
           </div>
         </div>
         {tags.length > 0 && <div className={S["ticket__tags"]}>

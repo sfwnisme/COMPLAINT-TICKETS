@@ -1,10 +1,10 @@
 import { EyeClosed, FileWarning, Info, ParenthesesIcon } from "lucide-react";
 import S from './HelpText.module.css'
-import { TVariants } from "../defintions.components";
+import { Variants } from "../defintions.components";
 
 type Props = {
   children: React.ReactNode,
-  variant?: TVariants,
+  variant?: Variants,
   icon?: 'visible' | 'invisible'
 }
 
