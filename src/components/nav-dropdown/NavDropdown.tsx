@@ -14,7 +14,7 @@ export default function NavDropdown() {
     window.location.pathname = '/login'
   }
   return (
-    <AvatarDropdown name={currentUserQuery?.data?.name}>
+    <AvatarDropdown name={currentUserQuery?.data?.name ?? 'name'}>
       <List position={'absolute'} rightOrLeft={'right'} yaxis='top'>
         {
           currentUserQuery?.data?.name ?
