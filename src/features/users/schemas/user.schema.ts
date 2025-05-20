@@ -16,8 +16,3 @@ export const updateUserSchema = z.object({
   ...userSchema,
   password: userSchema.password.optional()
 })
-
-export const loginSchema = z.object({
-  email: userSchema.email,
-  password: userSchema.password,
-})
