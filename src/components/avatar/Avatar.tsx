@@ -11,7 +11,7 @@ type Props = {
 
 export default function Avatar({
   image, name, size = "sm", ...rest }: Props) {
-  const isImageAvailable = Boolean(image)
+  // const isImageAvailable = Boolean(image)
   const nameFirstTwoLetters = name?.slice(0, 2).toUpperCase()
 
   const sizes = {

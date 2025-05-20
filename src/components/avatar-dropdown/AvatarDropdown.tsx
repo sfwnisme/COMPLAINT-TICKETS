@@ -5,7 +5,6 @@ import S from './AvatartDropdown.module.css'
 type Props = {
   children: React.ReactNode;
   name: string,
-  // position: 'right' | 'left'
 } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
 export default function AvatarDropdown({ children, name }: Props) {
