@@ -8,7 +8,7 @@ import Loader from "../../../../../components/loaders/loader/Loader.tsx";
 import FormLayout from "../../../../../components/formLayout/FormLayout.tsx";
 import InputsArray from "../../../../../components/inputsArray/InputsArray.tsx";
 import useCreateUser from "../../../hooks/use-create-user.ts";
-import { getCreateUserInputsConfigs } from "../../../inputsConfigs.ts";
+import { getCreateUserInputsConfigs } from "../../../inputsConfig.ts";
 import useCreateUserFormValidation from "../../../hooks/use-create-user-form-validation.ts";
 
 type Inputs = z.infer<typeof createUserSchema>;

@@ -9,7 +9,7 @@ import InputsArray from '../../../../../components/inputsArray/InputsArray'
 import SelectRole from '../selectRole/SelectRole'
 import useUpdateUser from "../../../hooks/use-update-user"
 import useUpdateUserFormValidation from "../../../hooks/use-update-user-form-validation"
-import { getupdateUserInputsConfigs } from "../../../inputsConfigs"
+import { getupdateUserInputsConfigs } from "../../../inputsConfig"
 
 
 type Inputs = z.infer<typeof updateUserSchema>
