@@ -19,6 +19,7 @@ currently the project expands, so I decided to restructure the folders and files
 - [ ] home scoop
 - [ ] dashboard layout
 - [ ] utils and formatters
+- [ ] float ticket skeleton update
 
 ## Technologies Used
 
