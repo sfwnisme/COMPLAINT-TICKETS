@@ -19,7 +19,7 @@
 
     @media (max-width: 767px) {
       font-size: var(--text-xs);
-      padding-inline: 4px;
+      padding-inline: 1px;
     }
 
     &.status-bar__completed {
