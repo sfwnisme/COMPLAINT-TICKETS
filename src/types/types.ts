@@ -1,4 +1,5 @@
 import { AxiosError } from "axios"
+import { FieldValues, Path } from "react-hook-form"
 export type TAxiosError = AxiosError<{ msg: string | { [key: string]: string }[] }>
 
 
@@ -60,3 +61,10 @@ export interface IComment {
 export type Sizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type Variants = 'primary' | 'info' | 'warning' | 'success' | 'danger';
 
+export type InputsType<T extends FieldValues> = {
+  name: Path<T>;
+  type: "text" | "email" | "password";
+  placeholder?: string;
+  title?: string;
+  message?: string;
+};
