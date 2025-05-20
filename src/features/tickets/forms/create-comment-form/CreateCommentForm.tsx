@@ -46,7 +46,7 @@ export default function CreateCommentForm({ ticketId }: { ticketId: string }) {
         {...register('content')}
         message={errors.content?.message}
       />
-      <Button variant='info' size='lg' disabled={disableButton}>{isPending ? 'Sending...' : 'Send'}</Button>
+      <Button size='lg' disabled={disableButton}>{isPending ? 'Sending...' : 'Send'}</Button>
     </form>
   )
 }
