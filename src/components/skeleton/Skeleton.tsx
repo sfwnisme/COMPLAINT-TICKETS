@@ -1,4 +1,3 @@
-import React from 'react'
 import Style from './Skeleton.module.css'
 import { Variants } from '../defintions.components'
 

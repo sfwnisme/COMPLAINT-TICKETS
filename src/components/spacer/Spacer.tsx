@@ -1,4 +1,3 @@
-import React from 'react'
 import { TSizes } from '../defintions.components'
 import S from './Spacer.module.css'
 
