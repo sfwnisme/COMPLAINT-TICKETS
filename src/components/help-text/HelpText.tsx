@@ -1,6 +1,6 @@
 import { Info } from "lucide-react";
 import S from './HelpText.module.css'
-import { Variants } from "../defintions.components";
+import { Variants } from "../../types/types";
 
 type Props = {
   children: React.ReactNode,

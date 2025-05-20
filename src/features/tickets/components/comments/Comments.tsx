@@ -1,9 +1,9 @@
 import Comment from '../comment/Comment'
 import useGetArrayByIdApiData from '../../../../hooks/use-get-api-data-by-query'
-import { IComment } from '../../types'
 import Alert from '../../../../components/alert/Alert'
 import Style from './Comments.module.css'
 import CommentsSkeleton from '../../skeleton/commentsSkeleton/CommentsSkeleton'
+import { IComment } from '../../../../types/types'
 
 type Props = {
   ticketId: string

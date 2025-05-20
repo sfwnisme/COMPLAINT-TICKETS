@@ -1,8 +1,8 @@
-import { TSizes } from '../defintions.components'
+import { Sizes } from '../../types/types'
 import S from './Spacer.module.css'
 
 type Props = {
-  size?: TSizes
+  size?: Sizes
 }
 
 export default function Spacer({ size = 'xs' }: Props) {

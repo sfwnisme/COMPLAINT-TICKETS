@@ -1,13 +1,13 @@
 import React from 'react'
-import { TSizes } from '../defintions.components'
 import S from './Link.module.css'
 import { ArrowUpRight } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
+import { Sizes } from '../../types/types';
 
 type Props = {
   children: React.ReactNode,
   href: string;
-  size?: TSizes;
+  size?: Sizes;
   icon?: 'arrow' | 'none'
 }
 

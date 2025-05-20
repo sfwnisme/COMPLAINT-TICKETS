@@ -1,5 +1,5 @@
+import { Variants } from '../../types/types'
 import Style from './Skeleton.module.css'
-import { Variants } from '../defintions.components'
 
 type Props = {
   height?: string,

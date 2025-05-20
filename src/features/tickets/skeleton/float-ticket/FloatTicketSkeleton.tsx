@@ -71,10 +71,7 @@ export default function FloatTicketSkeleton() {
         </div>
         <div className={Style['float-ticket__chat']}>
           <div className={`${Style["float-ticket__conversation"]}`}>
-            {/* <Skeleton /> */}
-            {/* <Conversation comments={comments} description={getSingleTicket?.data?.description} /> */}
             <Conversation />
-            {/* <CommentSkeleton /> */}
           </div>
         </div>
         <CreateCommentFormSkeleton />

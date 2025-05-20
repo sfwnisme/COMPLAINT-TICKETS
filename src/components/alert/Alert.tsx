@@ -1,7 +1,7 @@
 import S from './Alert.module.css'
 import React from 'react'
-import { Variants } from '../defintions.components'
 import { CircleAlert, CircleCheck, CircleHelp, Info, TriangleAlert } from 'lucide-react'
+import { Variants } from '../../types/types'
 
 type Props = {
   children: React.ReactNode,

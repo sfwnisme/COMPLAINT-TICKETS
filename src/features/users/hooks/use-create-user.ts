@@ -1,10 +1,10 @@
 import axios from 'axios';
 import useCreateApiData from '../../../hooks/use-create-api-data'
-import { IUser } from '../types'
 import { SubmitHandler } from 'react-hook-form';
 import { createUserSchema } from '../schemas/user.schema';
 import { z } from 'zod';
 import { useCallback } from 'react';
+import { IUser } from '../../../types/types';
 
 type Inputs = z.infer<typeof createUserSchema>;
 

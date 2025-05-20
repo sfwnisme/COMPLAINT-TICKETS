@@ -1,8 +1,8 @@
 // import React, { useState } from 'react'
 import React from "react";
-import { Variants } from "../defintions.components";
 import S from "./Select.module.css";
 import { ChevronsUpDown } from "lucide-react";
+import { Variants } from "../../types/types";
 
 type Props = {
   children: React.ReactNode;

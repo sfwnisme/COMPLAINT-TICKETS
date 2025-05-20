@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 4px;
-  /* margin-inline: 20px; */
   border-radius: var(--radius-md);
 
   span {

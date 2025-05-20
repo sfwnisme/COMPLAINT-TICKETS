@@ -1,6 +1,4 @@
-import { Variants } from "../components/defintions.components"
-import { Status } from "../types/ticket.types"
-import { Role } from "../types/types"
+import { Role, Status, Variants } from "../types/types"
 
 // USER----------------------
 export const USER_ROLES: { [key: string]: Role } = {

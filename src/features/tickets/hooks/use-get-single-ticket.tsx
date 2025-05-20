@@ -1,5 +1,5 @@
 import useGetSingleApiData from '../../../hooks/use-get-single-api-data'
-import { ITicket } from '../types'
+import { ITicket } from '../../../types/types'
 
 const initialData: ITicket = {
   _id: "6817cb2046347442039fb82c",

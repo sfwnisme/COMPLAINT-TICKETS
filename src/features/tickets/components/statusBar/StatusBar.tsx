@@ -1,5 +1,5 @@
-import { Status } from '../../types'
 import { TICKET_STATUS } from '../../../../constraints/constraints'
+import { Status } from '../../../../types/types'
 import Style from './StatusBar.module.css'
 import { Check } from 'lucide-react'
 import { useCallback } from 'react'

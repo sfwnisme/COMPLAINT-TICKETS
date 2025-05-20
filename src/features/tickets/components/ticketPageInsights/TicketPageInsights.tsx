@@ -2,8 +2,7 @@ import useGetTickets from '../../hooks/use-get-tickets'
 import useGetApiDataByQuery from '../../../../hooks/use-get-api-data-by-query'
 import Style from './TicketPageInsights.module.css'
 import Skeleton from '../../../../components/skeleton/Skeleton'
-import { ITicket } from '../../types'
-
+import { ITicket } from '../../../../types/types'
 
 export default function TicketsInfo() {
   const tickets = useGetTickets()

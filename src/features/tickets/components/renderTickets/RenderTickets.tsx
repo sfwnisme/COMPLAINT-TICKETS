@@ -1,5 +1,5 @@
 import Grid from '../../../../components/grid/Grid'
-import { ITicket } from '../../../../types/ticket.types'
+import { ITicket } from '../../../../types/types'
 import Ticket from '../ticket/Ticket'
 
 type Props = {

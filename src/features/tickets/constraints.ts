@@ -1,4 +1,4 @@
-import { ITicket } from "./types";
+import { ITicket } from "../../types/types";
 
 export const DEFAULT_TICKET: ITicket = {
   _id: "6817cb2046347442039fb82c",

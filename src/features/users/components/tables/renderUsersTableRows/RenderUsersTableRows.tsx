@@ -1,7 +1,7 @@
-import { IUser } from '../../../types'
 import UserTableRow from '../userTableRow/UserTableRow'
 import useGetCurrentUser from '../../../../../hooks/useGetCurrentUser'
 import { memo } from 'react'
+import { IUser } from '../../../../../types/types'
 
 type Props = {
   users: IUser[]

@@ -6,9 +6,9 @@ import { USER_ROLES, USER_ROLES_COLORS } from "../../../../../constraints/constr
 import Dropdown from "../../../../../components/dropdown/Dropdown"
 import List from "../../../../../components/list/List"
 import ListItem from "../../../../../components/list/ListItem"
-import { IUser } from "../../../types"
 import { useUsersStore } from "../../../../../store/users.store"
 import { memo } from "react"
+import { IUser } from "../../../../../types/types"
 type Props = {
   user: IUser,
   currentUser?: Omit<IUser, 'createdAt'>,

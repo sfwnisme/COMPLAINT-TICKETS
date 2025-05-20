@@ -1,7 +1,6 @@
 import Badge from '../../../../components/badge/Badge'
 import { TICKET_PRIORITY_COLORS } from '../../../../constraints/constraints'
-import { IDepartment } from '../../../../types/ticket.types'
-import { ITag, Priority } from '../../types'
+import { IDepartment, ITag, Priority } from '../../../../types/types'
 import Style from './FloatTicketInfo.module.css'
 
 type Props = {

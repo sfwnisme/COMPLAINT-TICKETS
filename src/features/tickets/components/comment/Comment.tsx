@@ -4,14 +4,13 @@ import { Case, Shift } from "@sfwnisme/visi"
 import { Avatar } from "../../../../components"
 import useDeleteApiData from "../../../../hooks/use-delete-api-data"
 import useUpdateApiData from "../../../../hooks/use-update-api-data"
-// import { IComment } from "../../../../types/ticket.types"
 import { formatedDate } from "../../../../libs/formated-date"
 import Loader from "../../../../components/loaders/loader/Loader"
 import Dropdown from "../../../../components/dropdown/Dropdown"
 import List from "../../../../components/list/List"
 import ListItem from "../../../../components/list/ListItem"
 import HelpText from "../../../../components/help-text/HelpText"
-import { IComment } from '../../types'
+import { IComment } from '../../../../types/types'
 
 type Props = {
   comment: IComment
