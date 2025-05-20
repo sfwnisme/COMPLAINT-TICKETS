@@ -1,4 +1,3 @@
-import React from 'react'
 import Style from './FloatTicketAuthor.module.css'
 import { formatedDate } from '../../../../libs/formated-date'
 import { Avatar } from '../../../../components'

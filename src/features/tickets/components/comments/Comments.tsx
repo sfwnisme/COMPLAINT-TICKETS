@@ -1,4 +1,3 @@
-import React from 'react'
 import Comment from '../comment/Comment'
 import useGetArrayByIdApiData from '../../../../hooks/use-get-api-data-by-query'
 import { IComment } from '../../types'
