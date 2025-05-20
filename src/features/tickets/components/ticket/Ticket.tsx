@@ -2,17 +2,14 @@ import { Clock, User } from 'lucide-react'
 import S from './Ticket.module.css'
 import Button from '../../../../components/button/Button'
 import Badge from '../../../../components/badge/Badge'
-import { ITicket } from '../../../../types/ticket.types'
 import { useFloatTicket } from '../../../../store/ticket.store'
 import { TICKET_PRIORITY_COLORS, TICKET_STATUS_COLORS } from '../../../../constraints/constraints'
-import { Variants } from '../../../../components/defintions.components'
 import { formatedDate } from '../../../../libs/formated-date'
 import HelpText from '../../../../components/help-text/HelpText'
+import { ITicket } from '../../../../types/types'
 
 export default function Ticket(
-  {
-    ticket
-  }: { ticket: Readonly<ITicket> }
+  { ticket }: Readonly<{ ticket: ITicket }>
 ) {
   const { _id, title, createdBy, department, status, priority, tags, createdAt } = ticket
 
@@ -51,10 +48,10 @@ export default function Ticket(
           </div>
 
           <div className={S["ticket__priority"]}>
-            <Badge text={priority} key={priority} variant={TICKET_PRIORITY_COLORS[priority as Variants]} />
+            <Badge text={priority} key={priority} variant={TICKET_PRIORITY_COLORS[priority]} />
           </div>
           <div className={S["ticket__status"]}>
-            <Badge text={status} key={status} variant={TICKET_STATUS_COLORS[status as Variants]} />
+            <Badge text={status} key={status} variant={TICKET_STATUS_COLORS[status]} />
           </div>
         </div>
         {tags.length > 0 && <div className={S["ticket__tags"]}>
