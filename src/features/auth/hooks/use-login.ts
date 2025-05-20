@@ -1,6 +1,6 @@
 import useCreateApiData from '../../../hooks/use-create-api-data'
 import { SubmitHandler } from 'react-hook-form'
-import { loginSchema } from '../schemas/user.schema'
+import { loginSchema } from '../schemas/login.schema'
 import Cookies from 'js-cookie'
 import { z } from 'zod'
 import axios from 'axios'
