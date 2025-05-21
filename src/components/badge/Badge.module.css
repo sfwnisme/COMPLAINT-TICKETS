@@ -1,11 +1,10 @@
 .badge {
   display: block;
-  outline: 1px solid var(--primary-color-400);
   width: fit-content;
-  padding: 2px 2px 2px;
+  padding: 2px 6px 2px;
   background-color: var(--primary-color-50);
-  font-size: 12px;
-  font-weight: 500;
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
   position: relative;
   border-radius: 5px;
   cursor: help;
