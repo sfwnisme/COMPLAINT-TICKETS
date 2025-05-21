@@ -20,6 +20,8 @@
 .list--absolute--bottom {
   top: auto;
   bottom: 100%;
+  margin-bottom: 0.5rem;
+  margin-top: 0rem;
 }
 
 .list--absolute--top {
@@ -36,6 +38,7 @@
 }
 
 .list__item {
+  font-size: var(--text-sm);
   border-radius: 5px;
 }
 
@@ -44,7 +47,6 @@
   padding: 8px;
   transition: var(--transition-50);
   cursor: pointer;
-  font-size: 14px;
   font-weight: 400;
   color: var(--primary-color-500);
 
@@ -58,8 +60,9 @@
   padding-top: 4px;
 }
 
+/* 
 @media (max-width: 650px) {
   .list__item {
-    font-size: 14px;
+  font-size: var(--text-sm);
   }
-}
+} */
