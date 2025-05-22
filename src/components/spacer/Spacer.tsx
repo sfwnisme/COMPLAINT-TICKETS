@@ -2,7 +2,7 @@ import { Sizes } from '../../types/types'
 import S from './Spacer.module.css'
 
 type Props = {
-  size?: Sizes
+  size?: Sizes | '2xl' | '3xl'
 }
 
 export default function Spacer({ size = 'xs' }: Props) {
@@ -12,6 +12,8 @@ export default function Spacer({ size = 'xs' }: Props) {
     md: '24px',
     lg: '32px',
     xl: '40px',
+    '2xl': '64px',
+    '3xl': '84px'
   }
   return (
     <div className={S.spacer} style={{ height: sizes[size] }} />
