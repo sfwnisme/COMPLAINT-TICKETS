@@ -1,0 +1,143 @@
+/* ==================== sidebar */
+.sidebar {
+  background-color: var(--primary-color-100);
+  height: calc(100dvh - 16px);
+  position: sticky;
+  top: 8px;
+  left: 0;
+  opacity: 1;
+  transition: var(--transition-150);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: var(--radius-md);
+  margin: 8px;
+  padding: 8px;
+}
+
+.sidebar__toggle-button {
+  position: absolute;
+  right: -10px;
+}
+
+@media (max-width: 650px) {
+
+  .sidebar {
+    min-width: 50%;
+    max-width: 80%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    opacity: 1;
+    transition: var(--transition-150) ease-in-out;
+    z-index: 3;
+    border: 1px solid var(--border-secondary);
+  }
+
+  .sidebar.sidebar--collapse {
+    left: calc(-100% + 8px);
+  }
+
+}
+
+.sidebar__icon {
+  width: 24px;
+  height: 24px;
+  white-space: nowrap;
+}
+
+.sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar__logo {
+  width: auto;
+  height: 30px;
+}
+
+.sidebar__collapse-btn {
+  display: none !important;
+}
+
+.sidebar__body-content {
+  padding: 8px 16px;
+}
+
+.sidebar__list {}
+
+.sidebar__item {
+  transition: var(--transition-100) background;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--primary-color-200);
+    transition: var(--transition-100) background;
+  }
+}
+
+.sidebar__link {
+  color: var(--primary-color-600);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: capitalize;
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+  gap: 16px;
+  padding: 8px;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.sidebar__item:hover .sidebar__icon,
+.sidebar__item:hover .sidebar__link {}
+
+@media (max-width: 650px) {
+  .sidebar__link {
+    margin-top: 0px;
+  }
+}
+
+.sidebar__others {
+  margin-top: auto;
+}
+
+.sidebar__others__title {
+  color: var(--primary-color-400);
+  padding: 8px;
+  margin: 0;
+}
+
+.sidebar__user {
+  display: flex;
+  gap: 12px;
+  border-radius: var(--radius-md);
+  margin: 12px;
+  padding: 10px;
+}
+
+.sidebar__user__info {
+  flex: 1;
+  width: 13ch;
+}
+
+.sidebar__user__name {
+  color: var(--primary-color-700);
+  flex-basis: 100%;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.sidebar__user__email {
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-normal);
+  color: var(--primary-color-500);
+}
