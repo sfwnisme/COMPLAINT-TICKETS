@@ -1,0 +1,32 @@
+.sidebar__item {
+  transition: var(--transition-100) background;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--primary-color-200);
+    transition: var(--transition-100) background;
+  }
+}
+.sidebar__body-content {
+  flex: 1;
+}
+.sidebar__link {
+  color: var(--primary-color-600);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: capitalize;
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: start;
+  gap: 16px;
+  padding: 8px;
+  white-space: nowrap;
+  width: 100%;
+}
+
+@media (max-width: 650px) {
+  .sidebar__link {
+    margin-top: 0px;
+  }
+}
