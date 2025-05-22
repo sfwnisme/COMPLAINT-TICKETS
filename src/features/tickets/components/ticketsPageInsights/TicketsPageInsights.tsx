@@ -1,10 +1,10 @@
 import useGetTickets from '../../hooks/use-get-tickets'
 import useGetApiDataByQuery from '../../../../hooks/use-get-api-data-by-query'
-import Style from './TicketPageInsights.module.css'
+import Style from './TicketsPageInsights.module.css'
 import Skeleton from '../../../../components/skeleton/Skeleton'
 import { ITicket } from '../../../../types/types'
 
-export default function TicketsInfo() {
+export default function TicketsPageInsights() {
   const tickets = useGetTickets()
   const inProgressTickets = useGetApiDataByQuery<ITicket[]>({ endpoint: '/tickets', query: '?status=in-progress' })
   const criticalTickets = useGetApiDataByQuery<ITicket[]>({ endpoint: '/tickets', query: '?priority=critical' })
