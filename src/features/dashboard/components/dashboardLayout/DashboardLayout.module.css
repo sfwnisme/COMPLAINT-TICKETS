@@ -1,0 +1,128 @@
+.layout {
+  display: flex;
+  transition: var(--transition-150);
+  position: relative;
+  min-height: 100dvh;
+  /* flex: 1; */
+  background-color: var(--primary-color-100);
+}
+
+.layout_collapse {
+  grid-template-columns: 0 100%;
+  transition: var(--transition-150);
+}
+
+/* ==================== Nav */
+.navbar {
+  grid-area: navbar;
+  background-color: white;
+  color: #fff;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 9;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid var(--border-quaternary);
+}
+
+.navbar__divider {
+  display: block;
+  height: 90%;
+  width: 2px;
+  background-color: var(--primary-color-200);
+
+  @media (min-width: 651px) {
+    display: none;
+  }
+}
+
+.navbar__search-box {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* input {
+  width: 100%;
+  height: 100%;
+  max-width: 400px;
+} */
+
+.navbar__search-input {
+  display: none;
+}
+
+.navbar__search-icon {
+  color: var(--primary-color-400);
+}
+
+.navbar__notification {
+  position: relative;
+  cursor: pointer;
+}
+
+.navbar__notification--active::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  right: 3px;
+  background-color: var(--danger-color-500);
+  height: 8px;
+  width: 8px;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.navbar__notification-icon {
+  color: var(--text-tertiary);
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.5;
+  position: relative;
+}
+
+.outlet {
+  grid-area: outlet;
+  background-color: white;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 40px;
+  margin: 10px;
+  border-radius: var(--radius-2xl);
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .outlet {
+    padding: 12px;
+    margin: 0;
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  .layout {
+    grid-template-areas:
+      "navbar"
+      "outlet";
+    grid-template-columns: 100%;
+    transition: var(--transition-150);
+  }
+
+  .layout_collapse {
+    grid-template-areas:
+      "navbar"
+      "outlet";
+    grid-template-columns: 100%;
+    transition: var(--transition-150);
+  }
+}
