@@ -8,10 +8,10 @@ export default function DashboardLayout() {
     <div className={`${Style.layout}`}>
       <Sidebar />
       <main className={Style.outlet}>
-        <div className={Style["outlet-content"]}>
-          <DasbhoardNavbar />
-          <Outlet />
-        </div>
+        {/* <div className={Style["outlet-content"]}> */}
+        <DasbhoardNavbar />
+        <Outlet />
+        {/* </div> */}
       </main>
     </div>
   )
