@@ -14,7 +14,8 @@ import PrivateRoute from "../app/auth/auth-wrapper/PrivateRoute";
 import PublicRoute from "../app/auth/auth-wrapper/PublicRoute";
 import UpdateUser from "../app/dashboard/users/update/UpdateUser";
 import CreateUser from "../app/dashboard/users/create/CreateUser";
-import DashboardLayout from "../app/layouts/dashboard-layout/DashboardLayout.tsx";
+import DashboardLayout from "../features/dashboard/components/dashboardLayout/DashboardLayout";
+// import DashboardLayout from "../app/layouts/dashboard-layout/DashboardLayout.tsx";
 
 export const routes = createBrowserRouter([
   {
