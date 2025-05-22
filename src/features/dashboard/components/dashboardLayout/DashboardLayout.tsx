@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import Style from './DashboardLayout.module.css'
 import Sidebar from '../sidebar/Sidebar'
+import DasbhoardNavbar from '../dashboardNavbar/DasbhoardNavbar'
 
 export default function DashboardLayout() {
   return (
@@ -8,6 +9,7 @@ export default function DashboardLayout() {
       <Sidebar />
       <main className={Style.outlet}>
         <div className={Style["outlet-content"]}>
+          <DasbhoardNavbar />
           <Outlet />
         </div>
       </main>

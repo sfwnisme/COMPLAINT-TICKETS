@@ -92,6 +92,7 @@
   grid-area: outlet;
   background-color: white;
   position: relative;
+  min-height: calc(100dvh - 20px);
   height: 100%;
   width: 100%;
   padding: 40px;
