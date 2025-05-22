@@ -1,7 +1,7 @@
 import FloatTicket from '../../../features/tickets/components/floatTicket/FloatTicket.tsx';
 import { useFloatTicket } from '../../../store/ticket.store.ts';
 import RenderTicketsContent from '../../../features/tickets/components/renderTicketsContent/RenderTicketsContent.tsx';
-import TicketPageInsights from '../../../features/tickets/components/ticketPageInsights/TicketPageInsights.tsx';
+import TicketPageInsights from '../../../features/tickets/components/ticketsPageInsights/TicketsPageInsights.tsx';
 import PageHeader from '../../../components/pageHeader/PageHeader.tsx';
 
 export default function Tickets() {
