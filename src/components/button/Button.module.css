@@ -28,6 +28,20 @@
   &:hover {
     transition: var(--transition-50);
   }
+
+  &.btn--none {
+    background-color: transparent;
+    * {
+      color: var(--primary-color-600);
+    }
+    &:hover {
+      background-color: var(--primary-color-200);
+      * {
+        color: var(--primary-color-700);
+      }
+    }
+    
+  }
 }
 
 .btn--width--fill {

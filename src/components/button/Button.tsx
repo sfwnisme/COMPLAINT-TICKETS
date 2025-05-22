@@ -5,7 +5,7 @@ type Props = {
   children?: React.ReactNode,
   variant?: 'primary' | 'info' | 'success' | 'warning' | 'danger';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'square';
-  shape?: 'default' | 'outline' | 'soft',
+  shape?: 'default' | 'outline' | 'soft' | 'none',
   outline?: boolean;
   width?: 'fill' | 'fit',
 }
@@ -33,7 +33,8 @@ const Button = React.forwardRef<HTMLButtonElement, finalType>((
   const shapes = {
     default: S['btn--default'],
     outline: S['btn--outline'],
-    soft: S['btn--soft']
+    soft: S['btn--soft'],
+    none: S['btn--none']
   }
 
   const settings = `
