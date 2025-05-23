@@ -1,6 +1,6 @@
 import Style from './FloatTicet.module.css'
 import { useEffect } from 'react'
-import CreateCommentForm from '../../forms/create-comment-form/CreateCommentForm'
+import CreateCommentForm from '../../forms/createCommentForm/CreateCommentForm'
 import FloatTicketSkeleton from './FloatTicketSkeleton'
 import { useFloatTicket } from '../../../../store/ticket.store'
 import Comments from '../comments/Comments'
