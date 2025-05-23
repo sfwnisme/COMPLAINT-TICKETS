@@ -1,15 +1,15 @@
-import Style from './FloatTicet.module.css'
 import { useEffect } from 'react'
-import CreateCommentForm from '../../forms/createCommentForm/CreateCommentForm'
-import FloatTicketSkeleton from './FloatTicketSkeleton'
 import { useFloatTicket } from '../../../../store/ticket.store'
-import Comments from '../comments/Comments'
-import StatusBar from '../statusBar/StatusBar'
+import { DEFAULT_TICKET } from '../../constraints'
+import CreateCommentForm from '../../forms/createCommentForm/CreateCommentForm'
+import useGetSingleTicket from '../../hooks/use-get-single-ticket'
+import FloatTicketAuthor from '../floatTicketAuthor/FloatTicketAuthor'
 import FloatTicketHeader from '../floatTicketHeader/FloatTicketHeader'
 import FloatTicketInfo from '../floatTicketInfo/FloatTicketInfo'
-import useGetSingleTicket from '../../hooks/use-get-single-ticket'
-import { DEFAULT_TICKET } from '../../constraints'
-import FloatTicketAuthor from '../floatTicketAuthor/FloatTicketAuthor'
+import StatusBar from '../statusBar/StatusBar'
+import Style from './FloatTicet.module.css'
+import Comments from '../comments/Comments'
+import FloatTicketSkeleton from './FloatTicketSkeleton'
 
 export default function FloatTicket() {
 
@@ -40,9 +40,11 @@ export default function FloatTicket() {
           tags={ticket.tags}
           priority={ticket.priority} />
         <StatusBar currenStatus={ticket.status ?? "open"} />
-        <div className={Style['float-ticket__chat']}>
-          <div className={Style['float-ticket__description']}>{ticket.description}</div>
-          <Comments ticketId={ticketId} />
+        <div className={Style['float-ticket__chat-container']}>
+          <div className={Style['float-ticket__chat']}>
+            <div className={Style['float-ticket__description']}>{ticket.description}</div>
+            <Comments ticketId={ticketId} />
+          </div>
         </div>
         <CreateCommentForm ticketId={ticketId} />
       </div>

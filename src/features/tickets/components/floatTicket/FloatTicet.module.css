@@ -41,12 +41,18 @@
   }
 }
 
+.float-ticket__chat-container {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
 .float-ticket__chat {
   overflow-y: auto;
   flex: 1;
-  border-radius: var(--radius-md);
+  border-radius: inherit;
   border: 1px solid var(--border-quaternary);
   padding: 10px;
+  height: 100%;
 
   @media (max-width: 767px) {
     padding: 5px;
