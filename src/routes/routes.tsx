@@ -9,13 +9,12 @@ import Users from "../app/dashboard/users/Users";
 import Ticket from "../app/pages/tickets/id/Ticket";
 import Login from "../app/auth/login/Login";
 import Home from "../app/home/Home";
-import HomeLayout from "../app/layouts/home-layout/HomeLayout";
 import PrivateRoute from "../app/auth/auth-wrapper/PrivateRoute";
 import PublicRoute from "../app/auth/auth-wrapper/PublicRoute";
 import UpdateUser from "../app/dashboard/users/update/UpdateUser";
 import CreateUser from "../app/dashboard/users/create/CreateUser";
 import DashboardLayout from "../features/dashboard/components/dashboardLayout/DashboardLayout";
-// import DashboardLayout from "../app/layouts/dashboard-layout/DashboardLayout.tsx";
+import HomeLayout from "../features/home/homeLayout/HomeLayout";
 
 export const routes = createBrowserRouter([
   {
