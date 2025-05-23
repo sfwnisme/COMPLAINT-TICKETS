@@ -1,0 +1,9 @@
+.loading-icon {
+  animation: loading-icon 1.2s infinite linear;
+}
+
+@keyframes loading-icon {
+  100% {
+    transform: rotate(360deg);
+  }
+}
