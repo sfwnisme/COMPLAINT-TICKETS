@@ -1,8 +1,5 @@
-import React from 'react'
 
-type Props = {}
-
-export default function ForbeddinPage({}: Props) {
+export default function ForbeddinPage() {
   return (
     <div>ForbeddinPage</div>
   )

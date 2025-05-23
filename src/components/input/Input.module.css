@@ -1,7 +1,7 @@
 .input-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 12px;
   width: 100%;
 }
 
@@ -9,7 +9,9 @@
   background-color: transparent;
   color: var(--primary-color-500);
   padding: 6px 12px;
-  font-size: 14px;
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-semibold);
+  height: 35px;
   outline: 0px solid transparent;
   border: 1px solid var(--primary-color-400);
   border-radius: 5px;
@@ -204,8 +206,8 @@
 
 /* label */
 .label {
-  font-size: 15px;
-  color: var(--primary-color-900);
-  font-weight: 500;
+  font-size: var(--text-sm);
+  color: var(--primary-color-700);
+  font-weight: 600;
   text-transform: capitalize;
 }

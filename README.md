@@ -3,9 +3,6 @@
 > [!IMPORTANT]
 > This project was created to scale my frontend skills by building every component from scratch.
   
-## ⚠️ALERT
-
-currently the project expands, so I decided to restructure the folders and files, with new adoption. You can follow up the updates on `REFACTOR_FOLDER_STRUCTURE` branch
 
 ## Technologies Used
 
@@ -63,11 +60,21 @@ You can check the backend project [here](https://github.com/sfwnisme/backend-tic
 - [ ] date range for metrics
 - [ ] most commont words used
 
+### Completed components
+
 ### In Progress
 
-- Comprehensive text component system with:
+- [ ] Comprehensive text component system with:
   - Type variants (h1, h2, h3, h4, h5, h6, p, small, 12px, 11px)
   - Color variants (primary, info, danger, success, warning)
   - Font weights (200, 400, 500, 600, 700, 800, 900)
   - Standardized sizing for application consistency
   - Padding and margin props to avoid CSS modules nesting issues
+
+## Backlog
+
+>[!note]
+> Some ideas shine through working on this project, thus it included below as a blacklog tasks
+
+- [ ] buttons for next and prev ticket on the float ticket component header
+- [ ] gloabal error handling

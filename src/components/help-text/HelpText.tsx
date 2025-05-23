@@ -1,10 +1,10 @@
-import { EyeClosed, FileWarning, Info, ParenthesesIcon } from "lucide-react";
+import { Info } from "lucide-react";
 import S from './HelpText.module.css'
-import { TVariants } from "../defintions.components";
+import { Variants } from "../../types/types";
 
 type Props = {
   children: React.ReactNode,
-  variant?: TVariants,
+  variant?: Variants,
   icon?: 'visible' | 'invisible'
 }
 
@@ -16,13 +16,6 @@ export default function HelpText({ children = 'help text for short information',
     success: S['help-text--success'],
     warning: S['help-text--warning'],
     danger: S['help-text--danger'],
-  }
-  const type = {
-    normal: "",
-    info: <Info size={13} className={S['help-text__icon']} />,
-    warning: <FileWarning size={13} className={S['help-text__icon']} />,
-    danger: <EyeClosed size={13} className={S['help-text__icon']} />,
-    success: <ParenthesesIcon size={13} className={S['help-text__icon']} />,
   }
 
   return (

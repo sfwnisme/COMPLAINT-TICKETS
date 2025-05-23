@@ -1,14 +1,14 @@
 // import React, { useState } from 'react'
 import React from "react";
-import { TVariants } from "../defintions.components";
 import S from "./Select.module.css";
 import { ChevronsUpDown } from "lucide-react";
+import { Variants } from "../../types/types";
 
 type Props = {
   children: React.ReactNode;
   title?: string;
   sze?: "sm" | "md";
-  variant?: TVariants;
+  variant?: Variants;
 } & React.DetailedHTMLProps<
   React.SelectHTMLAttributes<HTMLSelectElement>,
   HTMLSelectElement
@@ -41,7 +41,7 @@ const Select = React.forwardRef<HTMLSelectElement, Props>(
           <select
             ref={ref}
             title={rest.name}
-            id={rest.name}
+            // id={rest.name}
             className={`${S.select} ${settings}`}
             defaultChecked={true}
             {...rest}

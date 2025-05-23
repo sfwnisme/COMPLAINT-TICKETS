@@ -1,0 +1,36 @@
+.user-chip {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  /* padding: 0px 20px 0px; */
+}
+
+.user-chip__info {
+  flex: 1;
+}
+
+.user-chip__name {
+  color: var(--text-secondary);
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 650px) {
+  .user-chip__name {
+    font-size: 14px;
+    margin-bottom: 3px;
+  }
+}
+
+.user-chip__text {
+  color: var(--text-quaternary);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+@media (max-width: 650px) {
+  .user-chip__text {
+    font-size: 12px;
+  }
+}

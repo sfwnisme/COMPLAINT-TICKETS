@@ -1,17 +1,15 @@
 import S from './Avatar.module.css'
-import { TSizes } from '../defintions.components'
 import { User } from 'lucide-react'
-// const imageUrl = "https://cdn-icons-png.flaticon.com/512/266/266033.png"
+import { Sizes } from '../../types/types'
 
 type Props = {
   image?: string,
   name?: string,
-  size?: TSizes,
+  size?: Sizes,
 } & React.HTMLAttributes<HTMLDivElement>
 
 export default function Avatar({
   image, name, size = "sm", ...rest }: Props) {
-  const isImageAvailable = Boolean(image)
   const nameFirstTwoLetters = name?.slice(0, 2).toUpperCase()
 
   const sizes = {

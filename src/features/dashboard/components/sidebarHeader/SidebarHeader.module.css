@@ -1,0 +1,20 @@
+.sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 8px;
+  position: sticky;
+  top: 0;
+}
+
+@media (min-width: 651px) {
+  .sidebar__header button {
+    display: none;
+  }
+}
+
+.sidebar__logo {
+  width: auto;
+  height: 30px;
+}

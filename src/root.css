@@ -97,4 +97,40 @@
     --transition-200: 200ms;
     --transition-250: 250ms;
     --transition-300: 300ms;
+
+    /* typography colors */
+    --typography-color: var(--primary-color-600);
+    --typography-heading: var(--primary-color-950);
+    --typography-sub-heading: var(--primary-color-500);
+    --typography-strong: var(--primary-color-950);
+    --typography-link: var(--primary-color-950);
+    --typography-link-underline: var(--primary-color-200);
+    --typography-link-underline-hover: var(--primary-color-400);
+    --typography-code: var(--primary-color-950);
+    --typography-thead-border: var(--primary-color-200);
+    --typography-list-marker: var(--primary-color-950);
+    --typography-hr: var(--primary-color-200);
+
+    /* text sizes */
+    --text-xs: .75rem;
+    --text-sm: .875rem;
+    --text-sm--line-height: calc(1.25 / .875);
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+
+    /* font weights */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+
+    /* border radius */
+    --radius-sm: .25rem;
+    --radius-md: .375rem;
+    --radius-lg: .5rem;
+    --radius-xl: .75rem;
+    --radius-2xl: 1rem;
+    --radius-3xl: 1.5rem;
 }

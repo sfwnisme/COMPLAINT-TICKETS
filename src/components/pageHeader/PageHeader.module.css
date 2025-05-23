@@ -1,0 +1,10 @@
+.page-header {
+  display: flex;
+  margin-bottom: 32px;
+}
+
+.page-header__title {
+  font-size: 24px;
+  font-weight: 600;
+  flex: 1;
+}

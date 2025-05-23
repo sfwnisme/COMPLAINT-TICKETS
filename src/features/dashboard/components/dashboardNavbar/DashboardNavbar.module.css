@@ -1,0 +1,50 @@
+.navbar {
+  grid-area: navbar;
+  background-color: white;
+  color: #fff;
+  padding-block: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 9;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 651px) {
+  .navbar {
+    display: none;
+  }
+}
+
+.navbar .navbar__sidebar-button {
+  flex: 1;
+}
+
+.navbar__notification {
+  position: relative;
+  cursor: pointer;
+}
+
+.navbar__notification--active::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  right: 3px;
+  background-color: var(--danger-color-500);
+  height: 8px;
+  width: 8px;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.navbar__notification-icon {
+  color: var(--text-tertiary);
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.5;
+  position: relative;
+}

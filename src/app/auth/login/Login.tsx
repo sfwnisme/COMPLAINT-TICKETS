@@ -1,4 +1,4 @@
-import LoginForm from '../../../features/forms/users/login-form/LoginForm'
+import LoginForm from '../../../features/auth/components/login-form/LoginForm'
 import S from './Login.module.css'
 
 

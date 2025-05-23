@@ -1,5 +1,4 @@
-import { TVariants } from "../components/defintions.components"
-import { Role } from "../types/types"
+import { Role, Status, Variants } from "../types/types"
 
 // USER----------------------
 export const USER_ROLES: { [key: string]: Role } = {
@@ -9,7 +8,7 @@ export const USER_ROLES: { [key: string]: Role } = {
   VIEW_ONLY: 'view_only',
 }
 export const USER_ROLES_VALUES = ['admin', 'manager', 'csr', 'view_only'] as const
-export const USER_ROLES_COLORS = {
+export const USER_ROLES_COLORS: Record<string, Variants> = {
   admin: 'success',
   manager: 'warning',
   csr: 'info',
@@ -18,15 +17,15 @@ export const USER_ROLES_COLORS = {
 // END USER----------------------
 
 // TICKET----------------------
-export const TICKET_STATUS = ['open', 'in-progress', 'resolved', 'closed'] as const
-export const TICKET_STATUS_COLORS: Record<string, TVariants> = {
+export const TICKET_STATUS: Status[] = ['open', 'in-progress', 'resolved', 'closed'] as const
+export const TICKET_STATUS_COLORS: Record<string, Variants> = {
   open: 'primary',
   'in-progress': 'info',
   resolved: 'success',
   closed: 'danger'
 } as const
 export const TICKET_PRIORITY = ['low', 'medium', 'high', 'critical'] as const
-export const TICKET_PRIORITY_COLORS: Record<string, TVariants> = {
+export const TICKET_PRIORITY_COLORS: Record<string, Variants> = {
   low: 'primary',
   medium: 'info',
   high: 'warning',

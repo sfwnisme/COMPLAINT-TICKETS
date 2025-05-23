@@ -1,0 +1,27 @@
+.layout {
+  display: flex;
+  transition: var(--transition-150);
+  position: relative;
+  min-height: 100dvh;
+  background-color: var(--primary-color-100);
+}
+
+.outlet {
+  grid-area: outlet;
+  background-color: white;
+  position: relative;
+  min-height: calc(100dvh - 20px);
+  height: 100%;
+  width: 100%;
+  padding: 40px;
+  margin: 10px;
+  border-radius: var(--radius-2xl);
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .outlet {
+    padding: 12px;
+    margin: 0;
+  }
+}
