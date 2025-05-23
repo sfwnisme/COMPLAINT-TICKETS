@@ -9,10 +9,11 @@
   cursor: pointer;
   border: 0px solid transparent;
   outline: 0px solid transparent;
-  display: grid;
-  align-content: center;
-  justify-content: center;
-  /* transition: var(--transition-50); */
+  display: flex;
+  grid-template-columns: auto auto;
+  gap: 4px;
+  place-content: center;
+  place-items: center;
   transition: background var(--transition-150);
   border-radius: 5px;
 
@@ -31,16 +32,19 @@
 
   &.btn--none {
     background-color: transparent;
+
     * {
       color: var(--primary-color-600);
     }
+
     &:hover {
       background-color: var(--primary-color-200);
+
       * {
         color: var(--primary-color-700);
       }
     }
-    
+
   }
 }
 
