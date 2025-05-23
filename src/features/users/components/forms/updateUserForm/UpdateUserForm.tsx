@@ -10,6 +10,8 @@ import SelectRole from '../selectRole/SelectRole'
 import useUpdateUser from "../../../hooks/use-update-user"
 import useUpdateUserFormValidation from "../../../hooks/use-update-user-form-validation"
 import { getupdateUserInputsConfigs } from "../../../inputsConfig"
+import { Loader2 } from "lucide-react"
+import LoadingIcon from "../../../../../components/loadingIcon/LoadingIcon"
 
 
 type Inputs = z.infer<typeof updateUserSchema>
@@ -39,7 +41,10 @@ export default function UpdateUserForm() {
     <FormLayout onSubmit={handleSubmit(onSubmit)} title='Update user' subtitle='apply the changes for the user'>
       <InputsArray<Inputs> inputs={inputs} register={register} />
       <SelectRole title='Select role' {...register('role')} />
-      <Button width="fill" disabled={!canUpdate}>{isPending ? <Loader /> : "Update"}</Button>
+      <Button width="fill" disabled={!canUpdate}>
+        {isPending && <LoadingIcon />}
+        Update
+      </Button>
       <Alert visible={showAlert} variant={isSuccess ? 'success' : 'danger'} hasIcon>
         {errorMessage ?? successMessage}
       </Alert>
