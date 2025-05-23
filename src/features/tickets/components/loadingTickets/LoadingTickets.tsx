@@ -1,5 +1,5 @@
 import Grid from '../../../../components/grid/Grid'
-import TicketSkeleton from '../../skeleton/ticketSkeleton/TicketSkeleton'
+import TicketSkeleton from '../ticket/TicketSkeleton'
 
 export default function LoadingTickets() {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
