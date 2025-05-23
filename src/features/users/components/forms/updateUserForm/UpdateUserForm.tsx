@@ -3,14 +3,12 @@ import { updateUserSchema } from "../../../schemas/user.schema"
 import { z } from "zod"
 import Alert from '../../../../../components/alert/Alert'
 import Button from '../../../../../components/button/Button'
-import Loader from '../../../../../components/loaders/loader/Loader'
 import FormLayout from '../../../../../components/formLayout/FormLayout'
 import InputsArray from '../../../../../components/inputsArray/InputsArray'
 import SelectRole from '../selectRole/SelectRole'
 import useUpdateUser from "../../../hooks/use-update-user"
 import useUpdateUserFormValidation from "../../../hooks/use-update-user-form-validation"
 import { getupdateUserInputsConfigs } from "../../../inputsConfig"
-import { Loader2 } from "lucide-react"
 import LoadingIcon from "../../../../../components/loadingIcon/LoadingIcon"
 
 
