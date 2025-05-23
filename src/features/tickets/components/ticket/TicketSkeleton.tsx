@@ -1,4 +1,4 @@
-import S from '../../components/ticket/Ticket.module.css'
+import S from './Ticket.module.css'
 import Skeleton from '../../../../components/skeleton/Skeleton'
 import Spacer from '../../../../components/spacer/Spacer'
 
