@@ -1,16 +1,16 @@
 
 import Style from './Comment.module.css'
 import { Case, Shift } from "@sfwnisme/visi"
-import { Avatar } from "../../../../components"
 import useDeleteApiData from "../../../../hooks/use-delete-api-data"
 import useUpdateApiData from "../../../../hooks/use-update-api-data"
-import { formatedDate } from "../../../../libs/formated-date"
-import Loader from "../../../../components/loaders/loader/Loader"
 import Dropdown from "../../../../components/dropdown/Dropdown"
 import List from "../../../../components/list/List"
 import ListItem from "../../../../components/list/ListItem"
 import HelpText from "../../../../components/help-text/HelpText"
 import { IComment } from '../../../../types/types'
+import UserChip from '../../../../components/userChip/UserChip'
+import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
+import Button from '../../../../components/button/Button'
 
 type Props = {
   comment: IComment
@@ -31,14 +31,12 @@ export default function Comment({
   return (
     <div className={`${Style["ticket-page__comment"]} ${comment?.isSolution && Style['ticket-page__comment-marked-as-a-solution']}`} id={comment?._id}>
       <div className={`${Style['ticket-page__commenter']}`}>
-        <Avatar name={comment?.author?.name} key={comment?.author?._id} size="sm" />
-        <div className={Style['ticket-page__commenter-info']} id={comment?.author?._id}>
-          <p className={`${Style['ticket-page__commenter__name']}`}>{comment?.author?.name}</p>
-          <p className={`${Style['ticket-page__commenter__date']}`}>{formatedDate(comment?.createdAt)}</p>
-        </div>
+        <UserChip name={comment?.author?.name} text={comment?.createdAt} />
         <Shift >
           <Case when={isPendingMark || isPendingDelete}>
-            <Loader />
+            <Button size='square' shape='soft' disabled>
+              <LoadingIcon />
+            </Button>
           </Case>
           <Case when={!isPendingMark || !isPendingDelete}>
             <Dropdown>
