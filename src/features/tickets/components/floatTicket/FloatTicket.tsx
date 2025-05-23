@@ -16,8 +16,7 @@ export default function FloatTicket() {
   const isFloatTicketVisible = useFloatTicket((state) => state.isFloatTicketVisible)
   const ticketId = useFloatTicket((state) => state.ticketId)
   const { data: ticket = DEFAULT_TICKET, isLoading } = useGetSingleTicket(ticketId)
-  console.log(ticket._id)
-  console.log(ticket._id)
+  console.log(ticket)
 
   useEffect(() => {
     const body = document.body
@@ -34,7 +33,7 @@ export default function FloatTicket() {
     <div className={Style["float-ticket__overlay"]}>
       <div className={Style['float-ticket']}>
         <FloatTicketHeader title={ticket.title} />
-        <FloatTicketAuthor name={ticket?.createdBy?.name} createdAt={ticket.createdAt ?? ""} />
+        <FloatTicketAuthor  name={ticket?.createdBy?.name ?? "Deleted User"} createdAt={ticket.createdAt ?? ""}/>
         <FloatTicketInfo
           ticketId={ticket._id}
           department={ticket.department}
