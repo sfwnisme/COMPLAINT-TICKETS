@@ -9,12 +9,12 @@ import Users from "../app/dashboard/users/Users";
 import Ticket from "../app/pages/tickets/id/Ticket";
 import Login from "../app/auth/login/Login";
 import Home from "../app/home/Home";
-import PrivateRoute from "../app/auth/auth-wrapper/PrivateRoute";
-import PublicRoute from "../app/auth/auth-wrapper/PublicRoute";
 import UpdateUser from "../app/dashboard/users/update/UpdateUser";
 import CreateUser from "../app/dashboard/users/create/CreateUser";
 import DashboardLayout from "../features/dashboard/components/dashboardLayout/DashboardLayout";
 import HomeLayout from "../features/home/homeLayout/HomeLayout";
+import PublicRoutesWrapper from "../features/auth/components/publicRoutesWrapper/PublicRoutesWrapper";
+import PrivateRoutesWrapper from "../features/auth/components/privateRoutesWrapper/PrivateRoutesWrapper";
 
 export const routes = createBrowserRouter([
   {
@@ -25,18 +25,11 @@ export const routes = createBrowserRouter([
         element: <HomeLayout />,
         children: [
           { index: true, element: <Home /> },
-          {
-            element: <PublicRoute />,
-            children: [{
-              path: 'login',
-              element:
-                <Login />
-            }]
-          }
+          { path: 'login', element: <PublicRoutesWrapper><Login /></PublicRoutesWrapper> }
         ]
       },
       {
-        element: <PrivateRoute />,
+        element: <PrivateRoutesWrapper />,
         children: [
           {
             path: 'dashboard',
