@@ -44,11 +44,11 @@
 .float-ticket__chat-container {
   overflow: hidden;
   border-radius: var(--radius-md);
+  flex: 1;
 }
 
 .float-ticket__chat {
   overflow-y: auto;
-  flex: 1;
   border-radius: inherit;
   border: 1px solid var(--border-quaternary);
   padding: 10px;
