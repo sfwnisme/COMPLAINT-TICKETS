@@ -1,6 +1,6 @@
 
 import Style from './Comment.module.css'
-import { Case, Shift } from "@sfwnisme/visi"
+import { Case, Shift, Visible } from "@sfwnisme/visi"
 import useDeleteApiData from "../../../../hooks/use-delete-api-data"
 import useUpdateApiData from "../../../../hooks/use-update-api-data"
 import Dropdown from "../../../../components/dropdown/Dropdown"
@@ -12,6 +12,7 @@ import UserChip from '../../../../components/userChip/UserChip'
 import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
 import Button from '../../../../components/button/Button'
 import { formatedDate } from '../../../../libs/formated-date'
+import useGetCurrentUser from '../../../../hooks/useGetCurrentUser'
 
 type Props = {
   comment: IComment
@@ -24,6 +25,8 @@ export default function Comment({
   const handleDeleteComment = async () => {
     await deleteComment(comment?._id)
   }
+  const currentUser = useGetCurrentUser()
+  const allowedToModify = currentUser?.data?._id === comment?.author?._id
 
   const markCommentSolution = async () => {
     await updateComment({ isSolution: !comment?.isSolution })
@@ -33,25 +36,27 @@ export default function Comment({
     <div className={`${Style["ticket-page__comment"]} ${comment?.isSolution && Style['ticket-page__comment-marked-as-a-solution']}`} id={comment?._id}>
       <div className={`${Style['ticket-page__commenter']}`}>
         <UserChip name={comment?.author?.name} text={formatedDate(comment?.createdAt)} />
-        <Shift >
-          <Case when={isPendingMark || isPendingDelete}>
-            <Button size='square' shape='soft' disabled>
-              <LoadingIcon />
-            </Button>
-          </Case>
-          <Case when={!isPendingMark || !isPendingDelete}>
-            <Dropdown>
-              <List position='absolute' rightOrLeft='right'>
-                <ListItem onClick={markCommentSolution}>
-                  {!comment?.isSolution ? 'Mark solution' : 'Unmark solution'}
-                </ListItem>
-                <ListItem onClick={handleDeleteComment}>
-                  Remove
-                </ListItem>
-              </List>
-            </Dropdown>
-          </Case>
-        </Shift>
+        <Visible when={allowedToModify}>
+          <Shift fallback={<LoadingIcon />}>
+            <Case when={isPendingDelete || isPendingMark}>
+              <Button size='square' shape='soft' disabled>
+                <LoadingIcon />
+              </Button>
+            </Case>
+            <Case when={!isPendingDelete || !isPendingMark}>
+              <Dropdown>
+                <List position='absolute' rightOrLeft='right'>
+                  <ListItem onClick={markCommentSolution}>
+                    {!comment?.isSolution ? 'Mark solution' : 'Unmark solution'}
+                  </ListItem>
+                  <ListItem onClick={handleDeleteComment}>
+                    Remove
+                  </ListItem>
+                </List>
+              </Dropdown>
+            </Case>
+          </Shift>
+        </Visible>
       </div>
       <p className={`${Style['ticket-page__commenter__message']}`}>
         {comment?.content}
