@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Tickets from "../app/dashboard/tickets/Tickets";
-import CreateTicket from "../app/pages/tickets/create/CreateTicket";
-import Departments from "../app/pages/departments/Departments";
-import Categories from "../app/pages/categories/Categories";
-import Settings from "../app/pages/settings/Settings";
+import CreateTicket from "../app/dashboard/tickets/create/CreateTicket";
+import Departments from "../app/dashboard/departments/Departments";
+import Categories from "../app/dashboard/categories/Categories";
+import Settings from "../app/dashboard/settings/Settings";
 import Users from "../app/dashboard/users/Users";
-import Ticket from "../app/pages/tickets/id/Ticket";
+import Ticket from "../app/dashboard/tickets/id/Ticket";
 import Login from "../app/auth/login/Login";
 import Home from "../app/home/Home";
 import UpdateUser from "../app/dashboard/users/update/UpdateUser";
