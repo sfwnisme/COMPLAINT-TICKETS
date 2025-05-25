@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { createCommentSchema } from '../../../validation/ticket.validation'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { createCommentSchema } from '../schemas/ticket.schema'
 
 type Inputs = z.infer<typeof createCommentSchema>
 export default function useCreateCommentForm() {
