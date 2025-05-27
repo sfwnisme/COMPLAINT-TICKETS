@@ -1,6 +1,6 @@
 .user-chip {
   display: flex;
-  align-items: end;
+  align-items: center;
   gap: 8px;
   /* padding: 0px 20px 0px; */
 }
@@ -13,7 +13,31 @@
   color: var(--text-secondary);
   font-size: 15px;
   font-weight: 600;
-  margin-bottom: 4px;
+}
+
+.user-chip__name--xs {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.user-chip__name--sm {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.user-chip__name--md {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.user-chip__name--lg {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.user-chip__name--xl {
+  font-size: 16px;
+  font-weight: 600;
 }
 
 @media (max-width: 650px) {
@@ -27,6 +51,7 @@
   color: var(--text-quaternary);
   font-size: 13px;
   font-weight: 400;
+  margin-top: 4px;
 }
 
 @media (max-width: 650px) {
