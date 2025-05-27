@@ -1,4 +1,4 @@
-import { Role, Status, Variants } from "../types/types"
+import { Role, Variants } from "../types/types"
 
 // USER----------------------
 export const USER_ROLES: { [key: string]: Role } = {
@@ -17,7 +17,7 @@ export const USER_ROLES_COLORS: Record<string, Variants> = {
 // END USER----------------------
 
 // TICKET----------------------
-export const TICKET_STATUS: Status[] = ['open', 'in-progress', 'resolved', 'closed'] as const
+export const TICKET_STATUS= ['open', 'in-progress', 'resolved', 'closed'] as const
 export const TICKET_STATUS_COLORS: Record<string, Variants> = {
   open: 'primary',
   'in-progress': 'info',
