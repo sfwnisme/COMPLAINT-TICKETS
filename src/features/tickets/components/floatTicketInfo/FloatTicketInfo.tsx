@@ -1,16 +1,18 @@
 import Badge from '../../../../components/badge/Badge'
+import UserChip from '../../../../components/userChip/UserChip'
 import { TICKET_PRIORITY_COLORS } from '../../../../constraints/constraints'
 import { IDepartment, ITag, Priority } from '../../../../types/types'
 import Style from './FloatTicketInfo.module.css'
 
 type Props = {
   ticketId: string,
+  assignedTo: string,
   department: Omit<IDepartment, 'createdAt' | 'updatedAt'>,
   tags: ITag[],
   priority: Priority,
 }
 
-export default function FloatTicketInfo({ ticketId = "", department = { title: "", _id: "" }, tags = [], priority = "low" }: Readonly<Props>) {
+export default function FloatTicketInfo({ ticketId = "", assignedTo = "", department = { title: "", _id: "" }, tags = [], priority = "low" }: Readonly<Props>) {
   const renderTags = tags.map((tag: ITag) => (
     <Badge text={tag?.name} title={tag?._id} variant='primary' key={tag._id} customColor={tag?.color} />
   ))
@@ -20,6 +22,13 @@ export default function FloatTicketInfo({ ticketId = "", department = { title: "
         <p>Ticket Id</p>
         <strong>#{ticketId}</strong>
       </span>
+      {
+        assignedTo &&
+        <span className={Style['float-ticket__info__assignedTo']}>
+          <p>Assigned to</p>
+          <UserChip name={assignedTo} avatarSize='xs' fontSize='xs' />
+        </span>
+      }
       {department?._id && <span className={Style['float-ticket__info__department']}>
         <p>Department</p>
         <Badge text={department.title} title={department._id} variant='primary' key={department._id} />
