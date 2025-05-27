@@ -16,7 +16,7 @@ export default function FloatTicket() {
   const isFloatTicketVisible = useFloatTicket((state) => state.isFloatTicketVisible)
   const ticketId = useFloatTicket((state) => state.ticketId)
   const { data: ticket = DEFAULT_TICKET, isLoading } = useGetSingleTicket(ticketId)
-  console.log(ticket)
+  console.log('ticket',ticket)
 
   useEffect(() => {
     const body = document.body
@@ -36,6 +36,7 @@ export default function FloatTicket() {
         <FloatTicketAuthor  name={ticket?.createdBy?.name ?? "Deleted User"} createdAt={ticket.createdAt ?? ""}/>
         <FloatTicketInfo
           ticketId={ticket._id}
+          assignedTo={ticket.assignedTo?.name}
           department={ticket.department}
           tags={ticket.tags}
           priority={ticket.priority} />
