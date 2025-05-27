@@ -43,9 +43,12 @@ export default function Ticket(
       </div >
       <div className={S["ticket__footer"]}>
         <div className={S["ticket__footer--left-side"]}>
-          <div className={S["ticket__department"]}>
-            <Badge text={department?.title} key={department?._id} />
-          </div>
+          {department &&
+            <div className={S["ticket__department"]}>
+              <Badge text={department?.title} key={department?._id} />
+            </div>
+
+          }
 
           <div className={S["ticket__priority"]}>
             <Badge text={priority} key={priority} variant={TICKET_PRIORITY_COLORS[priority]} />
