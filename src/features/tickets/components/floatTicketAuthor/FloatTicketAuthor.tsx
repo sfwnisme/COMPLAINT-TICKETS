@@ -7,5 +7,5 @@ type Props = {
 }
 
 export default function FloatTicketAuthor({ name, createdAt }: Readonly<Props>) {
-  return <UserChip name={name} text={formatedDate(createdAt)} avatarSize='md' />
+  return <UserChip name={name} text={formatedDate(createdAt)} avatarSize='md' fontSize='lg'/>
 }
