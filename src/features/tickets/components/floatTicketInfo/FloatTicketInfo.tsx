@@ -20,7 +20,7 @@ export default function FloatTicketInfo({ ticketId = "", department = { title: "
         <p>Ticket Id</p>
         <strong>#{ticketId}</strong>
       </span>
-      {department && <span className={Style['float-ticket__info__department']}>
+      {department?._id && <span className={Style['float-ticket__info__department']}>
         <p>Department</p>
         <Badge text={department.title} title={department._id} variant='primary' key={department._id} />
       </span>}
