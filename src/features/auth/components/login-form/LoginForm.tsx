@@ -8,6 +8,7 @@ import useLoginFormValidation from '../../hooks/use-login-form-validation'
 import useLogin from '../../hooks/use-login'
 import InputsArray from '../../../../components/inputsArray/InputsArray'
 import { getLoginInputsConfigs } from '../../inputsConfig'
+import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
 
 export default function LoginForm() {
   const {
@@ -41,7 +42,8 @@ export default function LoginForm() {
       <form className={Style.form} onSubmit={handleSubmit(onSubmit)}>
         <InputsArray inputs={inputsConfigs} register={register} />
         <Button size='xl' type='submit' width='fill' disabled={!canLogin}>
-          {!isPending ? 'Login' : <Loader />}
+          {isPending && <LoadingIcon />}
+          Sign in
         </Button>
         <Alert visible={showAlert} variant={isSuccess ? 'success' : 'danger'} hasIcon>
           {isSuccess ? successMessage : errorMessage}
