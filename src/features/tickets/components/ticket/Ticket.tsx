@@ -5,7 +5,6 @@ import Badge from '../../../../components/badge/Badge'
 import { useFloatTicket } from '../../../../store/ticket.store'
 import { TICKET_PRIORITY_COLORS, TICKET_STATUS_COLORS } from '../../../../constraints/constraints'
 import { formatedDate } from '../../../../libs/formated-date'
-import HelpText from '../../../../components/help-text/HelpText'
 import { ITicket } from '../../../../types/types'
 import useDeleteApiData from '../../../../hooks/use-delete-api-data'
 import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
@@ -52,20 +51,20 @@ export default function Ticket(
         <div className={S["ticket__footer--left-side"]}>
           {department &&
             <div className={S["ticket__department"]}>
-              <Badge text={department?.title + " department"} key={department?._id} />
+              <Badge text={department?.title} dot key={department?._id} />
             </div>
           }
           <div className={S["ticket__priority"]}>
-            <Badge text={priority + " priority"} key={priority} variant={TICKET_PRIORITY_COLORS[priority]} />
+            <Badge text={priority} key={priority} dot variant={TICKET_PRIORITY_COLORS[priority]} />
           </div>
           <div className={S["ticket__status"]}>
-            <Badge text={status} key={status} variant={TICKET_STATUS_COLORS[status]} />
+            <Badge text={status} key={status} dot variant={TICKET_STATUS_COLORS[status]} />
           </div>
         </div>
-        {tags.length > 0 && <div className={S["ticket__tags"]}>
+        {/* {tags.length > 0 && <div className={S["ticket__tags"]}>
           {renderTags}
           {tags.length > 3 && <HelpText icon='invisible'>and more...</HelpText>}
-        </div>}
+        </div>} */}
         {
           currentUser.data?.role === 'admin' &&
           <Button variant='danger' shape='soft' size='square' onClick={() => handleDeleteTicket(_id)}>
