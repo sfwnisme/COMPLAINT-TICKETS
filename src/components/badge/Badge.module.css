@@ -1,5 +1,7 @@
 .badge {
-  display: block;
+  display: inline-flex;
+  gap: 2px;
+  align-items: center;
   width: fit-content;
   padding: 2px 6px 2px;
   background-color: var(--primary-color-50);
@@ -10,6 +12,14 @@
   cursor: help;
 }
 
+.badge__dot {
+  display: block;
+  height: 7px;
+  width: 7px;
+  background-color: red;
+  border-radius: 5px;
+}
+
 .primary {
   outline-color: var(--primary-color-200);
   background-color: var(--primary-color-50);
@@ -17,6 +27,10 @@
 
   &::after {
     background-color: var(--primary-color-700);
+  }
+
+  .badge__dot {
+    background-color: var(--primary-color-300);
   }
 }
 
@@ -28,6 +42,10 @@
   &::after {
     background-color: var(--info-color-500);
   }
+
+  .badge__dot {
+    background-color: var(--info-color-300);
+  }
 }
 
 .success {
@@ -37,6 +55,10 @@
 
   &::after {
     background-color: var(--success-color-500);
+  }
+
+  .badge__dot {
+    background-color: var(--success-color-300);
   }
 }
 
@@ -48,6 +70,10 @@
   &::after {
     background-color: var(--warning-color-500);
   }
+
+  .badge__dot {
+    background-color: var(--warning-color-300);
+  }
 }
 
 .danger {
@@ -57,5 +83,9 @@
 
   &::after {
     background-color: var(--danger-color-500);
+  }
+
+  .badge__dot {
+    background-color: var(--danger-color-300);
   }
 }

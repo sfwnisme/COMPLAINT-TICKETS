@@ -5,9 +5,10 @@ type Props = {
   variant?: "primary" | "info" | 'success' | 'warning' | 'danger'
   title?: string,
   customColor?: string,
+  dot?: boolean,
 }
 
-export default function Badge({ text = 'badge', variant = 'primary', title = 'describe the badge', customColor = "" }: Props) {
+export default function Badge({ text = 'badge', variant = 'primary', title = 'describe the badge', customColor = "", dot = false }: Props) {
   const variants = {
     primary: S.primary,
     info: S.info,
@@ -31,13 +32,17 @@ export default function Badge({ text = 'badge', variant = 'primary', title = 'de
     return `#${Math.round(r).toString(16).padStart(2, '0')}${Math.round(g).toString(16).padStart(2, '0')}${Math.round(b).toString(16).padStart(2, '0')}`;
   }
 
-  const theCustomColor = controlHexColor(customColor, 0.9)
+  const theCustomColor = controlHexColor(customColor, 0.93)
   const theCustomColorText = controlHexColor(customColor, 0)
   const theCustomColorBorder = controlHexColor(customColor, 0.7)
+  const theCustomColorDot = controlHexColor(customColor, 0.6)
   console.log(theCustomColor)
 
   const settings = S.badge + " " + variants[variant]
   return (
-    <span className={settings} title={title} style={{ backgroundColor: theCustomColor, color: theCustomColorText, outlineColor: theCustomColorBorder }}>{text}</span>
+    <span className={`${settings}`} title={title} style={{ backgroundColor: theCustomColor, color: theCustomColorText, outlineColor: theCustomColorBorder }}>
+      {dot && <span className={S.badge__dot} style={{ backgroundColor: theCustomColorDot }} />}
+      {text}
+    </span>
   )
 }
