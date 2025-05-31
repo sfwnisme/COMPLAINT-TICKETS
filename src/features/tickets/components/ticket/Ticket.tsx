@@ -1,4 +1,4 @@
-import { Clock, User } from 'lucide-react'
+import { Clock, Trash, User } from 'lucide-react'
 import S from './Ticket.module.css'
 import Button from '../../../../components/button/Button'
 import Badge from '../../../../components/badge/Badge'
@@ -7,10 +7,18 @@ import { TICKET_PRIORITY_COLORS, TICKET_STATUS_COLORS } from '../../../../constr
 import { formatedDate } from '../../../../libs/formated-date'
 import HelpText from '../../../../components/help-text/HelpText'
 import { ITicket } from '../../../../types/types'
+import useDeleteApiData from '../../../../hooks/use-delete-api-data'
+import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
+import useGetCurrentUser from '../../../../hooks/useGetCurrentUser'
 
 export default function Ticket(
   { ticket }: Readonly<{ ticket: ITicket }>
 ) {
+  const { mutateAsync: deleteTicket, isPending } = useDeleteApiData({ endpoint: '/tickets', revalidateKey: '/tickets' })
+  const handleDeleteTicket = async (ticketId: string) => {
+    await deleteTicket(ticketId)
+  }
+  const currentUser = useGetCurrentUser()
   const { _id, title, createdBy, department, status, priority, tags, createdAt } = ticket
 
   console.log(tags)
@@ -26,7 +34,7 @@ export default function Ticket(
   ))
 
   return (
-    <div className={`${S.ticket}`}>
+    <div className={`${S.ticket}`} id={_id}>
       <div className={S['ticket__header']}>
         <div className={S['ticket__settings']}>
           <div className={S['ticket__check']}>
@@ -36,7 +44,6 @@ export default function Ticket(
         <h3 className={S['ticket__title']}>{title}</h3>
         <Button onClick={() => handleToggleFloatTicket(_id)} size='xs' shape='soft'>open</Button>
         <div className={S["ticket__header__footer"]}>
-          <p className={S["ticket__number"]}>#{_id}</p>
           <div className={S["ticket__assignee"]} id={createdBy?._id}><User size={14} strokeWidth={1.6} id={createdBy?._id} />{createdBy?.name}</div>
           <div className={S["ticket__created-at"]} ><Clock size={14} strokeWidth={1.6} /> {formatedDate(createdAt)}</div>
         </div >
@@ -45,13 +52,11 @@ export default function Ticket(
         <div className={S["ticket__footer--left-side"]}>
           {department &&
             <div className={S["ticket__department"]}>
-              <Badge text={department?.title} key={department?._id} />
+              <Badge text={department?.title + " department"} key={department?._id} />
             </div>
-
           }
-
           <div className={S["ticket__priority"]}>
-            <Badge text={priority} key={priority} variant={TICKET_PRIORITY_COLORS[priority]} />
+            <Badge text={priority + " priority"} key={priority} variant={TICKET_PRIORITY_COLORS[priority]} />
           </div>
           <div className={S["ticket__status"]}>
             <Badge text={status} key={status} variant={TICKET_STATUS_COLORS[status]} />
@@ -61,6 +66,12 @@ export default function Ticket(
           {renderTags}
           {tags.length > 3 && <HelpText icon='invisible'>and more...</HelpText>}
         </div>}
+        {
+          currentUser.data?.role === 'admin' &&
+          <Button variant='danger' shape='soft' size='square' onClick={() => handleDeleteTicket(_id)}>
+            {isPending ? <LoadingIcon /> : <Trash size={15} strokeWidth={1} />}
+          </Button>
+        }
       </div>
     </div >
   )
