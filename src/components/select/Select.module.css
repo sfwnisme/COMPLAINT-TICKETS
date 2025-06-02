@@ -11,7 +11,7 @@
 }
 
 .select-label {
-  font-size: 15px;
+  font-size: var(--text-sm);
   color: var(--primary-color-900);
   font-weight: 500;
   text-transform: capitalize;
