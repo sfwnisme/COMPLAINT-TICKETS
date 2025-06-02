@@ -10,13 +10,14 @@ import StatusBar from '../statusBar/StatusBar'
 import Style from './FloatTicet.module.css'
 import Comments from '../comments/Comments'
 import FloatTicketSkeleton from './FloatTicketSkeleton'
+import DOMPurify from "dompurify";
 
 export default function FloatTicket() {
 
   const isFloatTicketVisible = useFloatTicket((state) => state.isFloatTicketVisible)
   const ticketId = useFloatTicket((state) => state.ticketId)
   const { data: ticket = DEFAULT_TICKET, isLoading } = useGetSingleTicket(ticketId)
-  console.log('ticket',ticket)
+  console.log('ticket', ticket)
 
   useEffect(() => {
     const body = document.body
@@ -33,7 +34,7 @@ export default function FloatTicket() {
     <div className={Style["float-ticket__overlay"]}>
       <div className={Style['float-ticket']}>
         <FloatTicketHeader title={ticket.title} />
-        <FloatTicketAuthor  name={ticket?.createdBy?.name ?? "Deleted User"} createdAt={ticket.createdAt ?? ""}/>
+        <FloatTicketAuthor name={ticket?.createdBy?.name ?? "Deleted User"} createdAt={ticket.createdAt ?? ""} />
         <FloatTicketInfo
           ticketId={ticket._id}
           assignedTo={ticket.assignedTo?.name}
@@ -43,7 +44,7 @@ export default function FloatTicket() {
         <StatusBar currenStatus={ticket.status ?? "open"} />
         <div className={Style['float-ticket__chat-container']}>
           <div className={Style['float-ticket__chat']}>
-            <div className={Style['float-ticket__description']}>{ticket.description}</div>
+            <div className={Style['float-ticket__description']} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(ticket?.description ?? '') }} />
             <Comments ticketId={ticketId} />
           </div>
         </div>
