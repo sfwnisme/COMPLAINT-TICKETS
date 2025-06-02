@@ -39,8 +39,9 @@ export interface ITicket {
   status: Status,
   priority: Priority,
   createdBy: { _id: string, name: string },
+  assignedTo: { _id: string, name: string },
   tags: ITag[],
-  department: { _id: string, title: string }
+  department: { _id: string, title: string },
   createdAt?: string,
   updatedAt?: string
 }
