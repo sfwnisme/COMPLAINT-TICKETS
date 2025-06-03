@@ -8,7 +8,7 @@ type Props = {
   dot?: boolean,
 }
 
-export default function Badge({ text = 'badge', variant = 'primary', title = 'describe the badge', customColor = "", dot = false }: Props) {
+export default function Badge({ text = 'badge', variant = 'primary', title = '', customColor = "", dot = false }: Props) {
   const variants = {
     primary: S.primary,
     info: S.info,
@@ -40,7 +40,7 @@ export default function Badge({ text = 'badge', variant = 'primary', title = 'de
 
   const settings = S.badge + " " + variants[variant]
   return (
-    <span className={`${settings}`} title={title} style={{ backgroundColor: theCustomColor, color: theCustomColorText, outlineColor: theCustomColorBorder }}>
+    <span className={`${settings}`} title={title ?? ''} style={{ backgroundColor: theCustomColor, color: theCustomColorText, outlineColor: theCustomColorBorder }}>
       {dot && <span className={S.badge__dot} style={{ backgroundColor: theCustomColorDot }} />}
       {text}
     </span>
