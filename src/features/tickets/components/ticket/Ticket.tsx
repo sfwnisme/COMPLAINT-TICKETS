@@ -28,10 +28,6 @@ export default function Ticket(
     setTicketId(id)
   }
 
-  const renderTags = tags.map((tag) => (
-    <Badge text={tag?.name} title={tag?._id} variant='primary' key={tag._id} customColor={tag?.color} />
-  ))
-
   return (
     <div className={`${S.ticket}`} id={_id}>
       <div className={S['ticket__header']}>
@@ -61,10 +57,6 @@ export default function Ticket(
             <Badge text={status} key={status} dot variant={TICKET_STATUS_COLORS[status]} />
           </div>
         </div>
-        {/* {tags.length > 0 && <div className={S["ticket__tags"]}>
-          {renderTags}
-          {tags.length > 3 && <HelpText icon='invisible'>and more...</HelpText>}
-        </div>} */}
         {
           currentUser.data?.role === 'admin' &&
           <Button variant='danger' shape='soft' size='square' onClick={() => handleDeleteTicket(_id)}>
