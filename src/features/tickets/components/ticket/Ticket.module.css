@@ -7,6 +7,7 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  padding: 12px;
 }
 
 .ticket:has(input:checked) {
@@ -16,7 +17,7 @@
 }
 
 .ticket__header {
-  padding: 16px 16px 0px 16px;
+  padding-bottom:8px;
   display: flex;
   flex-wrap: wrap;
   align-items: start;
@@ -37,7 +38,7 @@
 .ticket__title {
   color: var(--text-secondary);
   font-weight: 500;
-  font-size: 16px;
+  font-size: var(--text-base);
   flex: 1;
 }
 
@@ -61,7 +62,6 @@
 }
 
 .ticket__footer {
-  padding: 5px;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -79,7 +79,6 @@
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
-  padding: 5px;
   border-radius: 5px;
   flex: 1;
 }
@@ -92,6 +91,5 @@
   gap: 5px;
   flex-wrap: nowrap;
   position: relative;
-  padding: 5px;
   border-radius: 5px;
 }
