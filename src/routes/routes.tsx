@@ -15,6 +15,7 @@ import DashboardLayout from "../features/dashboard/components/dashboardLayout/Da
 import HomeLayout from "../features/home/homeLayout/HomeLayout";
 import PublicRoutesWrapper from "../features/auth/components/publicRoutesWrapper/PublicRoutesWrapper";
 import PrivateRoutesWrapper from "../features/auth/components/privateRoutesWrapper/PrivateRoutesWrapper";
+import Dashboard from "../app/dashboard/Dashboard";
 
 export const routes = createBrowserRouter([
   {
@@ -24,8 +25,14 @@ export const routes = createBrowserRouter([
       {
         element: <Home />,
         children: [
-          { index: true, element: <Home /> },
-          { path: 'login', element: <PublicRoutesWrapper><Login /></PublicRoutesWrapper> }
+          { index: true },
+          {
+            path: 'login',
+            element:
+              <PublicRoutesWrapper>
+                <Login />
+              </PublicRoutesWrapper>
+          }
         ]
       },
       {
@@ -33,7 +40,7 @@ export const routes = createBrowserRouter([
         children: [
           {
             path: 'dashboard',
-            element: <DashboardLayout />,
+            element: <Dashboard />,
             children: [
               { index: true, element: <Tickets /> },
               {
