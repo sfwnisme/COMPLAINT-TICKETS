@@ -1,17 +1,18 @@
-import { Outlet } from 'react-router-dom'
 import Style from './DashboardLayout.module.css'
 import Sidebar from '../sidebar/Sidebar'
 import DasbhoardNavbar from '../dashboardNavbar/DasbhoardNavbar'
+import React from 'react'
 
-export default function DashboardLayout() {
+type Props = {
+  children: React.ReactNode;
+}
+export default function DashboardLayout({ children }: Readonly<Props>) {
   return (
     <div className={`${Style.layout}`}>
       <Sidebar />
       <main className={Style.outlet}>
-        {/* <div className={Style["outlet-content"]}> */}
         <DasbhoardNavbar />
-        <Outlet />
-        {/* </div> */}
+        {children}
       </main>
     </div>
   )
