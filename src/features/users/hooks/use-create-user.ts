@@ -9,7 +9,7 @@ import { IUser } from '../../../types/types';
 type Inputs = z.infer<typeof createUserSchema>;
 
 export default function useCreateUser() {
-  const { mutateAsync, isPending, isSuccess, isError, error } = useCreateApiData<Omit<IUser, '_id'>>({ endpoint: "/users/register", revalidateKey: "/create" })
+  const { mutateAsync, isPending, isSuccess, isError, error } = useCreateApiData<Omit<IUser, '_id'>>({ endpoint: "/users/register", revalidateKey: ["/create"] })
 
   const onSubmit: SubmitHandler<Inputs> = useCallback(async (data) => {
     try {

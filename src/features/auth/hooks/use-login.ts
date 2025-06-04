@@ -10,7 +10,7 @@ type Inputs = z.infer<typeof loginSchema>
 export default function useLogin() {
   const { mutateAsync, isPending, isError, isSuccess, error, data } = useCreateApiData({
     endpoint: '/users/login',
-    revalidateKey: '/users/login',
+    revalidateKey: ['/users/login'],
   })
   Cookies.set('TOKEN', data?.data.data.token)
 
