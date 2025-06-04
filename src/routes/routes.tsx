@@ -11,8 +11,6 @@ import Login from "../app/auth/login/Login";
 import Home from "../app/home/Home";
 import UpdateUser from "../app/dashboard/users/update/UpdateUser";
 import CreateUser from "../app/dashboard/users/create/CreateUser";
-import DashboardLayout from "../features/dashboard/components/dashboardLayout/DashboardLayout";
-import HomeLayout from "../features/home/homeLayout/HomeLayout";
 import PublicRoutesWrapper from "../features/auth/components/publicRoutesWrapper/PublicRoutesWrapper";
 import PrivateRoutesWrapper from "../features/auth/components/privateRoutesWrapper/PrivateRoutesWrapper";
 import Dashboard from "../app/dashboard/Dashboard";
