@@ -2,7 +2,6 @@
 
 > [!IMPORTANT]
 > This project was created to scale my frontend skills by building every component from scratch.
-  
 
 ## Technologies Used
 
@@ -20,30 +19,57 @@ You can check the backend project [here](https://github.com/sfwnisme/backend-tic
 
 ## Project Status
 
+### Tasks
+
+ | done | task                                                         | status      |
+ | ---- | ------------------------------------------------------------ | ----------- |
+ | [x]  | create ticket                                                | in progress |
+ | [x]  | impolement ck editor                                         | not yet     |
+ | [ ]  | update Inputs array component to accept select and ck editor | not yet     |
+ | [ ]  | ticket page                                                  | not yet     |
+ | [ ]  | update ticket                                                | not yet     |
+ | [ ]  | modify ticket informations                                   | not yet     |
+ | [ ]  | add ticket to department                                     | not yet     |
+ | [ ]  | ticket assign user                                           | not yet     |
+ | [ ]  | delete assign user                                           | not yet     |
+ | [x]  | get all departments                                          | not yet     |
+ | [ ]  | create department                                            | not yet     |
+ | [x]  | update department                                            | not yet     |
+ | [ ]  | delete department                                            | not yet     |
+ | [ ]  | get tickets by department id                                 | not yet     |
+ | [ ]  | get all tags                                                 | not yet     |
+ | [ ]  | create tag                                                   | not yet     |
+ | [ ]  | update tag                                                   | not yet     |
+ | [ ]  | delete tag                                                   | not yet     |
+ | [ ]  | get tickets by tag name                                      | not yet     |
+ | [ ]  | search for tickets                                           | not yet     |
+
 ### Completed Features
 
 - [x] Alert message system for success and error states
 - [x] comment component
 - [x] create comment => implement the validation with zod
 - [x] comments that created by the frontend with true as a solution not marked
-- [ ] skeleton loading
-- [ ] create array for inputs data with typescript interface to sure the exact required data to loop instead of adding inputs manually
+- [x] skeleton loading
+- [x] create array for inputs data with typescript interface to sure the exact required data to loop instead of adding inputs manually
+- [ ] Create Auth wrapper for the permissions, like `<Permissions when={true}>...</Permissions>`
 - [ ] error handling
+- [ ] global delete dialog
 
 #### ticket
   
-- [ ] create ticket
+- [x] create ticket
 - [ ] update ticket
-- [ ] delete single ticket
+- [x] delete single ticket
 - [ ] delete many tickets
-- [ ] loading skeleton for all the requests
+- [x] loading skeleton for all the requests
 - [ ] search for tickets
 
 #### departments
 
-- [ ] get department data
+- [x] get department data
 - [ ] create department
-- [ ] update department
+- [x] update department
 - [ ] delete department
 
 #### tags
