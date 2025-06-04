@@ -1,8 +1,8 @@
 import { z } from 'zod'
-import { createCommentSchema } from '../../../validation/ticket.validation'
 import useCreateApiData from '../../../hooks/use-create-api-data'
 import { SubmitHandler } from 'react-hook-form'
 import { useCallback } from 'react'
+import { createCommentSchema } from '../schemas/ticket.schema'
 
 type Inputs = z.infer<typeof createCommentSchema>
 export default function useCreateComment(ticketId: string = "") {
