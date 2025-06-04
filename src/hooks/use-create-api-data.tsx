@@ -3,10 +3,11 @@ import { axiosInstance } from '../libs/axios-instance'
 
 type Props = {
   endpoint: string,
-  revalidateKey?: string
+  revalidateKey?: (string | (string | number | object)[])[]
 }
 
-export default function useCreateApiData<T>({ endpoint = "", revalidateKey = "" }: Readonly<Props>) {
+export default function useCreateApiData<T>({ endpoint = "", revalidateKey = [] }: Readonly<Props>) {
+  console.log('revalidatKey', revalidateKey)
   const queryClient = useQueryClient()
   const mutation = useMutation({
     mutationKey: [endpoint],
@@ -15,7 +16,13 @@ export default function useCreateApiData<T>({ endpoint = "", revalidateKey = "" 
       return res
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [revalidateKey] })
+      if (Array.isArray(revalidateKey)) {
+        revalidateKey.forEach((key) => {
+          queryClient.invalidateQueries({ queryKey: key as string[] })
+        })
+      } else {
+        queryClient.invalidateQueries({ queryKey: revalidateKey })
+      }
     }
   })
 
