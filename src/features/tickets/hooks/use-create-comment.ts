@@ -6,7 +6,7 @@ import { createCommentSchema } from '../schemas/ticket.schema'
 
 type Inputs = z.infer<typeof createCommentSchema>
 export default function useCreateComment(ticketId: string = "") {
-  const { mutateAsync, isPending, isSuccess, isError } = useCreateApiData<Inputs>({ endpoint: '/comments/create', revalidateKey: '/comments' })
+  const { mutateAsync, isPending, isSuccess, isError } = useCreateApiData<Inputs>({ endpoint: '/comments/create', revalidateKey: [['/comments'], ['/tickets', ticketId]] })
 
   const onSubmit: SubmitHandler<Inputs> = useCallback(async (data, e) => {
     const newComment = {

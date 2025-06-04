@@ -5,7 +5,8 @@ import { useCallback } from 'react';
 import { CreateTicketType } from '../schemas/ticket.schema';
 
 export default function useCreateTicket() {
-  const { mutateAsync, isPending, isSuccess, isError, error } = useCreateApiData<CreateTicketType>({ endpoint: "/tickets/create", revalidateKey: "/create" })
+  const { mutateAsync, isPending, isSuccess, isError, error } =
+    useCreateApiData<CreateTicketType>({ endpoint: "/tickets/create", revalidateKey: ["/create"] })
 
   const onSubmit: SubmitHandler<CreateTicketType> = useCallback(async (data) => {
     try {
