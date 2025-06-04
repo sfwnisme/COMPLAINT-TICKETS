@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import  { useMemo } from 'react'
 import useGetDepartments from '../../hooks/use-get-departments'
 import LoadingDepartments from '../loadingDepartments/LoadingDepartments'
 import RenderDepartments from '../renderDepartments/RenderDepartments'

@@ -1,4 +1,3 @@
-import React from 'react'
 import Alert from '../../../../components/alert/Alert'
 
 export default function NoDepartments() {

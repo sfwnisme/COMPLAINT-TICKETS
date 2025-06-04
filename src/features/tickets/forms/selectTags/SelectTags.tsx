@@ -1,6 +1,5 @@
 import React from 'react'
 import Select from '../../../../components/select/Select'
-import useGetUsers from '../../../users/hooks/use-get-users'
 import useGetTags from '../../../../hooks/use-get-tags'
 
 type Props = {

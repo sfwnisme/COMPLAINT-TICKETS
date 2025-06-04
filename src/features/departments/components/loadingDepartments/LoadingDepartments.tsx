@@ -1,4 +1,3 @@
-import React from 'react'
 import Table from '../../../../components/table/Table'
 import THead from '../../../../components/table/THead'
 import TH from '../../../../components/table/TH'

@@ -1,7 +1,6 @@
 import Spacer from '../../../../components/spacer/Spacer'
 import Button from '../../../../components/button/Button'
 import Style from './LoginForm.module.css'
-import Loader from '../../../../components/loaders/loader/Loader'
 import Logo from '../../../../assets/logo.png'
 import Alert from '../../../../components/alert/Alert'
 import useLoginFormValidation from '../../hooks/use-login-form-validation'

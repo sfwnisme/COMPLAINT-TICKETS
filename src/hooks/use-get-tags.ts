@@ -1,6 +1,6 @@
-import React from 'react'
 import useGetAllData from './use-get-all-data'
+import { ITag } from '../types/types'
 
 export default function useGetTags() {
-  return useGetAllData('/tags')
+  return useGetAllData<ITag[]>('/tags')
 }
