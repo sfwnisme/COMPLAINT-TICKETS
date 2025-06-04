@@ -1,5 +1,5 @@
 import Skeleton from "../../../../components/skeleton/Skeleton"
-import Style from './StatusBar.module.css'
+import Style from './TicketStatusBar.module.css'
 
 
 export default function StatusBarSkeleton() {
