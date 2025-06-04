@@ -1,7 +1,8 @@
+import Button from '../../../../components/button/Button'
 import { TICKET_STATUS } from '../../../../constraints/constraints'
 import { Status } from '../../../../types/types'
 import Style from './TicketStatusBar.module.css'
-import { Check } from 'lucide-react'
+import { Check, Edit } from 'lucide-react'
 import { useCallback } from 'react'
 
 type Props = {
@@ -27,6 +28,7 @@ export default function StatusBar({ currenStatus }: Readonly<Props>) {
   return (
     <div className={Style['status-bar']}>
       {statusList}
+      <Button variant='primary' size='square' width="fill" ><Edit size={13} /></Button>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 .status-bar {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, auto);
   gap: 4px;
   border-radius: var(--radius-md);
 
@@ -15,6 +15,7 @@
     justify-content: center;
     gap: 5px;
     border-radius: var(--radius-sm);
+    transition: var(--transition-300);
 
     @media (max-width: 767px) {
       font-size: var(--text-xs);
@@ -23,15 +24,18 @@
 
     &.status-bar__completed {
       background-color: var(--success-color-100);
+      transition: var(--transition-300);
     }
 
     svg {
       color: var(--success-color-600);
+      transition: var(--transition-300);
     }
 
     &.status-bar__active {
       background-color: var(--success-color-300);
       color: var(--success-color-950);
+      transition: var(--transition-300);
     }
   }
 }
