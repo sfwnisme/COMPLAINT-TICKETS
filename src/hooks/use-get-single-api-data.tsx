@@ -9,7 +9,7 @@ type Params<T> = {
 
 export default function useGetSingleApiData<T>({ endpoint = '', id = '', initialData }: Params<T>) {
   const query = useQuery<T, Error>({
-    queryKey: ['single-', endpoint, id],
+    queryKey: [endpoint, id],
     queryFn: async () => {
       const res = await axiosInstance.get(endpoint + '/' + id)
       return res.data.data
