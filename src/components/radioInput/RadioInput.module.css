@@ -8,21 +8,23 @@
   transition: var(--transition-300);
   background-color: var(--primary-color-50);
   border: 1px solid var(--primary-color-200);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
+  cursor: pointer;
 }
 
-.radio-input-container {
+.radio-input {
   display: inline-block;
   border-radius: var(--radius-lg);
   border: 2px solid transparent;
   overflow: hidden;
 }
 
-.radio-input:checked+.radio-input__label {
+.radio-input__input:checked+.radio-input__label {
   background-color: var(--info-color-50);
   transition: var(--transition-300);
   border-color: white;
 }
-.radio-input-container:has(.radio-input:checked) {
+
+.radio-input:has(.radio-input__input:checked) {
   border: 2px solid var(--info-color-200);
 }

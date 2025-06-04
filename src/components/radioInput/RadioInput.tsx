@@ -9,8 +9,8 @@ type Props = {
 
 const RadioInput = React.forwardRef<HTMLInputElement, Props>(({ id, label, ...rest }, ref) => {
   return (
-    <div className={Style['radio-input-container']}>
-      <input className={Style['radio-input']} {...rest} type='radio' value={rest.value} id={id} ref={ref} hidden />
+    <div className={Style['radio-input']}>
+      <input className={Style['radio-input__input']} {...rest} type='radio' value={rest.value} id={id} ref={ref} hidden />
       <label htmlFor={id} className={Style['radio-input__label']}>{label}</label>
     </div>
   )
