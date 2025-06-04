@@ -22,7 +22,7 @@ export const routes = createBrowserRouter([
     element: <App />,
     children: [
       {
-        element: <HomeLayout />,
+        element: <Home />,
         children: [
           { index: true, element: <Home /> },
           { path: 'login', element: <PublicRoutesWrapper><Login /></PublicRoutesWrapper> }
