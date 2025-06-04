@@ -1,12 +1,14 @@
-import { Outlet } from 'react-router-dom'
 import HomeNavbar from '../components/HomeNavbar'
+import React from 'react'
 
-
-export default function HomeLayout() {
+type Props = {
+  children: React.ReactNode
+}
+export default function HomeLayout({ children }: Readonly<Props>) {
   return (
     <div>
       <HomeNavbar />
-      <Outlet />
+      {children}
     </div>
   )
 }
