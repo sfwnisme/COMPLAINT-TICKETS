@@ -1,9 +1,10 @@
 import { Outlet } from 'react-router-dom'
+import DashboardLayout from '../../features/dashboard/components/dashboardLayout/DashboardLayout'
 
 export default function Dashboard() {
   return (
-    <div>
+    <DashboardLayout>
       <Outlet />
-    </div>
+    </DashboardLayout>
   )
 }
