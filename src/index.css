@@ -88,3 +88,17 @@ li {
 @view-transition {
   navigation: auto;
 }
+
+/*quill input custom css*/
+.ql-container {
+  border-bottom-left-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+  min-height: 150px;
+}
+.ql-container, .ql-toolbar {
+  border-color: var(--border-secondary)!important;
+}
+.ql-toolbar {
+  border-top-left-radius: var(--radius-md);
+  border-top-right-radius: var(--radius-md);
+}
