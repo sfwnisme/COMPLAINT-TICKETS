@@ -23,7 +23,11 @@ const initialData: ITicket = {
     }
   ],
   createdAt: "2025-05-04T20:16:32.478Z",
-  updatedAt: "2025-05-16T00:50:02.847Z"
+  updatedAt: "2025-05-16T00:50:02.847Z",
+  assignedTo: {
+    _id: '',
+    name: ''
+  }
 }
 
 export default function useGetSingleTicket(ticketId: string) {
