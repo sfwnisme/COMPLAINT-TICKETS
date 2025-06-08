@@ -14,6 +14,7 @@ import CreateUser from "../app/dashboard/users/create/CreateUser";
 import PublicRoutesWrapper from "../features/auth/components/publicRoutesWrapper/PublicRoutesWrapper";
 import PrivateRoutesWrapper from "../features/auth/components/privateRoutesWrapper/PrivateRoutesWrapper";
 import Dashboard from "../app/dashboard/Dashboard";
+import Tags from "../app/dashboard/tags/tags";
 
 export const routes = createBrowserRouter([
   {
@@ -56,9 +57,9 @@ export const routes = createBrowserRouter([
                 ]
               },
               {
-                path: 'categories',
+                path: 'tags',
                 children: [
-                  { index: true, element: <Categories /> },
+                  { index: true, element: <Tags /> },
                 ]
               },
               {
