@@ -20,7 +20,7 @@ export default function CreateDepartmentForm() {
   return (
     <div>
       <Spacer />
-      <div style={{ display: "flex", gap: '3px', alignItems: 'start', justifyContent: 'end' }}>
+      <div style={{ display: "flex", flexWrap: 'wrap', gap: '3px', alignItems: 'start', justifyContent: 'end' }}>
         {activeCreate ?
           <>
             <form id="creaet_department_form" onSubmit={handleSubmit(onSubmit)} />
@@ -32,9 +32,9 @@ export default function CreateDepartmentForm() {
               {isPending && <LoadingIcon />}
               create
             </Button>
-            <Button variant="danger" shape="soft" onClick={() => setActiveCreate(false)}><X size={15} /></Button>
+            <Button variant="danger" shape="default" onClick={() => setActiveCreate(false)}><X size={15} /> Close</Button>
           </>
-          : <Button onClick={() => setActiveCreate(true)}><Plus size={15} /></Button>
+          : <Button onClick={() => setActiveCreate(true)}><Plus size={15} /> New</Button>
         }
       </div>
     </div>
