@@ -106,7 +106,7 @@
 
   .td {
     display: grid;
-    grid-template-columns: 15ch 1fr;
+    grid-template-columns: 13ch 1fr;
     position: relative;
     padding: 6px;
   }
