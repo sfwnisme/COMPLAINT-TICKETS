@@ -25,24 +25,23 @@ You can check the backend project [here](https://github.com/sfwnisme/backend-tic
  | ---- | ------------------------------------------------------------ | ----------- |
  | [x]  | create ticket                                                | in progress |
  | [x]  | impolement ck editor                                         | not yet     |
- | [ ]  | update Inputs array component to accept select and ck editor | not yet     |
+ | [ ]  | get tickets by department, tags, status                      | not yet     |
  | [ ]  | ticket page                                                  | not yet     |
  | [ ]  | update ticket                                                | not yet     |
  | [ ]  | modify ticket informations                                   | not yet     |
  | [ ]  | add ticket to department                                     | not yet     |
  | [ ]  | ticket assign user                                           | not yet     |
- | [ ]  | delete assign user                                           | not yet     |
+ | [ ]  | remove assign user                                           | not yet     |
  | [x]  | get all departments                                          | not yet     |
- | [ ]  | create department                                            | not yet     |
+ | [x]  | create department                                            | not yet     |
  | [x]  | update department                                            | not yet     |
- | [ ]  | delete department                                            | not yet     |
- | [ ]  | get tickets by department id                                 | not yet     |
- | [ ]  | get all tags                                                 | not yet     |
- | [ ]  | create tag                                                   | not yet     |
- | [ ]  | update tag                                                   | not yet     |
- | [ ]  | delete tag                                                   | not yet     |
- | [ ]  | get tickets by tag name                                      | not yet     |
+ | [x]  | delete department                                            | not yet     |
+ | [x]  | get all tags                                                 | not yet     |
+ | [x]  | create tag                                                   | not yet     |
+ | [x]  | update tag                                                   | not yet     |
+ | [x]  | delete tag                                                   | not yet     |
  | [ ]  | search for tickets                                           | not yet     |
+ | [ ]  | update Inputs array component to accept select and ck editor | not yet     |
 
 ### Completed Features
 
