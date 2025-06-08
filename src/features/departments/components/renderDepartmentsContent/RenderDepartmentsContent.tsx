@@ -7,7 +7,6 @@ import NoDepartments from '../noDepartments/NoDepartments'
 
 export default function RenderDepartmentsContent() {
   const departments = useGetDepartments()
-  console.log('departments', departments)
   const content = useMemo(() => {
     if (departments.isLoading) return <LoadingDepartments />
     if (departments.isError) return <ErrorDepartments error={departments.error.response?.data.msg ?? ''} />
