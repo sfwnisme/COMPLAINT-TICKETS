@@ -13,7 +13,7 @@ import useGetCurrentUser from '../../../../hooks/useGetCurrentUser'
 export default function Ticket(
   { ticket }: Readonly<{ ticket: ITicket }>
 ) {
-  const { mutateAsync: deleteTicket, isPending } = useDeleteApiData({ endpoint: '/tickets', revalidateKey: '/tickets' })
+  const { mutateAsync: deleteTicket, isPending } = useDeleteApiData({ endpoint: '/tickets', revalidateKey: ['/tickets'] })
   const handleDeleteTicket = async (ticketId: string) => {
     await deleteTicket(ticketId)
   }
