@@ -20,7 +20,7 @@ type Props = {
 export default function Comment({
   comment
 }: Readonly<Props>) {
-  const { mutateAsync: deleteComment, isPending: isPendingDelete } = useDeleteApiData({ endpoint: `/comments`, revalidateKey: '/comments' })
+  const { mutateAsync: deleteComment, isPending: isPendingDelete } = useDeleteApiData({ endpoint: `/comments`, revalidateKey: ['/comments'] })
   const { mutateAsync: updateComment, isPending: isPendingMark } = useUpdateApiData({ endpoint: '/comments', revalidateKey: '/comments', id: comment?._id, method: 'patch' })
   const handleDeleteComment = async () => {
     await deleteComment(comment?._id)
