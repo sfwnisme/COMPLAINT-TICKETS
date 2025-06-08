@@ -9,6 +9,9 @@ import { IDepartment } from '../../../../types/types'
 import Button from '../../../../components/button/Button'
 import { useCallback, useState } from 'react'
 import UpdateDepartmentForm from '../forms/updateDepartmentForm/UpdateDepartmentForm'
+import CreateDepartmentForm from '../createDepartmentForm/CreateDepartmentForm'
+import useDeleteApiData from '../../../../hooks/use-delete-api-data'
+import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
 
 type Props = {
   departments: IDepartment[]
@@ -20,6 +23,11 @@ export default function RenderDepartments({ departments }: Readonly<Props>) {
   const handleIsUpdating = useCallback((boolean: boolean, id: string) => {
     setIsUpdating([boolean, id])
   }, [])
+
+  const {
+    mutateAsync: deleteDepartment,
+    isPending: isDeleting
+  } = useDeleteApiData({ endpoint: '/departments', revalidateKey: ['/departments'] })
   const renderDepartments = departments?.map((department) => (
     <TR key={department?._id}>
       <TD dataCell='title'>
@@ -42,7 +50,10 @@ export default function RenderDepartments({ departments }: Readonly<Props>) {
                 <Button size='xs' variant={'info'} shape={'soft'} onClick={() => handleIsUpdating(true, department?._id)}>
                   update
                 </Button>
-                <Button size='xs' variant='danger' shape='soft'>Delete</Button>
+                <Button size='xs' variant='danger' shape='soft' disabled={isDeleting} onClick={() => deleteDepartment(department?._id)}>
+                  {isDeleting && <LoadingIcon />}
+                  Delete
+                </Button>
               </>
           }
         </div>
@@ -65,12 +76,10 @@ export default function RenderDepartments({ departments }: Readonly<Props>) {
           </TH>
         </THead>
         <TBody>
-          {/* <TR> */}
-          {/* <UpdateDepartmentForm departmentId='' /> */}
-          {/* </TR> */}
           {renderDepartments}
         </TBody>
       </Table>
+      <CreateDepartmentForm />
     </div>
   )
 }
