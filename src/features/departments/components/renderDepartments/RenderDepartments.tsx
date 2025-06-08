@@ -13,6 +13,7 @@ import CreateDepartmentForm from '../createDepartmentForm/CreateDepartmentForm'
 import useDeleteApiData from '../../../../hooks/use-delete-api-data'
 import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
 import { X } from 'lucide-react'
+import TFoot from '../../../../components/table/TFoot'
 
 type Props = {
   departments: IDepartment[]
@@ -88,9 +89,13 @@ export default function RenderDepartments({ departments }: Readonly<Props>) {
         </THead>
         <TBody>
           {renderDepartments}
+          <TR>
+            <TD colSpan={3}>
+              <CreateDepartmentForm />
+            </TD>
+          </TR>
         </TBody>
       </Table>
-      <CreateDepartmentForm />
     </div>
   )
 }
