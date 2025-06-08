@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import Button from "../../../../components/button/Button";
-import Input from "../../../../components/input/Input";
-import LoadingIcon from "../../../../components/loadingIcon/LoadingIcon";
-import useCreateDepartment from "../../hooks/use-create-department";
-import useCreateDepartmentFormValidation from "../../hooks/use-create-department-form-validation";
+import Button from "../../../../../components/button/Button";
+import Input from "../../../../../components/input/Input";
+import LoadingIcon from "../../../../../components/loadingIcon/LoadingIcon";
+import useCreateDepartment from "../../../hooks/use-create-department";
+import useCreateDepartmentFormValidation from "../../../hooks/use-create-department-form-validation";
 import { Plus, X } from "lucide-react";
-import Spacer from "../../../../components/spacer/Spacer";
+import Spacer from "../../../../../components/spacer/Spacer";
 
 export default function CreateDepartmentForm() {
   const [activeCreate, setActiveCreate] = useState(false)
