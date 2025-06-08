@@ -23,8 +23,10 @@ export type Status = "open" | "in-progress" | "resolved" | "closed"
 export type Priority = 'low' | 'medium' | 'high' | 'critical'
 export interface ITag {
   _id: string,
-  name: string
-  color: string
+  name: string,
+  color: string,
+  createdAt?: string,
+  updatedAt?: string,
 }
 export interface IDepartment {
   _id: string,
