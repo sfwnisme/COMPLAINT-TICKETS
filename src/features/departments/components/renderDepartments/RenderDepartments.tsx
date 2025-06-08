@@ -59,10 +59,10 @@ export default function RenderDepartments({ departments }: Readonly<Props>) {
           <TD dataCell='created at'>{formatedDate(department?.createdAt)}</TD>
           <TD dataCell='Actions'>
             <div style={{ display: 'flex', gap: '2px', justifyContent: 'end' }}>
-              <Button size='xs' variant={'info'} shape={'soft'} onClick={() => handleIsUpdating(true, department?._id)}>
+              <Button size='xs' variant={'info'} shape={'default'} onClick={() => handleIsUpdating(true, department?._id)}>
                 update
               </Button>
-              <Button size='xs' variant='danger' shape='soft' disabled={isDeleting} onClick={() => handleDeleteDepartment(department?._id)}>
+              <Button size='xs' variant='danger' shape='default' disabled={isDeleting} onClick={() => handleDeleteDepartment(department?._id)}>
                 {isDeleting && deletedId === department?._id ? <LoadingIcon /> : ''}
                 Delete
               </Button>
