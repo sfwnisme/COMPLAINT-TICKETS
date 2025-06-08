@@ -37,8 +37,8 @@
 
 .ticket__title {
   color: var(--text-secondary);
-  font-weight: 500;
-  font-size: var(--text-base);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-sm);
   flex: 1;
 }
 
