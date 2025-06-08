@@ -12,6 +12,7 @@ import UserChip from '../../../../components/userChip/UserChip'
 import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
 import Button from '../../../../components/button/Button'
 import { formatedDate } from '../../../../libs/formated-date'
+import DOMPurify from "dompurify";
 import useGetCurrentUser from '../../../../hooks/useGetCurrentUser'
 
 type Props = {
@@ -33,8 +34,8 @@ export default function Comment({
   }
 
   return (
-    <div className={`${Style["ticket-page__comment"]} ${comment?.isSolution && Style['ticket-page__comment-marked-as-a-solution']}`} id={comment?._id}>
-      <div className={`${Style['ticket-page__commenter']}`}>
+    <div className={`${Style["comment"]} ${comment?.isSolution && Style['comment-marked-as-a-solution']}`} id={comment?._id}>
+      <div className={`${Style['comment__author']}`}>
         <UserChip name={comment?.author?.name} text={formatedDate(comment?.createdAt)} />
         <Visible when={allowedToModify}>
           <Shift fallback={<LoadingIcon />}>
@@ -58,9 +59,7 @@ export default function Comment({
           </Shift>
         </Visible>
       </div>
-      <p className={`${Style['ticket-page__commenter__message']}`}>
-        {comment?.content}
-      </p>
+      <p className={`${Style['comment__author__message']}`} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(comment?.content) }} />
       {comment?.isSolution && <HelpText variant='success'>This response marked as a solution</HelpText>}
     </div>
   )
