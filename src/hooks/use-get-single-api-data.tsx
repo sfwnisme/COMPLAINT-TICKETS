@@ -18,7 +18,5 @@ export default function useGetSingleApiData<T>({ endpoint = '', id = '', initial
     initialData: initialData,
   })
 
-  console.log('single query', query)
-
   return query
 }

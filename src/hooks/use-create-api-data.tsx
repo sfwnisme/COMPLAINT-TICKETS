@@ -7,7 +7,6 @@ type Props = {
 }
 
 export default function useCreateApiData<T>({ endpoint = "", revalidateKey = [] }: Readonly<Props>) {
-  console.log('revalidatKey', revalidateKey)
   const queryClient = useQueryClient()
   const mutation = useMutation({
     mutationKey: [endpoint],
@@ -17,12 +16,10 @@ export default function useCreateApiData<T>({ endpoint = "", revalidateKey = [] 
     },
     onSuccess: () => {
       if (Array.isArray(revalidateKey) && revalidateKey.length > 0) {
-        console.log('revalidatekye array', revalidateKey)
         revalidateKey.forEach((key) => {
           queryClient.invalidateQueries({ queryKey: key as [] })
         })
       } else {
-        console.log('revalidatekye not array', revalidateKey)
         queryClient.invalidateQueries({ queryKey: revalidateKey })
       }
     }
