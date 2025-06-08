@@ -4,8 +4,8 @@ import RenderDepartmentsContent from "../../../features/departments/components/r
 export default function Departments() {
   return (
     <div>
-      <PageHeader title="Departments" button="Create Department" />
-      <RenderDepartmentsContent/>
+      <PageHeader title="Departments" />
+      <RenderDepartmentsContent />
     </div>
   )
 }
