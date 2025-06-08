@@ -112,7 +112,7 @@
   }
 
   .tbody .td::before {
-    content: attr(data-cell) ": ";
+    content: attr(data-cell);
     font-weight: var(--font-weight-medium);
     font-size: var(--text-sm);
     color: var(--typography-sub-heading);
