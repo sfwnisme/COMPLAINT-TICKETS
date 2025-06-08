@@ -1,6 +1,6 @@
 .comment {
   background-color: white;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
   position: relative;
   transition: var(--transition-300) background;
   border-radius: 5px;
@@ -37,7 +37,7 @@
   align-items: start;
   justify-content: space-between;
   gap: 8px;
-  margin-bottom: 1.2rem;
+  margin-bottom: 6px;
 }
 
 .comment__author-info {

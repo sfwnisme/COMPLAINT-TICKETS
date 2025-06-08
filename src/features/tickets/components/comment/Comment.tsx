@@ -6,7 +6,7 @@ import useUpdateApiData from "../../../../hooks/use-update-api-data"
 import Dropdown from "../../../../components/dropdown/Dropdown"
 import List from "../../../../components/list/List"
 import ListItem from "../../../../components/list/ListItem"
-import HelpText from "../../../../components/help-text/HelpText"
+import HelpText from "../../../../components/helpText/HelpText"
 import { IComment } from '../../../../types/types'
 import UserChip from '../../../../components/userChip/UserChip'
 import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
