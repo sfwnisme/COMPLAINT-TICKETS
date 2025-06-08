@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import Button from "../../../../components/button/Button";
-import Input from "../../../../components/input/Input";
-import LoadingIcon from "../../../../components/loadingIcon/LoadingIcon";
+import Button from "../../../../../components/button/Button";
+import Input from "../../../../../components/input/Input";
+import LoadingIcon from "../../../../../components/loadingIcon/LoadingIcon";
 // import useCreateTag from "../../hooks/use-create-tag";
 // import useCreateTagFormValidation from "../../hooks/use-create-tag-form-validation";
 import { Plus, X } from "lucide-react";
-import Spacer from "../../../../components/spacer/Spacer";
-import useCreateTag from "../../hooks/use-create-tag";
-import useCreateTagFormValidation from "../../hooks/use-create-tag-form-validation";
+import Spacer from "../../../../../components/spacer/Spacer";
+import useCreateTag from "../../../hooks/use-create-tag";
+import useCreateTagFormValidation from "../../../hooks/use-create-tag-form-validation";
 
 export default function CreateTagForm() {
   const [activeCreate, setActiveCreate] = useState(false)
@@ -34,7 +34,7 @@ export default function CreateTagForm() {
               {isPending && <LoadingIcon />}
               create
             </Button>
-            <Button variant="danger"  onClick={() => setActiveCreate(false)}><X size={15} /> Close</Button>
+            <Button variant="danger" onClick={() => setActiveCreate(false)}><X size={15} /> Close</Button>
           </>
           : <Button onClick={() => setActiveCreate(true)}><Plus size={15} /> New</Button>
         }

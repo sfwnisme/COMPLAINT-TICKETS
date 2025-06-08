@@ -9,7 +9,7 @@ import { ITag } from '../../../../types/types'
 import Button from '../../../../components/button/Button'
 import { useCallback, useState } from 'react'
 import UpdateTagForm from '../forms/updateTagForm/UpdateTagForm'
-import CreateTagForm from '../createTagForm/CreateTagForm'
+import CreateTagForm from '../forms/createTagForm/CreateTagForm'
 import useDeleteApiData from '../../../../hooks/use-delete-api-data'
 import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
 import { X } from 'lucide-react'
@@ -91,7 +91,7 @@ export default function RenderTags({ tags }: Readonly<Props>) {
           {renderTags}
           <TR>
             <TD colSpan={3} dataCell="">
-            <CreateTagForm />
+              <CreateTagForm />
             </TD>
           </TR>
         </TBody>
