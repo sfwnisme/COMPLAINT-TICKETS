@@ -6,7 +6,7 @@ export default function useDeleteUser() {
   const userId = useUsersStore((state) => state.userId)
   const setUserId = useUsersStore((state) => state.setUserId)
   const { mutateAsync, isPending } = useDeleteApiData({
-    endpoint: "/users", revalidateKey: "/users"
+    endpoint: "/users", revalidateKey: ["/users"]
   })
 
   const onDeleteUser = useCallback(async () => {
