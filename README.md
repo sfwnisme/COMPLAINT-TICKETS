@@ -1,7 +1,8 @@
 # Ticket Issue System
 
-> [!IMPORTANT]
-> This project was created to scale my frontend skills by building every component from scratch.
+> [!NOTE]
+> This project is planned to be built with every component developed from scratch, including custom UI components, functions, and more.
+
 
 ## Technologies Used
 
