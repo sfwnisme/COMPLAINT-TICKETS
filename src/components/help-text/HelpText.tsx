@@ -8,7 +8,7 @@ type Props = {
   icon?: 'visible' | 'invisible'
 }
 
-export default function HelpText({ children = 'help text for short information', variant = 'primary', icon = 'visible' }: Props) {
+export default function HelpText({ children = '', variant = 'primary', icon = 'visible' }: Props) {
 
   const variants = {
     primary: S['help-text--primary'],
