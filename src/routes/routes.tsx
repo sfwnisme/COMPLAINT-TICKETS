@@ -3,7 +3,6 @@ import App from "../App";
 import Tickets from "../app/dashboard/tickets/Tickets";
 import CreateTicket from "../app/dashboard/tickets/create/CreateTicket";
 import Departments from "../app/dashboard/departments/Departments";
-import Categories from "../app/dashboard/categories/Categories";
 import Settings from "../app/dashboard/settings/Settings";
 import Users from "../app/dashboard/users/Users";
 import Ticket from "../app/dashboard/tickets/id/Ticket";
@@ -14,7 +13,7 @@ import CreateUser from "../app/dashboard/users/create/CreateUser";
 import PublicRoutesWrapper from "../features/auth/components/publicRoutesWrapper/PublicRoutesWrapper";
 import PrivateRoutesWrapper from "../features/auth/components/privateRoutesWrapper/PrivateRoutesWrapper";
 import Dashboard from "../app/dashboard/Dashboard";
-import Tags from "../app/dashboard/tags/tags";
+import Tags from "../app/dashboard/tags/Tags";
 
 export const routes = createBrowserRouter([
   {

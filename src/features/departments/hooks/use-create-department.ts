@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import  { useCallback } from 'react'
 import useCreateApiData from '../../../hooks/use-create-api-data'
 import { CreateDepartmentSchemaType } from '../schemas/department.schema'
 import axios from 'axios'
