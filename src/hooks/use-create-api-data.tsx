@@ -16,11 +16,13 @@ export default function useCreateApiData<T>({ endpoint = "", revalidateKey = [] 
       return res
     },
     onSuccess: () => {
-      if (Array.isArray(revalidateKey)) {
+      if (Array.isArray(revalidateKey) && revalidateKey.length > 0) {
+        console.log('revalidatekye array', revalidateKey)
         revalidateKey.forEach((key) => {
-          queryClient.invalidateQueries({ queryKey: key as string[] })
+          queryClient.invalidateQueries({ queryKey: key as [] })
         })
       } else {
+        console.log('revalidatekye not array', revalidateKey)
         queryClient.invalidateQueries({ queryKey: revalidateKey })
       }
     }
