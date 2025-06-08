@@ -1,6 +1,6 @@
 import React from 'react'
 import S from './Input.module.css'
-import HelpText from '../help-text/HelpText';
+import HelpText from '../helpText/HelpText';
 
 type Props = {
   variant?: 'primary' | 'info' | 'success' | 'warning' | 'danger';
