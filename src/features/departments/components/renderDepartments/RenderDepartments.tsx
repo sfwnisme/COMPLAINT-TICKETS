@@ -12,15 +12,17 @@ import UpdateDepartmentForm from '../forms/updateDepartmentForm/UpdateDepartment
 import CreateDepartmentForm from '../createDepartmentForm/CreateDepartmentForm'
 import useDeleteApiData from '../../../../hooks/use-delete-api-data'
 import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
+import { X } from 'lucide-react'
 
 type Props = {
   departments: IDepartment[]
 }
 export default function RenderDepartments({ departments }: Readonly<Props>) {
-  console.log('departments', departments)
   const [isUpdating, setIsUpdating] = useState<[boolean, string]>([false, ""])
+  const [deletedId, setDeletedId] = useState('')
 
   const handleIsUpdating = useCallback((boolean: boolean, id: string) => {
+    console.log([boolean, id])
     setIsUpdating([boolean, id])
   }, [])
 
@@ -28,36 +30,45 @@ export default function RenderDepartments({ departments }: Readonly<Props>) {
     mutateAsync: deleteDepartment,
     isPending: isDeleting
   } = useDeleteApiData({ endpoint: '/departments', revalidateKey: ['/departments'] })
+
+  const handleDeleteDepartment = useCallback(async (id: string) => {
+    setDeletedId(id)
+    await deleteDepartment(id)
+  }, [])
+
   const renderDepartments = departments?.map((department) => (
     <TR key={department?._id}>
-      <TD dataCell='title'>
-        {
-          isUpdating[0] && isUpdating[1] === department?._id ?
+      {isUpdating[0] && isUpdating[1] === department?._id ?
+        <>
+          <TD dataCell='title' colSpan={2}>
             <UpdateDepartmentForm departmentId={department?._id} setIsUpdating={setIsUpdating} />
-            :
-            department?.title
-        }
-      </TD>
-      <TD dataCell='created at'>{!isUpdating[0] && isUpdating[1] !== department?._id && formatedDate(department?.createdAt)}</TD>
-      <TD dataCell='Actions'>
-        <div style={{ display: 'flex', gap: '2px', justifyContent: 'end' }}>
-          {
-            isUpdating[0] && isUpdating[1] === department?._id
-              ? <Button size='xs' variant={'info'} shape={'default'} onClick={() => handleIsUpdating(false, '')}>
-                cancel update
+          </TD>
+          <TD dataCell="actions">
+            <Button size='xs' variant={'danger'} shape={'default'} onClick={() => handleIsUpdating(false, '')}>
+              <X size={14} strokeWidth={3} />
+              cancel update
+            </Button>
+          </TD>
+        </>
+        :
+        <>
+          <TD dataCell='title'>
+            {department?.title}
+          </TD>
+          <TD dataCell='created at'>{formatedDate(department?.createdAt)}</TD>
+          <TD dataCell='Actions'>
+            <div style={{ display: 'flex', gap: '2px', justifyContent: 'end' }}>
+              <Button size='xs' variant={'info'} shape={'soft'} onClick={() => handleIsUpdating(true, department?._id)}>
+                update
               </Button>
-              : <>
-                <Button size='xs' variant={'info'} shape={'soft'} onClick={() => handleIsUpdating(true, department?._id)}>
-                  update
-                </Button>
-                <Button size='xs' variant='danger' shape='soft' disabled={isDeleting} onClick={() => deleteDepartment(department?._id)}>
-                  {isDeleting && <LoadingIcon />}
-                  Delete
-                </Button>
-              </>
-          }
-        </div>
-      </TD>
+              <Button size='xs' variant='danger' shape='soft' disabled={isDeleting} onClick={() => handleDeleteDepartment(department?._id)}>
+                {isDeleting && deletedId === department?._id ? <LoadingIcon /> : ''}
+                Delete
+              </Button>
+            </div>
+          </TD>
+        </>
+      }
     </TR>
   ))
 
@@ -83,3 +94,6 @@ export default function RenderDepartments({ departments }: Readonly<Props>) {
     </div>
   )
 }
+
+
+RenderDepartments.displayName = 'RenderDepartments'
