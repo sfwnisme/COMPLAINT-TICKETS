@@ -32,19 +32,12 @@
 
   &.btn--none {
     background-color: transparent;
-
-    * {
-      color: var(--primary-color-600);
-    }
+    color: var(--primary-color-600);
 
     &:hover {
       background-color: var(--primary-color-200);
-
-      * {
-        color: var(--primary-color-700);
-      }
+      /* color: var(--primary-color-700); */
     }
-
   }
 }
 
@@ -126,6 +119,25 @@
       border-color: var(--outline-border-disabled);
     }
   }
+
+  &.btn--none {
+    background-color: transparent;
+    color: var(--outline-text);
+
+    &:hover {
+      background-color: var(--outline-bg-hover);
+    }
+
+    &:active {
+      background-color: var(--outline-bg-active)
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: var(--outline-text-disabled);
+      opacity: 0.5;
+    }
+  }
 }
 
 .btn--info {
@@ -200,6 +212,25 @@
       background-color: transparent;
       color: var(--outline-text-disabled);
       border-color: var(--outline-border-disabled);
+    }
+  }
+
+  &.btn--none {
+    background-color: transparent;
+    color: var(--outline-text);
+
+    &:hover {
+      background-color: var(--outline-bg-hover);
+    }
+
+    &:active {
+      background-color: var(--outline-bg-active)
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: var(--outline-text-disabled);
+      opacity: 0.5;
     }
   }
 }
@@ -278,6 +309,25 @@
       border-color: var(--outline-border-disabled);
     }
   }
+
+  &.btn--none {
+    background-color: transparent;
+    color: var(--outline-text);
+
+    &:hover {
+      background-color: var(--outline-bg-hover);
+    }
+
+    &:active {
+      background-color: var(--outline-bg-active)
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: var(--outline-text-disabled);
+      opacity: 0.5;
+    }
+  }
 }
 
 .btn--warning {
@@ -354,6 +404,25 @@
       border-color: var(--outline-border-disabled);
     }
   }
+
+  &.btn--none {
+    background-color: transparent;
+    color: var(--outline-text);
+
+    &:hover {
+      background-color: var(--outline-bg-hover);
+    }
+
+    &:active {
+      background-color: var(--outline-bg-active)
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: var(--outline-text-disabled);
+      opacity: 0.5;
+    }
+  }
 }
 
 .btn--danger {
@@ -428,6 +497,25 @@
       background-color: transparent;
       color: var(--outline-text-disabled);
       border-color: var(--outline-border-disabled);
+    }
+  }
+
+  &.btn--none {
+    background-color: transparent;
+    color: var(--outline-text);
+
+    &:hover {
+      background-color: var(--outline-bg-hover);
+    }
+
+    &:active {
+      background-color: var(--outline-bg-active)
+    }
+
+    &:disabled {
+      background-color: transparent;
+      color: var(--outline-text-disabled);
+      opacity: 0.5;
     }
   }
 }

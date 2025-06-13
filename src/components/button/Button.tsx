@@ -47,7 +47,7 @@ const Button = React.forwardRef<HTMLButtonElement, finalType>((
   // ${style === 'outline' ? S['btn--outline'] : style === 'soft' ? S['btn-soft'] : S['btn--default']} ${width === 'fill' && S['btn--width--fill']}
   // ${outline && S['btn--outline']} 
   return (
-    <button {...rest} className={settings + " " + rest.className} ref={ref}>{children}</button>
+    <button {...rest} className={settings} ref={ref}>{children}</button>
   )
 })
 
