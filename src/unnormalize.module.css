@@ -1,0 +1,93 @@
+/* Revert box-sizing if you want content-box as default */
+
+/* Restore default list styles */
+li {
+  list-style: disc !important; /* Default bullet style */
+  list-style-position: outside !important; /* Default position */
+}
+
+ul, ol {
+  padding-left: 40px !important; /* Typical browser default */
+  margin-top: 1em !important;
+  margin-bottom: 1em !important;
+}
+
+/* Revert heading styles */
+h1 {
+  font-size: 2em !important;
+  margin: 0.67em 0 !important;
+  /* Browser defaults vary, but typically similar to normalize */
+}
+
+/* Restore HR defaults */
+hr {
+  box-sizing: content-box !important;
+  height: 2px !important; /* Typical default */
+  overflow: visible !important;
+  border-style: inset !important;
+  border-width: 1px !important;
+  margin: 0.5em auto !important;
+}
+
+/* Restore form element defaults */
+button, input, optgroup, select, textarea {
+  font-family: system-ui, sans-serif !important; /* Typical browser default */
+  font-size: medium !important;
+  line-height: normal !important;
+  margin: initial !important;
+}
+
+button, input {
+  overflow: visible !important;
+  padding: 1px 6px !important; /* Typical button padding */
+  border: 2px outset buttonface !important; /* Classic button style */
+}
+
+/* Restore fieldset defaults */
+fieldset {
+  padding: 0.35em 0.625em 0.75em !important;
+  margin: 0 2px !important;
+  border: 2px groove threedface !important;
+}
+
+/* Restore textarea defaults */
+textarea {
+  overflow: auto !important;
+  resize: both !important; /* Default is both in most browsers */
+}
+
+/* Restore checkbox/radio defaults */
+[type="checkbox"], [type="radio"] {
+  box-sizing: border-box !important;
+  padding: initial !important;
+  margin: 3px 0.5ex !important;
+}
+
+/* Restore image border defaults */
+img {
+  border-style: initial !important;
+}
+
+/* Restore sup/sub defaults */
+sub, sup {
+  font-size: smaller !important;
+  line-height: normal !important;
+  position: static !important;
+  vertical-align: baseline !important;
+}
+
+sub {
+  vertical-align: sub !important;
+}
+
+sup {
+  vertical-align: super !important;
+}
+
+/* Restore anchor defaults */
+a {
+  background-color: transparent !important;
+  text-decoration: underline !important;
+  color: -webkit-link !important;
+  cursor: pointer !important;
+}
