@@ -1,4 +1,4 @@
-import { Clock, Trash, User } from 'lucide-react'
+import { Clock, PanelLeftOpen, Trash, User } from 'lucide-react'
 import S from './Ticket.module.css'
 import Button from '../../../../components/button/Button'
 import Badge from '../../../../components/badge/Badge'
@@ -9,6 +9,7 @@ import { ITicket } from '../../../../types/types'
 import useDeleteApiData from '../../../../hooks/use-delete-api-data'
 import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
 import useGetCurrentUser from '../../../../hooks/useGetCurrentUser'
+import { NavLink } from 'react-router-dom'
 
 export default function Ticket(
   { ticket }: Readonly<{ ticket: ITicket }>
@@ -37,7 +38,7 @@ export default function Ticket(
           </div>
         </div>
         <h3 className={S['ticket__title']}>{title}</h3>
-        <Button onClick={() => handleToggleFloatTicket(_id)} size='xs' shape='soft'>open</Button>
+        <Button onClick={() => handleToggleFloatTicket(_id)} size='square' shape='none' variant='info' title='open side view' ><PanelLeftOpen size={18} strokeWidth={1.6} /></Button>
         <div className={S["ticket__header__footer"]}>
           <div className={S["ticket__assignee"]} id={createdBy?._id}><User size={14} strokeWidth={1.6} id={createdBy?._id} />{createdBy?.name}</div>
           <div className={S["ticket__created-at"]} ><Clock size={14} strokeWidth={1.6} /> {formatedDate(createdAt)}</div>
@@ -59,10 +60,13 @@ export default function Ticket(
         </div>
         {
           currentUser.data?.role === 'admin' &&
-          <Button variant='danger' shape='soft' size='square' onClick={() => handleDeleteTicket(_id)}>
-            {isPending ? <LoadingIcon /> : <Trash size={15} strokeWidth={1} />}
+          <Button variant='danger' shape='none' size='square' onClick={() => handleDeleteTicket(_id)}>
+            {isPending ? <LoadingIcon /> : <Trash size={15} strokeWidth={1.5} />}
           </Button>
         }
+        <NavLink to={'/dashboard/tickets/' + ticket?._id}>
+          <Button size='xs' shape='soft'>Open</Button>
+        </NavLink>
       </div>
     </div >
   )
