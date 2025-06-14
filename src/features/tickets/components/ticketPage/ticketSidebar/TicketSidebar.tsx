@@ -29,6 +29,8 @@ export default function TicketSidebar({ ticket }: Props) {
           <p className={Style['ticket-sidebar__author']}>{ticket?.createdBy?.name ?? ""}</p>
           <strong>Assigned to</strong>
           <p className={Style['ticket-sidebar__assignee']}>{ticket?.assignedTo?.name ?? <Badge variant='warning' text="public" dot />}</p>
+          <strong>Department</strong>
+          <p className={Style['ticket-sidebar__assignee']}>{ticket?.department?.title ?? <Badge variant='warning' text="public" dot />}</p>
           <strong>Created on</strong>
           <p className={Style['ticket-sidebar__create-date']}>{formatedDate(ticket?.createdAt)}</p>
           <strong>Last update</strong>
