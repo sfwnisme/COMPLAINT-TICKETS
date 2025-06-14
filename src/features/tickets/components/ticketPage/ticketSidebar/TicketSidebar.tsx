@@ -7,11 +7,17 @@ import { formatedDate } from '../../../../../libs/formated-date'
 import { ITicket } from '../../../../../types/types'
 import Style from './TicketSidebar.module.css'
 import HelpText from '../../../../../components/helpText/HelpText'
+import SelectStatusForm from '../../../forms/selectStatusForm/SelectStatusForm'
+import { useState } from 'react'
+import Button from '../../../../../components/button/Button'
+import { Visible } from '@sfwnisme/visi'
 type Props = {
   ticket: ITicket,
 }
 
 export default function TicketSidebar({ ticket }: Props) {
+  const [isStatusEdit, setIsStatusEdit] = useState(false)
+
   return (
     <div className={Style['ticket-sidebar']}>
       <div className={Style['ticket-sidebar__info']}>
@@ -22,7 +28,7 @@ export default function TicketSidebar({ ticket }: Props) {
           <strong>Author</strong>
           <p className={Style['ticket-sidebar__author']}>{ticket?.createdBy?.name ?? ""}</p>
           <strong>Assigned to</strong>
-          <p className={Style['ticket-sidebar__assignee']}>{ticket?.assignedTo?.name ?? <Badge variant='primary' text="no assignee" dot />}</p>
+          <p className={Style['ticket-sidebar__assignee']}>{ticket?.assignedTo?.name ?? <Badge variant='warning' text="public" dot />}</p>
           <strong>Created on</strong>
           <p className={Style['ticket-sidebar__create-date']}>{formatedDate(ticket?.createdAt)}</p>
           <strong>Last update</strong>
@@ -31,17 +37,30 @@ export default function TicketSidebar({ ticket }: Props) {
         <Divider />
         <div className={Style['ticket-sidebar__body']}>
           <strong>Status</strong>
-          <Badge variant={TICKET_STATUS_COLORS[ticket?.status]} text={ticket?.status} />
+          <div style={{ display: "flex", justifyContent: 'space-between', width: '100%' }}>
+            {
+              !isStatusEdit
+                ?
+                <Badge variant={TICKET_STATUS_COLORS[ticket?.status]} text={ticket?.status} />
+                :
+                <div>
+                  <SelectStatusForm defaultValue={ticket.status} ticketId={ticket._id} />
+                </div>
+            }
+            <Button variant={!isStatusEdit ? 'info' : 'danger'} shape='none' size='xs' onClick={() => setIsStatusEdit(prev => !prev)}>{!isStatusEdit ? 'Edit' : 'Close'}</Button>
+          </div>
         </div>
-        <Divider />
-        <div className={Style['ticket-sidebar__footer']}>
-          <strong>Tags</strong>
-          {
-            ticket.tags.map((tag) => (
-              <Badge customColor={tag?.color} text={tag?.name} />
-            ))
-          }
-        </div>
+        <Visible when={ticket.tags.length > 0}>
+          <Divider />
+          <div className={Style['ticket-sidebar__footer']}>
+            <strong>Tags</strong>
+            {
+              ticket.tags.map((tag) => (
+                <Badge customColor={tag?.color} text={tag?.name} key={tag._id} />
+              ))
+            }
+          </div>
+        </Visible>
       </div>
       <div className={Style['ticket-sidebar__files']}>
         <h4 className={Style['ticket-sidebar__title']}><Folder size={18} /> Attachments</h4>
