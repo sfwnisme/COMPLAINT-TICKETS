@@ -8,18 +8,20 @@ import axios from 'axios'
 type Inputs = z.infer<typeof loginSchema>
 
 export default function useLogin() {
-  const { mutateAsync, isPending, isError, isSuccess, error, data } = useCreateApiData({
+  const { mutateAsync, isPending, isError, isSuccess, error } = useCreateApiData({
     endpoint: '/users/login',
     revalidateKey: ['/users/login'],
   })
-  Cookies.set('TOKEN', data?.data.data.token)
-
+  
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
-      const logedIn = await mutateAsync(data)
-      console.log('loged in successfully', logedIn)
+      const res = await mutateAsync(data)
+      if(res?.data?.data?.token) {
+        Cookies.set('TOKEN', res?.data.data.token)
+      }
+      console.log('loged in successfully', res)
       window.location.pathname = '/dashboard'
-      return logedIn
+      return res
     } catch (error) {
       console.log('login error', error)
     }
