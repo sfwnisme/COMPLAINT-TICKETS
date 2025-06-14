@@ -6,7 +6,7 @@ type Props = {
   endpoint: string,
   revalidateKey: string,
   id: string,
-  method: 'put' | 'patch'
+  method?: 'put' | 'patch'
 }
 export default function useUpdateApiData<T>({
   endpoint = '',
