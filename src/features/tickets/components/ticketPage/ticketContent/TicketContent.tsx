@@ -8,6 +8,7 @@ import { ITicket } from '../../../../../types/types'
 import Unnormalize from './unnormalize.module.css'
 import { PanelLeftClose } from 'lucide-react';
 import Button from '../../../../../components/button/Button';
+import Alert from '../../../../../components/alert/Alert';
 type Props = {
   ticket: ITicket,
   setToggleSidebar: React.Dispatch<React.SetStateAction<boolean>>,
@@ -35,10 +36,19 @@ export default function TicketContent({ ticket, setToggleSidebar }: Props) {
           <Comments ticketId={ticket?._id} />
         </div>
       </div>
-      <div className={Style['ticket-content__create-comment']}>
-        <UserChip avatarSize='sm' name={currentUser?.data?.name ?? ""} text={currentUser?.data?.email ?? ""} />
-        <CreateCommentFormV2 ticketId={ticket?._id} />
-      </div>
+      {ticket.status !== 'closed' && ticket.status !== 'resolved'
+        ?
+        <div className={Style['ticket-content__create-comment']}>
+          <UserChip avatarSize='sm' name={currentUser?.data?.name ?? ""} text={currentUser?.data?.email ?? ""} />
+          <CreateCommentFormV2 ticketId={ticket?._id} />
+        </div>
+        :
+        <Alert visible hasIcon variant={ticket.status === 'closed'?'danger': 'success'}>{
+          ticket.status === 'closed'
+          ? 'This ticket is closed, open it if you need to resolve'
+          : 'This ticket is resolved, you can not comment'
+        }</Alert>
+      }
     </div>
   )
 }
