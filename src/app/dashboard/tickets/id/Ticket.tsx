@@ -1,19 +1,15 @@
-import S from './Ticket.module.css'
-import TicketHeader from './components/TicketHeader'
-import TicketBody from './components/TicketBody'
-import TicketSidebar from './components/TicketSidebar'
-import { useState } from 'react'
-import useMedia from '../../../../hooks/use-media'
+import TicketContainer from '../../../../features/tickets/components/ticketPage/ticketContainer/TicketContainer'
+import { useParams } from 'react-router-dom'
+import useGetSingleTicket from '../../../../features/tickets/hooks/use-get-single-ticket'
+import Style from './Ticket.module.css'
+import { ITicket } from '../../../../types/types'
 
 export default function Ticket() {
-    const media = useMedia()
-    const [isSidebarOpen, setIsSidebarOpen] = useState(Boolean(media > 768))
-
-    return (
-        <div className={`${S['ticket-page']} ${!isSidebarOpen && S['ticket-page--collapsed']}`}>
-            <TicketHeader isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-            <TicketBody />
-            <TicketSidebar />
-        </div>
-    )
+  const {ticketId} = useParams()
+  const ticket = useGetSingleTicket(ticketId ?? "")
+  const ticketData = ticket?.data ?? {} as ITicket
+  console.log(ticket?.data)
+  return (
+    <div className={Style.ticket}><TicketContainer ticket={ticketData} /></div>
+  )
 }
