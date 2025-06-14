@@ -9,14 +9,13 @@ import Spacer from '../../../../components/spacer/Spacer'
 
 export default function CreateCommentFormV2({ ticketId }: { ticketId: string }) {
   const {
-    register,
     handleSubmit,
     getValues,
     setValue,
     watch,
-    formState: { errors, isValid },
+    formState: { isValid },
   } = useCreateCommentForm()
-  const { onSubmit, isPending, isSuccess, isError, errorMessage } = useCreateComment(ticketId)
+  const { onSubmit, isPending, isError, errorMessage } = useCreateComment(ticketId)
 
   console.log(getValues('content'))
   const disableButton = isPending || !isValid
