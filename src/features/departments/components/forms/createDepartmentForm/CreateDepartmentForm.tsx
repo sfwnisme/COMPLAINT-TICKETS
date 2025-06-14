@@ -23,16 +23,16 @@ export default function CreateDepartmentForm() {
       <div style={{ display: "flex", flexWrap: 'wrap', gap: '3px', alignItems: 'start', justifyContent: 'end' }}>
         {activeCreate ?
           <>
-            <form id="creaet_department_form" onSubmit={handleSubmit(onSubmit)} />
-            <Input type='text' form='creaet_department_form' {...register('title')}
+            <form id="create_department_form" onSubmit={handleSubmit(onSubmit)} />
+            <Input type='text' form='create_department_form' {...register('title')}
               message={errors?.title?.message ?? errorMessage}
               variant={errors?.title?.message || errorMessage ? 'danger' : 'primary'}
             />
-            <Button form='creaet_department_form' disabled={!canCreate}>
+            <Button form='create_department_form' disabled={!canCreate}>
               {isPending && <LoadingIcon />}
-              create
+              Create
             </Button>
-            <Button variant="danger" shape="default" onClick={() => setActiveCreate(false)}><X size={15} /> Close</Button>
+            <Button variant="danger" shape="default" onClick={() => setActiveCreate(false)}><X size={15} /> Cancel</Button>
           </>
           : <Button onClick={() => setActiveCreate(true)}><Plus size={15} /> New</Button>
         }

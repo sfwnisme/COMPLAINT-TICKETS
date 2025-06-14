@@ -44,7 +44,7 @@ export default function RenderTags({ tags }: Readonly<Props>) {
             <UpdateTagForm tagId={tag?._id} setIsUpdating={setIsUpdating} />
           </TD>
           <TD dataCell="actions">
-            <Button size='xs' variant={'danger'} shape={'default'} onClick={() => handleIsUpdating(false, '')}>
+            <Button size='xs' variant={'danger'} shape={'none'} onClick={() => handleIsUpdating(false, '')}>
               <X size={14} strokeWidth={3} />
               cancel update
             </Button>
@@ -58,10 +58,10 @@ export default function RenderTags({ tags }: Readonly<Props>) {
           <TD dataCell='created at'>{formatedDate(tag?.createdAt)}</TD>
           <TD dataCell='Actions'>
             <div style={{ display: 'flex', gap: '2px', justifyContent: 'end' }}>
-              <Button size='xs' variant={'info'} shape={'default'} onClick={() => handleIsUpdating(true, tag?._id)}>
+              <Button size='xs' variant={'info'} shape={'none'} onClick={() => handleIsUpdating(true, tag?._id)}>
                 update
               </Button>
-              <Button size='xs' variant='danger' shape='default' disabled={isDeleting} onClick={() => handleDeleteTag(tag?._id)}>
+              <Button size='xs' variant='danger' shape='none' disabled={isDeleting} onClick={() => handleDeleteTag(tag?._id)}>
                 {isDeleting && deletedId === tag?._id ? <LoadingIcon /> : ''}
                 Delete
               </Button>
