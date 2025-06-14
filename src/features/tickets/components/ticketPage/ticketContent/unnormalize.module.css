@@ -1,0 +1,66 @@
+/* Target only direct children and nested elements of the description */
+.blog,
+.blog *,
+.blog *::before,
+.blog *::after {
+  /* Box model */
+  box-sizing: content-box !important;
+  
+  /* Text and fonts */
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-weight: inherit !important;
+  text-align: left !important;
+  
+  /* Margins and padding */
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  /* Lists */
+  list-style: disc !important;
+  list-style-position: outside !important;
+}
+
+/* Specific element overrides */
+.blog h1,
+.blog h2,
+.blog h3,
+.blog h4,
+.blog h5,
+.blog h6 {
+  font-size: inherit !important;
+  margin: 1em 0 !important;
+  font-weight: bold !important;
+}
+
+.blog ul,
+.blog ol {
+  padding-left: 40px !important;
+  margin: 1em 0 !important;
+}
+
+.blog a {
+  color: inherit !important;
+  text-decoration: underline !important;
+  background-color: transparent !important;
+}
+
+.blog img {
+  border: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.blog table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+}
+
+.blog pre,
+.blog code {
+  font-family: monospace !important;
+  white-space: pre-wrap !important;
+  background: #f5f5f5 !important;
+  padding: 0.5em !important;
+}
