@@ -1,0 +1,26 @@
+.file-chip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.file-chip__thumb {
+  /* background-color: black; */
+  /* height: 40px; */
+  /* width: 40px; */
+  /* border: 1px solid var(--border-secondary); */
+  border-radius: var(--radius-sm);
+  display: grid;
+}
+
+.file-chip__name {
+  font-size: var(--text-sm);
+  color: var(--primary-color-700);
+  font-weight: var(--font-weight-medium);
+}
+
+.file-chip__size {
+  font-size: var(--text-xs);
+  color: var(--primary-color-500);
+}
