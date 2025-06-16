@@ -1,4 +1,4 @@
-import { Clock, PanelLeftOpen, Trash, User } from 'lucide-react'
+import { Clock, Contact, PanelLeftOpen, Trash, User } from 'lucide-react'
 import S from './Ticket.module.css'
 import Button from '../../../../components/button/Button'
 import Badge from '../../../../components/badge/Badge'
@@ -19,7 +19,7 @@ export default function Ticket(
     await deleteTicket(ticketId)
   }
   const currentUser = useGetCurrentUser()
-  const { _id, title, createdBy, department, status, priority, tags, createdAt } = ticket
+  const { _id, title, createdBy,assignedTo, department, status, priority, tags, createdAt } = ticket
 
   console.log(tags)
   const toggleFloatTicket = useFloatTicket((state) => state.toggleFloatTicket)
@@ -41,6 +41,7 @@ export default function Ticket(
         <Button onClick={() => handleToggleFloatTicket(_id)} size='square' shape='none' variant='info' title='open side view' ><PanelLeftOpen size={18} strokeWidth={1.6} /></Button>
         <div className={S["ticket__header__footer"]}>
           <div className={S["ticket__assignee"]} id={createdBy?._id}><User size={14} strokeWidth={1.6} id={createdBy?._id} />{createdBy?.name}</div>
+          <div hidden={!assignedTo?._id} className={S["ticket__assignee"]} id={assignedTo?._id}><Contact size={14} strokeWidth={1.6} id={assignedTo?._id} />{createdBy?.name}</div>
           <div className={S["ticket__created-at"]} ><Clock size={14} strokeWidth={1.6} /> {formatedDate(createdAt)}</div>
         </div >
       </div >
