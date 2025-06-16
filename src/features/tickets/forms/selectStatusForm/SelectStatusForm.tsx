@@ -14,7 +14,7 @@ type Props = {
 } & React.DetailedHTMLProps<
   React.SelectHTMLAttributes<HTMLSelectElement>,
   HTMLSelectElement>
-const SelectTags = React.forwardRef<HTMLSelectElement, Props>(
+const SelectStatusForm = React.forwardRef<HTMLSelectElement, Props>(
   ({ title, ticketId, defaultValue, ...rest }) => {
     const {
       register,
@@ -38,4 +38,4 @@ const SelectTags = React.forwardRef<HTMLSelectElement, Props>(
     )
   }
 )
-export default SelectTags
+export default SelectStatusForm
