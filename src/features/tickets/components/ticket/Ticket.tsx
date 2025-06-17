@@ -8,8 +8,8 @@ import { formateDate } from '../../../../libs/formate-date'
 import { ITicket } from '../../../../types/types'
 import useDeleteApiData from '../../../../hooks/use-delete-api-data'
 import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
-import useGetCurrentUser from '../../../../hooks/useGetCurrentUser'
 import { NavLink } from 'react-router-dom'
+import Can from '../../../../components/can/Can'
 
 export default function Ticket(
   { ticket }: Readonly<{ ticket: ITicket }>
@@ -18,7 +18,6 @@ export default function Ticket(
   const handleDeleteTicket = async (ticketId: string) => {
     await deleteTicket(ticketId)
   }
-  const currentUser = useGetCurrentUser()
   const { _id, title, createdBy, assignedTo, department, status, priority, tags, createdAt } = ticket
 
   console.log(tags)
@@ -32,19 +31,21 @@ export default function Ticket(
   return (
     <div className={`${S.ticket}`} id={_id}>
       <div className={S['ticket__header']}>
-        <div className={S['ticket__settings']}>
-          <div className={S['ticket__check']}>
-            <input type='checkbox' title={_id.toString()} />
+        <Can permission='canDelete' route='ticket'>
+          <div className={S['ticket__settings']}>
+            <div className={S['ticket__check']}>
+              <input type='checkbox' title={_id.toString()} />
+            </div>
           </div>
-        </div>
+        </Can>
         <h3 className={S['ticket__title']}>{title}</h3>
         <Button onClick={() => handleToggleFloatTicket(_id)} size='square' shape='none' variant='info' title='open side view' ><PanelLeftOpen size={18} strokeWidth={1.6} /></Button>
-        <div className={S["ticket__header__footer"]}>
-          <div className={S["ticket__assignee"]} id={createdBy?._id}><User size={14} strokeWidth={1.6} id={createdBy?._id} />{createdBy?.name}</div>
-          <div hidden={!assignedTo?._id} className={S["ticket__assignee"]} id={assignedTo?._id}><Contact size={14} strokeWidth={1.6} id={assignedTo?._id} />{assignedTo?.name}</div>
-          <div className={S["ticket__created-at"]} ><Clock size={14} strokeWidth={1.6} /> {formateDate(createdAt)}</div>
-        </div >
       </div >
+      <div className={S["ticket__body"]}>
+        <div className={S["ticket__author"]} id={createdBy?._id}><User size={14} strokeWidth={1.6} id={createdBy?._id} />{createdBy?.name}</div>
+        <div hidden={!assignedTo?._id} className={S["ticket__assignee"]} id={assignedTo?._id}><Contact size={14} strokeWidth={1.6} id={assignedTo?._id} />{assignedTo?.name}</div>
+        <div className={S["ticket__created-at"]} ><Clock size={14} strokeWidth={1.6} /> {formateDate(createdAt)}</div>
+      </div>
       <div className={S["ticket__footer"]}>
         <div className={S["ticket__footer--left-side"]}>
           {department &&
@@ -59,12 +60,11 @@ export default function Ticket(
             <Badge text={status} key={status} dot variant={TICKET_STATUS_COLORS[status]} />
           </div>
         </div>
-        {
-          currentUser.data?.role === 'admin' &&
+        <Can permission='canDelete' route='ticket'>
           <Button variant='danger' shape='none' size='square' onClick={() => handleDeleteTicket(_id)}>
             {isPending ? <LoadingIcon /> : <Trash size={15} strokeWidth={1.5} />}
           </Button>
-        }
+        </Can>
         <NavLink to={'/dashboard/tickets/' + ticket?._id}>
           <Button size='xs' shape='soft'>Open</Button>
         </NavLink>
