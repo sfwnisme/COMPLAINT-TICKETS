@@ -11,7 +11,7 @@ import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
 import Button from '../../../../components/button/Button'
 import { formateDate } from '../../../../libs/formate-date'
 import DOMPurify from "dompurify";
-import useGetCurrentUser from '../../../../hooks/useGetCurrentUser'
+// import useGetCurrentUser from '../../../../hooks/useGetCurrentUser'
 import useGetSingleTicket from '../../hooks/use-get-single-ticket'
 import Can from '../../../../components/can/Can'
 import TicketIfOpen from '../../../../components/ticketIfOpen/TicketIfOpen'
@@ -29,8 +29,8 @@ export default function Comment({
     await deleteComment(comment?._id)
   }
   console.log('the ticket', ticket.data)
-  const currentUser = useGetCurrentUser()
-  const allowedToModify = currentUser?.data?._id === comment?.author?._id && (ticket?.data?.status !== 'resolved' && ticket?.data?.status !== 'closed')
+  // const currentUser = useGetCurrentUser()
+  // const allowedToModify = currentUser?.data?._id === comment?.author?._id && (ticket?.data?.status !== 'resolved' && ticket?.data?.status !== 'closed')
 
   const markCommentSolution = async () => {
     await updateComment({ isSolution: !comment?.isSolution })
