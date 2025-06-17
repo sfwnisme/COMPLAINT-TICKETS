@@ -1,5 +1,5 @@
 import UserChip from '../../../../components/userChip/UserChip'
-import { formatedDate } from '../../../../libs/formated-date'
+import { formateDate } from '../../../../libs/formate-date'
 
 type Props = {
   name: string,
@@ -7,5 +7,5 @@ type Props = {
 }
 
 export default function FloatTicketAuthor({ name, createdAt }: Readonly<Props>) {
-  return <UserChip name={name} text={formatedDate(createdAt)} avatarSize='md' fontSize='lg'/>
+  return <UserChip name={name} text={formateDate(createdAt)} avatarSize='md' fontSize='lg' />
 }

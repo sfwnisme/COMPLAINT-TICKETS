@@ -11,7 +11,7 @@ import { IComment } from '../../../../types/types'
 import UserChip from '../../../../components/userChip/UserChip'
 import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
 import Button from '../../../../components/button/Button'
-import { formatedDate } from '../../../../libs/formated-date'
+import { formateDate } from '../../../../libs/formate-date'
 import DOMPurify from "dompurify";
 import useGetCurrentUser from '../../../../hooks/useGetCurrentUser'
 
@@ -36,7 +36,7 @@ export default function Comment({
   return (
     <div className={`${Style["comment"]} ${comment?.isSolution && Style['comment-marked-as-a-solution']}`} id={comment?._id}>
       <div className={`${Style['comment__author']}`}>
-        <UserChip name={comment?.author?.name} text={formatedDate(comment?.createdAt)} />
+        <UserChip name={comment?.author?.name} text={formateDate(comment?.createdAt)} />
         <Visible when={allowedToModify}>
           <Shift fallback={<LoadingIcon />}>
             <Case when={isPendingDelete || isPendingMark}>

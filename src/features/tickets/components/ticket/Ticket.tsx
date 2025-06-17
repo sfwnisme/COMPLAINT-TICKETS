@@ -4,7 +4,7 @@ import Button from '../../../../components/button/Button'
 import Badge from '../../../../components/badge/Badge'
 import { useFloatTicket } from '../../../../store/ticket.store'
 import { TICKET_PRIORITY_COLORS, TICKET_STATUS_COLORS } from '../../../../constraints/constraints'
-import { formatedDate } from '../../../../libs/formated-date'
+import { formateDate } from '../../../../libs/formate-date'
 import { ITicket } from '../../../../types/types'
 import useDeleteApiData from '../../../../hooks/use-delete-api-data'
 import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
@@ -19,7 +19,7 @@ export default function Ticket(
     await deleteTicket(ticketId)
   }
   const currentUser = useGetCurrentUser()
-  const { _id, title, createdBy,assignedTo, department, status, priority, tags, createdAt } = ticket
+  const { _id, title, createdBy, assignedTo, department, status, priority, tags, createdAt } = ticket
 
   console.log(tags)
   const toggleFloatTicket = useFloatTicket((state) => state.toggleFloatTicket)
@@ -42,7 +42,7 @@ export default function Ticket(
         <div className={S["ticket__header__footer"]}>
           <div className={S["ticket__assignee"]} id={createdBy?._id}><User size={14} strokeWidth={1.6} id={createdBy?._id} />{createdBy?.name}</div>
           <div hidden={!assignedTo?._id} className={S["ticket__assignee"]} id={assignedTo?._id}><Contact size={14} strokeWidth={1.6} id={assignedTo?._id} />{createdBy?.name}</div>
-          <div className={S["ticket__created-at"]} ><Clock size={14} strokeWidth={1.6} /> {formatedDate(createdAt)}</div>
+          <div className={S["ticket__created-at"]} ><Clock size={14} strokeWidth={1.6} /> {formateDate(createdAt)}</div>
         </div >
       </div >
       <div className={S["ticket__footer"]}>

@@ -4,7 +4,7 @@ import TH from '../../../../components/table/TH'
 import TBody from '../../../../components/table/TBody'
 import TR from '../../../../components/table/TR'
 import TD from '../../../../components/table/TD'
-import { formatedDate } from '../../../../libs/formated-date'
+import { formateDate } from '../../../../libs/formate-date'
 import { IDepartment } from '../../../../types/types'
 import Button from '../../../../components/button/Button'
 import { useCallback, useState } from 'react'
@@ -44,7 +44,7 @@ export default function RenderDepartments({ departments }: Readonly<Props>) {
             <UpdateDepartmentForm departmentId={department?._id} setIsUpdating={setIsUpdating} />
           </TD>
           <TD dataCell="actions">
-            <Button  variant={'danger'} shape={'none'} onClick={() => handleIsUpdating(false, '')}>
+            <Button variant={'danger'} shape={'none'} onClick={() => handleIsUpdating(false, '')}>
               <X size={14} strokeWidth={3} />
               cancel update
             </Button>
@@ -55,7 +55,7 @@ export default function RenderDepartments({ departments }: Readonly<Props>) {
           <TD dataCell='title'>
             {department?.title}
           </TD>
-          <TD dataCell='created at'>{formatedDate(department?.createdAt)}</TD>
+          <TD dataCell='created at'>{formateDate(department?.createdAt)}</TD>
           <TD dataCell='Actions'>
             <div style={{ display: 'flex', gap: '2px', justifyContent: 'end' }}>
               <Button size='xs' variant={'info'} shape={'none'} onClick={() => handleIsUpdating(true, department?._id)}>

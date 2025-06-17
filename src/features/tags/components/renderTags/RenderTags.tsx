@@ -4,7 +4,7 @@ import TH from '../../../../components/table/TH'
 import TBody from '../../../../components/table/TBody'
 import TR from '../../../../components/table/TR'
 import TD from '../../../../components/table/TD'
-import { formatedDate } from '../../../../libs/formated-date'
+import { formateDate } from '../../../../libs/formate-date'
 import { ITag } from '../../../../types/types'
 import Button from '../../../../components/button/Button'
 import { useCallback, useState } from 'react'
@@ -55,7 +55,7 @@ export default function RenderTags({ tags }: Readonly<Props>) {
           <TD dataCell='name'>
             {tag?.name}
           </TD>
-          <TD dataCell='created at'>{formatedDate(tag?.createdAt)}</TD>
+          <TD dataCell='created at'>{formateDate(tag?.createdAt)}</TD>
           <TD dataCell='Actions'>
             <div style={{ display: 'flex', gap: '2px', justifyContent: 'end' }}>
               <Button size='xs' variant={'info'} shape={'none'} onClick={() => handleIsUpdating(true, tag?._id)}>
