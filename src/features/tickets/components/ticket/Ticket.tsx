@@ -41,7 +41,7 @@ export default function Ticket(
         <Button onClick={() => handleToggleFloatTicket(_id)} size='square' shape='none' variant='info' title='open side view' ><PanelLeftOpen size={18} strokeWidth={1.6} /></Button>
         <div className={S["ticket__header__footer"]}>
           <div className={S["ticket__assignee"]} id={createdBy?._id}><User size={14} strokeWidth={1.6} id={createdBy?._id} />{createdBy?.name}</div>
-          <div hidden={!assignedTo?._id} className={S["ticket__assignee"]} id={assignedTo?._id}><Contact size={14} strokeWidth={1.6} id={assignedTo?._id} />{createdBy?.name}</div>
+          <div hidden={!assignedTo?._id} className={S["ticket__assignee"]} id={assignedTo?._id}><Contact size={14} strokeWidth={1.6} id={assignedTo?._id} />{assignedTo?.name}</div>
           <div className={S["ticket__created-at"]} ><Clock size={14} strokeWidth={1.6} /> {formateDate(createdAt)}</div>
         </div >
       </div >
