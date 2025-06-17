@@ -14,6 +14,7 @@ import Button from '../../../../components/button/Button'
 import { formateDate } from '../../../../libs/formate-date'
 import DOMPurify from "dompurify";
 import useGetCurrentUser from '../../../../hooks/useGetCurrentUser'
+import useGetSingleTicket from '../../hooks/use-get-single-ticket'
 
 type Props = {
   comment: IComment
@@ -23,11 +24,13 @@ export default function Comment({
 }: Readonly<Props>) {
   const { mutateAsync: deleteComment, isPending: isPendingDelete } = useDeleteApiData({ endpoint: `/comments`, revalidateKey: ['/comments'] })
   const { mutateAsync: updateComment, isPending: isPendingMark } = useUpdateApiData({ endpoint: '/comments', revalidateKey: '/comments', id: comment?._id, method: 'patch' })
+  const ticket = useGetSingleTicket(comment?.ticket?._id)
   const handleDeleteComment = async () => {
     await deleteComment(comment?._id)
   }
+  console.log('the ticket', ticket.data)
   const currentUser = useGetCurrentUser()
-  const allowedToModify = currentUser?.data?._id === comment?.author?._id
+  const allowedToModify = currentUser?.data?._id === comment?.author?._id && (ticket?.data?.status !== 'resolved' && ticket?.data?.status !== 'closed')
 
   const markCommentSolution = async () => {
     await updateComment({ isSolution: !comment?.isSolution })
