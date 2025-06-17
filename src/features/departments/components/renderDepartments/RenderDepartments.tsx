@@ -13,6 +13,7 @@ import CreateDepartmentForm from '../forms/createDepartmentForm/CreateDepartment
 import useDeleteApiData from '../../../../hooks/use-delete-api-data'
 import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
 import { X } from 'lucide-react'
+import Can from '../../../../components/can/Can'
 
 type Props = {
   departments: IDepartment[]
@@ -56,17 +57,19 @@ export default function RenderDepartments({ departments }: Readonly<Props>) {
             {department?.title}
           </TD>
           <TD dataCell='created at'>{formateDate(department?.createdAt)}</TD>
-          <TD dataCell='Actions'>
-            <div style={{ display: 'flex', gap: '2px', justifyContent: 'end' }}>
-              <Button size='xs' variant={'info'} shape={'none'} onClick={() => handleIsUpdating(true, department?._id)}>
-                update
-              </Button>
-              <Button size='xs' variant='danger' shape='none' disabled={isDeleting} onClick={() => handleDeleteDepartment(department?._id)}>
-                {isDeleting && deletedId === department?._id ? <LoadingIcon /> : ''}
-                Delete
-              </Button>
-            </div>
-          </TD>
+          <Can permission='canEdit' route='department'>
+            <TD dataCell='Actions'>
+              <div style={{ display: 'flex', gap: '2px', justifyContent: 'end' }}>
+                <Button size='xs' variant={'info'} shape={'none'} onClick={() => handleIsUpdating(true, department?._id)}>
+                  update
+                </Button>
+                <Button size='xs' variant='danger' shape='none' disabled={isDeleting} onClick={() => handleDeleteDepartment(department?._id)}>
+                  {isDeleting && deletedId === department?._id ? <LoadingIcon /> : ''}
+                  Delete
+                </Button>
+              </div>
+            </TD>
+          </Can>
         </>
       }
     </TR>
@@ -82,17 +85,21 @@ export default function RenderDepartments({ departments }: Readonly<Props>) {
           <TH>
             created at
           </TH>
-          <TH>
-            Actions
-          </TH>
+          <Can permission='canEdit' route='department'>
+            <TH>
+              Actions
+            </TH>
+          </Can>
         </THead>
         <TBody>
           {renderDepartments}
-          <TR>
-            <TD colSpan={3}>
-              <CreateDepartmentForm />
-            </TD>
-          </TR>
+          <Can permission='canEdit' route='department'>
+            <TR>
+              <TD colSpan={3}>
+                <CreateDepartmentForm />
+              </TD>
+            </TR>
+          </Can>
         </TBody>
       </Table>
     </div>
