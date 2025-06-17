@@ -95,11 +95,13 @@ export default function RenderTags({ tags }: Readonly<Props>) {
         </THead>
         <TBody>
           {renderTags}
-          <TR>
-            <TD colSpan={3} dataCell="">
-              <CreateTagForm />
-            </TD>
-          </TR>
+          <Can permission='canEdit' route='tag'>
+            <TR>
+              <TD colSpan={3} dataCell="">
+                <CreateTagForm />
+              </TD>
+            </TR>
+          </Can>
         </TBody>
       </Table>
     </div>
