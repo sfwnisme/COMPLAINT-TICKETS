@@ -1,4 +1,4 @@
-export const formatedDate = (date: Readonly<string> = "") => {
+export const formateDate = (date: Readonly<string> = "") => {
   if (!date) return 'invalid date'
   const isoDate = new Date(date)
   const format = isoDate.toLocaleString("en-US", {
