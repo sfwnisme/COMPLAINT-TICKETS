@@ -41,27 +41,28 @@ export default function Comment({
       <div className={`${Style['comment__author']}`}>
         <UserChip name={comment?.author?.name} text={formateDate(comment?.createdAt)} />
         <TicketIfOpen ticketId={comment?.ticket?._id}>
-          {
-            isPendingDelete || isPendingMark ?
-              <Button size='square' shape='soft' disabled>
-                <LoadingIcon />
-              </Button>
-              :
-              <Dropdown>
-                <List position='absolute' rightOrLeft='right'>
-                  <Can permission='canEdit' route='comment'>
+          <Can permission='canEdit' route='comment'>
+
+            {
+              isPendingDelete || isPendingMark ?
+                <Button size='square' shape='soft' disabled>
+                  <LoadingIcon />
+                </Button>
+                :
+                <Dropdown>
+                  <List position='absolute' rightOrLeft='right'>
                     <ListItem onClick={markCommentSolution}>
                       {!comment?.isSolution ? 'Mark solution' : 'Unmark solution'}
                     </ListItem>
-                  </Can>
-                  <Can permission='canDelete' route='comment'>
-                    <ListItem onClick={handleDeleteComment}>
-                      Remove
-                    </ListItem>
-                  </Can>
-                </List>
-              </Dropdown>
-          }
+                    <Can permission='canDelete' route='comment'>
+                      <ListItem onClick={handleDeleteComment}>
+                        Remove
+                      </ListItem>
+                    </Can>
+                  </List>
+                </Dropdown>
+            }
+          </Can>
         </TicketIfOpen>
       </div>
       <p className={`${Style['comment__author__message']}`} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(comment?.content) }} />
