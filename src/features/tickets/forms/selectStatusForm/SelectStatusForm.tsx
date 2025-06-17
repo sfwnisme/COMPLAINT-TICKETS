@@ -25,7 +25,7 @@ const SelectStatusForm = React.forwardRef<HTMLSelectElement, Props>(
 
     return (
       <form onChange={handleSubmit(onSubmit)} className={Style['select-status-form']}>
-        <Select title={title} {...rest} {...register('status')} disabled={isPending} defaultValue={defaultValue}>
+        <Select sze='sm' title={title} {...rest} {...register('status')} disabled={isPending} defaultValue={defaultValue}>
           {TICKET_STATUS.map((status) => (
             <option key={status} value={status} id={status}>
               {status}
