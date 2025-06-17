@@ -13,6 +13,8 @@ import Button from '../../../../../components/button/Button'
 import { Visible } from '@sfwnisme/visi'
 import SelectUserForm from '../../../forms/selectUserForm/SelectUserForm'
 import SelectDepartmentForm from '../../../forms/selectDepartmentForm/SelectDepartmentForm'
+import Can from '../../../../../components/can/Can'
+import TicketIfOpen from '../../../../../components/ticketIfOpen/TicketIfOpen'
 type Props = {
   ticket: ITicket,
 }
@@ -39,8 +41,11 @@ export default function TicketSidebar({ ticket }: Props) {
               :
               <SelectUserForm defaultValue={ticket?.assignedTo?._id} ticketId={ticket?._id} />
             }
-
-            {ticket.status !== 'resolved' && ticket.status !== 'closed' && <Button variant={!isAssigneeEdit ? 'info' : 'danger'} shape='none' size='xs' onClick={() => setIsAssigneeEdit(prev => !prev)}>{!isAssigneeEdit ? 'Edit' : 'Close'}</Button>}
+            <Can permission='canEdit' route='ticket'>
+              <TicketIfOpen ticketId={ticket?._id}>
+                <Button variant={!isAssigneeEdit ? 'info' : 'danger'} shape='none' size='xs' onClick={() => setIsAssigneeEdit(prev => !prev)}>{!isAssigneeEdit ? 'Edit' : 'Close'}</Button>
+              </TicketIfOpen>
+            </Can>
           </div>
           <strong>Department</strong>
           <div style={{ display: "flex", justifyContent: 'space-between', width: '100%' }}>
@@ -50,7 +55,11 @@ export default function TicketSidebar({ ticket }: Props) {
               :
               <SelectDepartmentForm defaultValue={ticket?.department?._id} ticketId={ticket?._id} />
             }
-            {ticket.status !== 'resolved' && ticket.status !== 'closed' && <Button variant={!isDepartmentEdit ? 'info' : 'danger'} shape='none' size='xs' onClick={() => setIsDepartmentEdit(prev => !prev)}>{!isDepartmentEdit ? 'Edit' : 'Close'}</Button>}
+            <Can permission='canEdit' route='ticket'>
+              <TicketIfOpen ticketId={ticket?._id}>
+                <Button variant={!isDepartmentEdit ? 'info' : 'danger'} shape='none' size='xs' onClick={() => setIsDepartmentEdit(prev => !prev)}>{!isDepartmentEdit ? 'Edit' : 'Close'}</Button>
+              </TicketIfOpen>
+            </Can>
           </div>
           <strong>Created on</strong>
           <p className={Style['ticket-sidebar__create-date']}>{formateDate(ticket?.createdAt)}</p>
