@@ -1,0 +1,5 @@
+.select-status-form {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
