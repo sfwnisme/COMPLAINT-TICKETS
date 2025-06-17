@@ -13,6 +13,7 @@ import CreateTagForm from '../forms/createTagForm/CreateTagForm'
 import useDeleteApiData from '../../../../hooks/use-delete-api-data'
 import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
 import { X } from 'lucide-react'
+import Can from '../../../../components/can/Can'
 
 type Props = {
   tags: ITag[]
@@ -56,17 +57,21 @@ export default function RenderTags({ tags }: Readonly<Props>) {
             {tag?.name}
           </TD>
           <TD dataCell='created at'>{formateDate(tag?.createdAt)}</TD>
-          <TD dataCell='Actions'>
-            <div style={{ display: 'flex', gap: '2px', justifyContent: 'end' }}>
-              <Button size='xs' variant={'info'} shape={'none'} onClick={() => handleIsUpdating(true, tag?._id)}>
-                update
-              </Button>
-              <Button size='xs' variant='danger' shape='none' disabled={isDeleting} onClick={() => handleDeleteTag(tag?._id)}>
-                {isDeleting && deletedId === tag?._id ? <LoadingIcon /> : ''}
-                Delete
-              </Button>
-            </div>
-          </TD>
+          <Can permission='canEdit' route='tag'>
+            <TD dataCell='Actions'>
+              <div style={{ display: 'flex', gap: '2px', justifyContent: 'end' }}>
+                <Button size='xs' variant={'info'} shape={'none'} onClick={() => handleIsUpdating(true, tag?._id)}>
+                  update
+                </Button>
+                <Can permission='canDelete' route='tag'>
+                  <Button size='xs' variant='danger' shape='none' disabled={isDeleting} onClick={() => handleDeleteTag(tag?._id)}>
+                    {isDeleting && deletedId === tag?._id ? <LoadingIcon /> : ''}
+                    Delete
+                  </Button>
+                </Can>
+              </div>
+            </TD>
+          </Can>
         </>
       }
     </TR>
@@ -82,9 +87,11 @@ export default function RenderTags({ tags }: Readonly<Props>) {
           <TH>
             created at
           </TH>
-          <TH>
-            Actions
-          </TH>
+          <Can permission='canEdit' route='tag'>
+            <TH>
+              Actions
+            </TH>
+          </Can>
         </THead>
         <TBody>
           {renderTags}
