@@ -17,6 +17,7 @@ export type CreateTicketType = z.infer<typeof createTicketSchema>
 export const updateTicketSchema = z.object({
   status: z.enum(TICKET_STATUS).optional(),
   assignedTo: z.string().optional(),
+  department: z.string().optional(),
   tags: z.string().array().optional()
 })
 export type UpdateTicketType = z.infer<typeof updateTicketSchema>
