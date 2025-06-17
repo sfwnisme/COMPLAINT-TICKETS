@@ -71,3 +71,16 @@ export type InputsType<T extends FieldValues> = {
   title?: string;
   message?: string;
 };
+
+
+//-----------------------------
+// Others
+//-----------------------------
+export type Permission = {
+  canView: boolean,
+  canCreate: boolean,
+  canEdit: boolean,
+  canDelete: boolean,
+}
+export type Routes = 'user' | 'ticket' | 'comment' | 'department' | 'tag'
+export type Access = 'denied' | 'granted'
