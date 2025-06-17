@@ -1,6 +1,4 @@
-
 import Style from './Comment.module.css'
-import { Case, Shift, Visible } from "@sfwnisme/visi"
 import useDeleteApiData from "../../../../hooks/use-delete-api-data"
 import useUpdateApiData from "../../../../hooks/use-update-api-data"
 import Dropdown from "../../../../components/dropdown/Dropdown"
@@ -15,6 +13,8 @@ import { formateDate } from '../../../../libs/formate-date'
 import DOMPurify from "dompurify";
 import useGetCurrentUser from '../../../../hooks/useGetCurrentUser'
 import useGetSingleTicket from '../../hooks/use-get-single-ticket'
+import Can from '../../../../components/can/Can'
+import TicketIfOpen from '../../../../components/ticketIfOpen/TicketIfOpen'
 
 type Props = {
   comment: IComment
@@ -40,27 +40,29 @@ export default function Comment({
     <div className={`${Style["comment"]} ${comment?.isSolution && Style['comment-marked-as-a-solution']}`} id={comment?._id}>
       <div className={`${Style['comment__author']}`}>
         <UserChip name={comment?.author?.name} text={formateDate(comment?.createdAt)} />
-        <Visible when={allowedToModify}>
-          <Shift fallback={<LoadingIcon />}>
-            <Case when={isPendingDelete || isPendingMark}>
+        <TicketIfOpen ticketId={comment?.ticket?._id}>
+          {
+            isPendingDelete || isPendingMark ?
               <Button size='square' shape='soft' disabled>
                 <LoadingIcon />
               </Button>
-            </Case>
-            <Case when={!isPendingDelete || !isPendingMark}>
+              :
               <Dropdown>
                 <List position='absolute' rightOrLeft='right'>
-                  <ListItem onClick={markCommentSolution}>
-                    {!comment?.isSolution ? 'Mark solution' : 'Unmark solution'}
-                  </ListItem>
-                  <ListItem onClick={handleDeleteComment}>
-                    Remove
-                  </ListItem>
+                  <Can permission='canEdit' route='comment'>
+                    <ListItem onClick={markCommentSolution}>
+                      {!comment?.isSolution ? 'Mark solution' : 'Unmark solution'}
+                    </ListItem>
+                  </Can>
+                  <Can permission='canDelete' route='comment'>
+                    <ListItem onClick={handleDeleteComment}>
+                      Remove
+                    </ListItem>
+                  </Can>
                 </List>
               </Dropdown>
-            </Case>
-          </Shift>
-        </Visible>
+          }
+        </TicketIfOpen>
       </div>
       <p className={`${Style['comment__author__message']}`} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(comment?.content) }} />
       {comment?.isSolution && <HelpText variant='success'>This response marked as a solution</HelpText>}
