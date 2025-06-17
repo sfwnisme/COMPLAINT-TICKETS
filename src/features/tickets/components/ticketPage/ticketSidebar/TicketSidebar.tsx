@@ -3,7 +3,7 @@ import Badge from '../../../../../components/badge/Badge'
 import Divider from '../../../../../components/divider/Divider'
 import FileChip from '../../../../../components/fileChip/FileChip'
 import { TICKET_STATUS_COLORS } from '../../../../../constraints/constraints'
-import { formatedDate } from '../../../../../libs/formated-date'
+import { formateDate } from '../../../../../libs/formate-date'
 import { ITicket } from '../../../../../types/types'
 import Style from './TicketSidebar.module.css'
 import HelpText from '../../../../../components/helpText/HelpText'
@@ -11,12 +11,16 @@ import SelectStatusForm from '../../../forms/selectStatusForm/SelectStatusForm'
 import { useState } from 'react'
 import Button from '../../../../../components/button/Button'
 import { Visible } from '@sfwnisme/visi'
+import SelectUserForm from '../../../forms/selectUserForm/SelectUserForm'
+import SelectDepartmentForm from '../../../forms/selectDepartmentForm/SelectDepartmentForm'
 type Props = {
   ticket: ITicket,
 }
 
 export default function TicketSidebar({ ticket }: Props) {
   const [isStatusEdit, setIsStatusEdit] = useState(false)
+  const [isAssigneeEdit, setIsAssigneeEdit] = useState(false)
+  const [isDepartmentEdit, setIsDepartmentEdit] = useState(false)
 
   return (
     <div className={Style['ticket-sidebar']}>
@@ -28,13 +32,30 @@ export default function TicketSidebar({ ticket }: Props) {
           <strong>Author</strong>
           <p className={Style['ticket-sidebar__author']}>{ticket?.createdBy?.name ?? ""}</p>
           <strong>Assigned to</strong>
-          <p className={Style['ticket-sidebar__assignee']}>{ticket?.assignedTo?.name ?? <Badge variant='warning' text="public" dot />}</p>
+          <div style={{ display: "flex", justifyContent: 'space-between', width: '100%' }}>
+            {!isAssigneeEdit
+              ?
+              <p className={Style['ticket-sidebar__assignee']}>{ticket?.assignedTo?.name ?? <Badge variant='warning' text="public" dot />}</p>
+              :
+              <SelectUserForm defaultValue={ticket?.assignedTo?._id} ticketId={ticket?._id} />
+            }
+
+            {ticket.status !== 'resolved' && ticket.status !== 'closed' && <Button variant={!isAssigneeEdit ? 'info' : 'danger'} shape='none' size='xs' onClick={() => setIsAssigneeEdit(prev => !prev)}>{!isAssigneeEdit ? 'Edit' : 'Close'}</Button>}
+          </div>
           <strong>Department</strong>
-          <p className={Style['ticket-sidebar__assignee']}>{ticket?.department?.title ?? <Badge variant='warning' text="public" dot />}</p>
+          <div style={{ display: "flex", justifyContent: 'space-between', width: '100%' }}>
+            {!isDepartmentEdit
+              ?
+              <p className={Style['ticket-sidebar__department']}>{ticket?.department?.title ?? <Badge variant='warning' text="public" dot />}</p>
+              :
+              <SelectDepartmentForm defaultValue={ticket?.department?._id} ticketId={ticket?._id} />
+            }
+            {ticket.status !== 'resolved' && ticket.status !== 'closed' && <Button variant={!isDepartmentEdit ? 'info' : 'danger'} shape='none' size='xs' onClick={() => setIsDepartmentEdit(prev => !prev)}>{!isDepartmentEdit ? 'Edit' : 'Close'}</Button>}
+          </div>
           <strong>Created on</strong>
-          <p className={Style['ticket-sidebar__create-date']}>{formatedDate(ticket?.createdAt)}</p>
+          <p className={Style['ticket-sidebar__create-date']}>{formateDate(ticket?.createdAt)}</p>
           <strong>Last update</strong>
-          <p className={Style['ticket-sidebar__update-date']}>{formatedDate(ticket?.updatedAt)}</p>
+          <p className={Style['ticket-sidebar__update-date']}>{formateDate(ticket?.updatedAt)}</p>
         </div>
         <Divider />
         <div className={Style['ticket-sidebar__body']}>
