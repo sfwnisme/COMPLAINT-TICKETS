@@ -95,9 +95,10 @@
   color: var(--danger-color-600);
 }
 
-.select-sm {
+.select--sm {
   padding: 4px 25px 4px 8px;
   font-size: 12px;
+  height: 24px;
 }
 
 .select__icon {
