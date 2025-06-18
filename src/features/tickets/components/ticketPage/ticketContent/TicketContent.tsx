@@ -41,7 +41,7 @@ export default function TicketContent({ ticket, setToggleSidebar }: Props) {
         </div>
       </div>
       <Can permission='canEdit' route='comment' fallback={createCommentFallback}>
-        <TicketIfOpen ticketId={ticket?._id}>
+        <TicketIfOpen ticketId={ticket?._id} fallback={createCommentFallback}>
           <div className={Style['ticket-content__create-comment']}>
             <UserChip avatarSize='sm' name={currentUser?.data?.name ?? ""} text={currentUser?.data?.email ?? ""} />
             <CreateCommentFormV2 ticketId={ticket?._id} />
