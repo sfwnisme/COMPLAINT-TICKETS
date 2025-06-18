@@ -7,9 +7,10 @@ type Props = {
   permission: keyof Permission;
   route: Routes;
   children: React.ReactNode
+  fallback?: React.ReactNode | string
 }
 
-export default function Can({ permission, route, children }: Readonly<Props>) {
+export default function Can({ permission, route, children, fallback = null }: Readonly<Props>) {
   const currentUser = useGetCurrentUser()
   if (!currentUser?.data) {
     return null
@@ -19,8 +20,9 @@ export default function Can({ permission, route, children }: Readonly<Props>) {
   const hasAccess = PERMISSIONS[role][route][permission]
 
   if (!hasAccess) {
-    return null
+    return fallback
   }
+
 
   return <>{children}</>
 }
