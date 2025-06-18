@@ -1,9 +1,15 @@
 import { NavLink } from 'react-router-dom'
 import Style from './SidebarPagesLinks.module.css'
 import { sidebarPagesLinks } from '../../sidebarConfig'
+import useGetCurrentUser from '../../../../hooks/useGetCurrentUser'
+import { USER_ROLES } from '../../../../constraints/constraints'
 
 export default function SidebarPagesLinks() {
-  const content = sidebarPagesLinks?.map((link) =>
+  const currentUser = useGetCurrentUser()
+  const role = currentUser?.data?.role
+
+  const filterLinksByPermission = sidebarPagesLinks.filter((page) => page.permission?.includes(role ?? USER_ROLES.view_only))
+  const content = filterLinksByPermission?.map((link) =>
     <li key={link?.id} className={Style['sidebar__item']}>
       <NavLink
         to={link?.path}
