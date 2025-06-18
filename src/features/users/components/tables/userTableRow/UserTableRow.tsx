@@ -31,7 +31,7 @@ const UserTableRow = ({ user, currentUser }: Props) => {
               <ListItem href={`${user._id}`}>
                 View
               </ListItem>
-              <Visible when={currentUser?.role === USER_ROLES.ADMIN}>
+              <Visible when={currentUser?.role === USER_ROLES.admin}>
                 <ListItem href={`update/${user._id}`}>Edit</ListItem>
                 <ListItem onClick={() => {
                   toggleDialog()
