@@ -96,7 +96,7 @@ export default function TicketSidebar({ ticket }: Props) {
           </div>
         </Visible>
       </div>
-      {ticket.images.length > 0 &&
+      {ticket?.images?.length > 0 &&
         <div className={Style['ticket-sidebar__files']}>
           <h4 className={Style['ticket-sidebar__title']}><Folder size={18} /> Attachments</h4>
           <FileChip name='profile.png' size='3Mb' />
