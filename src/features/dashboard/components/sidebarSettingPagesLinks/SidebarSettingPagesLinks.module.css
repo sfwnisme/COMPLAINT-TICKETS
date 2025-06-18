@@ -8,7 +8,8 @@
   }
 }
 .sidebar__body-content {
-  flex: 1;
+  margin-bottom: 40px;
+
 }
 .sidebar__link {
   color: var(--primary-color-600);
