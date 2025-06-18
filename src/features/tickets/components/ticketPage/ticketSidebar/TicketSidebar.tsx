@@ -79,7 +79,9 @@ export default function TicketSidebar({ ticket }: Props) {
                   <SelectStatusForm defaultValue={ticket.status} ticketId={ticket._id} />
                 </div>
             }
-            <Button variant={!isStatusEdit ? 'info' : 'danger'} shape='none' size='xs' onClick={() => setIsStatusEdit(prev => !prev)}>{!isStatusEdit ? 'Edit' : 'Close'}</Button>
+            <Can permission='canEdit' route='ticket'>
+              <Button variant={!isStatusEdit ? 'info' : 'danger'} shape='none' size='xs' onClick={() => setIsStatusEdit(prev => !prev)}>{!isStatusEdit ? 'Edit' : 'Close'}</Button>
+            </Can>
           </div>
         </div>
         <Visible when={ticket.tags.length > 0}>
@@ -94,13 +96,15 @@ export default function TicketSidebar({ ticket }: Props) {
           </div>
         </Visible>
       </div>
-      <div className={Style['ticket-sidebar__files']}>
-        <h4 className={Style['ticket-sidebar__title']}><Folder size={18} /> Attachments</h4>
-        <FileChip name='profile.png' size='3Mb' />
-        <FileChip name='profile.png' size='3Mb' />
-        <FileChip name='profile.png' size='3Mb' />
-        <FileChip name='profile.png' size='3Mb' />
-      </div>
+      {ticket.images.length > 0 &&
+        <div className={Style['ticket-sidebar__files']}>
+          <h4 className={Style['ticket-sidebar__title']}><Folder size={18} /> Attachments</h4>
+          <FileChip name='profile.png' size='3Mb' />
+          <FileChip name='profile.png' size='3Mb' />
+          <FileChip name='profile.png' size='3Mb' />
+          <FileChip name='profile.png' size='3Mb' />
+        </div>
+      }
       <div className={Style['ticket-sidebar__log']}>
         <h4 className={Style['ticket-sidebar__title']}><History size={18} /> History</h4>
         {/* <ul>
