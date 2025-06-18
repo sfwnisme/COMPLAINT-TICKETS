@@ -4,10 +4,11 @@ import { ITicket } from '../../types/types'
 
 type Props = {
   children: React.ReactNode,
+  fallback?: React.ReactNode,
   ticketId: string
 }
 
-export default function TicketIfOpen({ children, ticketId }: Readonly<Props>) {
+export default function TicketIfOpen({ children, fallback = null, ticketId }: Readonly<Props>) {
   const ticket = useGetSingleApiData<ITicket>({ endpoint: '/tickets', id: ticketId })
 
   if (!ticket?.data) {
@@ -15,7 +16,7 @@ export default function TicketIfOpen({ children, ticketId }: Readonly<Props>) {
   }
 
   if (ticket.data.status === 'resolved' || ticket.data.status === 'closed') {
-    return null
+    return fallback
   }
 
   return <>{children}</>
