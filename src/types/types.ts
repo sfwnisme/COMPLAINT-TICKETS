@@ -44,6 +44,7 @@ export interface ITicket {
   assignedTo: { _id: string, name: string },
   tags: ITag[],
   department: { _id: string, title: string },
+  images: FileList[]
   createdAt?: string,
   updatedAt?: string
 }
