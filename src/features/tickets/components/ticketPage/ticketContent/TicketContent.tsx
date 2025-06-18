@@ -10,6 +10,8 @@ import { PanelLeftClose } from 'lucide-react';
 import Button from '../../../../../components/button/Button';
 import Can from '../../../../../components/can/Can';
 import TicketIfOpen from '../../../../../components/ticketIfOpen/TicketIfOpen';
+import Alert from '../../../../../components/alert/Alert';
+import { formateDate } from '../../../../../libs/formate-date';
 type Props = {
   ticket: ITicket,
   setToggleSidebar: React.Dispatch<React.SetStateAction<boolean>>,
@@ -17,6 +19,7 @@ type Props = {
 
 export default function TicketContent({ ticket, setToggleSidebar }: Props) {
   const currentUser = useGetCurrentUser()
+  const createCommentFallback = <Alert visible variant={ticket.status === 'closed' ? 'danger' : 'success'}>{ticket?.status === 'closed' ? `This ticket has been closed on ${formateDate(ticket.updatedAt)}` : `This ticket has been resloved on ${formateDate(ticket.updatedAt)}`}</Alert>
   return (
     <div className={Style['ticket-content']}>
       <div className={Style['ticket-content__header']}>
@@ -37,14 +40,14 @@ export default function TicketContent({ ticket, setToggleSidebar }: Props) {
           <Comments ticketId={ticket?._id} />
         </div>
       </div>
-      <TicketIfOpen ticketId={ticket?._id}>
-        <Can permission='canEdit' route='comment'>
+      <Can permission='canEdit' route='comment' fallback={createCommentFallback}>
+        <TicketIfOpen ticketId={ticket?._id}>
           <div className={Style['ticket-content__create-comment']}>
             <UserChip avatarSize='sm' name={currentUser?.data?.name ?? ""} text={currentUser?.data?.email ?? ""} />
             <CreateCommentFormV2 ticketId={ticket?._id} />
           </div>
-        </Can>
-      </TicketIfOpen>
+        </TicketIfOpen>
+      </Can>
     </div>
   )
 }
