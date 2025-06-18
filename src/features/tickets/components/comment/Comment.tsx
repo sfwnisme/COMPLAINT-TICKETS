@@ -29,8 +29,6 @@ export default function Comment({
     await deleteComment(comment?._id)
   }
   console.log('the ticket', ticket.data)
-  // const currentUser = useGetCurrentUser()
-  // const allowedToModify = currentUser?.data?._id === comment?.author?._id && (ticket?.data?.status !== 'resolved' && ticket?.data?.status !== 'closed')
 
   const markCommentSolution = async () => {
     await updateComment({ isSolution: !comment?.isSolution })
@@ -42,7 +40,6 @@ export default function Comment({
         <UserChip name={comment?.author?.name} text={formateDate(comment?.createdAt)} />
         <TicketIfOpen ticketId={comment?.ticket?._id}>
           <Can permission='canEdit' route='comment'>
-
             {
               isPendingDelete || isPendingMark ?
                 <Button size='square' shape='soft' disabled>
@@ -66,7 +63,7 @@ export default function Comment({
         </TicketIfOpen>
       </div>
       <p className={`${Style['comment__author__message']}`} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(comment?.content) }} />
-      {comment?.isSolution && <HelpText variant='success'>This response marked as a solution</HelpText>}
+      {comment?.isSolution && <HelpText variant='success' icon='invisible'>This response marked as a solution</HelpText>}
     </div>
   )
 }

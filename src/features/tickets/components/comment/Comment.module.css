@@ -3,14 +3,15 @@
   margin-bottom: 18px;
   position: relative;
   transition: var(--transition-300) background;
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
 .comment-marked-as-a-solution {
-  border: 1px solid var(--success-color-500);
-  background: var(--success-color-50);
-  padding: 0.5rem;
+  border-left: 3px solid var(--success-color-200);
+  padding-left: 8px;
+  margin-left: 12px;
   transition: var(--transition-300) background;
+  position: relative;
 }
 
 
@@ -19,6 +20,10 @@
 }
 
 .comment-marked-as-a-solution::before {
+  /* content: ''; */
+  position: absolute;
+  height: 100px;
+  width: 100px;
   background-color: var(--success-color-200);
   border-color: var(--success-color-500);
   left: -15.8px;
