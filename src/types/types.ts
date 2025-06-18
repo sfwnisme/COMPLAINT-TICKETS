@@ -1,4 +1,5 @@
 import { AxiosError } from "axios"
+import { LucideIcon } from "lucide-react"
 import { FieldValues, Path } from "react-hook-form"
 export type TAxiosError = AxiosError<{ msg: string | { [key: string]: string }[] }>
 
@@ -85,3 +86,11 @@ export type Permission = {
 }
 export type Routes = 'user' | 'ticket' | 'comment' | 'department' | 'tag'
 export type Access = 'denied' | 'granted'
+
+export type RouteConfig = {
+  id: number,
+  icon: LucideIcon,
+  title: string,
+  path: string,
+  permission: Role[]
+}
