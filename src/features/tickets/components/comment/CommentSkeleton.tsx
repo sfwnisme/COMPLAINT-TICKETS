@@ -1,22 +1,14 @@
 import Style from './Comment.module.css'
 import Skeleton from "../../../../components/skeleton/Skeleton";
 import Spacer from '../../../../components/spacer/Spacer';
+import UserChipSkeleton from '../../../../components/userChip/UserChipSkeleton';
 
 export default function CommentSkeleton() {
 
   return (
-    <div className={`${Style["ticket-page__comment"]}`}>
-      <div className={`${Style['ticket-page__commenter']}`}>
-        <Skeleton width='40px' height='40px' label="avatar" />
-        <div className={Style['ticket-page__commenter-info']}>
-          <div style={{ display: "flex", gap: '4px' }}>
-            <Skeleton width='30%' label='first name' />
-            <Skeleton width='30%' label='last name' />
-          </div>
-          <Spacer />
-          <Skeleton height='12px' width='40%' label='date' />
-        </div>
-        <Skeleton width="30px" height="30px" label='comment options' />
+    <div className={`${Style["comment"]}`}>
+      <div className={`${Style['comment__author']}`}>
+        <UserChipSkeleton />
       </div>
       <Skeleton width='90%' height='17px' label='comment content1' />
       <Spacer />
