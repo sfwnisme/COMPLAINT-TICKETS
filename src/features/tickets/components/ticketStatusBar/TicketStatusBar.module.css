@@ -1,6 +1,6 @@
 .status-bar {
   display: grid;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: repeat(4, auto);
   gap: 4px;
   border-radius: var(--radius-md);
 
