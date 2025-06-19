@@ -23,8 +23,8 @@ export const routes = createBrowserRouter([
       {
         element: <Home />,
         children: [
-          { index: true },
           {
+            index: true,
             path: 'login',
             element:
               <PublicRoutesWrapper>
