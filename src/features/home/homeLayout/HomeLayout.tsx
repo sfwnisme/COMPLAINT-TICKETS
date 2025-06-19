@@ -1,4 +1,3 @@
-import HomeNavbar from '../components/HomeNavbar'
 import React from 'react'
 
 type Props = {
@@ -7,7 +6,6 @@ type Props = {
 export default function HomeLayout({ children }: Readonly<Props>) {
   return (
     <div>
-      <HomeNavbar />
       {children}
     </div>
   )
