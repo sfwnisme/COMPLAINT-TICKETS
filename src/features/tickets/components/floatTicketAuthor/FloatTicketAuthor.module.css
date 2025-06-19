@@ -1,36 +1,13 @@
-.float-ticket__createdby {
+.float-ticket-author {
   display: flex;
-  align-items: end;
-  gap: 8px;
-  /* padding: 0px 20px 0px; */
+  justify-content: space-between;
+  align-items:stretch;
 }
 
-.float-ticket__createdby-info {
+.float-ticket-author__author {
   flex: 1;
+  width: 100%;
 }
-
-.float-ticket__createdby__name {
-  color: var(--text-secondary);
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-@media (max-width: 650px) {
-  .float-ticket__createdby__name {
-    font-size: 14px;
-    margin-bottom: 3px;
-  }
-}
-
-.float-ticket__createdby__date {
-  color: var(--text-quaternary);
-  font-size: 13px;
-  font-weight: 400;
-}
-
-@media (max-width: 650px) {
-  .float-ticket__createdby__date {
-    font-size: 12px;
-  }
+.float-ticket-author__button {
+  /* display: flex; */
 }
