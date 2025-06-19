@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useFloatTicket } from '../../../../store/ticket.store'
-import { DEFAULT_TICKET } from '../../constraints'
 import CreateCommentForm from '../../forms/createCommentForm/CreateCommentForm'
 import useGetSingleTicket from '../../hooks/use-get-single-ticket'
 import FloatTicketAuthor from '../floatTicketAuthor/FloatTicketAuthor'
@@ -11,12 +10,15 @@ import Style from './FloatTicet.module.css'
 import Comments from '../comments/Comments'
 import FloatTicketSkeleton from './FloatTicketSkeleton'
 import DOMPurify from "dompurify";
+import Can from '../../../../components/can/Can'
+import TicketIfOpen from '../../../../components/ticketIfOpen/TicketIfOpen'
+import Alert from '../../../../components/alert/Alert'
 
 export default function FloatTicket() {
 
   const isFloatTicketVisible = useFloatTicket((state) => state.isFloatTicketVisible)
   const ticketId = useFloatTicket((state) => state.ticketId)
-  const { data: ticket = DEFAULT_TICKET, isLoading } = useGetSingleTicket(ticketId)
+  const { data: ticket, isLoading } = useGetSingleTicket(ticketId)
   console.log('ticket', ticket)
 
   useEffect(() => {
@@ -27,14 +29,15 @@ export default function FloatTicket() {
     }
   }, [isFloatTicketVisible])
 
-  if (isLoading) {
+  if (!ticket || isLoading) {
     return <FloatTicketSkeleton />
   }
+
   return (
     <div className={Style["float-ticket__overlay"]}>
       <div className={Style['float-ticket']}>
         <FloatTicketHeader title={ticket.title} />
-        <FloatTicketAuthor name={ticket?.createdBy?.name ?? "Deleted User"} createdAt={ticket.createdAt ?? ""} />
+        <FloatTicketAuthor ticketId={ticket._id} name={ticket?.createdBy?.name ?? "Deleted User"} createdAt={ticket.createdAt ?? ""} />
         <FloatTicketInfo
           ticketId={ticket._id}
           assignedTo={ticket.assignedTo?.name}
@@ -48,7 +51,14 @@ export default function FloatTicket() {
             <Comments ticketId={ticketId} />
           </div>
         </div>
-        <CreateCommentForm ticketId={ticketId} />
+        <TicketIfOpen ticketId={ticket?._id} fallback={<Alert visible variant={ticket.status === 'closed' ? 'danger' : 'success'}>
+          {ticket.status === 'closed' && 'This ticket is closed'}
+          {ticket.status === 'resolved' && 'This ticket is resolved'}
+        </Alert>}>
+          <Can permission='canEdit' route='comment'>
+            <CreateCommentForm ticketId={ticketId} />
+          </Can>
+        </TicketIfOpen>
       </div>
     </div >
   )
