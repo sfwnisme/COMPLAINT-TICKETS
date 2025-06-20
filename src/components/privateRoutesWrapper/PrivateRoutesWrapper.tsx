@@ -3,6 +3,7 @@ import Cookies from 'js-cookie'
 import { Role } from '../../types/types';
 import useGetCurrentUser from '../../hooks/useGetCurrentUser';
 import PageLoader from '../loaders/page-loader/PageLoader';
+import ForbiddenPage from '../../app/dashboard/forbidden/ForbiddenPage';
 
 type Props = {
   roles: Role[]
@@ -19,7 +20,7 @@ export default function PrivateRoutesWrapper({ roles = [] }: Props) {
     Cookies.remove('TOKEN')
   }
   if (!roles.includes(currentUser.data.role)) {
-    return <Navigate to='/dashboard' replace />
+    return <ForbiddenPage />
   }
   return currentUser?.isSuccess && roles.includes(currentUser.data.role) ? <Outlet /> : <Navigate to="/login" replace />
 }
