@@ -34,7 +34,7 @@ export default function Alert({ children, variant = 'primary', hasIcon, visible 
             {icons[variant]}
           </div>
         }
-        <p className={S['alert_content']}>
+        <p className={S['alert__content']}>
           {children}
         </p>
       </div>}
