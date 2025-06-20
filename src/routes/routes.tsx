@@ -10,10 +10,11 @@ import Home from "../app/home/Home";
 import UpdateUser from "../app/dashboard/users/update/UpdateUser";
 import CreateUser from "../app/dashboard/users/create/CreateUser";
 import PublicRoutesWrapper from "../features/auth/components/publicRoutesWrapper/PublicRoutesWrapper";
-import PrivateRoutesWrapper from "../features/auth/components/privateRoutesWrapper/PrivateRoutesWrapper";
 import Dashboard from "../app/dashboard/Dashboard";
 import Tags from "../app/dashboard/tags/Tags";
 import TicketV2 from "../app/dashboard/tickets/id/Ticket";
+import { USER_ROLES } from "../constraints/constraints";
+import PrivateRoutesWrapper from "../components/privateRoutesWrapper/PrivateRoutesWrapper";
 
 export const routes = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ export const routes = createBrowserRouter([
         ]
       },
       {
-        element: <PrivateRoutesWrapper />,
+        element: <PrivateRoutesWrapper roles={Object.values(USER_ROLES)} />,
         children: [
           {
             path: 'dashboard',
@@ -45,7 +46,12 @@ export const routes = createBrowserRouter([
                 path: 'tickets',
                 children: [
                   { index: true, element: <Tickets /> },
-                  { path: 'create', element: <CreateTicket /> },
+                  {
+                    element: <PrivateRoutesWrapper roles={[USER_ROLES.admin, USER_ROLES.manager, USER_ROLES.csr]} />,
+                    children: [{
+                      path: 'create', element: <CreateTicket />
+                    }]
+                  },
                   { path: ':ticketId', element: <TicketV2 /> },
                 ]
               },
@@ -65,7 +71,12 @@ export const routes = createBrowserRouter([
                 path: 'users',
                 children: [
                   { index: true, element: <Users /> },
-                  { path: 'create', element: <CreateUser /> },
+                  {
+                    element: <PrivateRoutesWrapper roles={[USER_ROLES.admin, USER_ROLES.manager, USER_ROLES.csr]} />,
+                    children: [
+                      { path: 'create', element: <CreateUser /> }
+                    ]
+                  },
                   { path: 'update/:userId', element: <UpdateUser /> },
                 ]
               },
