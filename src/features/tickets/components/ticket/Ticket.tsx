@@ -1,4 +1,4 @@
-import { Clock, Contact, PanelLeftOpen, Trash, User } from 'lucide-react'
+import { Clock, Contact, PanelLeftOpen, Timer, Trash, User } from 'lucide-react'
 import S from './Ticket.module.css'
 import Button from '../../../../components/button/Button'
 import Badge from '../../../../components/badge/Badge'
@@ -18,7 +18,7 @@ export default function Ticket(
   const handleDeleteTicket = async (ticketId: string) => {
     await deleteTicket(ticketId)
   }
-  const { _id, title, createdBy, assignedTo, department, status, priority, tags, createdAt } = ticket
+  const { _id, title, createdBy, assignedTo, department, status, priority, tags, createdAt, updatedAt } = ticket
 
   console.log(tags)
   const toggleFloatTicket = useFloatTicket((state) => state.toggleFloatTicket)
@@ -44,7 +44,8 @@ export default function Ticket(
       <div className={S["ticket__body"]}>
         <div className={S["ticket__author"]} id={createdBy?._id}><User size={14} strokeWidth={1.6} id={createdBy?._id} />{createdBy?.name}</div>
         <div hidden={!assignedTo?._id} className={S["ticket__assignee"]} id={assignedTo?._id}><Contact size={14} strokeWidth={1.6} id={assignedTo?._id} />{assignedTo?.name}</div>
-        <div className={S["ticket__created-at"]} ><Clock size={14} strokeWidth={1.6} /> {formateDate(createdAt)}</div>
+        <div className={S["ticket__created-at"]} title='created at' ><Clock size={14} strokeWidth={1.6} /> {formateDate(createdAt)}</div>
+        <div className={S["ticket__updated-at"]} title='update at' ><Timer size={14} strokeWidth={1.6} /> {formateDate(updatedAt)}</div>
       </div>
       <div className={S["ticket__footer"]}>
         <div className={S["ticket__footer--left-side"]}>

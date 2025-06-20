@@ -6,7 +6,7 @@
   transition: var(--transition-150);
   border-radius: 5px;
   display: flex;
-  gap: 20px;
+  gap: 8px;
   flex-direction: column;
   padding: 12px;
 }
@@ -53,7 +53,8 @@
 .ticket__number,
 .ticket__assignee,
 .ticket__author,
-.ticket__created-at {
+.ticket__created-at,
+.ticket__updated-at {
   font-size: 12px;
   color: var(--text-tertiary);
   display: flex;
