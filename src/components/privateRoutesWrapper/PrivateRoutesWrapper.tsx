@@ -12,9 +12,17 @@ export default function PrivateRoutesWrapper({ roles = [] }: Props) {
   const currentUser = useGetCurrentUser();
   console.log(currentUser)
 
-  if (!currentUser?.data || currentUser.isLoading) {
-    console.log('inloading', currentUser)
+  if (currentUser.isLoading) {
     return <PageLoader />;
+  }
+
+  if (currentUser.isError) {
+    Cookies.remove('TOKEN')
+  }
+
+  if (!currentUser.data) {
+    Cookies.remove('TOKEN')
+    return <Navigate to="/login" replace />;
   }
   if (currentUser.isError) {
     Cookies.remove('TOKEN')
