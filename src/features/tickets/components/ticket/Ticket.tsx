@@ -1,15 +1,16 @@
-import { Clock, Contact, PanelLeftOpen, Timer, Trash, User } from 'lucide-react'
+import { Clock, Contact, ExternalLink, PanelLeftOpen, Timer, Trash, User } from 'lucide-react'
 import S from './Ticket.module.css'
 import Button from '../../../../components/button/Button'
 import Badge from '../../../../components/badge/Badge'
 import { useFloatTicket } from '../../../../store/ticket.store'
 import { TICKET_PRIORITY_COLORS, TICKET_STATUS_COLORS } from '../../../../constraints/constraints'
-import { formateDate } from '../../../../libs/formate-date'
 import { ITicket } from '../../../../types/types'
 import useDeleteApiData from '../../../../hooks/use-delete-api-data'
 import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
 import { NavLink } from 'react-router-dom'
 import Can from '../../../../components/can/Can'
+import dayjs from 'dayjs'
+
 
 export default function Ticket(
   { ticket }: Readonly<{ ticket: ITicket }>
@@ -44,8 +45,8 @@ export default function Ticket(
       <div className={S["ticket__body"]}>
         <div className={S["ticket__author"]} id={createdBy?._id}><User size={14} strokeWidth={1.6} id={createdBy?._id} />{createdBy?.name}</div>
         <div hidden={!assignedTo?._id} className={S["ticket__assignee"]} id={assignedTo?._id}><Contact size={14} strokeWidth={1.6} id={assignedTo?._id} />{assignedTo?.name}</div>
-        <div className={S["ticket__created-at"]} title='created at' ><Clock size={14} strokeWidth={1.6} /> {formateDate(createdAt)}</div>
-        <div className={S["ticket__updated-at"]} title='update at' ><Timer size={14} strokeWidth={1.6} /> {formateDate(updatedAt)}</div>
+        <div className={S["ticket__created-at"]} title='created at' ><Clock size={14} strokeWidth={1.6} /> {dayjs(createdAt).fromNow()}</div>
+        <div className={S["ticket__updated-at"]} title='update at' ><Timer size={14} strokeWidth={1.6} /> {dayjs(updatedAt).fromNow()}</div>
       </div>
       <div className={S["ticket__footer"]}>
         <div className={S["ticket__footer--left-side"]}>
@@ -63,11 +64,11 @@ export default function Ticket(
         </div>
         <Can permission='canDelete' route='ticket'>
           <Button variant='danger' shape='none' size='square' onClick={() => handleDeleteTicket(_id)}>
-            {isPending ? <LoadingIcon /> : <Trash size={15} strokeWidth={1.5} />}
+            {isPending ? <LoadingIcon /> : <Trash size={18} strokeWidth={1.5} />}
           </Button>
         </Can>
         <NavLink to={'/dashboard/tickets/' + ticket?._id}>
-          <Button size='xs' shape='soft'>Open</Button>
+          <Button size='xs' shape='soft'><ExternalLink size={18} strokeWidth={1.5} color='var(--primary-color-600)' /></Button>
         </NavLink>
       </div>
     </div >
