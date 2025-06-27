@@ -22,6 +22,7 @@ const initialData: ITicket = {
       color: "#bd009f"
     }
   ],
+  images: [],
   createdAt: "2025-05-04T20:16:32.478Z",
   updatedAt: "2025-05-16T00:50:02.847Z",
   assignedTo: {
