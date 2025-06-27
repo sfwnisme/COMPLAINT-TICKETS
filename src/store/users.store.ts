@@ -12,5 +12,4 @@ export const useUsersStore = create<State>((set) => ({
   toggleDialog: () => set((state) => ({ isDialogVisible: !state.isDialogVisible })),
   userId: "",
   setUserId: (id) => set(({ userId: id })),
-  //users
 }))
