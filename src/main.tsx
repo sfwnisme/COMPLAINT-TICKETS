@@ -5,6 +5,9 @@ import { routes } from './routes/routes.tsx'
 import './index.css'
 import './root.css'
 import './normalize.css'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime)
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
