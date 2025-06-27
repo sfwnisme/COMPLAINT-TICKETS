@@ -1,0 +1,18 @@
+.render-tickets-content {
+  width: 100%;
+}
+.render-tickets-content__header {
+  display: inline-flex;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  width: 100%;
+  @media (max-width: 991px) {
+   display: none;
+  }
+}
+.render-tickets-content__header__title {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+}
