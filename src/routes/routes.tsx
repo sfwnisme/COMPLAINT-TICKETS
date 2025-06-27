@@ -6,7 +6,6 @@ import Departments from "../app/dashboard/departments/Departments";
 import Settings from "../app/dashboard/settings/Settings";
 import Users from "../app/dashboard/users/Users";
 import Login from "../app/auth/login/Login";
-import Home from "../app/home/Home";
 import UpdateUser from "../app/dashboard/users/update/UpdateUser";
 import CreateUser from "../app/dashboard/users/create/CreateUser";
 import PublicRoutesWrapper from "../features/auth/components/publicRoutesWrapper/PublicRoutesWrapper";
@@ -22,17 +21,11 @@ export const routes = createBrowserRouter([
     element: <App />,
     children: [
       {
-        element: <Home />,
-        children: [
-          {
-            index: true,
-            path: 'login',
-            element:
-              <PublicRoutesWrapper>
-                <Login />
-              </PublicRoutesWrapper>
-          }
-        ]
+        index: true,
+        element:
+          <PublicRoutesWrapper>
+            <Login />
+          </PublicRoutesWrapper>
       },
       {
         element: <PrivateRoutesWrapper roles={Object.values(USER_ROLES)} />,
