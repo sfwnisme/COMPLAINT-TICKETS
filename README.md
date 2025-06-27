@@ -3,6 +3,12 @@
 > [!NOTE]
 > This project is planned to be built with every component developed from scratch, including custom UI components, functions, and more.
 
+## Try the project
+
+- Website: [link](https://complaint-tickets.netlify.app/)
+- Email: `veiw_only@sfwn.me`
+- Password: `123412354`
+
 ## Technologies Used
 
 - React
