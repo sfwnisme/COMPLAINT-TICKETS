@@ -1,7 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { axiosInstance } from '../libs/axios-instance'
 
-// export default function useUpdateApiData<T /** the data types */>(endpoint: string, method: 'put' | 'patch' = 'patch') {
 type Props = {
   endpoint: string,
   revalidateKey: string,
