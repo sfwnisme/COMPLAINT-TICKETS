@@ -13,7 +13,7 @@ export default function SidebarUser() {
   }
   const handleSignOut = () => {
     Cookies.remove('TOKEN')
-    window.location.pathname = '/login'
+    window.location.pathname = '/'
   }
 
   return (
