@@ -11,7 +11,6 @@ import LoadingIcon from '../../../../components/loadingIcon/LoadingIcon'
 import Button from '../../../../components/button/Button'
 import { formateDate } from '../../../../libs/formate-date'
 import DOMPurify from "dompurify";
-// import useGetCurrentUser from '../../../../hooks/useGetCurrentUser'
 import useGetSingleTicket from '../../hooks/use-get-single-ticket'
 import Can from '../../../../components/can/Can'
 import TicketIfOpen from '../../../../components/ticketIfOpen/TicketIfOpen'

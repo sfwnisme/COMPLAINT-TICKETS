@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
 import { axiosInstance } from '../libs/axios-instance'
-// import { AxiosResponse } from 'axios'
 
 type Params<T> = {
   endpoint: string, id: string | undefined

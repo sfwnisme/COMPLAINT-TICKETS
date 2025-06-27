@@ -8,7 +8,6 @@ type Props = {
   variant?: 'primary' | 'info' | 'success' | 'warning' | 'danger';
   title?: string,
   message?: string,
-  // size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 type InputType = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 type finalType = Props & InputType

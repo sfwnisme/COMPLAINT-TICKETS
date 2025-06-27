@@ -1,4 +1,3 @@
-// import React, { useState } from 'react'
 import React from "react";
 import S from "./Select.module.css";
 import { ChevronsUpDown } from "lucide-react";
@@ -16,8 +15,6 @@ type Props = {
 
 const Select = React.forwardRef<HTMLSelectElement, Props>(
   ({ children, sze = "md", title, variant = "primary", ...rest }, ref) => {
-    // export default function Select({children, sze = 'md', title, variant = 'primary', ...rest}: Props) {
-    // const options = data.map((option) => <option id={option.id} value={option.id}>{option.title}</option>)
     const sizes = {
       sm: "select--sm",
       md: "select--md",
@@ -41,7 +38,6 @@ const Select = React.forwardRef<HTMLSelectElement, Props>(
           <select
             ref={ref}
             title={rest.name}
-            // id={rest.name}
             className={`${S.select} ${settings}`}
             defaultChecked={true}
             {...rest}

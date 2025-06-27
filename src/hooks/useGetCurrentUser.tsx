@@ -10,7 +10,6 @@ export default function useGetCurrentUser() {
       return res.data.data
     },
     retry: false,
-    // placeholderData: { _id: '', name: '', email: '', role: USER_ROLES.admin }
   })
   return currentUser
 }

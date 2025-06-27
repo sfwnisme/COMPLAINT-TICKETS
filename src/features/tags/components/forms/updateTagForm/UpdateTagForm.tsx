@@ -1,7 +1,5 @@
 import Input from '../../../../../components/input/Input'
-// import useUpdateTagFormValidation from '../../../hooks/use-update-tag-form-validation'
 import Button from '../../../../../components/button/Button'
-// import useUpdateTag from '../../../hooks/use-update-tag'
 import LoadingIcon from '../../../../../components/loadingIcon/LoadingIcon'
 import useUpdateTagFormValidation from '../../../hooks/use-update-tag-form-validation'
 import useUpdateTag from '../../../hooks/use-update-tag'

@@ -3,7 +3,6 @@ import Select from '../../../../../components/select/Select'
 import { USER_ROLES } from '../../../../../constraints/constraints'
 type Props = {
   title: string,
-  // id: string,
 } & React.DetailedHTMLProps<
   React.SelectHTMLAttributes<HTMLSelectElement>,
   HTMLSelectElement>

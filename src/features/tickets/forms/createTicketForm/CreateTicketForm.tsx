@@ -33,7 +33,6 @@ export default function CreateTicketForm() {
     setValue('tags', arr)
   }
 
-  // const inputsConfig = getCreateTicketInputsConfig(errors)
   const { onSubmit, isPending, isSuccess, isError, errorMessage, successMessage } = useCreateTicket();
   const showAlert = isSuccess || isError
   const canCreate = !isPending && isValid
