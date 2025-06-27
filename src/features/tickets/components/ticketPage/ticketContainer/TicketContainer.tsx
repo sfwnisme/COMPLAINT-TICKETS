@@ -10,7 +10,7 @@ type Props = {
   ticket: ITicket,
 }
 export default function TicketContainer({ ticket }: Readonly<Props>) {
-  const [toggleSidebar, setToggleSidebar] = useState<boolean>(true)
+  const [toggleSidebar, setToggleSidebar] = useState<boolean>(false)
   return (
     <div>
       <div className={Style['ticket-page']}>
