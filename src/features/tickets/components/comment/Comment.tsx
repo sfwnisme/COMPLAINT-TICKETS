@@ -13,7 +13,7 @@ import { formateDate } from '../../../../libs/formate-date'
 import DOMPurify from "dompurify";
 import useGetSingleTicket from '../../hooks/use-get-single-ticket'
 import Can from '../../../../components/can/Can'
-import TicketIfOpen from '../../../../components/ticketIfOpen/TicketIfOpen'
+import IfTicketOpen from '../../../../components/ifTicketOpen/IfTicketOpen'
 
 type Props = {
   comment: IComment
@@ -37,7 +37,7 @@ export default function Comment({
     <div className={`${Style["comment"]} ${comment?.isSolution && Style['comment-marked-as-a-solution']}`} id={comment?._id}>
       <div className={`${Style['comment__author']}`}>
         <UserChip name={comment?.author?.name} text={formateDate(comment?.createdAt)} />
-        <TicketIfOpen ticketId={comment?.ticket?._id}>
+        <IfTicketOpen ticketId={comment?.ticket?._id}>
           <Can permission='canEdit' route='comment'>
             {
               isPendingDelete || isPendingMark ?
@@ -59,7 +59,7 @@ export default function Comment({
                 </Dropdown>
             }
           </Can>
-        </TicketIfOpen>
+        </IfTicketOpen>
       </div>
       <p className={`${Style['comment__author__message']}`} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(comment?.content) }} />
       {comment?.isSolution && <HelpText variant='success' icon='invisible'>This response marked as a solution</HelpText>}

@@ -11,7 +11,7 @@ import Comments from '../comments/Comments'
 import FloatTicketSkeleton from './FloatTicketSkeleton'
 import DOMPurify from "dompurify";
 import Can from '../../../../components/can/Can'
-import TicketIfOpen from '../../../../components/ticketIfOpen/TicketIfOpen'
+import IfTicketOpen from '../../../../components/ifTicketOpen/IfTicketOpen'
 import Alert from '../../../../components/alert/Alert'
 
 export default function FloatTicket() {
@@ -51,14 +51,14 @@ export default function FloatTicket() {
             <Comments ticketId={ticketId} />
           </div>
         </div>
-        <TicketIfOpen ticketId={ticket?._id} fallback={<Alert visible variant={ticket.status === 'closed' ? 'danger' : 'success'}>
+        <IfTicketOpen ticketId={ticket?._id} fallback={<Alert visible variant={ticket.status === 'closed' ? 'danger' : 'success'}>
           {ticket.status === 'closed' && 'This ticket is closed'}
           {ticket.status === 'resolved' && 'This ticket is resolved'}
         </Alert>}>
           <Can permission='canEdit' route='comment'>
             <CreateCommentForm ticketId={ticketId} />
           </Can>
-        </TicketIfOpen>
+        </IfTicketOpen>
       </div>
     </div >
   )

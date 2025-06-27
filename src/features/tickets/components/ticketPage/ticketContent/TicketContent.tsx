@@ -9,7 +9,7 @@ import Unnormalize from './unnormalize.module.css'
 import { PanelRight } from 'lucide-react';
 import Button from '../../../../../components/button/Button';
 import Can from '../../../../../components/can/Can';
-import TicketIfOpen from '../../../../../components/ticketIfOpen/TicketIfOpen';
+import IfTicketOpen from '../../../../../components/ifTicketOpen/IfTicketOpen';
 import Alert from '../../../../../components/alert/Alert';
 import { formateDate } from '../../../../../libs/formate-date';
 type Props = {
@@ -41,12 +41,12 @@ export default function TicketContent({ ticket, setToggleSidebar }: Props) {
         </div>
       </div>
       <Can permission='canEdit' route='comment' fallback={createCommentFallback}>
-        <TicketIfOpen ticketId={ticket?._id} fallback={createCommentFallback}>
+        <IfTicketOpen ticketId={ticket?._id} fallback={createCommentFallback}>
           <div className={Style['ticket-content__create-comment']}>
             <UserChip avatarSize='sm' name={currentUser?.data?.name ?? ""} text={currentUser?.data?.email ?? ""} />
             <CreateCommentFormV2 ticketId={ticket?._id} />
           </div>
-        </TicketIfOpen>
+        </IfTicketOpen>
       </Can>
     </div>
   )

@@ -13,7 +13,7 @@ import Button from '../../../../../components/button/Button'
 import SelectUserForm from '../../../forms/selectUserForm/SelectUserForm'
 import SelectDepartmentForm from '../../../forms/selectDepartmentForm/SelectDepartmentForm'
 import Can from '../../../../../components/can/Can'
-import TicketIfOpen from '../../../../../components/ticketIfOpen/TicketIfOpen'
+import IfTicketOpen from '../../../../../components/ifTicketOpen/IfTicketOpen'
 import Spacer from '../../../../../components/spacer/Spacer'
 type Props = {
   ticket: ITicket,
@@ -53,9 +53,9 @@ export default function TicketSidebar({ ticket }: Props) {
               <SelectUserForm defaultValue={ticket?.assignedTo?._id} ticketId={ticket?._id} />
             }
             <Can permission='canEdit' route='ticket'>
-              <TicketIfOpen ticketId={ticket?._id}>
+              <IfTicketOpen ticketId={ticket?._id}>
                 <Button variant={!isAssigneeEdit ? 'info' : 'danger'} shape='none' size='xs' onClick={() => setIsAssigneeEdit(prev => !prev)}>{!isAssigneeEdit ? 'Edit' : 'Close'}</Button>
-              </TicketIfOpen>
+              </IfTicketOpen>
             </Can>
           </div>
           <strong>Department</strong>
@@ -67,9 +67,9 @@ export default function TicketSidebar({ ticket }: Props) {
               <SelectDepartmentForm defaultValue={ticket?.department?._id} ticketId={ticket?._id} />
             }
             <Can permission='canEdit' route='ticket'>
-              <TicketIfOpen ticketId={ticket?._id}>
+              <IfTicketOpen ticketId={ticket?._id}>
                 <Button variant={!isDepartmentEdit ? 'info' : 'danger'} shape='none' size='xs' onClick={() => setIsDepartmentEdit(prev => !prev)}>{!isDepartmentEdit ? 'Edit' : 'Close'}</Button>
-              </TicketIfOpen>
+              </IfTicketOpen>
             </Can>
           </div>
           <strong>Created on</strong>

@@ -38,7 +38,7 @@
 
 .comment__author {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   align-items: start;
   justify-content: space-between;
   gap: 8px;
