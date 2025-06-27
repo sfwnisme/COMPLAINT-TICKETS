@@ -19,7 +19,12 @@ type Props = {
 
 export default function TicketContent({ ticket, setToggleSidebar }: Props) {
   const currentUser = useGetCurrentUser()
-  const createCommentFallback = <Alert visible variant={ticket.status === 'closed' ? 'danger' : 'success'}>{ticket?.status === 'closed' ? `This ticket has been closed on ${formateDate(ticket.updatedAt)}` : `This ticket has been resloved on ${formateDate(ticket.updatedAt)}`}</Alert>
+  const notAllowedToComment = currentUser?.data?._id !== ticket?.assignedTo?._id && currentUser?.data?._id !== ticket?.createdBy?._id && (ticket.status === 'open' || ticket.status === 'in-progress')
+  const createCommentFallback = <Alert visible variant={ticket.status === 'closed' ? 'danger' : 'success'}>
+    {notAllowedToComment && 'You are not allowed to collaborate'}
+    {ticket.status === 'closed' && `This ticket has been closed on ${formateDate(ticket.updatedAt)}`}
+    {ticket.status === 'resolved' && `This ticket has been resolved on ${formateDate(ticket.updatedAt)}`}
+  </Alert>
   return (
     <div className={Style['ticket-content']}>
       <div className={Style['ticket-content__header']}>
@@ -27,7 +32,7 @@ export default function TicketContent({ ticket, setToggleSidebar }: Props) {
           {ticket?.title}
         </div>
         <Button variant='primary' size='square' shape='none' onClick={() => setToggleSidebar((prev) => !prev)}>
-         { <PanelRight size={24} />}
+          {<PanelRight size={24} />}
         </Button>
       </div>
       <div className={Style['ticket-content__conversation']}>
