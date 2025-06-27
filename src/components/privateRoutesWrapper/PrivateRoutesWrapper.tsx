@@ -22,7 +22,7 @@ export default function PrivateRoutesWrapper({ roles = [] }: Props) {
 
   if (!currentUser.data) {
     Cookies.remove('TOKEN')
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/" replace />;
   }
   if (currentUser.isError) {
     Cookies.remove('TOKEN')
@@ -30,5 +30,5 @@ export default function PrivateRoutesWrapper({ roles = [] }: Props) {
   if (!roles.includes(currentUser.data.role)) {
     return <ForbiddenPage />
   }
-  return currentUser?.isSuccess && roles.includes(currentUser.data.role) ? <Outlet /> : <Navigate to="/login" replace />
+  return currentUser?.isSuccess && roles.includes(currentUser.data.role) ? <Outlet /> : <Navigate to="/" replace />
 }
