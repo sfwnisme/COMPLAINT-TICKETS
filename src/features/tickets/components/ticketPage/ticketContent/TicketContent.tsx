@@ -6,7 +6,7 @@ import UserChip from '../../../../../components/userChip/UserChip'
 import useGetCurrentUser from '../../../../../hooks/useGetCurrentUser'
 import { ITicket } from '../../../../../types/types'
 import Unnormalize from './unnormalize.module.css'
-import { PanelLeftClose } from 'lucide-react';
+import { PanelRight } from 'lucide-react';
 import Button from '../../../../../components/button/Button';
 import Can from '../../../../../components/can/Can';
 import TicketIfOpen from '../../../../../components/ticketIfOpen/TicketIfOpen';
@@ -27,7 +27,7 @@ export default function TicketContent({ ticket, setToggleSidebar }: Props) {
           {ticket?.title}
         </div>
         <Button variant='primary' size='square' shape='none' onClick={() => setToggleSidebar((prev) => !prev)}>
-          <PanelLeftClose size={24} />
+         { <PanelRight size={24} />}
         </Button>
       </div>
       <div className={Style['ticket-content__conversation']}>
