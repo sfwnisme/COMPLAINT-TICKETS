@@ -9,7 +9,6 @@ type Props = {
 
 const RenderUsersTableRows = ({ users }: Props) => {
   const currentUser = useGetCurrentUser()
-  console.log('currentuseruserusueru', currentUser)
   return users?.map((user) => <UserTableRow user={user} currentUser={currentUser?.data} key={user?._id} />)
 }
 

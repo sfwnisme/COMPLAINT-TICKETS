@@ -9,6 +9,7 @@ import ListItem from "../../../../../components/list/ListItem"
 import { useUsersStore } from "../../../../../store/users.store"
 import { memo } from "react"
 import { IUser } from "../../../../../types/types"
+import Can from "../../../../../components/can/Can"
 type Props = {
   user: IUser,
   currentUser?: Omit<IUser, 'createdAt'>,
@@ -24,24 +25,26 @@ const UserTableRow = ({ user, currentUser }: Props) => {
       </TD>
       <TD dataCell="Email">{user.email}</TD>
       <TD dataCell="Role"><Badge variant={USER_ROLES_COLORS[user.role]} title={user.role} text={user.role} /></TD>
-      <Visible when={currentUser?._id !== user?._id}>
-        <TD dataCell="Options">
-          <Dropdown>
-            <List position="absolute" rightOrLeft="right">
-              <ListItem href={`${user._id}`}>
-                View
-              </ListItem>
-              <Visible when={currentUser?.role === USER_ROLES.admin}>
-                <ListItem href={`update/${user._id}`}>Edit</ListItem>
-                <ListItem onClick={() => {
-                  toggleDialog()
-                  setUserId(user._id)
-                }}>Delete</ListItem>
-              </Visible>
-            </List>
-          </Dropdown>
-        </TD>
-      </Visible>
+      <Can permission="canEdit" route="user">
+        <Visible when={currentUser?._id !== user?._id}>
+          <TD dataCell="Options">
+            <Dropdown>
+              <List position="absolute" rightOrLeft="right">
+                <ListItem href={`${user._id}`}>
+                  View
+                </ListItem>
+                <Visible when={currentUser?.role === USER_ROLES.admin}>
+                  <ListItem href={`update/${user._id}`}>Edit</ListItem>
+                  <ListItem onClick={() => {
+                    toggleDialog()
+                    setUserId(user._id)
+                  }}>Delete</ListItem>
+                </Visible>
+              </List>
+            </Dropdown>
+          </TD>
+        </Visible>
+      </Can>
     </TR>
   )
 }
