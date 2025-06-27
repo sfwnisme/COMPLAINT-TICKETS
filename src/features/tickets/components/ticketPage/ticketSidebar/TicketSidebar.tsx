@@ -8,13 +8,13 @@ import { ITicket } from '../../../../../types/types'
 import Style from './TicketSidebar.module.css'
 import HelpText from '../../../../../components/helpText/HelpText'
 import SelectStatusForm from '../../../forms/selectStatusForm/SelectStatusForm'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from '../../../../../components/button/Button'
-import { Visible } from '@sfwnisme/visi'
 import SelectUserForm from '../../../forms/selectUserForm/SelectUserForm'
 import SelectDepartmentForm from '../../../forms/selectDepartmentForm/SelectDepartmentForm'
 import Can from '../../../../../components/can/Can'
 import TicketIfOpen from '../../../../../components/ticketIfOpen/TicketIfOpen'
+import Spacer from '../../../../../components/spacer/Spacer'
 type Props = {
   ticket: ITicket,
 }
@@ -23,6 +23,17 @@ export default function TicketSidebar({ ticket }: Props) {
   const [isStatusEdit, setIsStatusEdit] = useState(false)
   const [isAssigneeEdit, setIsAssigneeEdit] = useState(false)
   const [isDepartmentEdit, setIsDepartmentEdit] = useState(false)
+
+  const handleStatusEdit = () => {
+    setIsStatusEdit(prev => !prev)
+
+  }
+  useEffect(() => {
+    if (ticket.status === 'closed' || ticket.status === 'resolved') {
+      setIsAssigneeEdit(false)
+      setIsDepartmentEdit(false)
+    }
+  }, [ticket.status])
 
   return (
     <div className={Style['ticket-sidebar']}>
@@ -80,11 +91,11 @@ export default function TicketSidebar({ ticket }: Props) {
                 </div>
             }
             <Can permission='canEdit' route='ticket'>
-              <Button variant={!isStatusEdit ? 'info' : 'danger'} shape='none' size='xs' onClick={() => setIsStatusEdit(prev => !prev)}>{!isStatusEdit ? 'Edit' : 'Close'}</Button>
+              <Button variant={!isStatusEdit ? 'info' : 'danger'} shape='none' size='xs' onClick={handleStatusEdit}>{!isStatusEdit ? 'Edit' : 'Close'}</Button>
             </Can>
           </div>
         </div>
-        <Visible when={ticket.tags.length > 0}>
+        <>
           <Divider />
           <div className={Style['ticket-sidebar__footer']}>
             <strong>Tags</strong>
@@ -93,32 +104,18 @@ export default function TicketSidebar({ ticket }: Props) {
                 <Badge customColor={tag?.color} text={tag?.name} key={tag._id} />
               ))
             }
+            {ticket.tags.length === 0 && <HelpText icon='visible'>No tags yet</HelpText>}
           </div>
-        </Visible>
+        </>
       </div>
-      {ticket?.images?.length > 0 &&
-        <div className={Style['ticket-sidebar__files']}>
-          <h4 className={Style['ticket-sidebar__title']}><Folder size={18} /> Attachments</h4>
-          <FileChip name='profile.png' size='3Mb' />
-          <FileChip name='profile.png' size='3Mb' />
-          <FileChip name='profile.png' size='3Mb' />
-          <FileChip name='profile.png' size='3Mb' />
-        </div>
-      }
+      <div className={Style['ticket-sidebar__files']}>
+        <h4 className={Style['ticket-sidebar__title']}><Folder size={18} /> Attachments</h4>
+        <FileChip name='profile.png' size='3Mb' />
+        <Spacer />
+        <HelpText>This is an example for what will be in the next version</HelpText>
+      </div>
       <div className={Style['ticket-sidebar__log']}>
         <h4 className={Style['ticket-sidebar__title']}><History size={18} /> History</h4>
-        {/* <ul>
-          <li>- [10:42] Ticket created by Agent Smith (Priority: High)</li>
-          <li>- [10:45] Category changed from "Billing" to "Technical Support"</li>
-          <li>- [10:47] Assigned to Specialist Team (Group: Tier 2 Support)</li>
-          <li>- [10:47] Assigned to Specialist Team (Group: Tier 2 Support)</li>
-          <li>- [10:47] Assigned to Specialist Team (Group: Tier 2 Support)</li>
-          <li>- [10:47] Assigned to Specialist Team (Group: Tier 2 Support)</li>
-          <li>- [10:50] Customer provided additional error screenshots</li>
-          <li>- [11:15] Solution suggested: Clear cache and reset credentials</li>
-          <li>- [11:30] Customer confirmed issue resolved</li>
-          <li>- [11:32] Ticket closed (Resolution: Fixed)</li>
-        </ul> */}
         <HelpText icon='visible'>In the next version this will be updated</HelpText>
       </div>
     </div>
