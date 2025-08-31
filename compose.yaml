@@ -1,0 +1,19 @@
+services:
+  web:
+    build:
+      context: .
+    environment:
+      # NODE_ENV: production
+      VITE_BASE_URL: ${VITE_BASE_URL}
+    ports:
+      - 5173:5173
+    develop:
+      watch:
+        - path: ./package.json
+          action: rebuild
+        - path: ./package-lock.json
+          action: rebuild
+        - path: .
+          target: /app
+          action: sync
+
